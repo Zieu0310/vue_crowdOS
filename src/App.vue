@@ -3,7 +3,7 @@
     data() {
       return {};
     },
-};
+  };
 </script>
 
 <template>
