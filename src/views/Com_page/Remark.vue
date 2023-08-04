@@ -3,10 +3,15 @@
       <div class="whitesmall" id="ws1">
         <img src="../../assets/img/blue.png" class="blue">
         <div class="textBlue" id="tb1">待评价</div>
+        <div class="whs" id="whs11"></div>
+        <div class="whs" id="whs12"></div>
       </div>
       <div class="whitesmall" id="ws2">
         <img src="../../assets/img/blue.png" class="blue">
         <div class="textBlue" id="tb2">已评价</div>
+        <div class="whs" id="whs21"></div>
+        <div class="whs" id="whs22"></div>
+        <div class="whs" id="whs23"></div>
       </div>
     </div>
 </template>
@@ -82,5 +87,35 @@
   }
   #tb2{
     width: 3.125vw;
+  }
+  .whs{
+    position: absolute;
+    left: 8.52%;
+    width: 35.57vw;
+    height: 8.24vh;
+    opacity: 1;
+    border-radius: 0.73vw;
+    background: rgba(255, 255, 255, 1);
+    border: 0.03vw solid rgba(166, 166, 166, 1);
+  }
+  #whs11{
+    position: absolute;
+    top: 14.06%;
+  }
+  #whs12{
+    position: absolute;
+    top: 26.51%;
+  }
+  #whs21{
+    position: absolute;
+    top: 14.06%;
+  }
+  #whs22{
+    position: absolute;
+    top: 26.51%;
+  }
+  #whs23{
+    position: absolute;
+    top: 38.97%;
   }
 </style>
