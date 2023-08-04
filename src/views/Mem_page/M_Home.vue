@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="CenterBox">
         <input type="submit" value="个人信息"  class="btn" />
         <input type="submit" value="我的任务"  class="btn" />
         <input type="submit" value="创建团队"  class="btn" />
@@ -20,10 +20,10 @@
 </script>
 
 <style scoped>
-  .container {
-    height: 100vh;
+  .CenterBox {
+    margin: 0 auto;
     width: 100vw;
-    background-color: rgba(245, 245, 245, 0.8);
+    height: 100vh;
     background-image: url(../../assets/img/Web.jpg);
     background-size: 100% 100%;
     background-size: cover;
@@ -32,6 +32,9 @@
     background-position: center;
     zoom: 1;
     z-index: -10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .btn{
     width: 8.75rem;
