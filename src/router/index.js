@@ -28,6 +28,11 @@ const routes =[
             name: "taskdelivery",
             component: () => import("../views/Com_page/TaskDelivery.vue"),
         },
+        {
+            path: "remark",
+            name: "remark",
+            component: () => import("../views/Com_page/Remark.vue"),
+        },
     ],
     },
 
