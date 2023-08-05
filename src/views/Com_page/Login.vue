@@ -29,7 +29,7 @@
   .Container {
     width: 100vw;
     height: 100vh;
-    background-image: url(../../assets/img/login.jpg);
+    background-image: url(../../assets/img/login.png);
     background-size: 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;

@@ -1,20 +1,18 @@
 <template>
     <div class="CenterBox">
-        <input type="submit" value="信息管理"  class="btn" />
-        <input type="submit" value="任务发布"  class="btn" />
-        <input type="submit" value="评价"  class="btn" />
+      <C_HeadBar></C_HeadBar>
     </div>
 </template>
 
 <script>
-  
+  import C_HeadBar from '../../components/C_common/C_HeadBar.vue';
 
   export default {
     data() {
       return {};
     },
     components: {
-      
+      C_HeadBar,
     },
   };
 </script>
@@ -35,24 +33,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  .btn{
-    width: 8.75rem;
-    height: 2.875rem;
-    border-radius: 1.4375rem;
-    background-color: rgba(0, 43, 255, 1);
-    color: rgba(255, 255, 255, 1);
-    font-size: 1.15rem;
-    border: 0;
-    transition: 0.2s;
-    cursor: pointer;
-  }
-  .btn:hover {
-    width: 9rem;
-    height: 3rem;
-    background-color: #4176e9;
-  }
-  input[type="submit"] {
-    margin-top: 4vh;
   }
 </style>

@@ -1,11 +1,9 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import { createRouter, createWebHistory } from "vue-router";
 
 import C_Home from "../views/Com_page/C_Home.vue";
 import M_Home from "../views/Mem_page/M_home.vue";
 import Login from "../views/Com_page/Login.vue";
 
-Vue.use(VueRouter)
 
 const routes =[
     {
@@ -51,6 +49,11 @@ const routes =[
         name: "teamsetup",
         component: () => import("../views/Mem_page/TeamSetup.vue"),
       },
+      {
+        path: "task",
+        name: "task",
+        component: () => import("../views/Mem_page/Task.vue"),
+      },
     ],
   },
   //懒加载代码段
@@ -77,8 +80,10 @@ const routes =[
   //重定向
   // { path: "/home", redirect: "/" },
 ]
-const router = new VueRouter({
+const router = createRouter({
+    history: createWebHistory("crowdOS"),
     routes,
+    linkActiveClass: "active",
 })
 
 export default router;

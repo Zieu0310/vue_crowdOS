@@ -1,20 +1,18 @@
 <template>
     <div class="CenterBox">
-        <input type="submit" value="个人信息"  class="btn" />
-        <input type="submit" value="我的任务"  class="btn" />
-        <input type="submit" value="创建团队"  class="btn" />
+      <M_HeadBar></M_HeadBar>
     </div>
 </template>
 
 <script>
-  
+  import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
 
   export default {
     data() {
       return {};
     },
     components: {
-      
+      M_HeadBar,
     },
   };
 </script>
@@ -35,24 +33,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  .btn{
-    width: 8.75rem;
-    height: 2.875rem;
-    border-radius: 1.4375rem;
-    background-color: rgba(0, 43, 255, 1);
-    color: rgba(255, 255, 255, 1);
-    font-size: 1.15rem;
-    border: 0;
-    transition: 0.2s;
-    cursor: pointer;
-  }
-  .btn:hover {
-    width: 9rem;
-    height: 3rem;
-    background-color: #4176e9;
-  }
-  input[type="submit"] {
-    margin-top: 4vh;
   }
 </style>
