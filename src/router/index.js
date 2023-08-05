@@ -33,6 +33,11 @@ const routes =[
             name: "remark",
             component: () => import("../views/Com_page/Remark.vue"),
         },
+        {
+            path: "c_information",
+            name: "c_information",
+            component: () => import("../views/Com_page/C_Information.vue"),
+        },
     ],
     },
 

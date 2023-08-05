@@ -46,6 +46,9 @@
     display: inline-block;
   }
   #deliver{
+    position: absolute;
+    left: 45%;
+    top: 60%;
     width: 8.75rem;
     height: 2.875rem;
     border-radius: 1.4375rem;
