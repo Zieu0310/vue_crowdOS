@@ -1,0 +1,37 @@
+<template>
+    <div class="CenterBox">
+      <M_HeadBar></M_HeadBar>
+    </div>
+</template>
+
+<script>
+  import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
+
+  export default {
+    data() {
+      return {};
+    },
+    components: {
+      M_HeadBar,
+    },
+  };
+</script>
+
+<style scoped>
+  .CenterBox {
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../../assets/img/Web.jpg);
+    background-size: 100% 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    zoom: 1;
+    z-index: -10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
