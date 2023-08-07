@@ -2,7 +2,7 @@
     <div class="CenterBox">
       <div class="whitesmall" id="ws1">
         <img src="../../assets/img/blue.png" class="blue">
-        <div class="textBlue">我的项目</div>
+        <div class="textBlue">已发任务</div>
         <div class="whs" id="whs11"></div>
         <div class="whs" id="whs12"></div>
       </div>

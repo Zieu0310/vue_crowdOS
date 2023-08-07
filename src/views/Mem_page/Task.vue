@@ -40,6 +40,15 @@
     flex-direction: column;
     align-items: center;
   }
+  .whitelarge{
+    position: absolute;
+    left: 9.01%;
+    top: 18.98%;
+    width: 80.36vw;
+    height: 81.02vh;
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.8);
+  }
   .whs{
     position: absolute;
     left: 3.82%;
