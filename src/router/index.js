@@ -30,12 +30,34 @@ const routes =[
             path: "remark",
             name: "remark",
             component: () => import("../views/Com_page/Remark.vue"),
-        },
+            children: [
+              {
+                path: "remarkone",
+                name: "remarkone",
+                component: () => import("../views/Com_page/RemarkOne.vue"),
+              }
+            ]
+        },        
         {
             path: "c_information",
             name: "c_information",
             component: () => import("../views/Com_page/C_Information.vue"),
+            children: [
+              {
+                path: "myteam",
+                name: "myteam",
+                component: () => import("../views/Com_page/MyTeam.vue"),
+                children: [
+                  {
+                    path: "member_of_myteam",
+                    name: "member_of_myteam",
+                    component: () => import("../views/Com_page/MemberOfMyTeam.vue"),
+                  }
+                ]
+              }
+            ]
         },
+        
     ],
     },
 
