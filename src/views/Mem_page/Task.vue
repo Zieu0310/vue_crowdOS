@@ -28,7 +28,6 @@
     margin: 0 auto;
     width: 100vw;
     height: 100vh;
-    background-image: url(../../assets/img/Web.jpg);
     background-size: 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -43,7 +42,7 @@
   .whitelarge{
     position: absolute;
     left: 9.01%;
-    top: 18.98%;
+    top: 19%;
     width: 80.36vw;
     height: 81.02vh;
     opacity: 1;

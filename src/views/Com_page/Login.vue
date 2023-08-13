@@ -3,8 +3,8 @@
       <div class="mainBox">
         <input type="text" placeholder="输入账号" />
         <input type="password" name="" id="" placeholder="输入密码" />
-        <input type="submit" value="登录[科研成员]" @click="go_c" class="btn" />
-        <input type="submit" value="登录[公司]" @click="go_m" class="btn" />
+        <input type="submit" value="登录[科研成员]" @click="go_m" class="btn" />
+        <input type="submit" value="登录[公司]" @click="go_c" class="btn" />
       </div>
     </div>
 </template>

@@ -1,29 +1,33 @@
 <template>
-    <div class="CenterBox">
-      <div class="whitesmall" id="ws1">
-        <img src="../../assets/img/blue.png" class="blue">
-        <div class="textBlue" id="tb1">待评价</div>
-        <div class="whs" id="whs11"></div>
-        <div class="whs" id="whs12"></div>
-      </div>
-      <div class="whitesmall" id="ws2">
-        <img src="../../assets/img/blue.png" class="blue">
-        <div class="textBlue" id="tb2">已评价</div>
-        <div class="whs" id="whs21"></div>
-        <div class="whs" id="whs22"></div>
-        <div class="whs" id="whs23"></div>
-      </div>
+    <div>
+      <div class="container">
+        <M_HeadBar></M_HeadBar>
+        <div class="whitesmall" id="ws1">
+          <img src="../../assets/img/blue.png" class="blue">
+          <div class="textBlue" id="tb1">待评价</div>
+          <div class="whs" id="whs11"></div>
+          <div class="whs" id="whs12"></div>
+        </div>
+        <div class="whitesmall" id="ws2">
+          <img src="../../assets/img/blue.png" class="blue">
+          <div class="textBlue" id="tb2">已评价</div>
+          <div class="whs" id="whs21"></div>
+          <div class="whs" id="whs22"></div>
+          <div class="whs" id="whs23"></div>
+        </div>
+      </div>      
     </div>
 </template>
 
 <script>
-  
+
+  import M_HeadBar from '../../components/M_common/M_HeadBar.vue';  
   export default {
     data() {
       return {};
     },
     components: {
-      
+      M_HeadBar,
     },
   };
 </script>
@@ -33,7 +37,6 @@
     margin: 0 auto;
     width: 100vw;
     height: 100vh;
-    background-image: url(../../assets/img/Web.jpg);
     background-size: 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -44,6 +47,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .container {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(245, 245, 245, 0.8);
+    background-size: 100% 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    zoom: 1;
+    z-index: -10;
   }
   .whitesmall{
     position: absolute;

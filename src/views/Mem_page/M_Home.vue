@@ -1,5 +1,5 @@
 <template>
-    <div class="CenterBox">
+    <div class="container">
       <M_HeadBar></M_HeadBar>
     </div>
 </template>
@@ -22,7 +22,6 @@
     margin: 0 auto;
     width: 100vw;
     height: 100vh;
-    background-image: url(../../assets/img/Web.jpg);
     background-size: 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;

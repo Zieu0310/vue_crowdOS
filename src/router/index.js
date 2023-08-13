@@ -67,6 +67,11 @@ const routes =[
     component: M_Home,
     children: [
       {
+        path: "m_information",
+        name: "m_information",
+        component: () => import("../views/Mem_page/M_Information.vue"),
+      },
+      {
         path: "teamsetup",
         name: "teamsetup",
         component: () => import("../views/Mem_page/TeamSetup.vue"),

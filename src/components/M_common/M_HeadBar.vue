@@ -43,7 +43,7 @@
                @click="active1()"
              >
                <router-link
-                 :to="{ name: 'c_information' }"
+                 :to="{ name: 'm_information' }"
                  custom
                  v-slot="{ navigate, isActive }"
                >
@@ -65,7 +65,7 @@
                @click="active2()"
              >
                <router-link
-                 :to="{ name: 'taskdelivery' }"
+                 :to="{ name: 'task' }"
                  custom
                  v-slot="{ navigate, isActive }"
                >
@@ -87,7 +87,7 @@
                @click="active3()"
              >
                <router-link
-                 :to="{ name: 'remark' }"
+                 :to="{ name: 'teamsetup' }"
                  custom
                  v-slot="{ navigate, isActive }"
                >

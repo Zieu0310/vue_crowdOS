@@ -26,7 +26,6 @@
     margin: 0 auto;
     width: 100vw;
     height: 100vh;
-    background-image: url(../../assets/img/Web.png);
     background-size: 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;
