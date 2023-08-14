@@ -10,7 +10,7 @@
         </el-option>
       </el-select>
     </div>
-  </template>
+</template>
   
   <script>
   export default {

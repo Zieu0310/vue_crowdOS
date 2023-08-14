@@ -1,17 +1,24 @@
 <template>
   <div class="Container">
     <div class="title">
-        <img src="../../assets/img/register.png" alt="" />
-      </div>
-      <div class="mainBox">
-        <input type="text" placeholder="输入账号" />
-        <input type="password" name="" id="" placeholder="输入密码" />
-        <input type="submit" value="确认" @click="go_m" class="btn" />
-      </div>
+      <img src="../../assets/img/register.png" alt="" />
+    </div>
+    <div class="mainBox">
+      <input type="text" placeholder="输入账号" />
+      <input type="password" name="" id="" placeholder="输入密码" />
+      <select name="role">
+        <option value="member">科研成员</option>
+        <option value="company">公司</option>
+        <option value="administrator">管理员</option>
+      </select>
+      <input type="text" placeholder="输入姓名" />
+      <input type="submit" value="确认" @click="go_m" class="btn" />
+    </div>
   </div>
 </template>
 
 <script>
+  
   export default {
     data() {
       return {};
@@ -103,5 +110,19 @@
   input[type="password"],
   input[type="submit"] {
     margin-top: 4vh;
+  }
+  select {
+    width: 18rem;
+    height: 2.875rem;
+    opacity: 1;
+    border-radius: 0.875rem;
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, 1);
+    border: 0;
+    text-align: center;
+    outline: none;
+    caret-color: auto;
+    transition: 0.5s;
+    font-size: 1rem;
   }
 </style>
