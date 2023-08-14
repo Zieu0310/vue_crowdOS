@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import C_Home from "../views/Com_page/C_Home.vue";
 import M_Home from "../views/Mem_page/M_home.vue";
+import A_Home from "../views/Admin_page/A_Home.vue";
 import Login from "../views/Com_page/Login.vue";
 import Register from "../views/Com_page/Register.vue";
 

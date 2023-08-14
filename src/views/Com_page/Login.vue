@@ -8,6 +8,7 @@
         <input type="password" name="" id="" placeholder="输入密码" />
         <input type="submit" value="登录[科研成员]" @click="go_m" class="btn" />
         <input type="submit" value="登录[公司]" @click="go_c" class="btn" />
+        <input type="submit" value="登录[管理员]" class="btn">
         <input type="submit" value="注册" @click="go_r" class="btn" />
       </div>
     </div>

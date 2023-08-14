@@ -13,6 +13,7 @@
       </select>
       <input type="text" placeholder="输入姓名" />
       <input type="submit" value="确认" @click="go_m" class="btn" />
+      <router-link to="./login"><div class="tologin">已有账号，前往登录</div></router-link>
     </div>
   </div>
 </template>
@@ -124,5 +125,14 @@
     caret-color: auto;
     transition: 0.5s;
     font-size: 1rem;
+  }
+  .tologin{
+    position: absolute;
+    left: 45.5%;
+    top: 85%;
+    width: 20vw;
+    height: 5vh;
+    font-size: 1vw;
+    color: slategrey;
   }
 </style>
