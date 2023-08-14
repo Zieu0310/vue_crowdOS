@@ -1,9 +1,8 @@
 <template>
-    <div>
-      <div class="container">
-        <C_HeadBar></C_HeadBar>
-      </div>      
-    </div>
+  <div class="container">
+    <C_HeadBar></C_HeadBar>
+  </div>      
+  <router-view></router-view>
 </template>
 
 <script>

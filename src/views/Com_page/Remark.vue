@@ -1,22 +1,19 @@
 <template>
-    <div>
-      <div class="container">
-        <M_HeadBar></M_HeadBar>
-        <div class="whitesmall" id="ws1">
-          <img src="../../assets/img/blue.png" class="blue">
-          <div class="textBlue" id="tb1">待评价</div>
-          <div class="whs" id="whs11"></div>
-          <div class="whs" id="whs12"></div>
-        </div>
-        <div class="whitesmall" id="ws2">
-          <img src="../../assets/img/blue.png" class="blue">
-          <div class="textBlue" id="tb2">已评价</div>
-          <div class="whs" id="whs21"></div>
-          <div class="whs" id="whs22"></div>
-          <div class="whs" id="whs23"></div>
-        </div>
-      </div>      
+  <div class="container">
+    <div class="whitesmall" id="ws1">
+      <img src="../../assets/img/blue.png" class="blue">
+      <div class="textBlue" id="tb1">待评价</div>
+      <div class="whs" id="whs11"></div>
+      <div class="whs" id="whs12"></div>
     </div>
+    <div class="whitesmall" id="ws2">
+      <img src="../../assets/img/blue.png" class="blue">
+      <div class="textBlue" id="tb2">已评价</div>
+      <div class="whs" id="whs21"></div>
+      <div class="whs" id="whs22"></div>
+      <div class="whs" id="whs23"></div>
+    </div>
+  </div>      
 </template>
 
 <script>

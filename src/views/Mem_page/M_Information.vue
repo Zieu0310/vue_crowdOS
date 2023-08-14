@@ -26,6 +26,7 @@
     margin: 0 auto;
     width: 100vw;
     height: 100vh;
+    background: rgba(245,245,245,0.8);
     background-size: 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;

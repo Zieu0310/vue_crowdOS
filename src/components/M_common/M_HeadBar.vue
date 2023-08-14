@@ -43,7 +43,7 @@
                @click="active1()"
              >
                <router-link
-                 :to="{ name: 'm_information' }"
+                 :to="{ name: 'achievements' }"
                  custom
                  v-slot="{ navigate, isActive }"
                >
@@ -53,7 +53,7 @@
                    :class="{ active: isActive }"
                    role="link"
                  >
-                   <p :class="{ active_: Show1 }" @click="active1()">个人信息</p>
+                   <p :class="{ active_: Show1 }" @click="active1()">科研成果</p>
                  </li>
                </router-link>
              </div>
@@ -103,7 +103,15 @@
              </div>
            </div>
         </div>
-        <router-view></router-view>
+        <div class="right-entry">
+        <div class="profile">
+          <router-link to="../../m_home/m_information"><img src="../../assets/img/photo.png" alt="" /></router-link>
+        </div>
+        <div class="PersonalData">
+          <div class="name">Jack</div>
+          <div class="number">400820886</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -121,7 +129,7 @@
     position: absolute;
     top: 0%;
     left: 0;
-    width: 25%;
+    width: 35%;
     height: 100%;
     display: flex;
     box-sizing: border-box;

@@ -1,16 +1,14 @@
 <template>
-    <div class="Container">
-      <div class="title">
-        <img src="../../assets/img/Login_text.png" alt="" />
+  <div class="Container">
+    <div class="title">
+        <img src="../../assets/img/register.png" alt="" />
       </div>
       <div class="mainBox">
         <input type="text" placeholder="输入账号" />
         <input type="password" name="" id="" placeholder="输入密码" />
-        <input type="submit" value="登录[科研成员]" @click="go_m" class="btn" />
-        <input type="submit" value="登录[公司]" @click="go_c" class="btn" />
-        <input type="submit" value="注册" @click="go_r" class="btn" />
+        <input type="submit" value="确认" @click="go_m" class="btn" />
       </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -18,16 +16,8 @@
     data() {
       return {};
     },
-    methods: {
-      go_c() {
-        this.$router.push("/c_home");
-      },
-      go_m() {
-        this.$router.push("/m_home/achievements");
-      },
-      go_r() {
-        this.$router.push("/register")
-      }
+    components: {
+      
     },
   };
 </script>

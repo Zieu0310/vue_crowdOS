@@ -1,30 +1,34 @@
 <template>
-    <div class="CenterBox">
-      <div class="whitelarge">
-        <div class="whs" id="whs1"></div>
-        <div class="whs" id="whs2"></div>
-        <div class="whs" id="whs3"></div>
-        <div class="whs" id="whs4"></div>
-        <div class="whs" id="whs5"></div>
-        <div class="whs" id="whs6"></div>
-      </div>
+  <div class="CenterBox">
+    <div class="whitelarge">
+      <img src="../../assets/img/blue.png" class="blue_">
+      <div class="textblue_">科研成果</div>
+      <div class="whs" id="whs1"></div>
+      <div class="whs" id="whs2"></div>
+      <div class="whs" id="whs3"></div>
+      <div class="whs" id="whs4"></div>
+      <div class="whs" id="whs5"></div>
+      <div class="whs" id="whs6"></div>
     </div>
+  </div>
 </template>
 
 <script>
-  
+  import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
+
   export default {
     data() {
       return {};
     },
     components: {
-      
+      M_HeadBar,
     },
   };
 </script>
 
 <style scoped>
   .CenterBox {
+    margin: 0 auto;
     width: 100vw;
     height: 100vh;
     background: rgba(245, 245, 245, 0.8);
@@ -46,7 +50,28 @@
     width: 80.36vw;
     height: 81.02vh;
     opacity: 1;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255,255,255,0.8);
+  }
+  .blue_{
+    position: absolute;
+    left: 4.87%;
+    top: 4.69%;
+    width: 0.21vw;
+    height: 1.76vh;
+  }
+  .textblue_{
+    position: absolute;
+    left: 6.45%;
+    top: 4.23%;
+    height: 2.50vh;
+    opacity: 1;
+    font-size: 1.04vw;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 2.44vh;
+    color: rgba(0, 43, 255, 1);
+    text-align: left;
+    vertical-align: top;
   }
   .whs{
     position: absolute;
@@ -60,26 +85,26 @@
   }
   #whs1{
     position: absolute;
-    top: 5.83%;
+    top: 8.83%;
   }
   #whs2{
     position: absolute;
-    top: 18.29%;
+    top: 21.29%;
   }
   #whs3{
     position: absolute;
-    top: 30.74%;
+    top: 33.74%;
   }
   #whs4{
     position: absolute;
-    top: 43.20%;
+    top: 46.20%;
   }
   #whs5{
     position: absolute;
-    top: 55.66%;
+    top: 58.66%;
   }
   #whs6{
     position: absolute;
-    top: 68.11%;
-  }  
+    top: 71.11%;
+  }
 </style>

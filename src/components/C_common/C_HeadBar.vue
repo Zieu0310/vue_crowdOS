@@ -35,75 +35,81 @@
 <template>
   <div>
     <div class="Header">
-        <div class="LeftEntry">
-            <div class="box">
-             <div
-               class="ShowBorder"
-               :class="{ active_: Show1 }"
-               @click="active1()"
+      <div class="LeftEntry">
+        <div class="box">
+          <div
+            class="ShowBorder"
+            :class="{ active_: Show1 }"
+            @click="active1()"
+          >
+             <router-link
+               :to="{ name: 'c_information' }"
+               custom
+               v-slot="{ navigate, isActive }"
              >
-               <router-link
-                 :to="{ name: 'c_information' }"
-                 custom
-                 v-slot="{ navigate, isActive }"
-               >
-                 <li
-                   @click="navigate"
-                   @keypress.enter="navigate"
-                   :class="{ active: isActive }"
-                   role="link"
-                 >
-                   <p :class="{ active_: Show1 }" @click="active1()">信息管理</p>
-                 </li>
-               </router-link>
-             </div>
-            </div>
-            <div class="box">
-             <div
-               class="ShowBorder"
-               :class="{ active_: Show2 }"
-               @click="active2()"
+             <li
+              @click="navigate"
+              @keypress.enter="navigate"
+              :class="{ active: isActive }"
+              role="link"
              >
-               <router-link
-                 :to="{ name: 'taskdelivery' }"
-                 custom
-                 v-slot="{ navigate, isActive }"
-               >
-                 <li
-                   @click="navigate"
-                   @keypress.enter="navigate"
-                   :class="{ active: isActive }"
-                   role="link"
-                 >
-                   <p :class="{ active_: Show2 }" @click="active2()">任务发布</p>
-                 </li></router-link
-               >
-             </div>
-           </div>
-           <div class="box">
-             <div
-               class="ShowBorder"
-               :class="{ active_: Show3 }"
-               @click="active3()"
-             >
-               <router-link
-                 :to="{ name: 'remark' }"
-                 custom
-                 v-slot="{ navigate, isActive }"
-               >
-                 <li
-                   @click="navigate"
-                   @keypress.enter="navigate"
-                   :class="{ active: isActive }"
-                   role="link"
-                 >
-                   <p :class="{ active_: Show3 }" @click="active3()">评价</p>
-                 </li></router-link
-               >
-             </div>
-           </div>
+              <p :class="{ active_: Show1 }" @click="active1()">信息管理</p>
+            </li>
+            </router-link>
+          </div>
         </div>
-        <router-view></router-view>
+        <div class="box">
+          <div
+           class="ShowBorder"
+           :class="{ active_: Show2 }"
+           @click="active2()"
+          >
+             <router-link
+               :to="{ name: 'taskdelivery' }"
+               custom
+               v-slot="{ navigate, isActive }"
+             >
+             <li
+               @click="navigate"
+               @keypress.enter="navigate"
+               :class="{ active: isActive }"
+               role="link"
+              >
+               <p :class="{ active_: Show2 }" @click="active2()">任务发布</p>
+              </li></router-link>
+          </div>
+        </div>
+        <div class="box">
+          <div
+           class="ShowBorder"
+           :class="{ active_: Show3 }"
+           @click="active3()"
+          >
+             <router-link
+               :to="{ name: 'remark' }"
+               custom
+               v-slot="{ navigate, isActive }"
+              >
+              <li
+               @click="navigate"
+               @keypress.enter="navigate"
+               :class="{ active: isActive }"
+               role="link"
+              >
+               <p :class="{ active_: Show3 }" @click="active3()">评价</p>
+               </li></router-link>
+          </div>
+        </div>
+      </div>
+      <div class="right-entry">
+        <div class="profile">
+          <img src="../../assets/img/photo.png" alt="" />
+        </div>
+        <div class="PersonalData">
+          <div class="name">Jack</div>
+          <div class="number">400820886</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

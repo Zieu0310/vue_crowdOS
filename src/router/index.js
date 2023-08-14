@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import C_Home from "../views/Com_page/C_Home.vue";
 import M_Home from "../views/Mem_page/M_home.vue";
 import Login from "../views/Com_page/Login.vue";
+import Register from "../views/Com_page/Register.vue";
 
 
 const routes =[
@@ -15,7 +16,11 @@ const routes =[
         name: "Login",
         component: Login, 
     },
-
+    {
+        path: "/register",
+        name: "Register",
+        component: Register,
+    },
     {
         path: "/c_home",
         name: "C_Home",
@@ -66,6 +71,11 @@ const routes =[
     name: "M_Home",
     component: M_Home,
     children: [
+      {
+        path: "achievements",
+        name: "achievements",
+        component: () => import("../views/Mem_page/Achievements.vue"),
+      },
       {
         path: "m_information",
         name: "m_information",

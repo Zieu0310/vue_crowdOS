@@ -73,7 +73,15 @@
              </div>
            </div>
         </div>
-        <router-view></router-view>
+        <div class="right-entry">
+        <div class="profile">
+          <img src="../../assets/img/photo.png" alt="" />
+        </div>
+        <div class="PersonalData">
+          <div class="name">Jack</div>
+          <div class="number">400820886</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
