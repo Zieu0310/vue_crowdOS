@@ -5,9 +5,11 @@
       <img src="../../assets/img/blue.png" class="blue">
       <div class="textBlue" id="tb1">待审核</div>
       <div class="whs" id="whs11">
+        <div class="Intextblack">XXX教授的团队申请</div>
         <div class="Intextblue">审核</div>
       </div>
       <div class="whs" id="whs12">
+        <div class="Intextblack">XXX教授的团队申请</div>
         <div class="Intextblue">审核</div>
       </div>
     </div>
@@ -15,12 +17,15 @@
       <img src="../../assets/img/blue.png" class="blue">
       <div class="textBlue" id="tb2">已审核</div>
       <div class="whs" id="whs21">
+        <div class="Intextblack">XXX教授的团队申请</div>
         <div id="textred">审核不通过</div>
       </div>
       <div class="whs" id="whs22">
+        <div class="Intextblack">XXX教授的团队申请</div>
         <div id="textgreen">审核通过</div>
       </div>
       <div class="whs" id="whs23">
+        <div class="Intextblack">XXX教授的团队申请</div>
         <div id="textgreen">审核通过</div>
       </div>
     </div>
@@ -199,6 +204,21 @@
     line-height: 2.15vh;
     color: rgba(67, 207, 124, 1);
     text-align: right;
+    vertical-align: top;
+  }
+  .Intextblack{
+    position: absolute;
+    left: 15.67%;
+    top: 35.71%;
+    width: 10.35vw;
+    height: 2.22vh;
+    opacity: 1;
+    font-size: 0.83vw;
+    font-weight: 700;
+    letter-spacing: 0px;
+    line-height: 2.15vh;
+    color: rgba(0, 0, 0, 1);
+    text-align: left;
     vertical-align: top;
   }
 </style>
