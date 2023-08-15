@@ -9,7 +9,7 @@
       <div class="whs" id="whs4"></div>
       <div class="whs" id="whs5"></div>
       <div class="whs" id="whs6"></div>
-      <img src="../../assets/img/add.png" class="round" @click="shadow_over('over')">
+      <router-link to="addachievement"><img src="../../assets/img/add.png" alt="添加成果" class="round"></router-link>
     </div>
   </div>
 </template>

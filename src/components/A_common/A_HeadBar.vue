@@ -27,6 +27,9 @@
 <template>
   <div>
     <div class="Header">
+      <div class="to_quit">
+        <router-link to="../login"><div class="quit">退出</div></router-link>
+      </div>
         <div class="LeftEntry">
             <div class="box">
              <div
@@ -237,5 +240,18 @@
   .active_ {
     color: black;
     background-color: #f5f5f5;
+  }
+  .to_quit{
+    position: absolute;
+    left: 0;
+    width: 20%;
+    height: 100%;
+  }
+  .quit{
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    width: 100%;
+    height: 100%;
   }
 </style>

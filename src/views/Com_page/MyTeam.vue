@@ -1,12 +1,30 @@
 <template>
     <div class="CenterBox">
         <div class="whitelarge">
-          <div class="whs" id="whs1"></div>
-          <div class="whs" id="whs2"></div>
-          <div class="whs" id="whs3"></div>
-          <div class="whs" id="whs4"></div>
-          <div class="whs" id="whs5"></div>
-          <div class="whs" id="whs6"></div>
+          <div class="whs" id="whs1">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">XX教授团队</div>
+          </div>
+          <div class="whs" id="whs2">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">XX教授团队</div>
+          </div>
+          <div class="whs" id="whs3">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">XX教授团队</div>
+          </div>
+          <div class="whs" id="whs4">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">XX教授团队</div>
+          </div>
+          <div class="whs" id="whs5">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">XX教授团队</div>
+          </div>
+          <div class="whs" id="whs6">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">XX教授团队</div>
+          </div>
         </div>
     </div>
 </template>
@@ -49,10 +67,8 @@
     background: rgba(255, 255, 255, 0.8);
   }
   .whs{
-    position: absolute;
-    left: 3.82%;
-    width: 74.27vw;
-    height: 8.24vh;
+    width: 80.36vw;
+    height: 8.1vh;
     opacity: 1;
     border-radius: 0.73vw;
     background: rgba(255, 255, 255, 1);
@@ -60,26 +76,48 @@
   }
   #whs1{
     position: absolute;
-    top: 5.83%;
+    top: 0%;
   }
   #whs2{
     position: absolute;
-    top: 18.29%;
+    top: 9.99753%;
   }
   #whs3{
     position: absolute;
-    top: 30.74%;
+    top: 19.995%
   }
   #whs4{
     position: absolute;
-    top: 43.20%;
+    top: 29.9926%;
   }
   #whs5{
     position: absolute;
-    top: 55.66%;
+    top: 39.99%;
   }
   #whs6{
     position: absolute;
-    top: 68.11%;
+    top: 49.98765%;
+  }
+  .icon{
+    position: absolute;
+    left: 5.65%;
+    top: 26.17%;
+    width: 2.3vw;
+    height: 3.5vh;
+  }
+  .name{
+    position: absolute;
+    left: 10%;
+    top: 25%;
+    width: 10vw;
+    height: 2.3vh;
+    opacity: 1;
+    font-size: 1.3vw;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 1.48vh;
+    color: rgba(51, 51, 51, 1);
+    text-align: left;
+    vertical-align: top;
   }
 </style>

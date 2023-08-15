@@ -35,6 +35,9 @@
 <template>
   <div>
     <div class="Header">
+      <div class="to_quit">
+        <router-link to="../login"><div class="quit">退出</div></router-link>
+      </div>
       <div class="LeftEntry">
         <div class="box">
           <div
@@ -43,7 +46,7 @@
             @click="active1()"
           >
              <router-link
-               :to="{ name: 'c_information' }"
+               :to="{ name: 'c_task' }"
                custom
                v-slot="{ navigate, isActive }"
              >
@@ -53,7 +56,7 @@
               :class="{ active: isActive }"
               role="link"
              >
-              <p :class="{ active_: Show1 }" @click="active1()">信息管理</p>
+              <p :class="{ active_: Show1 }" @click="active1()">任务管理</p>
             </li>
             </router-link>
           </div>
@@ -65,7 +68,7 @@
            @click="active2()"
           >
              <router-link
-               :to="{ name: 'taskdelivery' }"
+               :to="{ name: 'myteam' }"
                custom
                v-slot="{ navigate, isActive }"
              >
@@ -75,7 +78,7 @@
                :class="{ active: isActive }"
                role="link"
               >
-               <p :class="{ active_: Show2 }" @click="active2()">任务发布</p>
+               <p :class="{ active_: Show2 }" @click="active2()">合作团队</p>
               </li></router-link>
           </div>
         </div>
@@ -265,5 +268,18 @@
   .active_ {
     color: black;
     background-color: #f5f5f5;
+  }
+  .to_quit{
+    position: absolute;
+    left: 0;
+    width: 20%;
+    height: 100%;
+  }
+  .quit{
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    width: 100%;
+    height: 100%;
   }
 </style>

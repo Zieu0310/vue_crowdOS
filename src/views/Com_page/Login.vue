@@ -21,7 +21,7 @@
     },
     methods: {
       go_c() {
-        this.$router.push("/c_home");
+        this.$router.push("/c_home/c_task");
       },
       go_m() {
         this.$router.push("/m_home/achievements");

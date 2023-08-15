@@ -33,10 +33,20 @@ const routes =[
               component: () => import("../views/Admin_page/AchievementJudge.vue"),
           },
           {
+            path: "achievementjudgeone",
+            name: "achievementjudgeone",
+            component: () => import("../views/Admin_page/AchievementJudgeOne.vue"),
+          },
+          {
             path: "taskjudge",
             name: "taskjudge",
             component: () => import("../views/Admin_page/TaskJudge.vue"),
-        },
+          },
+          {
+            path: "taskjudgeone",
+            name: "taskjudgeone",
+            component: () => import("../views/Admin_page/TaskJudgeOne.vue")
+          },
         ],
     },
     {
@@ -50,38 +60,31 @@ const routes =[
             component: () => import("../views/Com_page/TaskDelivery.vue"),
         },
         {
+          path: "deliveredtask",
+          name: "deliveredtask",
+          component: () => import("../views/Com_page/DeliveredTask.vue"),
+        },
+        {
+          path: "addtask",
+          name: "addtask",
+          component: () => import("../views/Com_page/AddTask.vue"),
+        },
+        {
             path: "remark",
             name: "remark",
             component: () => import("../views/Com_page/Remark.vue"),
-            children: [
-              {
-                path: "remarkone",
-                name: "remarkone",
-                component: () => import("../views/Com_page/RemarkOne.vue"),
-              }
-            ]
         },        
         {
-            path: "c_information",
-            name: "c_information",
-            component: () => import("../views/Com_page/C_Information.vue"),
-            children: [
-              {
-                path: "myteam",
-                name: "myteam",
-                component: () => import("../views/Com_page/MyTeam.vue"),
-                children: [
-                  {
-                    path: "member_of_myteam",
-                    name: "member_of_myteam",
-                    component: () => import("../views/Com_page/MemberOfMyTeam.vue"),
-                  }
-                ]
-              }
-            ]
+            path: "c_task",
+            name: "c_task",
+            component: () => import("../views/Com_page/C_Task.vue"),            
         },
-        
-    ],
+        {
+          path: "myteam",
+          name: "myteam",
+          component: () => import("../views/Com_page/MyTeam.vue"),
+        }
+      ],
     },
 
   {

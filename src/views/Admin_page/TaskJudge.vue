@@ -6,11 +6,11 @@
         <div class="textBlue" id="tb1">待审核</div>
         <div class="whs" id="whs11">
           <div class="Intextblack">XXX公司的任务申请</div>
-          <div class="Intextblue">审核</div>
+          <router-link to="./taskjudgeone"><div class="Intextblue">审核</div></router-link>
         </div>
         <div class="whs" id="whs12">
           <div class="Intextblack">XXX公司的任务申请</div>
-          <div class="Intextblue">审核</div>
+          <router-link to="./taskjudgeone"><div class="Intextblue">审核</div></router-link>
         </div>
       </div>
       <div class="whitesmall" id="ws2">

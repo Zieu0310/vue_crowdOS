@@ -2,16 +2,16 @@
     <div class="CenterBox">
       <div class="over"></div>
       <div class="add">
-        <div class="item" id="i1">成果名称</div>
+        <div class="item" id="i1">任务名称</div>
         <div class="item" id="i2">类型</div>
-        <div class="item" id="i3">成果描述</div>
+        <div class="item" id="i3">任务描述</div>
         <textarea name="" id="" cols="30" rows="10" placeholder="请描述" class="grey_rec"></textarea>
-        <div class="item" id="i4">附件</div>
+        <div class="item" id="i4">报价</div>
         <div class="yes">
           <div class="yestext">上传</div>
         </div>
         <div class="no">
-          <router-link to="./achievements"><div class="notext">取消</div></router-link>
+          <router-link to="./c_information"><div class="notext">取消</div></router-link>
         </div>
       </div>
       
