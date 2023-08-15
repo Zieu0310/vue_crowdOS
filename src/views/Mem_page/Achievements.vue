@@ -9,6 +9,7 @@
       <div class="whs" id="whs4"></div>
       <div class="whs" id="whs5"></div>
       <div class="whs" id="whs6"></div>
+      <img src="../../assets/img/add.png" class="round" @click="shadow_over('over')">
     </div>
   </div>
 </template>
@@ -28,7 +29,6 @@
 
 <style scoped>
   .CenterBox {
-    margin: 0 auto;
     width: 100vw;
     height: 100vh;
     background: rgba(245, 245, 245, 0.8);
@@ -41,7 +41,6 @@
     z-index: -10;
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
   .whitelarge{
     position: absolute;
@@ -107,4 +106,14 @@
     position: absolute;
     top: 71.11%;
   }
+  .round{
+    position: absolute;
+    left: 46.50%;
+    top: 84%;
+    width: 5.625vw;
+    height: 10vh;
+    background-color: rgba(245, 245, 245, 0.8);
+    border-radius: 50%;
+  }
+  
 </style>

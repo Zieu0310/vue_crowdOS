@@ -23,6 +23,23 @@ const routes =[
         component: Register,
     },
     {
+        path: "/a_home",
+        name: "A_Home",
+        component: A_Home,
+        children: [
+          {
+              path: "achievementjudge",
+              name: "achievementjudge",
+              component: () => import("../views/Admin_page/AchievementJudge.vue"),
+          },
+          {
+            path: "taskjudge",
+            name: "taskjudge",
+            component: () => import("../views/Admin_page/TaskJudge.vue"),
+        },
+        ],
+    },
+    {
         path: "/c_home",
         name: "C_Home",
         component: C_Home,
@@ -91,6 +108,11 @@ const routes =[
         path: "task",
         name: "task",
         component: () => import("../views/Mem_page/Task.vue"),
+      },
+      {
+        path: "addachievement",
+        name: "addachievement",
+        component: () => import("../views/Mem_page/AddAchievement.vue")
       },
     ],
   },

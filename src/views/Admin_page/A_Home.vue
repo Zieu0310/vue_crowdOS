@@ -7,6 +7,7 @@
 
 <script>
   import A_HeadBar from '../../components/A_common/A_HeadBar.vue';
+  
   export default {
     data() {
       return {};
