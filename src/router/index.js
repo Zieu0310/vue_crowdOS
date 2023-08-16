@@ -83,6 +83,16 @@ const routes =[
           path: "myteam",
           name: "myteam",
           component: () => import("../views/Com_page/MyTeam.vue"),
+        },
+        {
+          path: "contact",
+          name: "contact",
+          component: () => import("../views/Com_page/Contact.vue")
+        },
+        {
+          path: "allmember",
+          name: "allmember",
+          component: () => import("../views/Com_page/AllMember.vue")
         }
       ],
     },
@@ -92,6 +102,11 @@ const routes =[
     name: "M_Home",
     component: M_Home,
     children: [
+      {
+        path: "team",
+        name: "team",
+        component: () => import("../views/Mem_page/Team.vue"),
+      },
       {
         path: "achievements",
         name: "achievements",

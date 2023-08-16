@@ -46,7 +46,7 @@
                @click="active1()"
              >
                <router-link
-                 :to="{ name: 'achievements' }"
+                 :to="{ name: 'team' }"
                  custom
                  v-slot="{ navigate, isActive }"
                >
@@ -56,7 +56,7 @@
                    :class="{ active: isActive }"
                    role="link"
                  >
-                   <p :class="{ active_: Show1 }" @click="active1()">科研成果</p>
+                   <p :class="{ active_: Show1 }" @click="active1()">我的团队</p>
                  </li>
                </router-link>
              </div>
@@ -108,7 +108,7 @@
         </div>
         <div class="right-entry">
         <div class="profile">
-          <router-link to="../../m_home/m_information"><img src="../../assets/img/photo.png" alt="" /></router-link>
+          <router-link to="../../m_home/m_information"><img src="../../assets/img/icon.png" alt="" /></router-link>
         </div>
         <div class="PersonalData">
           <div class="name">Jack</div>

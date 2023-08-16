@@ -24,7 +24,7 @@
         this.$router.push("/c_home/c_task");
       },
       go_m() {
-        this.$router.push("/m_home/achievements");
+        this.$router.push("/m_home/team");
       },
       go_a() {
         this.$router.push("/a_home/achievementjudge")

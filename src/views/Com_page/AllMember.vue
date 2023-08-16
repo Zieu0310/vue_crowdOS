@@ -1,66 +1,37 @@
 <template>
-    <div class="CenterBox">
+  <div class="CenterBox">
         <div class="whitelarge">
-          <router-link to="./contact">
             <div class="whs" id="whs1">
               <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
+              <div class="name">XX教授</div>
             </div>
-          </router-link>
-          <router-link to="./contact">
             <div class="whs" id="whs2">
               <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
+              <div class="name">阿sir</div>
             </div>
-          </router-link>
-          <router-link to="./contact">
             <div class="whs" id="whs3">
               <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
+              <div class="name">刘老六</div>
             </div>
-          </router-link>
-          <router-link to="./contact">
             <div class="whs" id="whs4">
               <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
-          </div>
-          </router-link>
-          <router-link to="./contact">
-            <div class="whs" id="whs5">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
+              <div class="name">哥哥</div>
             </div>
-          </router-link>
-          <router-link to="./contact">
+            <div class="whs" id="whs5">
+            <img src="../../assets/img/icon.png" class="icon">
+              <div class="name">胖熊</div>
+            </div>
             <div class="whs" id="whs6">
               <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
-            </div>
-          </router-link>                    
+              <div class="name">阿毛</div>
+            </div> 
         </div>
-    </div>
+    </div>    
 </template>
 
-<script>
-  
-  export default {
-    data() {
-      return {};
-    },
-    components: {
-      
-    },
-  };
-</script>
 
 <style scoped>
-   .CenterBox {
+  .CenterBox {
     margin: 0 auto;
     width: 100vw;
     height: 100vh;
@@ -125,7 +96,7 @@
   .name{
     position: absolute;
     left: 10%;
-    top: 25%;
+    top: 40%;
     width: 10vw;
     height: 2.3vh;
     opacity: 1;

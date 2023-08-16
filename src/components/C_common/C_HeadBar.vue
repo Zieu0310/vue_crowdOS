@@ -106,7 +106,7 @@
       </div>
       <div class="right-entry">
         <div class="profile">
-          <img src="../../assets/img/photo.png" alt="" />
+          <img src="../../assets/img/icon.png" alt="" />
         </div>
         <div class="PersonalData">
           <div class="name">Jack</div>

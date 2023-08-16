@@ -1,7 +1,7 @@
 <template>
   <div class="Container">
     <div class="title">
-      <img src="../../assets/img/register.png" alt="" />
+      <img src="../../assets/img/register.png" class="register" />
     </div>
     <div class="mainBox">
       <input type="text" placeholder="输入账号" />
@@ -135,4 +135,5 @@
     font-size: 1vw;
     color: slategrey;
   }
+  
 </style>

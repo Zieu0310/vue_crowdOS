@@ -1,142 +1,45 @@
 <template>
-    <div class="CenterBox">
- <el-dialog
-    :visible="showGroupDialog"
-    >
-      <el-input type="text" v-model="groupName" placeholder="请输入团队名称" ></el-input>
-      <span class="dialog-footer">
-        <el-button @click="showGroupDialog = false">取 消</el-button>
-        <el-button type="primary" @click="createGroup">确 定</el-button>
-      </span>
-    </el-dialog>
-
-<div class="left">
-        <p class="user" @click="showGroupDialog = true">新建团队</p>
-        <div class="user" v-for="items in groups" :key="items.id" @click="triggerGroup(items)">
-          <span> {{items.name}}</span>
-          <span v-if="!isUserInGroup(items)" @click="addGroup(items.id)">+</span>
-          <span class="msgtip" v-show="getGroupMsgNum(items)">{{getGroupMsgNum(items)}}</span>
-        </div>
-        <div class="user" v-for="(itm, idex) in users" :key="idex" v-show="itm.uid !== uid" @click="triggerUser(itm)">
-          <span>{{itm.nickname}}</span>
-          <span class="msgtip" v-show="getMsgNum(itm)">{{getMsgNum(itm)}}</span>
-          </div>
+  <div class="CenterBox">
+    <div class="whitecenter">
+      <img src="../../assets/img/blue.png" class="blue">
+      <div class="title">奖学金申请详情</div>
+      <div class="upgrey">
+        <div class="word" id="w1">综测总分/排名</div>
+        <div class="num" id="n1">86.39（8/120）</div>
+        <div class="word" id="w2">学分绩点/排名</div>
+        <div class="num" id="n2">4.09（9/120）</div>
+        <div class="word" id="w3">德育素质评分</div>
+        <div class="num" id="n3">15</div>
+        <div class="word" id="w4">体测分数</div>
+        <div class="num" id="n4">88</div>
       </div>
-
+      <div class="item" id="i1">奖项名称</div>
+      <div class="inblue" id="ib1">精神文明奖</div>
+      <div class="item" id="i2">等级</div>
+      <div class="inblue" id="ib2">无等级</div>
+      <div class="item" id="i3">申请理由</div>
+      <div class="grey_rec">
+        <div class="innertext">用户分享内容到社交媒体或好友，不应该是一种粗暴的强制行为，我们应该在保证产品本身内容有吸引力的核心前提下，仔细揣摩用户心理，结合产品本身的特色，在不同情境下提供给用户最合适的分享平台及方式，让用户分享成为一种水到渠成的自然行为，甚至在某些时候还能给用户带来一...</div>
+      </div>
+      <div class="item" id="i4">附件</div>
+      <div class="yes">
+        <div class="yestext">通过</div>
+      </div>
+      <div class="no">
+        <div class="notext">不通过</div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
   export default {
   data () {
-    return {
-      groups: [], // 所有群对应数组
-      showGroupDialog: false, // 新建群模态框
-      groupName: '', // 群名
-      groupId: ''
-    }
+    return {};
   },
-  computed: {
-    // 筛选当前brige一致的放到一个聊天数组里，区分单聊和群聊
-    currentMessage () {
-      const vm = this
-      let data = this.messageList.filter(item => {
-        // 如果有groupId，过滤展示出当前对应群
-        if (this.groupId) {
-          return item.groups.filter(p => { return p.id === this.groupId })
-        } else {
-          return item.brige.sort().join('') === vm.brige.sort().join('')
-        }
-      })
-      data.forEach(m => {
-        m.status = 0
-      })
-      return data
-    }
+  components: {
+      
   },
-  methods: {
-	// 发送信息给客户端
-    sendMessage (type, msg) {
-      const data = {
-        groups: this.groups,
-        groupId: this.groupId
-      }
-      this.ws.send(JSON.stringify(data))
-      this.msg = ''
-    },
-    // 创建群
-    createGroup () {
-      const data = {
-        uid: this.uid,
-        type: 10,
-        nickname: this.nickname,
-        users: this.users,
-        name: this.groupName,
-        brige: []
-      }
-      this.ws.send(JSON.stringify(data))
-      this.showGroupDialog = false
-      this.groupName = ''
-    },
-
-    // 加入群
-    addGroup (id) {
-      const data = {
-        uid: this.uid,
-        type: 20,
-        nickname: this.nickname,
-        brige: [],
-        groupName: this.groupName,
-        groupId: id
-      }
-      this.ws.send(JSON.stringify(data))
-    },
-     // 判断当前用户是否在群里
-    isUserInGroup (items) {
-      const isIn = items.users.some(item => { return item.uid === this.uid })
-      return isIn
-    },
-
-    // 获取单聊消息未读数量
-    getMsgNum (user) {
-        // userid相同，确认是当前聊天对应人的消息数组
-         return this.messageList.filter (m => {
-          return m.brige.length && m.status === 1 && m.uid === user.uid
-        }).length
-    },
-
-    // 获取群聊未读消息数
-    getGroupMsgNum (users) {
-      return this.messageList.filter (m => {
-        return m.groupId === users.id && m.status === 1
-      }).length
-    },
-    triggerUser (itm) {
-      this.brige = [this.uid, itm.uid]
-      this.title = `和${itm.nickname}聊天`
-    },
-
-    triggerGroup (items) {
-      const isIn = items.users.some(item => { return item.uid === this.uid})
-      if (!isIn) {
-         this.$message.error('您还不是该群成员，不可发信息！');
-         return;
-      }
-      this.groupId = items.id
-      this.brige = []
-      this.title = `在${items.name}聊天`
-    },
-	
-	// 连接websocket
-    contactSocket () {
-		ws.onmessage = function (e) {
-        const obj = JSON.parse(e.data)
-        that.messageList.push(obj)
-        if (obj.users) that.users = obj.users
-        if (obj.groups) that.groups = obj.groups
-      }
-	}
-  }
 }
 
 </script>
@@ -157,4 +60,14 @@
     flex-direction: column;
     align-items: center;
   }
+  .whitecenter{
+      position: absolute;
+      left: 28.59375%;
+      top: 18.98%;
+      width: 42.8125vw;
+      height: 81.02vh;
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.8);
+  }
+
 </style>
