@@ -23,7 +23,13 @@
             </div>
             <div class="whs" id="whs6">
               <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">阿毛</div>
+              <div class="name">沙雕</div>
+            </div>
+            <div class="yes">
+              <div class="yestext">前往聊天</div>
+            </div>
+            <div class="no">
+              <div class="notext">查看成果</div>
             </div> 
         </div>
     </div>    

@@ -3,18 +3,24 @@
       <div class="whitelarge">
         <img src="../../assets/img/blue.png" class="blue_">
         <div class="textblue_">我的团队</div>
-        <div class="whs" id="whs1">
-          <img src="../../assets/img/group.png" class="group">
-          <div class="textblack">XX教授团队</div>
-        </div>
-        <div class="whs" id="whs2">
-          <img src="../../assets/img/group.png" class="group">
-          <div class="textblack">XX教授团队</div>
-        </div>
-        <div class="whs" id="whs3">
-          <img src="../../assets/img/group.png" class="group">
-          <div class="textblack">XX教授团队</div>
-        </div>
+        <router-link to="./teaminformation">
+          <div class="whs" id="whs1">
+            <img src="../../assets/img/group.png" class="group">
+            <div class="textblack">XX教授团队</div>
+          </div>
+        </router-link>
+        <router-link to="./teaminformation">
+          <div class="whs" id="whs2">
+            <img src="../../assets/img/group.png" class="group">
+            <div class="textblack">XX教授团队</div>
+          </div>
+        </router-link> 
+        <router-link to="./teaminformation">
+          <div class="whs" id="whs3">
+            <img src="../../assets/img/group.png" class="group">
+            <div class="textblack">XX教授团队</div>
+          </div>
+        </router-link> 
         <router-link to="teamsetup"><img src="../../assets/img/add.png" alt="添加成果" class="round"></router-link>
       </div>
     </div>
@@ -37,7 +43,7 @@
     .CenterBox {
       width: 100vw;
       height: 100vh;
-      background: rgba(245, 245, 245, 0.8);
+      background-image: url(../../assets/img/Web.png);
       background-size: 100% 100%;
       background-size: cover;
       background-repeat: no-repeat;

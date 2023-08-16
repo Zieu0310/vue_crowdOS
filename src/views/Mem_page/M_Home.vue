@@ -21,7 +21,7 @@
 <style scoped>
   .container {
     width: 100vw;
-    background-color: rgba(245, 245, 245, 0.8);
+    background-image: url(../../assets/img/Web.png);
     background-size: 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;

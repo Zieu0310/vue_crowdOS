@@ -132,6 +132,16 @@ const routes =[
         name: "addachievement",
         component: () => import("../views/Mem_page/AddAchievement.vue")
       },
+      {
+        path: "teaminformation",
+        name: "teaminformation",
+        component: () => import("../views/Mem_page/TeamInformation.vue")
+      },
+      {
+        path: "chat",
+        name: "chat",
+        component: () => import("../views/Mem_page/Chat.vue")
+      },
     ],
   },
   //懒加载代码段

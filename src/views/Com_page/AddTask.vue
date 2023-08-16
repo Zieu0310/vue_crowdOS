@@ -11,7 +11,7 @@
           <div class="yestext">上传</div>
         </div>
         <div class="no">
-          <router-link to="./c_information"><div class="notext">取消</div></router-link>
+          <router-link to="./c_task"><div class="notext">取消</div></router-link>
         </div>
       </div>
       
@@ -35,7 +35,7 @@
     .CenterBox {
       width: 100%;
       height: 100%;
-      background: rgba(148, 148, 148, 0.8);
+      background-image: url(../../assets/img/Web.png);
       background-size: 100% 100%;
       background-size: cover;
       background-repeat: no-repeat;

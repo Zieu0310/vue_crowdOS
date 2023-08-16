@@ -1,5 +1,5 @@
 <template>
-    <div class="CentetBox">
+    <div class="CenterBox">
       <div>
         <div class="above">XXX团队的成果申报</div>
         <div class="whitecenter">
