@@ -19,6 +19,10 @@
             <div class="namer" id="n2">PN公司</div>
             <div class="messager" id="ms2">OK</div>
             <div class="dater" id="d2">2023/07/15 10:02</div>
+            <div class="to_chat">
+              <input type="text" placeholder="输入文字" class="text">
+              <img src="../../assets/img/deliver.png" class="deliver">
+            </div>
           </div>                    
         </div>
     </div>
@@ -246,5 +250,31 @@
   #d2{
     position: absolute;
     top: 30.5%;
+  }
+  .to_chat{
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+    width: 80.36vw;
+    height: 8vh;
+    opacity: 1;
+    background: rgba(153, 153, 153, 0.1);
+  }
+  .text{
+    position: absolute;
+    left: 3%;
+    top: 20%;
+    width: 70vw;
+    height: 4vh;
+    opacity: 1;
+    border-style: none;
+    background: rgba(252, 252, 252, 1);
+  }
+  .deliver{
+    position: absolute;
+    right: 3%;
+    top: 20%;
+    width: 2vw;
+    height: 4vh;
   }
 </style>
