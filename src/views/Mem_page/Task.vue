@@ -48,6 +48,15 @@
     opacity: 1;
     background: rgba(255, 255, 255, 0.8);
   }
+  .gr{
+    position: absolute;
+    left: 3%;
+    top: 2%;
+    width: 4vw;
+    height: 1vh;
+    font-size: 0.8vw;
+    color: rgba(51, 51, 51, 1);
+  }
   .whs{
     position: absolute;
     left: 3.82%;

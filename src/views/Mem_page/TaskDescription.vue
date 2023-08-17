@@ -1,11 +1,11 @@
 <template>
-    <div class="CentetBox">
+    <div class="CenterBox">
       <div>
-        <div class="above">XXX公司的任务申请</div>
+        <div class="above">PN公司发布的任务</div>
         <div class="whitecenter">
-          <router-link to="./taskjudge"><div class="grey">返回</div></router-link>
+          <router-link to="./tasksquare"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
-          <div class="title">已申报任务详情</div>
+          <div class="title">任务详情</div>
           <div class="item" id="i1">任务名</div>
           <div class="inblue" id="ib1">疫苗研发</div>
           <div class="item" id="i11">任务ID</div>
@@ -18,12 +18,11 @@
           </div>
           <div class="item" id="i4">报价</div>
           <div class="inblue" id="ib4">500000</div>
-          <div class="yes">
-            <div class="yestext">通过</div>
-          </div>
-          <div class="no">
-            <div class="notext">不通过</div>
-          </div>
+          <router-link to="./bidsuccess">
+            <div class="yes">
+              <div class="yestext">投标</div>
+            </div>
+          </router-link>  
         </div>
       </div>
     </div>
@@ -178,7 +177,7 @@
     }
     .yes{
       position: absolute;
-      left: 27.70%;
+      left: 40%;
       top: 79.77%;
       width: 7.29vw;
       height: 4.26vh;
@@ -186,36 +185,11 @@
       border-radius: 1.20vw;
       background: rgba(67, 207, 124, 1);
     }
-    .no{
-      position: absolute;
-      left: 57.30%;
-      top: 79.77%;
-      width: 7.29vw;
-      height: 4.26vh;
-      opacity: 1;
-      border-radius: 1.20vw;
-      background: rgba(255, 87, 51, 1);
-    }
     .yestext{
       position: absolute;
       left: 35.71%;
       top: 21.74%;
       width: 2.08vw;
-      height: 2.5vh;
-      opacity: 1;
-      font-size: 1.04vw;
-      font-weight: 700;
-      letter-spacing: 0px;
-      line-height: 2.44vh;
-      color: rgba(255, 255, 255, 1);
-      text-align: center;
-      vertical-align: top;
-    }
-    .notext{
-      position: absolute;
-      left: 28.57%;
-      top: 21.74%;
-      width: 3.125vw;
       height: 2.5vh;
       opacity: 1;
       font-size: 1.04vw;

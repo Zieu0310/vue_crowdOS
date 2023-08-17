@@ -3,10 +3,13 @@
       <div class="over"></div>
       <div class="add">
         <div class="item" id="i1">任务名称</div>
+        <input type="text" placeholder="请输入" class="im" id="im1">
         <div class="item" id="i2">类型</div>
+        <input type="text" placeholder="请输入" class="im" id="im2">
         <div class="item" id="i3">任务描述</div>
         <textarea name="" id="" cols="30" rows="10" placeholder="请描述" class="grey_rec"></textarea>
         <div class="item" id="i4">报价</div>
+        <input type="text" placeholder="请输入" class="im" id="im3">
         <div class="yes">
           <div class="yestext">上传</div>
         </div>
@@ -67,6 +70,25 @@
       background-color: rgba(255, 255, 255, 1);
       border: 0.1vw solid black;
       z-index: 10;
+    }
+    .im{
+      position: absolute;
+      right: 5%;      
+    }
+    #im1{
+      position: absolute;
+      top: 16.69%;
+      width: 28vw;
+    }
+    #im2{
+      position: absolute;
+      top: 23.6%;
+      width: 30vw;
+    }
+    #im3{
+      position: absolute;
+      top: 58.86%;
+      width: 30vw;
     }
     .item{
       position: absolute;

@@ -7,11 +7,11 @@
           <router-link to="allmember"><div class="member">成员</div></router-link>
           </div>
           <div class="bo">
-            <img src="../../assets/img/icon.png" class="icon1" id="ic11">
+            <img src="../../assets/img/icon-l.png" id="ic11">
             <div class="namel" id="n11">XX教授</div>
             <div class="messagel" id="ms11">可以接任务</div>
             <div class="datel" id="d11">2023/07/15 10:00</div>
-            <img src="../../assets/img/icon.png" class="icon1" id="ic12">
+            <img src="../../assets/img/icon.png" id="ic12">
             <div class="namel" id="n12">阿sir</div>
             <div class="messagel" id="ms12">技术要求符合</div>
             <div class="datel" id="d12">2023/07/15 10:01</div>
@@ -110,16 +110,22 @@
   .icon1{
     position: absolute;
     left: 5.65%;
-    width: 2.8vw;
-    height: 4vh;
+    top: 4.8%;
+    
   }
   #ic11{
     position: absolute;
-    top: 5%;
+    left: 5.65%;
+    top: 4.8%;
+    width: 2.8vw;
+    height: 5vh;
   }
   #ic12{
     position: absolute;
+    left: 5.65%;
     top: 15%;
+    width: 2.8vw;
+    height: 4vh;
   }
   .icon2{
     position: absolute;

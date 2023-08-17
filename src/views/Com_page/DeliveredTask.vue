@@ -8,6 +8,8 @@
           <div class="title">已发布任务详情</div>
           <div class="item" id="i1">任务名</div>
           <div class="inblue" id="ib1">疫苗研发</div>
+          <div class="item" id="i11">任务ID</div>
+          <div class="inblue" id="ib11">000000000</div>
           <div class="item" id="i2">类型</div>
           <div class="inblue" id="ib2">生物科技</div>
           <div class="item" id="i3">具体描述</div>
@@ -127,22 +129,26 @@
       position: absolute;
       top: 16.69%;
     }
-    #i2{
+    #i11{
       position: absolute;
       top: 23.6%;
     }
-    #i3{
+    #i2{
       position: absolute;
       top: 30.51%;
     }
+    #i3{
+      position: absolute;
+      top: 37.42%;
+    }
     #i4{
       position: absolute;
-      top: 58.86%;
+      top: 65.79%;
     }
     .grey_rec{
       position: absolute;
       left: 9.73%;
-      top: 35.66%;
+      top: 42.57%;
       width: 34.0625vw;
       height: 15.93vh;
       opacity: 1;
@@ -232,12 +238,16 @@
     position: absolute;
     top: 16.8%;
   }
-  #ib2{
+  #ib11{
     position: absolute;
     top: 23.71%;
   }
+  #ib2{
+    position: absolute;
+    top: 30.62%;
+  }
   #ib4{
     position: absolute;
-    top: 58.97%;
+    top: 65.88%;
   }
   </style>

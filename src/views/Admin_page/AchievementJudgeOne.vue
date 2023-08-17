@@ -6,10 +6,14 @@
           <router-link to="./achievementjudge"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">已申报成果详情</div>
-          <div class="item" id="i1">任务名</div>
-          <div class="inblue" id="ib1">疫苗研发</div>
-          <div class="item" id="i2">成果</div>
-          <div class="inblue" id="ib2">XX疫苗</div>
+          <div class="item" id="i1">成果</div>
+          <div class="inblue" id="ib1">XX疫苗</div>
+          <div class="item" id="i2">类型</div>
+          <div class="inblue" id="ib2">专利</div>
+          <div class="item" id="i21">科研队</div>
+          <div class="inblue" id="ib21">XX教授团队</div>
+          <div class="item" id="i22">科研队ID</div>
+          <div class="inblue" id="ib22">000000000</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
               <div class="innertext">具有…………效果</div>
@@ -116,7 +120,7 @@
     .item{
       position: absolute;
       left: 9.73%;
-      width: 4.17vw;
+      width: 5vw;
       height: 2.69vh;
       opacity: 1;
       font-size: 1.04vw;
@@ -135,14 +139,22 @@
       position: absolute;
       top: 23.6%;
     }
-    #i3{
+    #i21{
       position: absolute;
       top: 30.51%;
+    }
+    #i22{
+      position: absolute;
+      top: 37.42%;
+    }
+    #i3{
+      position: absolute;
+      top: 44.33%;
     }
     .grey_rec{
       position: absolute;
       left: 9.73%;
-      top: 35.66%;
+      top: 49.48%;
       width: 34.0625vw;
       height: 15.93vh;
       opacity: 1;
@@ -235,5 +247,13 @@
   #ib2{
     position: absolute;
     top: 23.71%;
+  }
+  #ib21{
+    position: absolute;
+    top: 30.62%;
+  }
+  #ib22{
+    position: absolute;
+    top: 37.53%;
   }
   </style>

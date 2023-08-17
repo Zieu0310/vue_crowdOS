@@ -68,7 +68,7 @@
                @click="active2()"
              >
                <router-link
-                 :to="{ name: 'task' }"
+                 :to="{ name: 'tasksquare' }"
                  custom
                  v-slot="{ navigate, isActive }"
                >
@@ -78,7 +78,7 @@
                    :class="{ active: isActive }"
                    role="link"
                  >
-                   <p :class="{ active_: Show2 }" @click="active2()">我的任务</p>
+                   <p :class="{ active_: Show2 }" @click="active2()">任务广场</p>
                  </li></router-link
                >
              </div>
@@ -90,7 +90,7 @@
                @click="active3()"
              >
                <router-link
-                 :to="{ name: 'teamsetup' }"
+                 :to="{ name: 'task' }"
                  custom
                  v-slot="{ navigate, isActive }"
                >
@@ -100,7 +100,7 @@
                    :class="{ active: isActive }"
                    role="link"
                  >
-                   <p :class="{ active_: Show3 }" @click="active3()">创建团队</p>
+                   <p :class="{ active_: Show3 }" @click="active3()">我的任务</p>
                  </li></router-link
                >
              </div>

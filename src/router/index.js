@@ -142,6 +142,21 @@ const routes =[
         name: "chat",
         component: () => import("../views/Mem_page/Chat.vue")
       },
+      {
+        path: "tasksquare",
+        name: "tasksquare",
+        component: () => import("../views/Mem_page/TaskSquare.vue")
+      },
+      {
+        path: "taskdescription",
+        name: "taskdescription",
+        component: () => import("../views/Mem_page/TaskDescription.vue")
+      },
+      {
+        path: "bidsuccess",
+        name: "bidsuccess",
+        component: () => import("../views/Mem_page/BidSuccess.vue")
+      },
     ],
   },
   //懒加载代码段
