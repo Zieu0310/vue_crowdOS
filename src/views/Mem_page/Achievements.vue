@@ -3,12 +3,31 @@
     <div class="whitelarge">
       <img src="../../assets/img/blue.png" class="blue_">
       <div class="textblue_">科研成果</div>
-      <div class="whs" id="whs1"></div>
-      <div class="whs" id="whs2"></div>
-      <div class="whs" id="whs3"></div>
-      <div class="whs" id="whs4"></div>
-      <div class="whs" id="whs5"></div>
-      <div class="whs" id="whs6"></div>
+      <router-link to="./teaminformation"><div class="gr">返回</div></router-link>
+      <div class="whs" id="whs1">
+        <div class="InBlack">疫苗</div>
+        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
+      </div>
+      <div class="whs" id="whs2">
+        <div class="InBlack">疫苗</div>
+        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
+      </div>
+      <div class="whs" id="whs3">
+        <div class="InBlack">疫苗</div>
+        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
+      </div>
+      <div class="whs" id="whs4">
+        <div class="InBlack">疫苗</div>
+        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
+      </div>
+      <div class="whs" id="whs5">
+        <div class="InBlack">疫苗</div>
+        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
+      </div>
+      <div class="whs" id="whs6">
+        <div class="InBlack">疫苗</div>
+        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
+      </div>
       <router-link to="addachievement"><img src="../../assets/img/add.png" alt="添加成果" class="round"></router-link>
     </div>
   </div>
@@ -72,6 +91,15 @@
     text-align: left;
     vertical-align: top;
   }
+  .gr{
+    position: absolute;
+    right: 3%;
+    top: 2%;
+    width: 4vw;
+    height: 1vh;
+    font-size: 0.8vw;
+    color: rgba(51, 51, 51, 1);
+  }
   .whs{
     position: absolute;
     left: 3.82%;
@@ -115,5 +143,34 @@
     background-color: rgba(245, 245, 245, 0.8);
     border-radius: 50%;
   }
-  
+  .InBlack{
+    position: absolute;
+    left: 6.45%;
+    top: 34.52%;
+    width: 8vw;
+    height: 2.22vh;
+    opacity: 1;
+    font-size: 0.83vw;
+    font-weight: 700;
+    letter-spacing: 0px;
+    line-height: 2.15vh;
+    color: rgba(0, 0, 0, 1);
+    text-align: left;
+    vertical-align: top;
+  }
+  .InBlue{
+    position: absolute;
+    left: 85%;
+    top: 35.71%;
+    width: 6vw;
+    height: 2.22vh;
+    opacity: 1;
+    font-size: 0.83vw;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 2.15vh;
+    color: rgba(0, 43, 255, 1);
+    text-align: right;
+    vertical-align: top;
+  }
 </style>

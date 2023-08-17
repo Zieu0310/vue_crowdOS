@@ -157,6 +157,16 @@ const routes =[
         name: "bidsuccess",
         component: () => import("../views/Mem_page/BidSuccess.vue")
       },
+      {
+        path: "tasktaken",
+        name: "tasktaken",
+        component: () => import("../views/Mem_page/TaskTaken.vue")
+      },
+      {
+        path: "achievementsmaken",
+        name: "achievementsmaken",
+        component: () => import("../views/Mem_page/AchievementsMaken.vue")
+      },      
     ],
   },
   //懒加载代码段

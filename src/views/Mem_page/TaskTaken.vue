@@ -3,7 +3,7 @@
       <div>
         <div class="above">PN公司发布的任务</div>
         <div class="whitecenter">
-          <router-link to="./tasksquare"><div class="grey">返回</div></router-link>
+          <router-link to="./task"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">任务详情</div>
           <div class="item" id="i1">任务名</div>
@@ -17,12 +17,7 @@
               <div class="innertext">完成针对…………疾病的疫苗技术的研发</div>
           </div>
           <div class="item" id="i4">报价（万）</div>
-          <div class="inblue" id="ib4">50</div>
-          <router-link to="./bidsuccess">
-            <div class="yes">
-              <div class="yestext">投标</div>
-            </div>
-          </router-link>  
+          <div class="inblue" id="ib4">50</div> 
         </div>
       </div>
     </div>
@@ -173,31 +168,6 @@
       line-height: 1.95vh;
       color: rgba(0, 0, 0, 1);
       text-align: justify;
-      vertical-align: top;
-    }
-    .yes{
-      position: absolute;
-      left: 40%;
-      top: 79.77%;
-      width: 7.29vw;
-      height: 4.26vh;
-      opacity: 1;
-      border-radius: 1.20vw;
-      background: rgba(67, 207, 124, 1);
-    }
-    .yestext{
-      position: absolute;
-      left: 35.71%;
-      top: 21.74%;
-      width: 2.08vw;
-      height: 2.5vh;
-      opacity: 1;
-      font-size: 1.04vw;
-      font-weight: 700;
-      letter-spacing: 0px;
-      line-height: 2.44vh;
-      color: rgba(255, 255, 255, 1);
-      text-align: center;
       vertical-align: top;
     }
     .inblue{
