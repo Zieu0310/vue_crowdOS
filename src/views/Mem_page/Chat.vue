@@ -6,7 +6,7 @@
           <div class="title">XX教授团队</div>
           </div>
           <div class="bo">
-            <img src="../../assets/img/icon.png" class="icon1" id="ic11">
+            <img src="../../assets/img/icon-l.png" class="icon1" id="ic11">
             <div class="namel" id="n11">XX教授</div>
             <div class="messagel" id="ms11">来任务了</div>
             <div class="datel" id="d11">2023/07/15 10:00</div>
@@ -106,11 +106,17 @@
   }
   #ic11{
     position: absolute;
-    top: 5%;
+    left: 5.65%;
+    top: 4.8%;
+    width: 2.8vw;
+    height: 5vh;
   }
   #ic12{
     position: absolute;
+    left: 5.65%;
     top: 15%;
+    width: 2.8vw;
+    height: 4vh;
   }
   .icon2{
     position: absolute;

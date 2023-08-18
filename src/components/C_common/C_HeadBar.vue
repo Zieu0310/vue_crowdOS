@@ -106,7 +106,7 @@
       </div>
       <div class="right-entry">
         <div class="profile">
-          <img src="../../assets/img/icon.png" alt="" />
+          <router-link to="./c_information"><img src="../../assets/img/h-icon-c.png" alt="" /></router-link>
         </div>
         <div class="PersonalData">
           <div class="name">Jack</div>

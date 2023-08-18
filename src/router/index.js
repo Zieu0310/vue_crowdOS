@@ -38,6 +38,11 @@ const routes =[
             component: () => import("../views/Admin_page/AchievementJudgeOne.vue"),
           },
           {
+            path: "a_information",
+            name: "a_information",
+            component: () => import("../views/Admin_page/A_Information.vue"),
+          },
+          {
             path: "taskjudge",
             name: "taskjudge",
             component: () => import("../views/Admin_page/TaskJudge.vue"),
@@ -73,6 +78,11 @@ const routes =[
             path: "remark",
             name: "remark",
             component: () => import("../views/Com_page/Remark.vue"),
+        },
+        {
+          path: "c_information",
+          name: "c_information",
+          component: () => import("../views/Com_page/C_Information.vue"),
         },        
         {
             path: "c_task",

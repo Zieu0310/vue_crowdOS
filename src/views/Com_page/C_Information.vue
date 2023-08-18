@@ -7,7 +7,7 @@
           <input type="number" class="in" id="in1">
           <div class="item" id="i2">ID:</div>
           <input type="number" value="000000000" readonly="readonly" class="in" id="in2">
-          <div class="item" id="i3">姓名:</div>
+          <div class="item" id="i3">公司名:</div>
           <input type="text" class="in" id="in3">
         </div>
     </div>
@@ -99,7 +99,7 @@
   }
   .in{
     position: absolute;
-    left: 15%;
+    left: 16%;
     width: 40vw;
     height: 3vh;
   }

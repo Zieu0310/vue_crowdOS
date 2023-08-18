@@ -15,7 +15,7 @@
             <div class="namel" id="n12">阿sir</div>
             <div class="messagel" id="ms12">技术要求符合</div>
             <div class="datel" id="d12">2023/07/15 10:01</div>
-            <img src="../../assets/img/icon.png" class="icon2" id="ic2">
+            <img src="../../assets/img/icon.png" id="ic2">
             <div class="namer" id="n2">PN公司</div>
             <div class="messager" id="ms2">OK</div>
             <div class="dater" id="d2">2023/07/15 10:02</div>
@@ -125,17 +125,14 @@
     left: 5.65%;
     top: 15%;
     width: 2.8vw;
-    height: 4vh;
-  }
-  .icon2{
-    position: absolute;
-    right: 5.65%;
-    width: 2.8vw;
-    height: 4vh;
+    height: 5vh;
   }
   #ic2{
     position: absolute;
+    right: 5.65%;
     top: 25%;
+    width: 2.8vw;
+    height: 5vh;
   }
   .namel{
     position: absolute;

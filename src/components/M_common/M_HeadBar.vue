@@ -108,7 +108,7 @@
         </div>
         <div class="right-entry">
         <div class="profile">
-          <router-link to="../../m_home/m_information"><img src="../../assets/img/icon.png" alt="" /></router-link>
+          <router-link to="../../m_home/m_information"><img src="../../assets/img/h-icon.png" alt="" /></router-link>
         </div>
         <div class="PersonalData">
           <div class="name">Jack</div>
