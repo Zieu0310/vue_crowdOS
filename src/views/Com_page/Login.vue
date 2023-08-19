@@ -15,9 +15,14 @@
 </template>
 
 <script>
+  import axios from 'axios';
   export default {
+    name: 'Login',
     data() {
-      return {};
+      return {
+        account: '',
+        password: ''
+      }
     },
     methods: {
       go_c() {
@@ -31,7 +36,17 @@
       },
       go_r() {
         this.$router.push("/register")
-      }
+      },
+      loginData() {      
+        axios.post('/login',{
+          account: '',
+          password: ''
+        }).then(response => {      
+          console.log(response)      
+        }).catch(error => {      
+          console.error(error)      
+        })      
+      }      
     },
   };
 </script>

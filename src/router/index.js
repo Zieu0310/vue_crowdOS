@@ -163,6 +163,11 @@ const routes =[
         component: () => import("../views/Mem_page/TaskDescription.vue")
       },
       {
+        path: "bid",
+        name: "bid",
+        component: () => import("../views/Mem_page/Bid.vue")
+      },
+      {
         path: "bidsuccess",
         name: "bidsuccess",
         component: () => import("../views/Mem_page/BidSuccess.vue")

@@ -19,14 +19,32 @@
 </template>
 
 <script>
-  
+  import axios from 'axios';
   export default {
+    name: 'Register',
     data() {
-      return {};
+      return {
+        account: "",
+        password: "",
+        role: 0,
+        name: ""
+      };
     },
-    components: {
-      
-    },
+    methods: {
+      registerData() {      
+        axios.post('/register',{
+          account: "",
+          password: "",
+          role: 0,
+          name: ""
+        }).then(response => {      
+          console.log(response)      
+        }).catch(error => {      
+          console.error(error)      
+        })      
+      }   
+    }
+    
   };
 </script>
 

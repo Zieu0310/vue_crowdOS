@@ -18,7 +18,7 @@
           </div>
           <div class="item" id="i4">报价（万）</div>
           <div class="inblue" id="ib4">50</div>
-          <router-link to="./bidsuccess">
+          <router-link to="./bid">
             <div class="yes">
               <div class="yestext">投标</div>
             </div>
@@ -29,13 +29,24 @@
 </template>
   
   <script>
+    import axios from 'axios';
     export default {
       data() {
-        return {};
+        return {
+          event_id: 0,
+        };
       },
-      components: {
-        
-      },
+      methods: {
+        tenderData() {      
+          axios.post('/tender',{
+            event_id: 0
+          }).then(response => {      
+            console.log(response)      
+          }).catch(error => {      
+            console.error(error)      
+          })      
+        }   
+      }
     };
   </script>
   

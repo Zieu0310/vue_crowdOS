@@ -16,8 +16,10 @@
           <div class="grey_rec">
               <div class="innertext">完成针对…………疾病的疫苗技术的研发</div>
           </div>
-          <div class="item" id="i4">报价</div>
-          <div class="inblue" id="ib4">500000</div>
+          <div class="item" id="i4">报价（万）</div>
+          <div class="inblue" id="ib4">50</div>
+          <div class="item" id="i5">状态</div>
+          <div class="inblue" id="ib5">无人投标</div>
         </div>
       </div>
     </div>
@@ -114,7 +116,7 @@
     .item{
       position: absolute;
       left: 9.73%;
-      width: 4.17vw;
+      width: 6vw;
       height: 2.69vh;
       opacity: 1;
       font-size: 1.04vw;
@@ -144,6 +146,10 @@
     #i4{
       position: absolute;
       top: 65.79%;
+    }
+    #i5{
+      position: absolute;
+      top: 72.7%;
     }
     .grey_rec{
       position: absolute;
@@ -249,5 +255,9 @@
   #ib4{
     position: absolute;
     top: 65.88%;
+  }
+  #ib5{
+    position: absolute;
+    top: 72.79%;
   }
   </style>

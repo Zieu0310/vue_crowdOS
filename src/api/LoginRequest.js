@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default{
     methods: {
-        fetchData() {      
+        loginData() {      
           axios.get('/login')      
             .then(response => {      
               console.log(response.data)      
