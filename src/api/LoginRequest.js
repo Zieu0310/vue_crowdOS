@@ -8,11 +8,23 @@ export default{
             password: ''
           })      
             .then(response => {      
-              console.log(response.data)      
+              console.log("登录成功")      
             })      
             .catch(error => {      
               console.error(error)      
             })      
-        }      
+        },
+        go_c() {
+          this.$router.push("/c_home/c_task");
+        },
+        go_m() {
+          this.$router.push("/m_home/team");        
+        },
+        go_a() {
+          this.$router.push("/a_home/achievementjudge")
+        },
+        go_r() {
+          this.$router.push("/register")
+        },       
       }
 }

@@ -15,31 +15,8 @@
     <div id="result"></div>
 </template>
 
-<script>
-import axios from 'axios';
-  export default {
-    name: 'Login',
-    data() {
-      return {
-        account: '',
-        password: ''
-      }
-    },
-    methods: {
-      go_c() {
-        this.$router.push("/c_home/c_task");
-      },
-      go_m() {
-        this.$router.push("/m_home/team");        
-      },
-      go_a() {
-        this.$router.push("/a_home/achievementjudge")
-      },
-      go_r() {
-        this.$router.push("/register")
-      },      
-    },
-  };
+<script src="../../api/LoginRequest">
+import axios from 'axios'
 </script>
 
 <style scoped>
