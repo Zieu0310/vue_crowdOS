@@ -42,6 +42,15 @@
       components: {
         A_HeadBar,
       },
+      methods: {
+        taskAudi() {      
+          axios.get('/adminstrators/getEventInformation').then(response => {      
+            console.log(response)      
+          }).catch(error => {      
+            console.error(error)      
+          })      
+        } 
+      }
     };
   </script>
     

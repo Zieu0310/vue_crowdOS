@@ -196,6 +196,8 @@
   position: absolute;
   left: 3%;
   top: 28%;
+  width: 3vw;
+  height: 5vh;
 }
 .mem_name{
   position: absolute;

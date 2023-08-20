@@ -12,10 +12,11 @@
         <input type="submit" value="注册" @click="go_r" class="btn" />
       </div>
     </div>
+    <div id="result"></div>
 </template>
 
 <script>
-  import axios from 'axios';
+import axios from 'axios';
   export default {
     name: 'Login',
     data() {
@@ -29,24 +30,14 @@
         this.$router.push("/c_home/c_task");
       },
       go_m() {
-        this.$router.push("/m_home/team");
+        this.$router.push("/m_home/team");        
       },
       go_a() {
         this.$router.push("/a_home/achievementjudge")
       },
       go_r() {
         this.$router.push("/register")
-      },
-      loginData() {      
-        axios.post('/login',{
-          account: '',
-          password: ''
-        }).then(response => {      
-          console.log(response)      
-        }).catch(error => {      
-          console.error(error)      
-        })      
-      }      
+      },      
     },
   };
 </script>

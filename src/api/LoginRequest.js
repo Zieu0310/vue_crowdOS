@@ -3,7 +3,10 @@ import axios from 'axios';
 export default{
     methods: {
         loginData() {      
-          axios.get('/login')      
+          axios.post('/login',{
+            account: '',
+            password: ''
+          })      
             .then(response => {      
               console.log(response.data)      
             })      

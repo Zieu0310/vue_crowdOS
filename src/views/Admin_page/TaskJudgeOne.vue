@@ -1,5 +1,5 @@
 <template>
-    <div class="CentetBox">
+    <div class="CenterBox">
       <div>
         <div class="above">XXX公司的任务申请</div>
         <div class="whitecenter">
@@ -37,6 +37,15 @@
       components: {
         
       },
+      methods: {
+        taskAudi() {      
+          axios.get('/adminstrators/getEventInformation').then(response => {      
+            console.log(response)      
+          }).catch(error => {      
+            console.error(error)      
+          })      
+        } 
+      }
     };
   </script>
   
