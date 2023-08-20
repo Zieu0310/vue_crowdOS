@@ -4,19 +4,64 @@
         <img src="../../assets/img/Login_text.png" alt="" />
       </div>
       <div class="mainBox">
-        <input type="text" placeholder="输入账号" />
-        <input type="password" name="" id="" placeholder="输入密码" />
-        <input type="submit" value="登录[科研成员]" @click="go_m" class="btn" />
-        <input type="submit" value="登录[公司]" @click="go_c" class="btn" />
-        <input type="submit" value="登录[管理员]" @click="go_a" class="btn">
+        <input type="text" placeholder="输入账号" v-model="account" />
+        <input type="password" name="" id="" placeholder="输入密码" v-model="password" />
+        <input type="submit" value="登录" @click="handleLogin" class="btn" />
         <input type="submit" value="注册" @click="go_r" class="btn" />
       </div>
     </div>
     <div id="result"></div>
 </template>
 
-<script src="../../api/LoginRequest">
-import axios from 'axios'
+<script>
+import { login } from '../../api/LoginRequest'
+export default {
+  name: 'login',
+  data() {
+    return {
+      account: '',
+      password: ''
+      }
+  },
+  methods: {
+    handleLogin() {
+      login(this.account, this.password).then((res) => {
+        console.log(res);
+        // 这里已经调好接口了
+        if(this.account === "SUDKXOdIDW" && this.password === "wWTtyUclak"){
+          this.$router.push("/m_home/team");
+        }
+        else if(this.account === "PQ3pgPaBPt" && this.password ==="XrSTPL8AL5"){
+          this.$router.push("/c_home/c_task");
+        }
+        else if(this.account === "wfffrMXUZP" && this.password ==="WfRxEm1DGO"){
+          this.$router.push("/a_home/achievementjudge");
+        }
+      });
+     },
+    go_m() {
+      login(this.account, this.password).then((res) => {
+        console.log(res);
+        this.$router.push("/m_home/team");
+      });
+    },
+    go_c() {
+      login(this.account, this.password).then((res) => {
+        console.log(res);
+        this.$router.push("/c_home/c_task");
+      });
+    },
+    go_a() {
+      login(this.account, this.password).then((res) => {
+        console.log(res);
+        this.$router.push("/a_home/achievementjudge");
+      });
+    },
+    go_r() {
+      this.$router.push("/register");
+    },
+    }
+  }
 </script>
 
 <style scoped>
