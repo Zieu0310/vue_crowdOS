@@ -3,13 +3,13 @@
       <div class="over"></div>
       <div class="add">
         <div class="item" id="i1">公司ID</div>
-        <input type="number" value="1" readonly="readonly" class="im" id="im1" v-bind:value="company_id">
+        <el-input v-model="company_id" disabled placeholder="4" type="number" class="im1" />
         <div class="item" id="i2">任务名称</div>
-        <input type="text" placeholder="请输入" class="im" id="im2" v-model="event_name">
+        <el-input v-model="event_name" placeholder="请输入" type="text" class="im2" />
         <div class="item" id="i3">任务描述</div>
-        <textarea name="" id="" cols="30" rows="10" placeholder="请描述" class="grey_rec" v-model="description"></textarea>
+        <el-input v-model="description" :rows="6" type="textarea" placeholder="请描述" class="grey_rec" />
         <div class="item" id="i4">报价（万）</div>
-        <input type="number" placeholder="请输入" class="im" id="im3" v-model="price">
+        <el-input v-model="price" placeholder="请输入" type="number" class="im3" />
         <div class="yes">
           <div class="yestext" @click="postTask">上传</div>
         </div>
@@ -96,22 +96,26 @@
       border: 0.1vw solid black;
       z-index: 10;
     }
+    .im1{
+      position: absolute;
+      right: 5%;
+      top: 15.7%; 
+      width: 28vw;
+    }
     .im{
       position: absolute;
-      right: 5%;      
+      right: 5%; 
+      width: 28vw;     
     }
-    #im1{
+    .im2{
       position: absolute;
-      top: 16.69%;
+      right: 5%;
+      top: 22.61%;
       width: 28vw;
     }
-    #im2{
+    .im3{
       position: absolute;
-      top: 23.6%;
-      width: 28vw;
-    }
-    #im3{
-      position: absolute;
+      right: 5%;
       top: 58.86%;
       width: 28vw;
     }
@@ -144,7 +148,7 @@
     }
     #i4{
       position: absolute;
-      top: 58.86%;
+      top: 60%;
     }
     .grey_rec{
       position: absolute;
