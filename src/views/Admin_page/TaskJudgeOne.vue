@@ -18,32 +18,47 @@
           </div>
           <div class="item" id="i4">报价（万）</div>
           <div class="inblue" id="ib4">50</div>
-          <div class="yes">
-            <div class="yestext">通过</div>
-          </div>
-          <div class="no">
-            <div class="notext">不通过</div>
-          </div>
+          <router-link to="./taskjudge">
+            <div class="yes" @click="handleAuditEventsYes">
+              <div class="yestext">通过</div>
+            </div>
+          </router-link>
+          <router-link to="./taskjudge">
+            <div class="no" @click="handleAuditEventsNo">
+              <div class="notext">不通过</div>
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
 </template>
   
   <script>
+
+    import { auditEventsNo } from '../../api/TaskJudgePost';
+    import { auditEventsYes } from '../../api/TaskJudgePost';
     export default {
       data() {
-        return {};
+        return {
+          id: '',
+          remark: 0
+        };
       },
       components: {
         
       },
       methods: {
-        taskAudi() {      
-          axios.get('/adminstrators/getEventInformation').then(response => {      
-            console.log(response)      
-          }).catch(error => {      
-            console.error(error)      
-          })      
+        handleAuditEventsNo() {      
+          auditEventsNo(this.id,this.remark).then((res) => {
+            this.remark = 1;
+            console.log(res);
+          });          
+        },
+        handleAuditEventsYes(){
+          auditEventsYes(this.id,this.remark).then((res) => {
+            this.remark = 2;
+            console.log(res);
+          })
         } 
       }
     };

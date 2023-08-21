@@ -3,7 +3,7 @@
       <div class="over"></div>
       <div class="add">
         <div class="item" id="i1">公司ID</div>
-        <el-input v-model="company_id" disabled placeholder="4" type="number" class="im1" />
+        <el-input v-model="company_id" disabled type="number" class="im1" />
         <div class="item" id="i2">任务名称</div>
         <el-input v-model="event_name" placeholder="请输入" type="text" class="im2" />
         <div class="item" id="i3">任务描述</div>
@@ -28,7 +28,7 @@
     export default {
       data() {
         return {
-          company_id: 1,
+          company_id: 400820886,
           event_name: '',
           description: '',
           price: 0

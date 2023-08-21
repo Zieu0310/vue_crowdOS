@@ -4,45 +4,46 @@
       <img src="../../assets/img/register.png" class="register" />
     </div>
     <div class="mainBox">
-      <input type="text" placeholder="输入账号" />
-      <input type="password" name="" id="" placeholder="输入密码" />
-      <select name="role">
-        <option value="member">科研成员</option>
-        <option value="company">公司</option>
-        <option value="administrator">管理员</option>
-      </select>
-      <input type="text" placeholder="输入姓名" />
-      <input type="submit" value="确认" @click="go_m" class="btn" />
+      <input type="text" placeholder="输入账号" v-model="account" />
+      <input type="password" name="" id="" placeholder="输入密码" v-model="password" />
+      <input type="number" placeholder="输入角色(参考下方说明)" v-model="role" />
+      <input type="text" placeholder="输入姓名" v-model="name" />
+      <input type="text" placeholder="输入邮箱" v-model="e_mail" />
+      <input type="submit" value="确认" @click="handleRegister" class="btn" />
+      <div class="reference">角色说明:0管理员,1公司,2科研成员</div>
       <router-link to="./login"><div class="tologin">已有账号，前往登录</div></router-link>
     </div>
   </div>
 </template>
 
 <script>
-  import axios from 'axios';
+  import { register } from '../../api/RegisterRequest';
   export default {
-    name: 'Register',
+    name: 'register',
     data() {
       return {
-        account: "",
-        password: "",
-        role: 0,
-        name: ""
+        account: '',
+        password: '',
+        role: '',
+        name: '',
+        e_mail: ''
       };
     },
     methods: {
-      registerData() {      
-        axios.post('/register',{
-          account: "",
-          password: "",
-          role: 0,
-          name: ""
-        }).then(response => {      
-          console.log(response)      
-        }).catch(error => {      
-          console.error(error)      
-        })      
-      }   
+      handleRegister() {      
+        register(this.account,this.password,this.role,this.name,this.e_mail).then((res)=>{
+          console.log(res);
+          if(this.role == 2 ){
+            this.$router.push("/m_home/team");
+          }
+          else if(this.role == 1){
+            this.$router.push("/c_home/c_task");
+          }
+          else if(this.role == 0){
+            this.$router.push("/a_home/achievementjudge");
+          }
+        });
+      },   
     }
     
   };
@@ -81,6 +82,7 @@
     background-color: #4176e9;
   }
   input[type="password"],
+  input[type="number"],
   input[type="text"] {
     width: 18rem;
     height: 2.875rem;
@@ -97,6 +99,7 @@
     color: rgba(166, 166, 166, 1);
   }
   input[type="password"]:focus,
+  input[type="number"]:focus,
   input[type="text"]:focus {
     width: 22rem;
     height: 3.5rem;
@@ -127,7 +130,9 @@
     width: 100%;
   }
   input[type="password"],
-  input[type="submit"] {
+  input[type="submit"],
+  input[type="text"],
+  input[type="number"] {
     margin-top: 4vh;
   }
   select {
@@ -144,10 +149,23 @@
     transition: 0.5s;
     font-size: 1rem;
   }
+  .register{
+    width: 2vw;
+    height: 20vh;
+  }
+  .reference{
+    position: absolute;
+    left: 42%;
+    top: 25%;
+    width: 30vw;
+    height: 5vh;
+    font-size: 1vw;
+    color: red;
+  }
   .tologin{
     position: absolute;
     left: 45.5%;
-    top: 85%;
+    top: 30%;
     width: 20vw;
     height: 5vh;
     font-size: 1vw;
