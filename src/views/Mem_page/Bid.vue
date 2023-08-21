@@ -3,9 +3,9 @@
       <div class="over"></div>
       <div class="add">
         <div class="the_bid">你的报价(万)为</div>
-        <input type="number" class="in_bid">
+        <input type="number" class="in_bid" v-model="bid">
         <router-link to="./bidsuccess">
-          <div class="yes">
+          <div class="yes" @click="tenderData">
             <div class="yestext">确认</div>
           </div>
         </router-link>
@@ -19,13 +19,15 @@
 </template>
   
   <script>
-    import axios from 'axios';
+    import { bid } from '../../api/Bid.js'
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
 
     export default {
+      name: 'bid',
       data() {
         return {
-            bid: 0,
+          event_id: '',  
+          bid: '',
         };
       },
       components: {
@@ -33,13 +35,9 @@
       },
       methods: {
         tenderData() {      
-          axios.post('/tender',{
-            bid: 0
-          }).then(response => {      
-            console.log(response)      
-          }).catch(error => {      
-            console.error(error)      
-          })      
+          bid(this.event_id,this.bid).then((res)=>{
+            console.log(res.data.bid);
+          });
         }   
       }
     };

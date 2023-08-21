@@ -186,6 +186,11 @@ const routes =[
         path: "achievementsmaken",
         name: "achievementsmaken",
         component: () => import("../views/Mem_page/AchievementsMaken.vue")
+      },
+      {
+        path: "postachievementsuccess",
+        name: "postachievementsuccess",
+        component: () => import("../views/Mem_page/PostAchievementSuccess.vue")
       },      
     ],
   },

@@ -11,7 +11,7 @@
         <div class="item" id="i4">报价（万）</div>
         <el-input v-model="price" placeholder="请输入" type="number" class="im3" />
         <div class="yes">
-          <div class="yestext" @click="postTask">上传</div>
+          <div class="yestext" @click="handlePostEvents">上传</div>
         </div>
         <div class="no">
           <router-link to="./c_task"><div class="notext">取消</div></router-link>
@@ -23,9 +23,10 @@
   
   <script>
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
-    import { deliver } from '../../api/Deliver';
+    import { postEvents } from '../../api/PostEvents';
   
     export default {
+      name: 'postEvents',
       data() {
         return {
           company_id: 400820886,
@@ -38,8 +39,8 @@
         M_HeadBar,
       },
       methods:{
-        postTask(){
-          deliver(this.company_id,this.event_name,this.description,this.price).then((res)=>{
+        handlePostEvents(){
+          postEvents(this.company_id,this.event_name,this.description,this.price).then((res)=>{
             console.log(res);
             if(this.event_name !== "" && this.description !== "" && this.price > 0){
               this.$router.push("/c_home/deliversuccess")
@@ -101,11 +102,6 @@
       right: 5%;
       top: 15.7%; 
       width: 28vw;
-    }
-    .im{
-      position: absolute;
-      right: 5%; 
-      width: 28vw;     
     }
     .im2{
       position: absolute;

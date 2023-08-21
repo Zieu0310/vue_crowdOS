@@ -35,9 +35,10 @@
   
   <script>
 
-    import { auditEventsNo } from '../../api/TaskJudgePost';
-    import { auditEventsYes } from '../../api/TaskJudgePost';
+    import { auditEventsNo } from '../../api/AuditEvents';
+    import { auditEventsYes } from '../../api/AuditEvents';
     export default {
+      name: 'auditEvent',
       data() {
         return {
           id: '',
