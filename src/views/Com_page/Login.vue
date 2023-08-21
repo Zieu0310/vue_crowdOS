@@ -42,24 +42,6 @@ export default {
         }
       });
      },
-    go_m() {
-      login(this.account, this.password).then((res) => {
-        console.log(res);
-        this.$router.push("/m_home/team");
-      });
-    },
-    go_c() {
-      login(this.account, this.password).then((res) => {
-        console.log(res);
-        this.$router.push("/c_home/c_task");
-      });
-    },
-    go_a() {
-      login(this.account, this.password).then((res) => {
-        console.log(res);
-        this.$router.push("/a_home/achievementjudge");
-      });
-    },
     go_r() {
       this.$router.push("/register");
     },

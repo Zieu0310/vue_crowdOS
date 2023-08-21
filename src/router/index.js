@@ -103,7 +103,12 @@ const routes =[
           path: "allmember",
           name: "allmember",
           component: () => import("../views/Com_page/AllMember.vue")
-        }
+        },
+        {
+          path: "deliversuccess",
+          name: "deliversuccess",
+          component: () => import("../views/Com_page/DeliverSuccess.vue")
+        },
       ],
     },
 

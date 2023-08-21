@@ -2,16 +2,16 @@
     <div class="CenterBox">
       <div class="over"></div>
       <div class="add">
-        <div class="item" id="i1">任务名称</div>
-        <input type="text" placeholder="请输入" class="im" id="im1">
-        <div class="item" id="i2">类型</div>
-        <input type="text" placeholder="请输入" class="im" id="im2">
+        <div class="item" id="i1">公司ID</div>
+        <input type="number" value="1" readonly="readonly" class="im" id="im1" v-bind:value="company_id">
+        <div class="item" id="i2">任务名称</div>
+        <input type="text" placeholder="请输入" class="im" id="im2" v-model="event_name">
         <div class="item" id="i3">任务描述</div>
-        <textarea name="" id="" cols="30" rows="10" placeholder="请描述" class="grey_rec"></textarea>
-        <div class="item" id="i4">报价</div>
-        <input type="text" placeholder="请输入" class="im" id="im3">
+        <textarea name="" id="" cols="30" rows="10" placeholder="请描述" class="grey_rec" v-model="description"></textarea>
+        <div class="item" id="i4">报价（万）</div>
+        <input type="number" placeholder="请输入" class="im" id="im3" v-model="price">
         <div class="yes">
-          <div class="yestext">上传</div>
+          <div class="yestext" @click="postTask">上传</div>
         </div>
         <div class="no">
           <router-link to="./c_task"><div class="notext">取消</div></router-link>
@@ -23,14 +23,39 @@
   
   <script>
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
+    import { deliver } from '../../api/Deliver';
   
     export default {
       data() {
-        return {};
+        return {
+          company_id: 1,
+          event_name: '',
+          description: '',
+          price: 0
+        };
       },
       components: {
         M_HeadBar,
       },
+      methods:{
+        postTask(){
+          deliver(this.company_id,this.event_name,this.description,this.price).then((res)=>{
+            console.log(res);
+            if(this.event_name !== "" && this.description !== "" && this.price > 0){
+              this.$router.push("/c_home/deliversuccess")
+            }
+            else if(this.event_name === ""){
+              alert('任务名不能为空！')
+            }
+            else if(this.description === ""){
+              alert('描述不能为空！')
+            }
+            else if(this.price <= 0){
+              alert('请正确输入报价！')
+            }
+          })
+        }
+      }
     };
   </script>
   
@@ -83,18 +108,18 @@
     #im2{
       position: absolute;
       top: 23.6%;
-      width: 30vw;
+      width: 28vw;
     }
     #im3{
       position: absolute;
       top: 58.86%;
-      width: 30vw;
+      width: 28vw;
     }
     .item{
       position: absolute;
       position: absolute;
       left: 9.73%;
-      width: 4.17vw;
+      width: 6vw;
       height: 2.69vh;
       opacity: 1;
       font-size: 1.04vw;
