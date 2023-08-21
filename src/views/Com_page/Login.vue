@@ -37,6 +37,9 @@ export default {
         else if(this.account === "wfffrMXUZP" && this.password ==="WfRxEm1DGO"){
           this.$router.push("/a_home/achievementjudge");
         }
+        else{
+          alert('账号或密码错误！')
+        }
       });
      },
     go_m() {
