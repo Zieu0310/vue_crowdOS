@@ -5,10 +5,10 @@ export const apis = axios.create({
     baseURL: "http://127.0.0.1:4523/m1/3023705-0-default",
 });
 
-export const post_achievement = (title, description, type, file) => {
+export const create_team = (title, description, type, file) => {
     return apis({
         method: "post",
-        url: "/research/postAchievement",
+        url: "/research/createTeam",
         data: {
           achievements:{
             title: title,

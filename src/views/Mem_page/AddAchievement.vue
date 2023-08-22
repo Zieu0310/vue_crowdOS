@@ -3,12 +3,13 @@
       <div class="over"></div>
       <div class="add">
         <div class="item" id="i1">成果名称</div>
-        <el-input v-model="title" placeholder="Please input" type="text" class="im1" />
+        <el-input v-model="achievements.title" placeholder="请输入" class="im1" />
         <div class="item" id="i2">类型</div>
-        <el-input v-model="type" placeholder="Please input" type="number" class="im2" />
+        <el-input v-model="achievements.type" placeholder="请输入" type="number" class="im2" />
         <div class="item" id="i3">成果描述</div>
-        <el-input v-model="description" :rows="6" type="textarea" placeholder="请描述" class="grey_rec" />
+        <el-input v-model="achievements.description" :rows="6" type="textarea" placeholder="请描述" class="grey_rec" />
         <div class="item" id="i4">附件</div>
+        <el-input v-model="achievements.file" placeholder="请添加附件" type="file" class="im3" />
         <div class="yes">
           <div class="yestext" @click="handlePostAchievement">上传</div>
         </div>
@@ -33,6 +34,7 @@
             title: '',
             description: '',
             type: '',
+            file: '',
           }
         };
       },
@@ -41,15 +43,15 @@
       },
       methods:{
         handlePostAchievement(){
-          post_achievement(this.achievements.title,this.achievements.description,this.achievements.type).then((res)=>{
+          post_achievement(this.achievements.title,this.achievements.description,this.achievements.type,this.achievements.file).then((res)=>{
             console.log(res);
-            if(this.achievements.title !== "" && this.description !== "" && this.price > 0){
-              this.$router.push("/c_home/deliversuccess")
+            if(this.achievements.title !== "" && (this.achievements.type == 0 || this.achievements.type == 1 || this.achievements.type == 2 ) && this.achievements.description !== ""){
+              this.$router.push("/m_home/postachievementsuccess")
             }
             else if(this.achievements.title === ""){
               alert('成果名称不能为空！')
             }
-            else if(this.achievements.type != 0 || this.achievements.type != 1 || this.achievements.type !=2 ){
+            else if(this.achievements.type != 0 && this.achievements.type != 1 && this.achievements.type !=2 ){
               alert('请正确输入类型！')
             }
             else if(this.achievements.description === ""){
@@ -219,6 +221,12 @@
     position: absolute;
     right: 5%;
     top: 22.61%;
+    width: 28vw;
+  }
+  .im3{
+    position: absolute;
+    right: 5%;
+    top: 58.86%;
     width: 28vw;
   }
   </style>

@@ -4,11 +4,11 @@
           <img src="../../assets/img/blue.png" class="blue_">
           <div class="textblue_">个人信息</div>
           <div class="item" id="i1">账号:</div>
-          <input type="number" class="in" id="in1">
+          <input type="number" class="in" id="in1" v-model="account">
           <div class="item" id="i2">ID:</div>
           <input type="number" value="000000000" readonly="readonly" class="in" id="in2">
           <div class="item" id="i3">姓名:</div>
-          <input type="text" class="in" id="in3">
+          <input type="text" class="in" id="in3" v-model="name">
         </div>
     </div>
 </template>

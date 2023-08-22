@@ -8,8 +8,14 @@
         <el-input v-model="event_name" placeholder="请输入" type="text" class="im2" />
         <div class="item" id="i3">任务描述</div>
         <el-input v-model="description" :rows="6" type="textarea" placeholder="请描述" class="grey_rec" />
-        <div class="item" id="i4">报价（万）</div>
-        <el-input v-model="price" placeholder="请输入" type="number" class="im3" />
+        <div class="item" id="i4">算法</div>
+        <el-radio-group v-model="arithmetic" style="position: absolute;right: 25%;top: 58.86%;">
+          <el-radio :label="3" @click="Disappear">VCG</el-radio>
+          <el-radio :label="6" @click="Appear">IOT&nbsp;J</el-radio>
+          <el-radio :label="9" @click="Appear">固定价格交易</el-radio>
+        </el-radio-group>
+        <div class="item" id="i5">预算/固定价格(万)</div>
+        <el-input-number v-model="num" :min="1" :max="10" @change="handleChange" class="im5" />
         <div class="yes">
           <div class="yestext" @click="handlePostEvents">上传</div>
         </div>
@@ -32,6 +38,7 @@
           company_id: 400820886,
           event_name: '',
           description: '',
+          arithmetic: '',
           price: 0
         };
       },
@@ -39,10 +46,16 @@
         M_HeadBar,
       },
       methods:{
+        Appear(){
+          document.querySelector('#i5','.im5').style.display = block;
+        },
+        Disappear(){
+          document.querySelector('#i5','.im5').style.display = none;
+        },
         handlePostEvents(){
           postEvents(this.company_id,this.event_name,this.description,this.price).then((res)=>{
             console.log(res);
-            if(this.event_name !== "" && this.description !== "" && this.price > 0){
+            if(this.event_name !== "" && this.description !== ""){
               this.$router.push("/c_home/deliversuccess")
             }
             else if(this.event_name === ""){
@@ -50,9 +63,6 @@
             }
             else if(this.description === ""){
               alert('描述不能为空！')
-            }
-            else if(this.price <= 0){
-              alert('请正确输入报价！')
             }
           })
         }
@@ -115,11 +125,22 @@
       top: 58.86%;
       width: 28vw;
     }
+    .im5{
+      position: absolute;
+      right: 35%;
+      top: 65.77%;
+      display: none;
+    }
+    #im3{
+      position: absolute;
+      right: 5%;
+      top: 58.86%;
+      width: 28vw;
+    }
     .item{
       position: absolute;
-      position: absolute;
       left: 9.73%;
-      width: 6vw;
+      width: 9vw;
       height: 2.69vh;
       opacity: 1;
       font-size: 1.04vw;
@@ -145,6 +166,11 @@
     #i4{
       position: absolute;
       top: 60%;
+    }
+    #i5{
+      position: absolute;
+      top: 66.91%;
+      display: none;
     }
     .grey_rec{
       position: absolute;

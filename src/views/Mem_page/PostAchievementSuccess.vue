@@ -26,9 +26,9 @@
     }
     .suctext{
       position: absolute;
-      left: 42.5%;
+      left: 39%;
       top: 75%;
-      width: 20vw;
+      width: 30vw;
       height: 2vh;
       color: blue;
       font-size: 1.8vw;

@@ -24,19 +24,30 @@
           <div class="no">
             <div class="notext">不通过</div>
           </div>
+          <div class="bottom">
+            <div class="btx">类型说明: 0为论文,1为专利,2为项目</div>
+          </div>
         </div>
       </div>
     </div>
 </template>
   
   <script>
+    import { auachig } from '../../api/AuditAchievementGet';
     export default {
       data() {
-        return {};
+        return {
+          id: ''
+        };
       },
       components: {
         
       },
+      methods: {
+        handleAuditAchievementGet() {
+          auachig(id)
+        }
+      }
     };
   </script>
   
@@ -255,5 +266,24 @@
   #ib22{
     position: absolute;
     top: 37.53%;
+  }
+  .bottom{
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    width: 42.8125vw;
+    height: 6vh;
+    background-color: lightpink;
+  }
+  .btx{
+    position: absolute;
+    left: 3%;
+    top: 20%;
+    width: 30vw;
+    height: 2vh;
+    font-weight: 400;
+    opacity: 1;
+    font-size: 1.04vw;
+    color: red;
   }
   </style>

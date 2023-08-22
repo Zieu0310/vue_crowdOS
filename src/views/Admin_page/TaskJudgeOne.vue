@@ -42,7 +42,7 @@
       data() {
         return {
           id: '',
-          remark: 0
+          remark: '',
         };
       },
       components: {
