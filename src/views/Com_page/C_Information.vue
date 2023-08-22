@@ -4,11 +4,11 @@
           <img src="../../assets/img/blue.png" class="blue_">
           <div class="textblue_">个人信息</div>
           <div class="item" id="i1">账号:</div>
-          <input type="number" class="in" id="in1">
+          <el-input v-model="input" disabled placeholder="400820886" class="in1" />
           <div class="item" id="i2">ID:</div>
-          <input type="number" value="000000000" readonly="readonly" class="in" id="in2">
+          <el-input v-model="input" disabled placeholder="000000000" class="in2" />
           <div class="item" id="i3">公司名:</div>
-          <input type="text" class="in" id="in3">
+          <el-input v-model="input" placeholder="Please input" class="in3" />
         </div>
     </div>
 </template>
@@ -88,6 +88,8 @@
   #i1{
     position: absolute;
     top: 13%;
+    left: 8%;
+    width: 8vw;
   }
   #i2{
     position: absolute;
@@ -97,22 +99,22 @@
     position: absolute;
     top: 43%;
   }
-  .in{
+  .in1{
     position: absolute;
     left: 16%;
-    width: 40vw;
-    height: 3vh;
-  }
-  #in1{
-    position: absolute;
     top: 12%;
+    width: 40vw;
   }
-  #in2{
+  .in2{
     position: absolute;
+    left: 16%;
     top: 27%;
+    width: 40vw;
   }
-  #in3{
+  .in3{
     position: absolute;
+    left: 16%;
     top: 42%;
+    width: 40vw;
   }
 </style>

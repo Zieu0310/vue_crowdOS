@@ -1,42 +1,42 @@
 <template>
     <div class="CenterBox">
         <div class="whitelarge">
-          <router-link to="./contact">
+          <router-link to="./allmember">
             <div class="whs" id="whs1">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>
               <div class="message">最后一条消息</div>
             </div>
           </router-link>
-          <router-link to="./contact">
+          <router-link to="./allmember">
             <div class="whs" id="whs2">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>
               <div class="message">最后一条消息</div>
             </div>
           </router-link>
-          <router-link to="./contact">
+          <router-link to="./allmember">
             <div class="whs" id="whs3">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>
               <div class="message">最后一条消息</div>
             </div>
           </router-link>
-          <router-link to="./contact">
+          <router-link to="./allmember">
             <div class="whs" id="whs4">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>
               <div class="message">最后一条消息</div>
           </div>
           </router-link>
-          <router-link to="./contact">
+          <router-link to="./allmember">
             <div class="whs" id="whs5">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>
               <div class="message">最后一条消息</div>
             </div>
           </router-link>
-          <router-link to="./contact">
+          <router-link to="./allmember">
             <div class="whs" id="whs6">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>

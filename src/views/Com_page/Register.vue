@@ -6,8 +6,8 @@
     <div class="mainBox">
       <input type="text" placeholder="输入账号" v-model="account" />
       <input type="password" name="" id="" placeholder="输入密码" v-model="password" />
-      <input type="number" placeholder="输入角色(参考下方说明)" v-model="role" />
-      <input type="text" placeholder="输入姓名" v-model="name" />
+      <input type="number" placeholder="输入角色(参考上方说明)" v-model="role" />
+      <input type="text" placeholder="输入名称" v-model="name" />
       <input type="text" placeholder="输入邮箱" v-model="e_mail" />
       <input type="submit" value="确认" @click="handleRegister" class="btn" />
       <div class="reference">角色说明:0管理员,1公司,2科研成员</div>

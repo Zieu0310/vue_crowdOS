@@ -6,7 +6,7 @@ export const apis = axios.create({
   baseURL: "http://127.0.0.1:4523/m1/3023705-0-default",
 });
 
-export const bid = (event_id, bid) => {
+export const tender = (event_id, bid) => {
     return apis({
       method: "post",
       url: "/tender",

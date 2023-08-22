@@ -14,7 +14,6 @@ export const post_achievement = (title, description, type, file) => {
             title: title,
             description: description,
             type: type,
-            file: file,
           }
         },
     });

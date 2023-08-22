@@ -82,27 +82,6 @@
               </li></router-link>
           </div>
         </div>
-        <div class="box">
-          <div
-           class="ShowBorder"
-           :class="{ active_: Show3 }"
-           @click="active3()"
-          >
-             <router-link
-               :to="{ name: 'remark' }"
-               custom
-               v-slot="{ navigate, isActive }"
-              >
-              <li
-               @click="navigate"
-               @keypress.enter="navigate"
-               :class="{ active: isActive }"
-               role="link"
-              >
-               <p :class="{ active_: Show3 }" @click="active3()">评价</p>
-               </li></router-link>
-          </div>
-        </div>
       </div>
       <div class="right-entry">
         <div class="profile">

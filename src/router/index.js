@@ -73,16 +73,6 @@ const routes =[
           path: "addtask",
           name: "addtask",
           component: () => import("../views/Com_page/AddTask.vue"),
-        },
-        {
-            path: "remark",
-            name: "remark",
-            component: () => import("../views/Com_page/Remark.vue"),
-        },
-        {
-          path: "c_information",
-          name: "c_information",
-          component: () => import("../views/Com_page/C_Information.vue"),
         },        
         {
             path: "c_task",
@@ -90,14 +80,14 @@ const routes =[
             component: () => import("../views/Com_page/C_Task.vue"),            
         },
         {
+          path: "c_information",
+          name: "c_information",
+          component: () => import("../views/Com_page/C_Information.vue"),            
+      },
+        {
           path: "myteam",
           name: "myteam",
           component: () => import("../views/Com_page/MyTeam.vue"),
-        },
-        {
-          path: "contact",
-          name: "contact",
-          component: () => import("../views/Com_page/Contact.vue")
         },
         {
           path: "allmember",

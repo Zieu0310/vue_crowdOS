@@ -19,7 +19,7 @@
 </template>
   
   <script>
-    import { bid } from '../../api/Bid.js'
+    import { tender } from '../../api/Tender.js'
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
 
     export default {
@@ -35,7 +35,7 @@
       },
       methods: {
         tenderData() {      
-          bid(this.event_id,this.bid).then((res)=>{
+          tender(this.event_id,this.bid).then((res)=>{
             console.log(res.data.bid);
           });
         }   

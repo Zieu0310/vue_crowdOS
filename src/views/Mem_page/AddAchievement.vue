@@ -43,7 +43,7 @@
       },
       methods:{
         handlePostAchievement(){
-          post_achievement(this.achievements.title,this.achievements.description,this.achievements.type,this.achievements.file).then((res)=>{
+          post_achievement(this.achievements.title,this.achievements.description,this.achievements.type).then((res)=>{
             console.log(res);
             if(this.achievements.title !== "" && (this.achievements.type == 0 || this.achievements.type == 1 || this.achievements.type == 2 ) && this.achievements.description !== ""){
               this.$router.push("/m_home/postachievementsuccess")
