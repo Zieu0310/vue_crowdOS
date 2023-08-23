@@ -176,6 +176,11 @@ const routes =[
         path: "postachievementsuccess",
         name: "postachievementsuccess",
         component: () => import("../views/Mem_page/PostAchievementSuccess.vue")
+      },
+      {
+        path: "default",
+        name: "default",
+        component: () => import("../views/Mem_page/Default.vue")
       },      
     ],
   },

@@ -9,7 +9,7 @@
           <div class="item" id="i1">需求名</div>
           <div class="inblue" id="ib1">疫苗研发</div>
           <div class="item" id="i11">需求ID</div>
-          <div class="inblue" id="ib11">000000000</div>
+          <div class="inblue" id="ib11">0</div>
           <div class="item" id="i2">拍卖类型</div>
           <div class="inblue" id="ib2">VCG</div>
           <div class="item" id="i3">具体描述</div>
@@ -37,7 +37,7 @@
       name: 'auditEvent',
       data() {
         return {
-          id: '',
+          id: 0,
           remark: 0,
         };
       },

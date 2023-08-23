@@ -111,7 +111,7 @@
           <router-link to="../../m_home/m_information"><img src="../../assets/img/h-icon.png" alt="" /></router-link>
         </div>
         <div class="PersonalData">
-          <div class="name">Jack</div>
+          <router-link to="./default"><div class="name">Jack</div></router-link>
           <div class="number">400820886</div>
         </div>
       </div>

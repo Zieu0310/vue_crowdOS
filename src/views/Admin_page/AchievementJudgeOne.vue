@@ -38,7 +38,7 @@
     export default {
       data() {
         return {
-          achievement_id:'',
+          achievement_id: 0,
           remark: 0,
         };
       },
@@ -52,7 +52,7 @@
         handleAuditAchievement(){
           auditAchievement(this.achievement_id,this.remark).then((res) => {
             if(this.remark != 0 ){
-              console.log(this.remark);
+              console.log(this.achievement_id);
             }
             else{
               alert('请审核！')
