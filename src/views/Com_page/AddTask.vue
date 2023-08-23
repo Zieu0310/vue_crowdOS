@@ -30,8 +30,6 @@
   <script>
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
     import { postEvents } from '../../api/PostEvents';
-    import { ref } from 'vue';
-    const awesome =ref(true);
   
     export default {
       name: 'postEvents',

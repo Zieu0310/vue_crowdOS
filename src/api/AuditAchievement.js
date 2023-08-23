@@ -17,7 +17,7 @@ export const auditAchievementNo = (achievement_id, remark) => {
     });
   };
 
-  export const auditAchievementYes = (achievement_id, remark) => {
+  export const auditAchievement = (achievement_id, remark) => {
     return apis({
       method: "post",
       url: "/adminstrators/auditEvents",

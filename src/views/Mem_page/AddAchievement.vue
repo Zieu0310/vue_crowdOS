@@ -5,7 +5,11 @@
         <div class="item" id="i1">成果名称</div>
         <el-input v-model="achievements.title" placeholder="请输入" class="im1" />
         <div class="item" id="i2">类型</div>
-        <el-input v-model="achievements.type" placeholder="请输入" type="number" class="im2" />
+        <el-radio-group v-model="achievements.type" class="im2">
+          <el-radio :label="0">论文</el-radio>
+          <el-radio :label="1">专利</el-radio>
+          <el-radio :label="2">项目</el-radio>
+        </el-radio-group>
         <div class="item" id="i3">成果描述</div>
         <el-input v-model="achievements.description" :rows="6" type="textarea" placeholder="请描述" class="grey_rec" />
         <div class="item" id="i4">附件</div>
@@ -16,9 +20,6 @@
         <div class="no">
           <router-link to="./achievements"><div class="notext">取消</div></router-link>
         </div>
-        <div class="bottom">
-          <div class="btx">类型说明: 0为论文,1为专利,2为项目</div>
-        </div>
       </div>
     </div>
 </template>
@@ -26,6 +27,9 @@
   <script>
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
     import { post_achievement } from '../../api/PostAchievement';
+    import { ref } from 'vue';
+
+    const radio = ref(0)
   
     export default {
       data() {
@@ -45,14 +49,11 @@
         handlePostAchievement(){
           post_achievement(this.achievements.title,this.achievements.description,this.achievements.type).then((res)=>{
             console.log(res);
-            if(this.achievements.title !== "" && (this.achievements.type == 0 || this.achievements.type == 1 || this.achievements.type == 2 ) && this.achievements.description !== ""){
+            if(this.achievements.title !== "" && this.achievements.description !== ""){
               this.$router.push("/m_home/postachievementsuccess")
             }
             else if(this.achievements.title === ""){
               alert('成果名称不能为空！')
-            }
-            else if(this.achievements.type != 0 && this.achievements.type != 1 && this.achievements.type !=2 ){
-              alert('请正确输入类型！')
             }
             else if(this.achievements.description === ""){
               alert('成果描述不能为空！')
@@ -191,25 +192,6 @@
     color: rgba(255, 255, 255, 1);
     text-align: center;
     vertical-align: top;
-  }
-  .bottom{
-    position: absolute;
-    bottom: 0%;
-    left: 0%;
-    width: 40vw;
-    height: 4vh;
-    background-color: lightpink;
-  }
-  .btx{
-    position: absolute;
-    left: 3%;
-    top: 30%;
-    width: 30vw;
-    height: 2vh;
-    font-weight: 400;
-    opacity: 1;
-    font-size: 1.04vw;
-    color: red;
   }
   .im1{
     position: absolute;

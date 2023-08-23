@@ -1,15 +1,15 @@
 <template>
     <div class="container">
-      <div class="above">任务审核列表</div>
+      <div class="above">需求审核列表</div>
       <div class="whitesmall" id="ws1">
         <img src="../../assets/img/blue.png" class="blue">
         <div class="textBlue" id="tb1">待审核</div>
         <div class="whs" id="whs11">
-          <div class="Intextblack">XXX公司的任务申请</div>
+          <div class="Intextblack">XXX公司的需求申请</div>
           <router-link to="./taskjudgeone"><div class="Intextblue">审核</div></router-link>
         </div>
         <div class="whs" id="whs12">
-          <div class="Intextblack">XXX公司的任务申请</div>
+          <div class="Intextblack">XXX公司的需求申请</div>
           <router-link to="./taskjudgeone"><div class="Intextblue">审核</div></router-link>
         </div>
       </div>
@@ -17,15 +17,15 @@
         <img src="../../assets/img/blue.png" class="blue">
         <div class="textBlue" id="tb2">已审核</div>
         <div class="whs" id="whs21">
-          <div class="Intextblack">XXX公司的任务申请</div>
+          <div class="Intextblack">XXX公司的需求申请</div>
           <div id="textred">审核不通过</div>
         </div>
         <div class="whs" id="whs22">
-          <div class="Intextblack">XXX公司的任务申请</div>
+          <div class="Intextblack">XXX公司的需求申请</div>
           <div id="textgreen">审核通过</div>
         </div>
         <div class="whs" id="whs23">
-          <div class="Intextblack">XXX公司的任务申请</div>
+          <div class="Intextblack">XXX公司的需求申请</div>
           <div id="textgreen">审核通过</div>
         </div>
       </div>

@@ -32,12 +32,7 @@
           <div class="whs" id="whs6">
             <img src="../../assets/img/icon.png" class="icon">
             <div class="mem_name">沙雕</div>
-          </div>
-          <router-link to="./chat">
-            <div class="look" id="chat">
-              <div class="tw">前往聊天</div>
-            </div>
-          </router-link>          
+          </div>          
           <router-link to="./achievements">
             <div class="look" id="achi">
               <div class="tw">查看成果</div>
@@ -263,13 +258,9 @@ top: 70.06%;
   border-radius: 1.20vw;
   background: rgba(0, 43, 255, 1);
 }
-#chat{
-  position: absolute;
-  left: 27.70%;
-}
 #achi{
   position: absolute;
-  left: 57.30%;
+  left: 40.30%;
 }
 .tw{
   position: absolute;

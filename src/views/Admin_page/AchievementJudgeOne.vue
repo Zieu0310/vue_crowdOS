@@ -8,6 +8,8 @@
           <div class="title">已申报成果详情</div>
           <div class="item" id="i1">成果</div>
           <div class="inblue" id="ib1">XX疫苗</div>
+          <div class="item" id="i11">成果ID</div>
+          <div class="inblue" id="ib11">0</div>
           <div class="item" id="i2">类型</div>
           <div class="inblue" id="ib2">专利</div>
           <div class="item" id="i21">科研队</div>
@@ -18,14 +20,12 @@
           <div class="grey_rec">
               <div class="innertext">具有…………效果</div>
           </div>
-          <div class="yes">
-            <div class="yestext">通过</div>
-          </div>
-          <div class="no">
-            <div class="notext">不通过</div>
-          </div>
-          <div class="bottom">
-            <div class="btx">类型说明: 0为论文,1为专利,2为项目</div>
+          <el-radio-group v-model="remark" class="yon">
+            <el-radio :label="2">通过</el-radio>
+            <el-radio :label="1">不通过</el-radio>
+          </el-radio-group>
+          <div class="yes" @click="handleAuditAchievement">
+            <div class="yestext">提交</div>
           </div>
         </div>
       </div>
@@ -34,10 +34,12 @@
   
   <script>
     import { auachig } from '../../api/AuditAchievementGet';
+    import { auditAchievement } from '../../api/AuditAchievement';
     export default {
       data() {
         return {
-          id: ''
+          achievement_id:'',
+          remark: 0,
         };
       },
       components: {
@@ -46,6 +48,16 @@
       methods: {
         handleAuditAchievementGet() {
           auachig(id)
+        },
+        handleAuditAchievement(){
+          auditAchievement(this.achievement_id,this.remark).then((res) => {
+            if(this.remark != 0 ){
+              console.log(this.remark);
+            }
+            else{
+              alert('请审核！')
+            }
+          })
         }
       }
     };
@@ -146,26 +158,30 @@
       position: absolute;
       top: 16.69%;
     }
-    #i2{
+    #i11{
       position: absolute;
       top: 23.6%;
     }
-    #i21{
+    #i2{
       position: absolute;
       top: 30.51%;
     }
-    #i22{
+    #i21{
       position: absolute;
       top: 37.42%;
     }
-    #i3{
+    #i22{
       position: absolute;
       top: 44.33%;
+    }
+    #i3{
+      position: absolute;
+      top: 51.24%;
     }
     .grey_rec{
       position: absolute;
       left: 9.73%;
-      top: 49.48%;
+      top: 56.39%;
       width: 34.0625vw;
       height: 15.93vh;
       opacity: 1;
@@ -189,44 +205,19 @@
     }
     .yes{
       position: absolute;
-      left: 27.70%;
-      top: 79.77%;
+      left: 40%;
+      top: 85%;
       width: 7.29vw;
       height: 4.26vh;
       opacity: 1;
       border-radius: 1.20vw;
-      background: rgba(67, 207, 124, 1);
-    }
-    .no{
-      position: absolute;
-      left: 57.30%;
-      top: 79.77%;
-      width: 7.29vw;
-      height: 4.26vh;
-      opacity: 1;
-      border-radius: 1.20vw;
-      background: rgba(255, 87, 51, 1);
+      background: rgba(0, 43, 255, 1);
     }
     .yestext{
       position: absolute;
       left: 35.71%;
       top: 21.74%;
       width: 2.08vw;
-      height: 2.5vh;
-      opacity: 1;
-      font-size: 1.04vw;
-      font-weight: 700;
-      letter-spacing: 0px;
-      line-height: 2.44vh;
-      color: rgba(255, 255, 255, 1);
-      text-align: center;
-      vertical-align: top;
-    }
-    .notext{
-      position: absolute;
-      left: 28.57%;
-      top: 21.74%;
-      width: 3.125vw;
       height: 2.5vh;
       opacity: 1;
       font-size: 1.04vw;
@@ -255,35 +246,25 @@
     position: absolute;
     top: 16.8%;
   }
-  #ib2{
+  #ib11{
     position: absolute;
     top: 23.71%;
   }
-  #ib21{
+  #ib2{
     position: absolute;
     top: 30.62%;
   }
-  #ib22{
+  #ib21{
     position: absolute;
     top: 37.53%;
   }
-  .bottom{
+  #ib22{
     position: absolute;
-    bottom: 0%;
-    left: 0%;
-    width: 42.8125vw;
-    height: 6vh;
-    background-color: lightpink;
+    top: 44.44%;
   }
-  .btx{
+  .yon{
     position: absolute;
-    left: 3%;
-    top: 20%;
-    width: 30vw;
-    height: 2vh;
-    font-weight: 400;
-    opacity: 1;
-    font-size: 1.04vw;
-    color: red;
+    left: 12%;
+    top: 79%;
   }
   </style>

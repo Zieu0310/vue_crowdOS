@@ -143,11 +143,6 @@ const routes =[
         component: () => import("../views/Mem_page/TeamInformation.vue")
       },
       {
-        path: "chat",
-        name: "chat",
-        component: () => import("../views/Mem_page/Chat.vue")
-      },
-      {
         path: "tasksquare",
         name: "tasksquare",
         component: () => import("../views/Mem_page/TaskSquare.vue")

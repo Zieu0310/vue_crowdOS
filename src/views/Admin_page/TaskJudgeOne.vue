@@ -1,33 +1,30 @@
 <template>
     <div class="CenterBox">
       <div>
-        <div class="above">XXX公司的任务申请</div>
+        <div class="above">XXX公司的需求申请</div>
         <div class="whitecenter">
           <router-link to="./taskjudge"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
-          <div class="title">已申报任务详情</div>
-          <div class="item" id="i1">任务名</div>
+          <div class="title">已申报需求详情</div>
+          <div class="item" id="i1">需求名</div>
           <div class="inblue" id="ib1">疫苗研发</div>
-          <div class="item" id="i11">任务ID</div>
+          <div class="item" id="i11">需求ID</div>
           <div class="inblue" id="ib11">000000000</div>
-          <div class="item" id="i2">类型</div>
-          <div class="inblue" id="ib2">生物科技</div>
+          <div class="item" id="i2">拍卖类型</div>
+          <div class="inblue" id="ib2">VCG</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
               <div class="innertext">完成针对…………疾病的疫苗技术的研发</div>
           </div>
           <div class="item" id="i4">报价（万）</div>
           <div class="inblue" id="ib4">50</div>
-          <router-link to="./taskjudge">
-            <div class="yes" @click="handleAuditEventsYes">
-              <div class="yestext">通过</div>
-            </div>
-          </router-link>
-          <router-link to="./taskjudge">
-            <div class="no" @click="handleAuditEventsNo">
-              <div class="notext">不通过</div>
-            </div>
-          </router-link>
+          <el-radio-group v-model="remark" class="yon">
+            <el-radio :label="2">通过</el-radio>
+            <el-radio :label="1">不通过</el-radio>
+          </el-radio-group>
+          <div class="yes" @click="handleAuditEvents">
+            <div class="yestext">提交</div>
+          </div>
         </div>
       </div>
     </div>
@@ -35,30 +32,27 @@
   
   <script>
 
-    import { auditEventsNo } from '../../api/AuditEvents';
-    import { auditEventsYes } from '../../api/AuditEvents';
+    import { auditEvents } from '../../api/AuditEvents';
     export default {
       name: 'auditEvent',
       data() {
         return {
           id: '',
-          remark: '',
+          remark: 0,
         };
       },
       components: {
         
       },
       methods: {
-        handleAuditEventsNo() {      
-          auditEventsNo(this.id,this.remark).then((res) => {
-            this.remark = 1;
-            console.log(res);
-          });          
-        },
-        handleAuditEventsYes(){
-          auditEventsYes(this.id,this.remark).then((res) => {
-            this.remark = 2;
-            console.log(res);
+        handleAuditEvents(){
+          auditEvents(this.id,this.remark).then((res) => {
+            if(this.remark != 0){
+              console.log(this.remark);
+            }
+            else{
+              alert('请审核！');
+            }
           })
         } 
       }
@@ -203,13 +197,13 @@
     }
     .yes{
       position: absolute;
-      left: 27.70%;
-      top: 79.77%;
+      left: 40%;
+      top: 85%;
       width: 7.29vw;
       height: 4.26vh;
       opacity: 1;
       border-radius: 1.20vw;
-      background: rgba(67, 207, 124, 1);
+      background: rgba(0, 43, 255, 1);
     }
     .no{
       position: absolute;
@@ -280,5 +274,10 @@
   #ib4{
     position: absolute;
     top: 65.88%;
+  }
+  .yon{
+    position: absolute;
+    left: 12%;
+    top: 72%;
   }
   </style>
