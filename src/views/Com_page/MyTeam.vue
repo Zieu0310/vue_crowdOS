@@ -5,42 +5,36 @@
             <div class="whs" id="whs1">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
             </div>
           </router-link>
           <router-link to="./allmember">
             <div class="whs" id="whs2">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
             </div>
           </router-link>
           <router-link to="./allmember">
             <div class="whs" id="whs3">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
             </div>
           </router-link>
           <router-link to="./allmember">
             <div class="whs" id="whs4">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
           </div>
           </router-link>
           <router-link to="./allmember">
             <div class="whs" id="whs5">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
             </div>
           </router-link>
           <router-link to="./allmember">
             <div class="whs" id="whs6">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">XX教授团队</div>
-              <div class="message">最后一条消息</div>
             </div>
           </router-link>                    
         </div>
@@ -125,30 +119,15 @@
   .name{
     position: absolute;
     left: 10%;
-    top: 25%;
+    top: 35%;
     width: 10vw;
     height: 2.3vh;
     opacity: 1;
-    font-size: 1.3vw;
+    font-size: 1.7vw;
     font-weight: 400;
     letter-spacing: 0px;
     line-height: 1.48vh;
     color: rgba(51, 51, 51, 1);
-    text-align: left;
-    vertical-align: top;
-  }
-  .message{
-    position: absolute;
-    left: 10%;
-    top: 60%;
-    width: 30vw;
-    height: 1.2vh;
-    opacity: 1;
-    font-size: 0.975vw;
-    font-weight: 400;
-    letter-spacing: 0px;
-    line-height: 1.5vh;
-    color: rgba(110, 110, 110, 1);
     text-align: left;
     vertical-align: top;
   }

@@ -1,5 +1,6 @@
 <template>
   <div class="CenterBox">
+        <div class="title">成员和成果</div>
         <div class="whitelarge">
             <div class="whs" id="whs1">
               <img src="../../assets/img/icon.png" class="icon">
@@ -25,12 +26,12 @@
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">沙雕</div>
             </div>
-            <div class="yes">
-              <div class="yestext">前往聊天</div>
-            </div>
-            <div class="no">
-              <div class="notext">查看成果</div>
-            </div> 
+            <el-scrollbar class="achi">
+              <div class="scrollbar-demo-item">软件开发</div>
+              <div class="scrollbar-demo-item">疫苗研发</div>
+              <div class="scrollbar-demo-item">芯片</div>
+              <div class="scrollbar-demo-item">网络维护</div>
+            </el-scrollbar>
         </div>
     </div>    
 </template>
@@ -51,6 +52,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .title{
+    position: absolute;
+    left: 10%;
+    top: 12%;
+    width: 20vw;
+    height: 3vh;
+    color: black;
+    font-weight: 1000;
+    font-size: 2vw;
   }
   .whitelarge{
     position: absolute;
@@ -113,6 +124,25 @@
     color: rgba(51, 51, 51, 1);
     text-align: left;
     vertical-align: top;
+  }
+  .scrollbar-demo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6vh;
+    margin: 1vh;
+    text-align: center;
+    border-radius: 4px;
+    border: solid 1px darkgrey;
+    background: rgba(255, 255, 255, 0.8);
+    font-weight: 700;
+    color: black;
+  }
+  .achi{
+    position: absolute;
+    top: 65%;
+    width: 80vw;
+    height: 23vh;
   }
   .message{
     position: absolute;

@@ -56,7 +56,7 @@
               :class="{ active: isActive }"
               role="link"
              >
-              <p :class="{ active_: Show1 }" @click="active1()">任务管理</p>
+              <p :class="{ active_: Show1 }" @click="active1()">需求管理</p>
             </li>
             </router-link>
           </div>

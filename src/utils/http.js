@@ -1,12 +1,12 @@
 // 对请求进行默认配置
 import axios from "axios";
 
-var instance = axios.create({
+var request = axios.create({
   timeout: 5000,
 });
 
 // 添加请求拦截器
-instance.interceptors.request.use(
+request.interceptors.request.use(
   function (config) {
     // 请求头添加token
     if (store.state.UserToken !== "") {
@@ -20,7 +20,7 @@ instance.interceptors.request.use(
 );
 
 // 响应拦截器即异常处理
-instance.interceptors.response.use(
+request.interceptors.response.use(
   (response) => {
     return response.data;
   },
@@ -60,4 +60,4 @@ instance.interceptors.response.use(
   }
 );
 
-export default instance;
+export default request;
