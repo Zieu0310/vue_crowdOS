@@ -1,25 +1,23 @@
 <template>
-    <div class="CentetBox">
+    <div class="CenterBox">
       <div>
-        <div class="above">我的需求申请详情</div>
+        <div class="above">XXX团队的成果</div>
         <div class="whitecenter">
-          <router-link to="./c_task"><div class="grey">返回</div></router-link>
+          <router-link to="./allmember"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
-          <div class="title">已发布需求详情</div>
-          <div class="item" id="i1">需求名</div>
-          <div class="inblue" id="ib1">疫苗研发</div>
-          <div class="item" id="i11">需求ID</div>
-          <div class="inblue" id="ib11">000000000</div>
+          <div class="title">成果详情</div>
+          <div class="item" id="i1">成果</div>
+          <div class="inblue" id="ib1">平台开发</div>
           <div class="item" id="i2">类型</div>
-          <div class="inblue" id="ib2">生物科技</div>
+          <div class="inblue" id="ib2">专利</div>
+          <div class="item" id="i21">科研队</div>
+          <div class="inblue" id="ib21">XX教授团队</div>
+          <div class="item" id="i22">科研队ID</div>
+          <div class="inblue" id="ib22">0</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
-              <div class="innertext">完成针对…………疾病的疫苗技术的研发</div>
+              <div class="innertext">可用于……与……交流互助</div>
           </div>
-          <div class="item" id="i4">报价（万）</div>
-          <div class="inblue" id="ib4">50</div>
-          <div class="item" id="i5">状态</div>
-          <div class="inblue" id="ib5">无人投标</div>
         </div>
       </div>
     </div>
@@ -116,7 +114,7 @@
     .item{
       position: absolute;
       left: 9.73%;
-      width: 6vw;
+      width: 5vw;
       height: 2.69vh;
       opacity: 1;
       font-size: 1.04vw;
@@ -131,30 +129,26 @@
       position: absolute;
       top: 16.69%;
     }
-    #i11{
+    #i2{
       position: absolute;
       top: 23.6%;
     }
-    #i2{
+    #i21{
       position: absolute;
       top: 30.51%;
     }
-    #i3{
+    #i22{
       position: absolute;
       top: 37.42%;
     }
-    #i4{
+    #i3{
       position: absolute;
-      top: 65.79%;
-    }
-    #i5{
-      position: absolute;
-      top: 72.7%;
+      top: 44.33%;
     }
     .grey_rec{
       position: absolute;
       left: 9.73%;
-      top: 42.57%;
+      top: 49.48%;
       width: 34.0625vw;
       height: 15.93vh;
       opacity: 1;
@@ -176,56 +170,6 @@
       text-align: justify;
       vertical-align: top;
     }
-    .yes{
-      position: absolute;
-      left: 27.70%;
-      top: 79.77%;
-      width: 7.29vw;
-      height: 4.26vh;
-      opacity: 1;
-      border-radius: 1.20vw;
-      background: rgba(67, 207, 124, 1);
-    }
-    .no{
-      position: absolute;
-      left: 57.30%;
-      top: 79.77%;
-      width: 7.29vw;
-      height: 4.26vh;
-      opacity: 1;
-      border-radius: 1.20vw;
-      background: rgba(255, 87, 51, 1);
-    }
-    .yestext{
-      position: absolute;
-      left: 35.71%;
-      top: 21.74%;
-      width: 2.08vw;
-      height: 2.5vh;
-      opacity: 1;
-      font-size: 1.04vw;
-      font-weight: 700;
-      letter-spacing: 0px;
-      line-height: 2.44vh;
-      color: rgba(255, 255, 255, 1);
-      text-align: center;
-      vertical-align: top;
-    }
-    .notext{
-      position: absolute;
-      left: 28.57%;
-      top: 21.74%;
-      width: 3.125vw;
-      height: 2.5vh;
-      opacity: 1;
-      font-size: 1.04vw;
-      font-weight: 700;
-      letter-spacing: 0px;
-      line-height: 2.44vh;
-      color: rgba(255, 255, 255, 1);
-      text-align: center;
-      vertical-align: top;
-    }
     .inblue{
     position: absolute;
     right: 12.29%;
@@ -244,20 +188,16 @@
     position: absolute;
     top: 16.8%;
   }
-  #ib11{
+  #ib2{
     position: absolute;
     top: 23.71%;
   }
-  #ib2{
+  #ib21{
     position: absolute;
     top: 30.62%;
   }
-  #ib4{
+  #ib22{
     position: absolute;
-    top: 65.88%;
-  }
-  #ib5{
-    position: absolute;
-    top: 72.79%;
+    top: 37.53%;
   }
   </style>

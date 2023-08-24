@@ -14,8 +14,10 @@
           <el-radio-button label="IOT&nbsp;J" />
           <el-radio-button label="固定价格交易" />
         </el-radio-group>
-        <div class="item" id="i5" v-if="arithmetic === 'IOT&nbsp;J' || arithmetic === '固定价格交易'">预算/固定价格(万)</div>
-        <el-input-number v-model="price" :min="0" :max="50000" @change="handleChange" class="im5" v-if="arithmetic === 'IOT&nbsp;J' || arithmetic === '固定价格交易'" />
+        <div class="item" id="i5" v-if="arithmetic === 'IOT&nbsp;J'">预算(万)</div>
+        <div class="item" id="i6" v-if="arithmetic === '固定价格交易'">固定价格(万)</div>
+        <el-input-number v-model="price" :min="0" :max="50000" @change="handleChange" class="im5" v-if="arithmetic === 'IOT&nbsp;J'" />
+        <el-input-number v-model="reversePrice" :min="0" :max="50000" @change="handleChange" class="im6" v-if="arithmetic === '固定价格交易'" />
         <div class="yes">
           <div class="yestext" @click="handlePostEvents">上传</div>
         </div>
@@ -39,7 +41,8 @@
           event_name: '',
           description: '',
           arithmetic: '',
-          price: 0
+          price: 0,
+          reversePrice: 0,
         };
       },
       components: {
@@ -51,10 +54,18 @@
           this.arithmetic = radioVal;
         },
         handlePostEvents(){
-          postEvents(this.company_id,this.event_name,this.description,this.arithmetic,this.price).then((res)=>{
-            if(this.event_name !== "" && this.description !== "" && this.arithmetic !== "" && this.price > 0){
-              console.log(res);
-              this.$router.push("/c_home/deliversuccess")
+          postEvents(this.company_id,this.event_name,this.description,this.arithmetic,this.price,this.reversePrice).then((res)=>{
+            if(this.event_name !== "" && this.description !== "" && this.arithmetic !== ""){
+              if(this.arithmetic === "IOT&nbsp;J" && this.price == 0){
+                alert('请正确输入预算！');
+              } 
+              else if(this.arithmetic === "固定价格交易" && this.reversePrice == 0){
+                alert('请正确输入固定价格！')
+              }
+              else{
+                console.log(res);
+                this.$router.push("/c_home/deliversuccess")
+              }          
             }
             else if(this.event_name === ""){
               alert('任务名不能为空！')
@@ -64,9 +75,6 @@
             }
             else if(this.arithmetic === ""){
               alert('算法不能为空！')
-            }
-            else if(this.arithmetic !== "VCG" && this.price == 0){
-              alert('请正确输入预算或固定价格！')
             }
           })
         }
@@ -134,6 +142,11 @@
       right: 35%;
       top: 65.77%;
     }
+    .im6{
+      position: absolute;
+      right: 35%;
+      top: 65.77%;
+    }
     #im3{
       position: absolute;
       right: 5%;
@@ -171,6 +184,10 @@
       top: 60%;
     }
     #i5{
+      position: absolute;
+      top: 66.91%;
+    }
+    #i6{
       position: absolute;
       top: 66.91%;
     }

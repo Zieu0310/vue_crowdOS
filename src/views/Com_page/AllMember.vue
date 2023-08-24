@@ -2,35 +2,21 @@
   <div class="CenterBox">
         <div class="title">成员和成果</div>
         <div class="whitelarge">
-            <div class="whs" id="whs1">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授</div>
-            </div>
-            <div class="whs" id="whs2">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">阿sir</div>
-            </div>
-            <div class="whs" id="whs3">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">刘老六</div>
-            </div>
-            <div class="whs" id="whs4">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">哥哥</div>
-            </div>
-            <div class="whs" id="whs5">
-            <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">胖熊</div>
-            </div>
-            <div class="whs" id="whs6">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">沙雕</div>
-            </div>
+            <img src="../../assets/img/blue.png" class="blue_" id="b1">
+            <div class="textblue_" id="tb1">成员</div>
+            <el-scrollbar class="mem">
+              <div class="scrollbar-demo-item1">XX教授</div>
+              <div class="scrollbar-demo-item1">阿sir</div>
+              <div class="scrollbar-demo-item1">刘老六</div>
+              <div class="scrollbar-demo-item1">沙雕</div>
+            </el-scrollbar>
+            <img src="../../assets/img/blue.png" class="blue_" id="b2">
+            <div class="textblue_" id="tb2">成果</div>
             <el-scrollbar class="achi">
-              <div class="scrollbar-demo-item">软件开发</div>
-              <div class="scrollbar-demo-item">疫苗研发</div>
-              <div class="scrollbar-demo-item">芯片</div>
-              <div class="scrollbar-demo-item">网络维护</div>
+              <router-link to="./teamachievement"><div class="scrollbar-demo-item">平台开发</div></router-link>
+              <router-link to="./teamachievement"><div class="scrollbar-demo-item">平台开发</div></router-link>
+              <router-link to="./teamachievement"><div class="scrollbar-demo-item">平台开发</div></router-link>
+              <router-link to="./teamachievement"><div class="scrollbar-demo-item">平台开发</div></router-link>
             </el-scrollbar>
         </div>
     </div>    
@@ -72,43 +58,47 @@
     opacity: 1;
     background: rgba(255, 255, 255, 0.8);
   }
-  .whs{
-    width: 80.36vw;
-    height: 8.1vh;
+  .blue_{
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    width: 0.21vw;
+    height: 1.76vh;
+  }
+  #b1{
+    position: absolute;
+    top: 2%;
+  }
+  #b2{
+    position: absolute;
+    top: 45.5%;
+  }
+  .textblue_{
+    position: absolute;
+    left: 3%;
+    height: 2.50vh;
     opacity: 1;
-    background: rgba(255, 255, 255, 1);
-    border: 0.03vw solid rgba(166, 166, 166, 1);
+    font-size: 1.04vw;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 2.44vh;
+    color: rgba(0, 43, 255, 1);
+    text-align: left;
+    vertical-align: top;
   }
-  #whs1{
+  #tb1{
     position: absolute;
-    top: 0%;
+    top: 1.5%;
   }
-  #whs2{
+  #tb2{
     position: absolute;
-    top: 9.99753%;
+    top: 45%;
   }
-  #whs3{
+  .mem{
     position: absolute;
-    top: 19.995%
-  }
-  #whs4{
-    position: absolute;
-    top: 29.9926%;
-  }
-  #whs5{
-    position: absolute;
-    top: 39.99%;
-  }
-  #whs6{
-    position: absolute;
-    top: 49.98765%;
-  }
-  .icon{
-    position: absolute;
-    left: 5.65%;
-    top: 26.17%;
-    width: 2.8vw;
-    height: 4vh;
+    top: 5%;
+    width: 80vw;
+    height: 23vh;
   }
   .name{
     position: absolute;
@@ -138,9 +128,22 @@
     font-weight: 700;
     color: black;
   }
+  .scrollbar-demo-item1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 6vh;
+    margin: 1vh;
+    border-radius: 4px;
+    border: solid 1px darkgrey;
+    background: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    font-size: 2vw;
+    color: black;
+  }
   .achi{
     position: absolute;
-    top: 65%;
+    top: 50%;
     width: 80vw;
     height: 23vh;
   }

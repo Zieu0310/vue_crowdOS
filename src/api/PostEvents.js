@@ -6,7 +6,7 @@ export const apis = axios.create({
   baseURL: "http://127.0.0.1:4523/m1/3023705-0-default",
 });
 
-export const postEvents = (company_id, event_name, description, arithmetic, price) => {
+export const postEvents = (company_id, event_name, description, arithmetic, price, reversePrice) => {
     return apis({
       method: "post",
       url: "/companies/postEvents",
@@ -16,6 +16,7 @@ export const postEvents = (company_id, event_name, description, arithmetic, pric
         description: description,
         arithmetic: arithmetic,
         price: price,
+        reversePrice: reversePrice,
       },
     });
   };

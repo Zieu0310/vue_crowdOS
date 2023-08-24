@@ -99,6 +99,11 @@ const routes =[
           name: "deliversuccess",
           component: () => import("../views/Com_page/DeliverSuccess.vue")
         },
+        {
+          path: "teamachievement",
+          name: "teamachievement",
+          component: () => import("../views/Com_page/TeamAchievement.vue")
+        },
       ],
     },
 

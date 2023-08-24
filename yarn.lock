@@ -17,11 +17,6 @@
   "resolved" "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-2.1.0.tgz"
   "version" "2.1.0"
 
-"@esbuild/win32-x64@0.18.17":
-  "integrity" "sha512-fGEb8f2BSA3CW7riJVurug65ACLuQAzKq0SSqkY2b2yHHH0MzDfbLyKIGzHwOI/gkHcxM/leuSW6D5w/LMNitA=="
-  "resolved" "https://registry.npmmirror.com/@esbuild/win32-x64/-/win32-x64-0.18.17.tgz"
-  "version" "0.18.17"
-
 "@floating-ui/core@^1.4.1":
   "integrity" "sha512-jk3WqquEJRlcyu7997NtR5PibI+y5bi+LS3hPmguVClypenMsCY3CBa3LAQnozRCtCrYWSEtAdiskpamuJRFOQ=="
   "resolved" "https://registry.npmmirror.com/@floating-ui/core/-/core-1.4.1.tgz"
@@ -253,33 +248,15 @@
     "memoize-one" "^6.0.0"
     "normalize-wheel-es" "^1.2.0"
 
-"esbuild@^0.18.10":
-  "integrity" "sha512-1GJtYnUxsJreHYA0Y+iQz2UEykonY66HNWOb0yXYZi9/kNrORUEHVg87eQsCtqh59PEJ5YVZJO98JHznMJSWjg=="
-  "resolved" "https://registry.npmmirror.com/esbuild/-/esbuild-0.18.17.tgz"
-  "version" "0.18.17"
-  optionalDependencies:
-    "@esbuild/android-arm" "0.18.17"
-    "@esbuild/android-arm64" "0.18.17"
-    "@esbuild/android-x64" "0.18.17"
-    "@esbuild/darwin-arm64" "0.18.17"
-    "@esbuild/darwin-x64" "0.18.17"
-    "@esbuild/freebsd-arm64" "0.18.17"
-    "@esbuild/freebsd-x64" "0.18.17"
-    "@esbuild/linux-arm" "0.18.17"
-    "@esbuild/linux-arm64" "0.18.17"
-    "@esbuild/linux-ia32" "0.18.17"
-    "@esbuild/linux-loong64" "0.18.17"
-    "@esbuild/linux-mips64el" "0.18.17"
-    "@esbuild/linux-ppc64" "0.18.17"
-    "@esbuild/linux-riscv64" "0.18.17"
-    "@esbuild/linux-s390x" "0.18.17"
-    "@esbuild/linux-x64" "0.18.17"
-    "@esbuild/netbsd-x64" "0.18.17"
-    "@esbuild/openbsd-x64" "0.18.17"
-    "@esbuild/sunos-x64" "0.18.17"
-    "@esbuild/win32-arm64" "0.18.17"
-    "@esbuild/win32-ia32" "0.18.17"
-    "@esbuild/win32-x64" "0.18.17"
+"esbuild-wasm@latest":
+  "integrity" "sha512-ak2XIIJKby+Uo3Iqh8wtw4pn2uZcnfLgtcmBHIgkShpun5ZIJsFigWXp7uLt7gXk3QAOCMmv0TSsIxD5qdn+Vw=="
+  "resolved" "https://registry.npmmirror.com/esbuild-wasm/-/esbuild-wasm-0.19.2.tgz"
+  "version" "0.19.2"
+
+"esbuild@npm:esbuild-wasm@latest":
+  "integrity" "sha512-ak2XIIJKby+Uo3Iqh8wtw4pn2uZcnfLgtcmBHIgkShpun5ZIJsFigWXp7uLt7gXk3QAOCMmv0TSsIxD5qdn+Vw=="
+  "resolved" "https://registry.npmmirror.com/esbuild-wasm/-/esbuild-wasm-0.19.2.tgz"
+  "version" "0.19.2"
 
 "escape-html@^1.0.3":
   "integrity" "sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow=="
