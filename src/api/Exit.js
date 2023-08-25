@@ -6,10 +6,10 @@ export const apis = axios.create({
   baseURL: "http://127.0.0.1:4523/m1/3023705-0-default/exit",
 });
 
-export function logout() {
+export function exit() {
     return apis({
       url: "/exit",
-      method: "POST",
+      method: "post",
     })
       .then((response) => {
         // 这里进行跳转逻辑
@@ -21,4 +21,4 @@ export function logout() {
         console.error("退出登录失败:", error);
         throw error;
       });
-  }
+  }3

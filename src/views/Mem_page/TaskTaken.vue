@@ -1,14 +1,14 @@
 <template>
     <div class="CenterBox">
       <div>
-        <div class="above">PN公司发布的任务</div>
+        <div class="above">PN公司发布的需求</div>
         <div class="whitecenter">
           <router-link to="./task"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
-          <div class="title">任务详情</div>
-          <div class="item" id="i1">任务名</div>
+          <div class="title">需求详情</div>
+          <div class="item" id="i1">需求名</div>
           <div class="inblue" id="ib1">疫苗研发</div>
-          <div class="item" id="i11">任务ID</div>
+          <div class="item" id="i11">需求ID</div>
           <div class="inblue" id="ib11">000000000</div>
           <div class="item" id="i2">类型</div>
           <div class="inblue" id="ib2">VCG</div>

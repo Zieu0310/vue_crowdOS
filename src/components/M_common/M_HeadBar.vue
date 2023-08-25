@@ -3,9 +3,31 @@
   // while (Tag_a.active == true) {
   //   Tag_a.active
   // }
+  import { exit } from '../../api/Exit';
 
   export default {
     methods: {
+      showLogoutConfirmation() {
+        // 使用 Element UI 的 MessageBox 组件来显示确认提示
+        this.$confirm("确定要退出登录吗？", "退出登录", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+          customClass: "logout-message-box", // 添加自定义样式类名
+          customTop: "20vh", // 自定义距离顶部的高度
+        })
+          .then(() => {
+            // 用户点击了"确定"按钮，执行退出登录操作
+            this.exit();
+          })
+          .catch(() => {
+            // 用户点击了"取消"按钮，不执行任何操作
+          });
+      },
+      exit() {
+        // 在这里处理退出登录逻辑
+        this.$router.push("/");
+      },
       active1() {
         this.Show1 = true;
         this.Show2 = false;
@@ -36,7 +58,7 @@
   <div>
     <div class="Header">
       <div class="to_quit">
-        <router-link to="../login"><div class="quit">退出</div></router-link>
+        <div class="quit" @click="showLogoutConfirmation">退出</div>
       </div>
         <div class="LeftEntry">
             <div class="box">
@@ -283,5 +305,8 @@
     top: 30%;
     width: 100%;
     height: 100%;
+  }
+  .logout-message-box {
+    top: 10vh; /* 设置弹出框距离顶部的高度 */
   }
 </style>
