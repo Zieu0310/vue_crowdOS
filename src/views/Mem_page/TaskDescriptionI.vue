@@ -18,11 +18,11 @@
           </div>
           <div class="item" id="i3">状态</div>
           <div class="inblue" id="ib3">未投标</div>
-          <div class="item" id="i4">固定价格（万）</div>
+          <div class="item" id="i4">预算（万）</div>
           <div class="inblue" id="ib4">50</div>
-          <router-link to="./bidsuccess">
+          <router-link to="./bid">
             <div class="yes">
-              <div class="yestext">参加</div>
+              <div class="yestext">投标</div>
             </div>
           </router-link>  
         </div>
@@ -132,7 +132,7 @@
     .item{
       position: absolute;
       left: 9.73%;
-      width: 8vw;
+      width: 6vw;
       height: 2.69vh;
       opacity: 1;
       font-size: 1.04vw;

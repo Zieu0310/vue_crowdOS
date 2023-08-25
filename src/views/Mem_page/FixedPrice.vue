@@ -2,13 +2,13 @@
     <div class="CenterBox">
       <div class="over"></div>
       <div class="add">
-        <div class="the_bid">你的报价是<input type="number" style="width: 5vw;height: 5vh;font-size: 4vh;">万</div>
+        <div class="the_bid">固定报价为<input type="number" style="width: 5vw;height: 5vh;font-size: 4vh;">万</div>
         <router-link to="./bidsuccess">
           <div class="yes" @click="tenderData">
             <div class="yestext">确认</div>
           </div>
         </router-link>
-        <router-link to="./taskdescription">
+        <router-link to="./taskdescriptionv">
           <div class="no">
             <div class="notext">取消</div>
           </div>

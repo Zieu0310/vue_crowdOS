@@ -100,7 +100,7 @@
                    :class="{ active: isActive }"
                    role="link"
                  >
-                   <p :class="{ active_: Show3 }" @click="active3()">我的需求</p>
+                   <p :class="{ active_: Show3 }" @click="active3()">我的合作</p>
                  </li></router-link
                >
              </div>

@@ -19,28 +19,41 @@ export default {
   name: 'login',
   data() {
     return {
-      account: '',
-      password: ''
-      }
+      account: "",
+      password: "",
+      params: {
+        account: "",
+        password: "",
+      },
+    };
   },
   methods: {
     handleLogin() {
-      login(this.account, this.password).then((res) => {
+      login(this.params).then((res) => {
         console.log(res);
+        if(res.data.success == true){
+          if(res.data.role == 0){
+            console.log(res);
+            this.$router.push("/a_home/achievementjudge");
+          }else if(res.data.role == 1){
+            console.log(res);
+            this.$router.push("/c_home/c_task");
+          }else{
+            console.log(res);
+            this.$router.push("/m_home/team");
+          }
+        }else{
+          alert("登陆失败！！请检查账号或密码");
+        }
         // 这里已经调好接口了
-        if(this.account === "SUDKXOdIDW" && this.password === "wWTtyUclak"){
-          this.$router.push("/m_home/team");
-        }
-        else if(this.account === "PQ3pgPaBPt" && this.password ==="XrSTPL8AL5"){
-          this.$router.push("/c_home/c_task");
-        }
-        else if(this.account === "wfffrMXUZP" && this.password ==="WfRxEm1DGO"){
-          this.$router.push("/a_home/achievementjudge");
-        }
-        else{
-          alert('账号或密码错误！')
-        }
+      }).catch((err) => {
+          console.log(err);
       });
+     },
+     beforeMount() {
+      this.params.account = this.account;
+      this.params.password = this.password;
+      this.handleLogin();
      },
     go_r() {
       this.$router.push("/register");

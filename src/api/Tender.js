@@ -1,5 +1,4 @@
 import axios from "../utils/http";
-import { request } from "./request";
 
 // 设置默认的请求地址
 export const apis = axios.create({

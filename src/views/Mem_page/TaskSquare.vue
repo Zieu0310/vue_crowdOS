@@ -1,7 +1,7 @@
 <template>
     <div class="CenterBox">
         <div class="whitelarge">
-          <router-link to="./taskdescription">
+          <router-link to="./taskdescriptioni">
             <div class="whs" id="whs1">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">PN公司</div>
@@ -15,7 +15,7 @@
               <div class="message">发来一条任务</div>
             </div>
           </router-link>
-          <router-link to="./taskdescription">
+          <router-link to="./taskdescriptionv">
             <div class="whs" id="whs3">
               <img src="../../assets/img/icon.png" class="icon">
               <div class="name">PN公司</div>

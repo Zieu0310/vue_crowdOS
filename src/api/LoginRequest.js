@@ -32,13 +32,10 @@ apis.interceptors.response.use((res) => {
  * @params password 密码
  * @return axios对象
  */
-export const login = (account, password) => {
+export const login = (data) => {
   return apis({
     method: "post",
     url: "/login",
-    data: {
-      account: account,
-      password: password,
-    },
+    data,
   });
 };

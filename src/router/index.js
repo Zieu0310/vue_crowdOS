@@ -158,6 +158,21 @@ const routes =[
         component: () => import("../views/Mem_page/TaskDescription.vue")
       },
       {
+        path: "taskdescriptioni",
+        name: "taskdescriptioni",
+        component: () => import("../views/Mem_page/TaskDescriptionI.vue")
+      },
+      {
+        path: "taskdescriptionv",
+        name: "taskdescriptionv",
+        component: () => import("../views/Mem_page/TaskDescriptionv.vue")
+      },
+      {
+        path: "fixedprice",
+        name: "fixedprice",
+        component: () => import("../views/Mem_page/FixedPrice.vue")
+      },
+      {
         path: "bid",
         name: "bid",
         component: () => import("../views/Mem_page/Bid.vue")

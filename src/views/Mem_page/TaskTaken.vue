@@ -11,7 +11,7 @@
           <div class="item" id="i11">任务ID</div>
           <div class="inblue" id="ib11">000000000</div>
           <div class="item" id="i2">类型</div>
-          <div class="inblue" id="ib2">生物科技</div>
+          <div class="inblue" id="ib2">VCG</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
               <div class="innertext">完成针对…………疾病的疫苗技术的研发</div>
