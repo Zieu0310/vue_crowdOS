@@ -2,23 +2,49 @@
   <div class="CenterBox">
     <div class="over"></div>
     <div class="add">
-      <div class="item" id="i0">领队</div>
-      <input type="text" placeholder="请输入领队ID" class="im" id="im1">
-      <div class="item" id="i1">团队名称</div>
-      <input type="text" placeholder="请输入团队名称" class="im" id="im2">
       <div class="item" id="i2">成员</div>
-      <input type="text" placeholder="请输入成员姓名" class="imt" id="imt1">
-      <input type="number" placeholder="请输入成员ID" class="imm" id="imm1">
-      <input type="text" placeholder="请输入成员姓名" class="imt" id="imt2">
-      <input type="number" placeholder="请输入成员ID" class="imm" id="imm2">
-      <input type="text" placeholder="请输入成员姓名" class="imt" id="imt3">
-      <input type="number" placeholder="请输入成员ID" class="imm" id="imm3">
-      <input type="text" placeholder="请输入成员姓名" class="imt" id="imt4">
-      <input type="number" placeholder="请输入成员ID" class="imm" id="imm4">
-      <input type="text" placeholder="请输入成员姓名" class="imt" id="imt5">
-      <input type="number" placeholder="请输入成员ID" class="imm" id="imm5">
-      <input type="text" placeholder="请输入成员姓名" class="imt" id="imt6">
-      <input type="number" placeholder="请输入成员ID" class="imm" id="imm6">
+      <el-input v-model="member1.name" placeholder="请输入姓名" class="inm1" />
+      <div class="my-4 flex items-center text-sm">
+        <el-radio-group v-model="member1.role" class="op" style="position:absolute;top:16%">
+          <el-radio label="0" size="small">普通成员</el-radio>
+          <el-radio label="1" size="small" @click="dis">队长</el-radio>
+        </el-radio-group>
+      </div>
+      <el-input v-model="member2.name" placeholder="请输入姓名" class="inm2" />
+      <div class="my-4 flex items-center text-sm">
+        <el-radio-group v-model="member2.role" class="op" style="position:absolute;top:27%">
+          <el-radio label="0" size="small">普通成员</el-radio>
+          <el-radio label="1" size="small">队长</el-radio>
+        </el-radio-group>
+      </div>
+      <el-input v-model="member3.name" placeholder="请输入姓名" class="inm3" />
+      <div class="my-4 flex items-center text-sm">
+        <el-radio-group v-model="member3.role" class="op" style="position:absolute;top:38%">
+          <el-radio label="0" size="small">普通成员</el-radio>
+          <el-radio label="1" size="small">队长</el-radio>
+        </el-radio-group>
+      </div>
+      <el-input v-model="member4.name" placeholder="请输入姓名" class="inm4" />
+      <div class="my-4 flex items-center text-sm">
+        <el-radio-group v-model="member4.role" class="op" style="position:absolute;top:49%">
+          <el-radio label="0" size="small">普通成员</el-radio>
+          <el-radio label="1" size="small">队长</el-radio>
+        </el-radio-group>
+      </div>
+      <el-input v-model="member5.name" placeholder="请输入姓名" class="inm5" />
+      <div class="my-4 flex items-center text-sm">
+        <el-radio-group v-model="member5.role" class="op" style="position:absolute;top:60%">
+          <el-radio label="0" size="small">普通成员</el-radio>
+          <el-radio label="1" size="small">队长</el-radio>
+        </el-radio-group>
+      </div>
+      <el-input v-model="member6.name" placeholder="请输入姓名" class="inm6" />
+      <div class="my-4 flex items-center text-sm">
+        <el-radio-group v-model="member6.role" class="op" style="position:absolute;top:71%">
+          <el-radio label="0" size="small">普通成员</el-radio>
+          <el-radio label="1" size="small">队长</el-radio>
+        </el-radio-group>
+      </div>
       <div class="yes">
         <div class="yestext">创建</div>
       </div>
@@ -31,15 +57,46 @@
 </template>
 
 <script>
+  import { useDisabled } from 'element-plus';
   import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
 
   export default {
     data() {
-      return {};
+      return {
+        member1:{
+          name: "",
+          role: "",
+        },
+        member2:{
+          name: "",
+          role: "",
+        },
+        member3:{
+          name: "",
+          role: "",
+        },
+        member4:{
+          name: "",
+          role: "",
+        },
+        member5:{
+          name: "",
+          role: "",
+        },
+        member6:{
+          name: "",
+          role: "",
+        },
+      };
     },
     components: {
       M_HeadBar,
     },
+    methods:{
+      dis(){
+        document.getElementsByClassName('op').style = useDisabled;
+      }
+    }
   };
 </script>
 
@@ -101,82 +158,46 @@
     text-align: left;
     vertical-align: top;
   }
-  .im{
+  .inm1{
     position: absolute;
-    right: 5%;
+    left: 15%;
+    top: 10%;
+    width: 30vw;
   }
-  #im1{
+  .inm2{
     position: absolute;
-    top: 9.78%;
-    width: 31vw;
+    left: 15%;
+    top: 21%;
+    width: 30vw;
   }
-  #im2{
+  .inm3{
     position: absolute;
-    top: 16.69%;
-    width: 29vw;
+    left: 15%;
+    top: 32%;
+    width: 30vw;
   }
-  .imm{
+  .inm4{
     position: absolute;
-    right: 5%;
-    width: 15vw;
-  }
-  .imt{
-    position: absolute;
-    left: 10%;
-    width: 15vw;
-  }
-  #imm1{
-    position: absolute;
-    top: 27%;
-  }
-  #imm2{
-    position: absolute;
-    top: 31%;
-  }
-  #imm3{
-    position: absolute;
-    top: 35%;
-  }
-  #imm4{
-    position: absolute;
-    top: 39%;
-  }
-  #imm5{
-    position: absolute;
+    left: 15%;
     top: 43%;
+    width: 30vw;
   }
-  #imm6{
+  .inm5{
     position: absolute;
-    top: 47%;
+    left: 15%;
+    top: 54%;
+    width: 30vw;
   }
-  #imt1{
+  .inm6{
     position: absolute;
-    top: 27%;
-  }
-  #imt2{
-    position: absolute;
-    top: 31%;
-  }
-  #imt3{
-    position: absolute;
-    top: 35%;
-  }
-  #imt4{
-    position: absolute;
-    top: 39%;
-  }
-  #imt5{
-    position: absolute;
-    top: 43%;
-  }
-  #imt6{
-    position: absolute;
-    top: 47%;
+    left: 15%;
+    top: 65%;
+    width: 30vw;
   }
   .item{
     position: absolute;
-    position: absolute;
     left: 9.73%;
+    top: 5%;
     width: 4.17vw;
     height: 2.69vh;
     opacity: 1;
@@ -187,22 +208,6 @@
     color: rgba(0, 0, 0, 1);
     text-align: left;
     vertical-align: top;
-  }
-  #i0{
-    position: absolute;
-    top: 9.78%;
-  }
-  #i1{
-  position: absolute;
-  top: 16.69%;
-  }
-  #i2{
-    position: absolute;
-    top: 23.6%;
-  }
-  #i3{
-    position: absolute;
-    top: 30.51%;
   }
   .yes{
   position: absolute;
@@ -253,5 +258,9 @@
   color: rgba(255, 255, 255, 1);
   text-align: center;
   vertical-align: top;
+}
+.op{
+  position: absolute;
+  left: 15%;
 }
 </style>
