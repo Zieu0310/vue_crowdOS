@@ -45,7 +45,7 @@
           <el-radio label="1" size="small">队长</el-radio>
         </el-radio-group>
       </div>
-      <div class="yes">
+      <div class="yes" @click="handleSetup">
         <div class="yestext">创建</div>
       </div>
       <div class="no">
@@ -58,6 +58,7 @@
 
 <script>
   import { useDisabled } from 'element-plus';
+  import { create_team } from '../../api/CreateTeam';
   import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
 
   export default {
@@ -95,6 +96,12 @@
     methods:{
       dis(){
         document.getElementsByClassName('op').style = useDisabled;
+      },
+      handleSetup(){
+        create_team(this.member1.name,this.member1.role,this.member2.name,this.member2.role,this.member3.name,this.member3.role,this.member4.name,this.member4.role,this.member5.name,this.member5.role,this.member6.name,this.member6.role).then((res) => {
+          console.log(res);
+          this.$router.push("/m_home/team");
+        })
       }
     }
   };

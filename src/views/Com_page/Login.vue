@@ -35,12 +35,12 @@ export default {
           if(res.data.role == 0){
             console.log(res);
             this.$router.push("/a_home/achievementjudge");
-          }else if(res.data.role == 1){
-            console.log(res);
-            this.$router.push("/c_home/c_task");
-          }else{
+          }else if(res.data.role == 2){
             console.log(res);
             this.$router.push("/m_home/team");
+          }else{
+            console.log(res);
+            this.$router.push("/c_home/c_task");
           }
         }else{
           alert("登陆失败！！请检查账号或密码");

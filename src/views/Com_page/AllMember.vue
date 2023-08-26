@@ -22,6 +22,29 @@
     </div>    
 </template>
 
+<script>
+  import { getTeamAchievement } from '../../api/TeamAchievementGet';
+  export default{
+    data(){
+      return{}
+    },
+    methods: {
+      getTeamAchievement(){
+        let data = {
+          "id": 0,
+          "title": "string",
+          "type": 0,
+          "team_id": 0,
+          "file": "string"
+        }
+        getTeamAchievement(data).then(res => {
+
+        }).catch(error => {})
+      }
+    }
+  }
+</script>
+
 
 <style scoped>
   .CenterBox {

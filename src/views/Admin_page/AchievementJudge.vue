@@ -35,6 +35,7 @@
 <script>
 
   import A_HeadBar from '../../components/A_common/A_HeadBar.vue'; 
+  import { auachig } from '../../api/AuditAchievementGet';
   export default {
     data() {
       return {};
@@ -42,6 +43,18 @@
     components: {
       A_HeadBar,
     },
+    methods: {
+      handleGetAchievement(){
+        let data = {
+          "id": 0,
+          "title": "string",
+          "type": 0,
+          "remark": 0,
+          "team_id": 0,
+          "file": "string"
+        }
+      }
+    }
   };
 </script>
   

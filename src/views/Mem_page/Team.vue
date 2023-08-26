@@ -8,18 +8,6 @@
             <img src="../../assets/img/group.png" class="group">
             <div class="textblack">XX教授团队</div>
           </div>
-        </router-link>
-        <router-link to="./teaminformation">
-          <div class="whs" id="whs2">
-            <img src="../../assets/img/group.png" class="group">
-            <div class="textblack">XX教授团队</div>
-          </div>
-        </router-link> 
-        <router-link to="./teaminformation">
-          <div class="whs" id="whs3">
-            <img src="../../assets/img/group.png" class="group">
-            <div class="textblack">XX教授团队</div>
-          </div>
         </router-link> 
         <router-link to="teamsetup"><img src="../../assets/img/add.png" alt="添加成果" class="round"></router-link>
       </div>
