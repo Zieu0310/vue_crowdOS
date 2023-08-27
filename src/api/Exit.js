@@ -15,4 +15,4 @@ export function exit() {
         console.error("退出登录失败:", error);
         throw error;
       });
-  }3
+  }

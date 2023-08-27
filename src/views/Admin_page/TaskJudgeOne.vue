@@ -67,6 +67,7 @@
           auditEvents(this.id,this.remark).then((res) => {
             if(this.remark != 0){
               console.log(this.remark);
+              this.$router.push("/a_home/taskjudge")
             }
             else{
               alert('请审核！');

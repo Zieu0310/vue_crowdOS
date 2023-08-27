@@ -1,10 +1,12 @@
-import axios from "../utils/http";
+import request from "../utils/http";
+import axios from "axios";
 
 // 设置默认的请求地址
 export const apis = axios.create({
   timeout: 20000,
-  baseURL: "http://47.113.218.236:6667",
+  baseURL: "http://127.0.0.1:4523/m1/3023705-0-default",
 });
+
 
 // 配置token
 apis.interceptors.request.use((config) => {

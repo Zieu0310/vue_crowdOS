@@ -15,7 +15,7 @@ axios.defaults.baseURL = 'http://47.113.218.236:6667/api'
 
 app.use(ElementPlus);
 
-new Vue({
-    render: h => h(App), 
-}).$mount('#app')
+// new Vue({
+//     render: h => h(App), 
+// }).$mount('#app')
 

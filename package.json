@@ -2,6 +2,8 @@
   "name": "vue-crowdos",
   "version": "0.0.0",
   "private": true,
+  "main": "index.html",
+  "chromium-args": "--args --explicitly-allowed-ports=101,102,103",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "lint": "vue-cli-service lint",
