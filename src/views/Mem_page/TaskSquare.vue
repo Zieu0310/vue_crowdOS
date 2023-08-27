@@ -48,13 +48,36 @@
 </template>
 
 <script>
-  
+  import { allevents_get } from '../../api/AllEventsGet';
   export default {
     data() {
       return {};
     },
     components: {
       
+    },
+    methods: {
+      handleGetAllEvents(){
+        let data = {
+          "events": [
+            {
+              "company_id": 0,
+              "event_id": 0,
+              "event_name": "string",
+              "description": "string",
+              "state": 0,
+              "type": 0,
+              "budget": 0,
+              "reservePrice": 0,
+              "start_time": 0,
+              "end_time": 0
+            }
+          ]
+        }
+        allevents_get().then(res => {
+
+        }).catch(error => {})
+      }
     },
   };
 </script>

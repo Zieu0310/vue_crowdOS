@@ -26,6 +26,7 @@
 </template>
   
   <script>
+    import { events_get } from '../../api/DeliveredEventsGet';
     export default {
       data() {
         return {};
@@ -33,6 +34,32 @@
       components: {
         
       },
+      methods: {
+        handleEventsGet(){
+          let data = {
+            "events": [
+              {
+                "company_id": 0,
+                "team_id": 0,
+                "event_id": 0,
+                "event_name": "string",
+                "description": "string",
+                "price": 0,
+                "remark": true,
+                "state": 0,
+                "type": 0,
+                "budget": 0,
+                "reservePrice": 0,
+                "start_time": 0,
+                "end_time": 0
+              }
+            ]
+          }
+          events_get().then(res => {
+
+          }).catch(error => {})
+        }
+      }
     };
   </script>
   

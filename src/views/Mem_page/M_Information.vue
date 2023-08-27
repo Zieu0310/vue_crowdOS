@@ -26,9 +26,25 @@
     },
     methods: {
       getResearchInformation(){
-        m_information(this.account,this.id,this.name).then((res)=>{
+        let data = {
+          "account": "string",
+          "team_id": 0,
+          "id": 0,
+          "name": "string",
+          "achievements": [
+            {
+              "id": 0,
+              "title": "string",
+              "type": 0,
+              "remark": 0,
+              "team_id": 0,
+              "file": "string"
+            }
+          ]
+        }
+        m_information().then((res)=>{
           console.log(res);
-        })
+        }).catch(error => {})
       }
     },
     components: {

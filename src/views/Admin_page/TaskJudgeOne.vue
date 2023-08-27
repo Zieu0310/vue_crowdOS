@@ -33,6 +33,7 @@
   <script>
 
     import { auditEvents } from '../../api/AuditEvents';
+    import { auevg } from '../../api/AuditEventGet';
     export default {
       name: 'auditEvent',
       data() {
@@ -45,6 +46,23 @@
         
       },
       methods: {
+        handleAuditEventsGet(){
+          let data = {
+            "company_id": 0,
+            "event_id": 0,
+            "event_name": "string",
+            "description": "string",
+            "price": 0,
+            "remark": 0,
+            "state": 0,
+            "type": 0,
+            "budget": 0,
+            "reservePrice": 0,
+            "start_time": 0,
+            "end_time": 0
+          }
+          auevg();
+        },
         handleAuditEvents(){
           auditEvents(this.id,this.remark).then((res) => {
             if(this.remark != 0){

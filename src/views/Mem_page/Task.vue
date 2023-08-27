@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  
+  import { successfullyevents_get } from '../../api/SuccessfullyEventsGet';
   export default {
     data() {
       return {};
@@ -38,6 +38,28 @@
     components: {
       
     },
+    methods: {
+      handleSuccessfullyEventsGet(){
+        let data = {
+          "events": [
+            {
+              "company_id": 0,
+              "event_id": 0,
+              "event_name": "string",
+              "description": "string",
+              "type": 0,
+              "start_time": 0,
+              "end_time": 0,
+              "bid": 0,
+              "salary": 0
+            }
+          ]
+        }
+        successfullyevents_get().then(res => {
+
+        }).catch(error => {})
+      }
+    }
   };
 </script>
 

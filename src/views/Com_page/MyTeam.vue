@@ -42,7 +42,8 @@
 </template>
 
 <script>
-  
+
+  import { myteam_get } from '../../api/MyteamGet';  
   export default {
     data() {
       return {};
@@ -50,6 +51,22 @@
     components: {
       
     },
+    methods: {
+      handGetTeam(){
+        let data = {
+          "teams": [
+            {
+                "team_id": 0,
+                "team_name": "string",
+                "event_id": 0
+            }
+          ]
+        }
+        myteam_get().then(res => {
+
+        }).catch(error => {})
+      }
+    }
   };
 </script>
 

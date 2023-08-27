@@ -1,8 +1,8 @@
 import { apis } from "./LoginRequest";
 
-export const m_information = () => {
+export const allevents_get = () => {
     return apis({
       method: "get",
-      url: "/research/getInformation",
+      url: "/research/getEvent",
     });
   };
