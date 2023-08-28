@@ -49,12 +49,26 @@
 
 <script>
   import { allevents_get } from '../../api/AllEventsGet';
+  import axios from 'axios';
   export default {
     data() {
-      return {};
+      return {
+        events: [
+          {
+            event_name: "",
+          }
+        ],
+      };
     },
     components: {
       
+    },
+    created(){
+      axios.get("http://127.0.0.1:4523/m1/3023705-0-default/research/getEvent").then(res => {
+        console.log(res);
+      }).catch(error =>{
+        console.log(error);
+      })
     },
     methods: {
       handleGetAllEvents(){

@@ -4,37 +4,31 @@
           <router-link to="./allmember">
             <div class="whs" id="whs1">
               <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
+              <div class="name">{{ teams0.team_name }}</div>
             </div>
           </router-link>
           <router-link to="./allmember">
             <div class="whs" id="whs2">
               <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
+              <div class="name">{{ teams1.team_name }}</div>
             </div>
           </router-link>
           <router-link to="./allmember">
             <div class="whs" id="whs3">
               <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
+              <div class="name">{{ teams2.team_name }}</div>
             </div>
           </router-link>
           <router-link to="./allmember">
             <div class="whs" id="whs4">
               <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
+              <div class="name">{{ teams3.team_name }}</div>
           </div>
           </router-link>
           <router-link to="./allmember">
             <div class="whs" id="whs5">
               <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
-            </div>
-          </router-link>
-          <router-link to="./allmember">
-            <div class="whs" id="whs6">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">XX教授团队</div>
+              <div class="name">{{ teams4.team_name }}</div>
             </div>
           </router-link>                    
         </div>
@@ -42,14 +36,62 @@
 </template>
 
 <script>
-
+  import axios from 'axios';
   import { myteam_get } from '../../api/MyteamGet';  
   export default {
     data() {
-      return {};
+      return {
+        teams0: [
+            {
+              team_id: 0,
+              team_name: "string",
+              event_id: 0
+            }
+        ],
+        teams1: [
+            {
+              team_id: 0,
+              team_name: "string",
+              event_id: 0
+            }
+        ],
+        teams2: [
+            {
+              team_id: 0,
+              team_name: "string",
+              event_id: 0
+            }
+        ],
+        teams3: [
+            {
+              team_id: 0,
+              team_name: "string",
+              event_id: 0
+            }
+        ],
+        teams4: [
+            {
+              team_id: 0,
+              team_name: "string",
+              event_id: 0
+            }
+        ]
+      };
     },
     components: {
       
+    },
+    created(){
+      axios.get("http://127.0.0.1:4523/m1/3023705-0-default/companies/getTeamInformation").then(res => {
+        console.log(res);
+        this.teams0.team_name = res.data.data.teams[0].team_name;
+        this.teams1.team_name = res.data.data.teams[1].team_name;
+        this.teams2.team_name = res.data.data.teams[2].team_name;
+        this.teams3.team_name = res.data.data.teams[3].team_name;
+        this.teams4.team_name = res.data.data.teams[4].team_name;
+      }).catch(error =>{
+        console.log(error);
+      })
     },
     methods: {
       handGetTeam(){
@@ -122,10 +164,6 @@
     position: absolute;
     top: 39.99%;
   }
-  #whs6{
-    position: absolute;
-    top: 49.98765%;
-  }
   .icon{
     position: absolute;
     left: 5.65%;
@@ -137,7 +175,7 @@
     position: absolute;
     left: 10%;
     top: 35%;
-    width: 10vw;
+    width: 15vw;
     height: 2.3vh;
     opacity: 1;
     font-size: 1.7vw;

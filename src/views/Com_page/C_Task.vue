@@ -21,13 +21,22 @@
 </template>
 
 <script>
-  
+  import axios from 'axios';
   export default {
     data() {
-      return {};
+      return {
+        
+      };
     },
     components: {
       
+    },
+    created(){
+      axios.get("http://127.0.0.1:4523/m1/3023705-0-default/companies/getEventDetails").then(res => {
+        console.log(res);
+      }).catch(error =>{
+        console.log(error);
+      })
     },
   };
 </script>

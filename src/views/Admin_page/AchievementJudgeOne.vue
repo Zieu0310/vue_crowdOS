@@ -7,18 +7,18 @@
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">已申报成果详情</div>
           <div class="item" id="i1">成果</div>
-          <div class="inblue" id="ib1">XX疫苗</div>
+          <div class="inblue" id="ib1">{{ title }}</div>
           <div class="item" id="i11">成果ID</div>
-          <div class="inblue" id="ib11">0</div>
+          <div class="inblue" id="ib11">{{ achievement_id }}</div>
           <div class="item" id="i2">类型</div>
-          <div class="inblue" id="ib2">专利</div>
+          <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i21">科研队</div>
           <div class="inblue" id="ib21">XX教授团队</div>
           <div class="item" id="i22">科研队ID</div>
-          <div class="inblue" id="ib22">000000000</div>
+          <div class="inblue" id="ib22">{{ team_id }}</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
-              <div class="innertext">具有…………效果</div>
+              <div class="innertext">{{ file }}</div>
           </div>
           <el-radio-group v-model="remark" class="yon">
             <el-radio :label="2">通过</el-radio>
@@ -35,15 +35,42 @@
   <script>
     import { auachig } from '../../api/AuditAchievementGet';
     import { auditAchievement } from '../../api/AuditAchievement';
+    import axios from 'axios';
     export default {
       data() {
         return {
           achievement_id: 0,
+          title: "",
+          type: 0,
           remark: 0,
+          team_id: 0,
+          file: "",
         };
       },
       components: {
         
+      },
+      created(){
+        axios.get("http://127.0.0.1:4523/m1/3023705-0-default/adminstrators/getAchievementInformation",{
+          params:{
+            team_id: 0,
+          }
+        }).then(res => {
+          console.log(res);
+          this.achievement_id = res.data.data.id;
+          this.team_id = res.data.data.team_id;
+          this.title = res.data.data.title;
+          this.file = res.data.data.file;
+          if(res.data.data.type == 0){
+            this.type = "论文";
+          }else if(res.data.data.type == 1){
+            this.type = "专利";
+          }else{
+            this.type = "项目";
+          }
+        }).catch(error =>{
+          console.log(error);
+        })
       },
       methods: {
         handleAuditAchievementGet() {

@@ -7,17 +7,17 @@
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">已申报需求详情</div>
           <div class="item" id="i1">需求名</div>
-          <div class="inblue" id="ib1">疫苗研发</div>
+          <div class="inblue" id="ib1">{{ event_name }}</div>
           <div class="item" id="i11">需求ID</div>
-          <div class="inblue" id="ib11">0</div>
+          <div class="inblue" id="ib11">{{ event_id }}</div>
           <div class="item" id="i2">拍卖类型</div>
-          <div class="inblue" id="ib2">VCG</div>
+          <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
-              <div class="innertext">完成针对…………疾病的疫苗技术的研发</div>
+              <div class="innertext">{{ description }}</div>
           </div>
           <div class="item" id="i4">报价（万）</div>
-          <div class="inblue" id="ib4">50</div>
+          <div class="inblue" id="ib4">{{ reservePrice }}</div>
           <el-radio-group v-model="remark" class="yon">
             <el-radio :label="2">通过</el-radio>
             <el-radio :label="1">不通过</el-radio>
@@ -34,16 +34,41 @@
 
     import { auditEvents } from '../../api/AuditEvents';
     import { auevg } from '../../api/AuditEventGet';
+    import axios from 'axios';
     export default {
       name: 'auditEvent',
       data() {
         return {
-          id: 0,
+          company_id: 0,
+          event_id: 0,
+          event_name: "",
+          description: "",
+          type: 0,
+          reservePrice: 0,
           remark: 0,
         };
       },
       components: {
         
+      },
+      created(){
+        axios.get("http://127.0.0.1:4523/m1/3023705-0-default/adminstrators/getEventInformation").then(res => {
+          console.log(res);
+          this.company_id = res.data.data[0].company_id;
+          this.event_id = res.data.data[0].event_id;
+          this.event_name = res.data.data[0].event_name;
+          this.description = res.data.data[0].description;
+          this.reservePrice = res.data.data[0].reservePrice;
+          if(res.data.data.type == 0){
+            this.type = "IOT&nbsp;J";
+          }else if(res.data.data.type == 1){
+            this.type = "VCG";
+          }else{
+            this.type = "固定价格交易";
+          }
+        }).catch(error =>{
+          console.log(error);
+        })
       },
       methods: {
         handleAuditEventsGet(){

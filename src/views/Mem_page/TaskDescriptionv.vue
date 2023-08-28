@@ -18,8 +18,6 @@
           </div>
           <div class="item" id="i3">状态</div>
           <div class="inblue" id="ib3">未投标</div>
-          <div class="item" id="i4">预算（万）</div>
-          <div class="inblue" id="ib4">50</div>
           <router-link to="./fixedprice">
             <div class="yes">
               <div class="yestext">投标</div>

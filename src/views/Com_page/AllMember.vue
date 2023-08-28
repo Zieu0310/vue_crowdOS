@@ -13,7 +13,7 @@
             <img src="../../assets/img/blue.png" class="blue_" id="b2">
             <div class="textblue_" id="tb2">成果</div>
             <el-scrollbar class="achi">
-              <router-link to="./teamachievement"><div class="scrollbar-demo-item">平台开发</div></router-link>
+              <router-link to="./teamachievement"><div class="scrollbar-demo-item">{{ title }}</div></router-link>
               <router-link to="./teamachievement"><div class="scrollbar-demo-item">平台开发</div></router-link>
               <router-link to="./teamachievement"><div class="scrollbar-demo-item">平台开发</div></router-link>
               <router-link to="./teamachievement"><div class="scrollbar-demo-item">平台开发</div></router-link>
@@ -27,11 +27,18 @@
   import axios from 'axios';
   export default{
     data(){
-      return{}
+      return{
+        title: ""
+      }
     },
     created(){
-      axios.get("http://127.0.0.1:4523/m1/3023705-0-default/companies/getTeamAchievements").then(res => {
+      axios.get("http://127.0.0.1:4523/m1/3023705-0-default/companies/getTeamAchievements",{
+        params:{
+          team_id: 0,
+        }
+      }).then(res => {
         console.log(res);
+        this.title = res.data.data.title;
       }).catch(error =>{
         console.log(error);
       })
