@@ -7,16 +7,16 @@
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">成果详情</div>
           <div class="item" id="i1">成果</div>
-          <div class="inblue" id="ib1">平台开发</div>
+          <div class="inblue" id="ib1">{{ title }}</div>
           <div class="item" id="i2">类型</div>
-          <div class="inblue" id="ib2">专利</div>
+          <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i21">科研队</div>
           <div class="inblue" id="ib21">XX教授团队</div>
           <div class="item" id="i22">科研队ID</div>
-          <div class="inblue" id="ib22">0</div>
+          <div class="inblue" id="ib22">{{ team_id }}</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
-              <div class="innertext">可用于……与……交流互助</div>
+              <div class="innertext">{{ file }}</div>
           </div>
         </div>
       </div>
@@ -24,12 +24,39 @@
 </template>
   
   <script>
+    import axios from 'axios';
     export default {
       data() {
-        return {};
+        return {
+          title: "",
+          type: 0,
+          team_id: 0,
+          file: ""
+        };
       },
       components: {
         
+      },
+      created(){
+        axios.get("http://127.0.0.1:4523/m1/3023705-0-default/companies/getTeamAchievements/1",{
+          params:{
+            team_id: 0,
+          }
+        }).then(res => {
+          console.log(res);
+          this.title = res.data.data.title;
+          this.team_id = res.data.data.team_id;
+          this.file = res.data.data.file;
+          if(res.data.data.type == 0){
+            this.type = "论文";
+          }else if(res.data.data.type == 1){
+            this.type = "专利";
+          }else{
+            this.type = "项目";
+          }
+        }).catch(error =>{
+          console.log(error);
+        })
       },
     };
   </script>

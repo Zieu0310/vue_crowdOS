@@ -32,7 +32,7 @@
       }
     },
     created(){
-      axios.get("http://127.0.0.1:4523/m1/3023705-0-default/companies/getTeamAchievements",{
+      axios.get("http://127.0.0.1:4523/m1/3023705-0-default/companies/getTeamAchievements/1",{
         params:{
           team_id: 0,
         }
