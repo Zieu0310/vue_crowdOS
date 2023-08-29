@@ -26,7 +26,7 @@
 </template>
   
   <script>
-    import { events_get } from '../../api/DeliveredEventsGet';
+    import { events_get } from '../../api/company';
     export default {
       data() {
         return {};

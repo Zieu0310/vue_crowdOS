@@ -17,7 +17,7 @@ export const postEvents = (company_id, event_name, description, arithmetic, pric
 
 export const getTeamAchievement = (team_id) => {
   return apis({
-    url: "/companies/getTeamAchievements",
+    url: "/companies/getTeamAchievements/{team_id}",
     methods: "GET",
     params: { team_id: team_id },
   });
