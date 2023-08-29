@@ -35,7 +35,7 @@
 <script>
 
   import A_HeadBar from '../../components/A_common/A_HeadBar.vue'; 
-  import { auachig } from '../../api/AuditAchievementGet';
+  import { auachig } from '../../api/admin';
   export default {
     data() {
       return {};

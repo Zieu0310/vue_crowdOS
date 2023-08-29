@@ -1,4 +1,4 @@
-import { apis } from "./LoginRequest";
+import { apis } from ".";
 
 export function exit() {
     return apis({

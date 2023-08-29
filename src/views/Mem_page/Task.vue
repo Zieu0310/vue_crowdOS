@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import { successfullyevents_get } from '../../api/SuccessfullyEventsGet';
+  import { successfullyevents_get } from '../../api/research';
   export default {
     data() {
       return {};

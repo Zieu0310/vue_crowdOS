@@ -26,3 +26,34 @@ apis.interceptors.response.use((res) => {
   }
   return res;
 });
+
+/**
+ * 登录接口
+ * @params account 账号
+ * @params password 密码
+ * @return axios对象
+ */
+export const login = (account, password) => {
+  return apis({
+    method: "post",
+    url: "/login",
+    data: {
+      account: account,
+      password: password,
+    },
+  });
+};
+
+export const register = (account, password, role, name, e_mail) => {
+  return apis({
+    method: "post",
+    url: "/register",
+    data: {
+      account: account,
+      password: password,
+      role: role,
+      name: name,
+      e_mail: e_mail,
+    },
+  });
+};

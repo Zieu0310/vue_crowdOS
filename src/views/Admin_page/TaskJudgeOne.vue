@@ -32,8 +32,8 @@
   
   <script>
 
-    import { auditEvents } from '../../api/AuditEvents';
-    import { auevg } from '../../api/AuditEventGet';
+    import { auditEvents } from '../../api/admin';
+    import { auevg } from '../../api/admin';
     import axios from 'axios';
     export default {
       name: 'auditEvent',

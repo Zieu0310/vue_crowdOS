@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import { m_information } from '../../api/M_InformationGet';
+  import { m_information } from '../../api/research';
   export default {
     name: 'm_information',
     data() {      

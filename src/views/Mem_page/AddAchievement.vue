@@ -26,7 +26,7 @@
   
   <script>
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
-    import { post_achievement } from '../../api/PostAchievement';
+    import { post_achievement } from '../../api/research';
     import { ref } from 'vue';
 
     const radio = ref(0)

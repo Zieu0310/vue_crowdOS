@@ -31,7 +31,7 @@
   
   <script>
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
-    import { postEvents } from '../../api/PostEvents';
+    import { postEvents } from '../../api/company';
   
     export default {
       name: 'postEvents',

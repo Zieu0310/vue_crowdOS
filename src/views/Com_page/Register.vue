@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import { register } from '../../api/RegisterRequest';
+  import { register } from '../../api/index';
   export default {
     name: 'register',
     data() {

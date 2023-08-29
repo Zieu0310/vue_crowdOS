@@ -33,8 +33,8 @@
 </template>
   
   <script>
-    import { auachig } from '../../api/AuditAchievementGet';
-    import { auditAchievement } from '../../api/AuditAchievement';
+    import { auachig } from '../../api/admin';
+    import { auditAchievement } from '../../api/admin';
     import axios from 'axios';
     export default {
       data() {

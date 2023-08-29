@@ -14,28 +14,24 @@
 </template>
 
 <script>
-import { login } from '../../api/LoginRequest'
+import { login } from '../../api/index'
 export default {
   name: 'login',
   data() {
     return {
       account: "",
       password: "",
-      params: {
-        account: "",
-        password: "",
-      },
     };
   },
   methods: {
     handleLogin() {
-      login(this.params).then((res) => {
+      login(this.account,this.password).then((res) => {
         console.log(res);
         if(res.data.success == true){
-          if(res.data.role == 0){
+          if(res.data.data.role == 0){
             console.log(res);
             this.$router.push("/a_home/achievementjudge");
-          }else if(res.data.role == 2){
+          }else if(res.data.data.role == 2){
             console.log(res);
             this.$router.push("/m_home/team");
           }else{
@@ -49,11 +45,6 @@ export default {
       }).catch((err) => {
           console.log(err);
       });
-     },
-     beforeMount() {
-      this.params.account = this.account;
-      this.params.password = this.password;
-      this.handleLogin();
      },
     go_r() {
       this.$router.push("/register");

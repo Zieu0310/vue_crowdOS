@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import { getTeamAchievement } from '../../api/TeamAchievementGet';
+  import { getTeamAchievement } from '../../api/company';
   import axios from 'axios';
   export default{
     data(){

@@ -58,7 +58,7 @@
 
 <script>
   import { useDisabled } from 'element-plus';
-  import { create_team } from '../../api/CreateTeam';
+  import { create_team } from '../../api/research';
   import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
 
   export default {

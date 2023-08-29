@@ -48,7 +48,7 @@
 </template>
 
 <script>
-  import { allevents_get } from '../../api/AllEventsGet';
+  import { allevents_get } from '../../api/research';
   import axios from 'axios';
   export default {
     data() {

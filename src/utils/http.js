@@ -1,6 +1,5 @@
 // 对请求进行默认配置
 import axios from "axios";
-import { Message } from "element-plus";
 
 const request = axios.create({
   timeout: 5000,
