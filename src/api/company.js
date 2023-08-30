@@ -23,10 +23,22 @@ export const getTeamAchievement = (team_id) => {
   });
 };
 
+export const getTeamDetalis = (team_id) => {
+  return apis({
+    url: "/companies/getTeamDetails/{team_id}",
+    methods: "get",
+    params: { team_id: team_id },
+  });
+};
+
 export const events_get = () => {
   return apis({
     method: "get",
     url: "/companies/getEventDetails",
+    headers: {
+      token: token,
+    },
+    data: {},
   });
 };
 
@@ -34,5 +46,6 @@ export const myteam_get = () => {
   return apis({
     method: "get",
     url: "/companies/getTeamInformation",
+    data: {},
   });
 };

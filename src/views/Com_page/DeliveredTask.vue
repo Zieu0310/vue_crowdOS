@@ -7,17 +7,19 @@
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">已发布需求详情</div>
           <div class="item" id="i1">需求名</div>
-          <div class="inblue" id="ib1">疫苗研发</div>
+          <div class="inblue" id="ib1">{{ name }}</div>
           <div class="item" id="i11">需求ID</div>
-          <div class="inblue" id="ib11">000000000</div>
+          <div class="inblue" id="ib11">{{ id }}</div>
           <div class="item" id="i2">类型</div>
-          <div class="inblue" id="ib2">生物科技</div>
+          <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
-              <div class="innertext">完成针对…………疾病的疫苗技术的研发</div>
+              <div class="innertext">{{ description }}</div>
           </div>
-          <div class="item" id="i4">报价（万）</div>
-          <div class="inblue" id="ib4">50</div>
+          <div class="item" id="i4" v-if="type==='固定价格交易'">固定价格（万）</div>
+          <div class="it4" v-if="type==='IOT&nbsp;J'">预算（万）</div>
+          <div class="inblue" id="ib4" v-if="type==='固定价格交易'">{{ reversePrice }}</div>
+          <div class="inbl4" v-if="type==='IOT&nbsp;J'">{{ budget }}</div>
           <div class="item" id="i5">状态</div>
           <div class="inblue" id="ib5">无人投标</div>
         </div>
@@ -26,40 +28,34 @@
 </template>
   
   <script>
-    import { events_get } from '../../api/company';
     export default {
       data() {
-        return {};
+        return {
+          id: "",
+          name: "",
+          type: "",
+          description: "",
+          reversePrice: "",
+          budget: ""
+        };
       },
       components: {
         
       },
-      methods: {
-        handleEventsGet(){
-          let data = {
-            "events": [
-              {
-                "company_id": 0,
-                "team_id": 0,
-                "event_id": 0,
-                "event_name": "string",
-                "description": "string",
-                "price": 0,
-                "remark": true,
-                "state": 0,
-                "type": 0,
-                "budget": 0,
-                "reservePrice": 0,
-                "start_time": 0,
-                "end_time": 0
-              }
-            ]
-          }
-          events_get().then(res => {
-
-          }).catch(error => {})
+      mounted() {
+        this.id = this.$route.query.id;
+        this.name = this.$route.query.name;
+        this.description = this.$route.query.description;
+        this.reversePrice = this.$route.query.reversePrice;
+        this.budget = this.$route.query.budget;
+        if(this.$route.query.type == 0){
+          this.type = "IOT&nbsp;J"
+        }else if(this.$route.query.type == 1){
+          this.type = "VCG"
+        }else{
+          this.type = "固定价格交易"
         }
-      }
+      },
     };
   </script>
   
@@ -143,7 +139,7 @@
     .item{
       position: absolute;
       left: 9.73%;
-      width: 6vw;
+      width: 8vw;
       height: 2.69vh;
       opacity: 1;
       font-size: 1.04vw;
@@ -286,5 +282,35 @@
   #ib5{
     position: absolute;
     top: 72.79%;
+  }
+  .inbl4{
+    position: absolute;
+    right: 12.29%;
+    top: 65.88%;
+    width: 13.54vw;
+    height: 2.5vh;
+    opacity: 1;
+    font-size: 1.04vw;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 2.44vh;
+    color: rgba(0, 43, 255, 1);
+    text-align: right;
+    vertical-align: top;
+  }
+  .it4{
+    position: absolute;
+    left: 9.73%;
+    top: 65.79%;
+    width: 8vw;
+    height: 2.69vh;
+    opacity: 1;
+    font-size: 1.04vw;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 2.68vh;
+    color: rgba(0, 0, 0, 1);
+    text-align: left;
+    vertical-align: top;
   }
   </style>

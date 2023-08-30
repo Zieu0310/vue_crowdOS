@@ -1,114 +1,118 @@
 <template>
     <div class="CenterBox">
         <div class="whitelarge">
-          <router-link to="./allmember">
-            <div class="whs" id="whs1">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">{{ teams0.team_name }}</div>
-            </div>
-          </router-link>
-          <router-link to="./allmember">
-            <div class="whs" id="whs2">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">{{ teams1.team_name }}</div>
-            </div>
-          </router-link>
-          <router-link to="./allmember">
-            <div class="whs" id="whs3">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">{{ teams2.team_name }}</div>
-            </div>
-          </router-link>
-          <router-link to="./allmember">
-            <div class="whs" id="whs4">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">{{ teams3.team_name }}</div>
+          <div class="whs" id="whs1" @click="TeamDetailsAppear0">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">{{ teams[0].team_name }}</div>
           </div>
-          </router-link>
-          <router-link to="./allmember">
-            <div class="whs" id="whs5">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">{{ teams4.team_name }}</div>
-            </div>
-          </router-link>                    
+          <div class="whs" id="whs2">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">{{ teams[1].team_name }}</div>
+          </div>
+          <div class="whs" id="whs3">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">{{ teams[2].team_name }}</div>
+          </div>
+          <div class="whs" id="whs4">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">{{ teams[3].team_name }}</div>
+          </div>
+          <div class="whs" id="whs5">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">{{ teams[4].team_name }}</div>
+          </div>                 
         </div>
     </div>
 </template>
 
 <script>
-  import axios from 'axios';
-  import { myteam_get } from '../../api/MyteamGet';  
+  import { myteam_get } from '../../api/company';  
   export default {
     data() {
       return {
-        teams0: [
+        teams: [
             {
               team_id: 0,
               team_name: "string",
               event_id: 0
-            }
+            },
+            {
+              team_id: 0,
+              team_name: "string",
+              event_id: 0
+            },
+            {
+              team_id: 0,
+              team_name: "string",
+              event_id: 0
+            },
+            {
+              team_id: 0,
+              team_name: "string",
+              event_id: 0
+            },
+            {
+              team_id: 0,
+              team_name: "string",
+              event_id: 0
+            },
         ],
-        teams1: [
-            {
-              team_id: 0,
-              team_name: "string",
-              event_id: 0
-            }
-        ],
-        teams2: [
-            {
-              team_id: 0,
-              team_name: "string",
-              event_id: 0
-            }
-        ],
-        teams3: [
-            {
-              team_id: 0,
-              team_name: "string",
-              event_id: 0
-            }
-        ],
-        teams4: [
-            {
-              team_id: 0,
-              team_name: "string",
-              event_id: 0
-            }
-        ]
       };
     },
     components: {
       
     },
-    created(){
-      axios.get("http://127.0.0.1:4523/m1/3023705-0-default/companies/getTeamInformation").then(res => {
+    methods: {
+      TeamDetailsAppear0(){
+        this.$router.push({
+          path: '/c_home/allmember',
+          query:{
+            team_id: this.teams[0].team_id,
+          }
+        })
+      },
+      TeamDetailsAppear1(){
+        this.$router.push({
+          path: '/c_home/allmember',
+          query:{
+            team_id: this.teams[1].team_id,
+          }
+        })
+      },
+      TeamDetailsAppear2(){
+        this.$router.push({
+          path: '/c_home/allmember',
+          query:{
+            team_id: this.teams[2].team_id,
+          }
+        })
+      },
+      TeamDetailsAppear3(){
+        this.$router.push({
+          path: '/c_home/allmember',
+          query:{
+            team_id: this.teams[3].team_id,
+          }
+        })
+      },
+      TeamDetailsAppear4(){
+        this.$router.push({
+          path: '/c_home/allmember',
+          query:{
+            team_id: this.teams[4].team_id,
+          }
+        })
+      },
+    },
+    mounted(){
+      myteam_get().then((res) => {
         console.log(res);
-        this.teams0.team_name = res.data.data.teams[0].team_name;
-        this.teams1.team_name = res.data.data.teams[1].team_name;
-        this.teams2.team_name = res.data.data.teams[2].team_name;
-        this.teams3.team_name = res.data.data.teams[3].team_name;
-        this.teams4.team_name = res.data.data.teams[4].team_name;
-      }).catch(error =>{
-        console.log(error);
+        for(let i = 0; i < res.data.data.teams.length; i++){
+          this.teams[i].team_name = res.data.data.teams[i].team_name;
+          this.teams[i].team_id = res.data.data.teams[i].team_id;
+        }
       })
     },
-    methods: {
-      handGetTeam(){
-        let data = {
-          "teams": [
-            {
-                "team_id": 0,
-                "team_name": "string",
-                "event_id": 0
-            }
-          ]
-        }
-        myteam_get().then(res => {
-
-        }).catch(error => {})
-      }
-    }
   };
 </script>
 

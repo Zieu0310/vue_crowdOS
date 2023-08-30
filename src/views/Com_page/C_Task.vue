@@ -4,16 +4,24 @@
         <img src="../../assets/img/blue.png" class="blue">
         <div class="textBlue" id="tb1">已发布</div>
         <div class="whs" id="whs1">
-          <div class="InBlack">研发</div>
-          <router-link to="./deliveredtask"><div class="InBlue">查看详情</div></router-link>
+          <div class="InBlack">{{ events[0].event_name }}</div>
+          <div class="InBlue" @click="EventDetailsAppear0">查看详情</div>
         </div>
         <div class="whs" id="whs2">
-          <div class="InBlack">研发</div>
-          <router-link to="./deliveredtask"><div class="InBlue">查看详情</div></router-link>
+          <div class="InBlack">{{ events[1].event_name }}</div>
+          <div class="InBlue" @click="EventDetailsAppear1">查看详情</div>
         </div>
         <div class="whs" id="whs3">
-          <div class="InBlack">研发</div>
-          <router-link to="./deliveredtask"><div class="InBlue">查看详情</div></router-link>
+          <div class="InBlack">{{ events[2].event_name }}</div>
+          <div class="InBlue" @click="EventDetailsAppear2">查看详情</div>
+        </div>
+        <div class="whs" id="whs4">
+          <div class="InBlack">{{ events[3].event_name }}</div>
+          <div class="InBlue" @click="EventDetailsAppear3">查看详情</div>
+        </div>
+        <div class="whs" id="whs5">
+          <div class="InBlack">{{ events[4].event_name }}</div>
+          <div class="InBlue" @click="EventDetailsAppear4">查看详情</div>
         </div>
         <router-link to="addtask"><img src="../../assets/img/add.png" alt="添加任务" class="round"></router-link>
       </div>
@@ -21,23 +29,103 @@
 </template>
 
 <script>
-  import axios from 'axios';
+  import { events_get } from '../../api/company';
   export default {
     data() {
       return {
-        
+        events: [
+          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: ""},
+          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: ""},
+          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: ""},
+          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: ""},
+          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: ""}
+        ],
       };
     },
     components: {
       
     },
-    created(){
-      axios.get("http://127.0.0.1:4523/m1/3023705-0-default/companies/getEventDetails").then(res => {
-        console.log(res);
-      }).catch(error =>{
-        console.log(error);
-      })
+    methods:{
+      EventDetailsAppear0(){
+        this.$router.push({
+          path: '/c_home/deliveredtask',
+          query:{
+            id: this.events[0].event_id,
+            name: this.events[0].event_name,
+            type: this.events[0].type,
+            description: this.events[0].description,
+            reversePrice: this.events[0].reversePrice,
+            budget: this.events[0].budget
+          }
+        })
+      },
+      EventDetailsAppear1(){
+        this.$router.push({
+          path: '/c_home/deliveredtask',
+          query:{
+            id: this.events[1].event_id,
+            name: this.events[1].event_name,
+            type: this.events[1].type,
+            description: this.events[1].description,
+            reversePrice: this.events[1].reversePrice,
+            budget: this.events[1].budget
+          }
+        })
+      },
+      EventDetailsAppear2(){
+        this.$router.push({
+          path: '/c_home/deliveredtask',
+          query:{
+            id: this.events[2].event_id,
+            name: this.events[2].event_name,
+            type: this.events[2].type,
+            description: this.events[2].description,
+            reversePrice: this.events[2].reversePrice,
+            budget: this.events[2].budget
+          }
+        })
+      },
+      EventDetailsAppear3(){
+        this.$router.push({
+          path: '/c_home/deliveredtask',
+          query:{
+            id: this.events[3].event_id,
+            name: this.events[3].event_name,
+            type: this.events[3].type,
+            description: this.events[3].description,
+            reversePrice: this.events[3].reversePrice,
+            budget: this.events[3].budget
+          }
+        })
+      },
+      EventDetailsAppear4(){
+        this.$router.push({
+          path: '/c_home/deliveredtask',
+          query:{
+            id: this.events[4].event_id,
+            name: this.events[4].event_name,
+            type: this.events[4].type,
+            description: this.events[4].description,
+            reversePrice: this.events[4].reversePrice,
+            budget: this.events[4].budget
+          }
+        })
+      },
     },
+    mounted(){
+      events_get().then((res) => {
+        console.log(res);
+        for(let i = 0 ; i < res.data.events.length; i++){
+          this.events[i].event_name = res.data.events[i].event_name;
+          this.events[i].event_id = res.data.events[i].event_id;
+          this.events[i].description = res.data.events[i].description;
+          this.events[i].type = res.data.events[i].type;
+          this.events[i].reversePrice = res.data.events[i].reversePrice;
+          this.events[i].budget = res.data.events[i].budget;
+        }
+        
+      })
+    }
   };
 </script>
 
@@ -88,6 +176,14 @@
   #whs3{
     position: absolute;
     top: 35.74%;
+  }
+  #whs4{
+    position: absolute;
+    top: 48.19%;
+  }
+  #whs5{
+    position: absolute;
+    top: 60.64%;
   }
   .blue{
     position: absolute;

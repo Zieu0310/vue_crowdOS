@@ -28,6 +28,7 @@ export default {
       login(this.account,this.password).then((res) => {
         console.log(res);
         if(res.data.success == true){
+          localStorage.setItem("token",res.data.data.token)
           if(res.data.data.role == 0){
             console.log(res);
             this.$router.push("/a_home/achievementjudge");

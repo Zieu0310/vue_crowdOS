@@ -11,7 +11,6 @@ const app = createApp(App);
 app.use(router);
 // 挂载实例
 app.mount("#app");
-axios.defaults.baseURL = 'http://47.113.218.236:6667/api'
 
 app.use(ElementPlus);
 

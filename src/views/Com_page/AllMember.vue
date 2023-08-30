@@ -23,25 +23,12 @@
 </template>
 
 <script>
-  import { getTeamAchievement } from '../../api/company';
-  import axios from 'axios';
+  import { getTeamAchievement,getTeamDetalis } from '../../api/company';
   export default{
     data(){
       return{
         title: ""
       }
-    },
-    created(){
-      axios.get("http://127.0.0.1:4523/m1/3023705-0-default/companies/getTeamAchievements/1",{
-        params:{
-          team_id: 0,
-        }
-      }).then(res => {
-        console.log(res);
-        this.title = res.data.data.title;
-      }).catch(error =>{
-        console.log(error);
-      })
     },
     methods: {
       getTeamAchievement(){
@@ -56,6 +43,11 @@
 
         }).catch(error => {})
       }
+    },
+    mounted(){
+      getTeamDetalis(this.$route.params.team_id).then((res) =>{
+        console.log(res);
+      })
     }
   }
 </script>
