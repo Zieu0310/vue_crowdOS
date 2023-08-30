@@ -34,11 +34,11 @@
     data() {
       return {
         events: [
-          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: ""},
-          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: ""},
-          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: ""},
-          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: ""},
-          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: ""}
+          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""},
+          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""},
+          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""},
+          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""},
+          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""}
         ],
       };
     },
@@ -55,7 +55,8 @@
             type: this.events[0].type,
             description: this.events[0].description,
             reversePrice: this.events[0].reversePrice,
-            budget: this.events[0].budget
+            budget: this.events[0].budget,
+            state: this.events[0].state
           }
         })
       },
@@ -68,7 +69,8 @@
             type: this.events[1].type,
             description: this.events[1].description,
             reversePrice: this.events[1].reversePrice,
-            budget: this.events[1].budget
+            budget: this.events[1].budget,
+            state: this.events[1].state
           }
         })
       },
@@ -81,7 +83,8 @@
             type: this.events[2].type,
             description: this.events[2].description,
             reversePrice: this.events[2].reversePrice,
-            budget: this.events[2].budget
+            budget: this.events[2].budget,
+            state: this.events[2].state
           }
         })
       },
@@ -94,7 +97,8 @@
             type: this.events[3].type,
             description: this.events[3].description,
             reversePrice: this.events[3].reversePrice,
-            budget: this.events[3].budget
+            budget: this.events[3].budget,
+            state: this.events[3].state
           }
         })
       },
@@ -107,7 +111,8 @@
             type: this.events[4].type,
             description: this.events[4].description,
             reversePrice: this.events[4].reversePrice,
-            budget: this.events[4].budget
+            budget: this.events[4].budget,
+            state: this.events[4].state
           }
         })
       },
@@ -115,13 +120,14 @@
     mounted(){
       events_get().then((res) => {
         console.log(res);
-        for(let i = 0 ; i < res.data.events.length; i++){
-          this.events[i].event_name = res.data.events[i].event_name;
-          this.events[i].event_id = res.data.events[i].event_id;
-          this.events[i].description = res.data.events[i].description;
-          this.events[i].type = res.data.events[i].type;
-          this.events[i].reversePrice = res.data.events[i].reversePrice;
-          this.events[i].budget = res.data.events[i].budget;
+        for(let i = 0 ; i < res.data.data.length; i++){
+          this.events[i].event_name = res.data.data[i].event_name;
+          this.events[i].event_id = res.data.data[i].event_id;
+          this.events[i].description = res.data.data[i].description;
+          this.events[i].type = res.data.data[i].type;
+          this.events[i].reversePrice = res.data.data[i].reversePrice;
+          this.events[i].budget = res.data.data[i].budget;
+          this.events[i].state = res.data.data[i].state;
         }
         
       })

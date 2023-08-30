@@ -36,10 +36,16 @@
         this.Show2 = true;
       },
     },
+    mounted(){
+      this.account = localStorage.getItem("account");
+      this.name = localStorage.getItem("name");
+    },
     data() {
       return {
         Show1: true,
         Show2: false,
+        account: "",
+        name: "",
       };
     },
   };
@@ -102,8 +108,8 @@
           <router-link to="./a_information"><img src="../../assets/img/h-icon-a.png" alt="" /></router-link>
         </div>
         <div class="PersonalData">
-          <div class="name">Jack</div>
-          <div class="number">400820886</div>
+          <div class="name">{{ name }}</div>
+          <div class="number">{{ account }}</div>
         </div>
       </div>
     </div>
@@ -178,7 +184,7 @@
     width: 65%;
   }
   .name {
-    font-size: 1.2vw;
+    font-size: 1vw;
     font-weight: 400;
     letter-spacing: 2px;
     line-height: 100%;

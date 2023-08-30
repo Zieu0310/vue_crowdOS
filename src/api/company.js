@@ -35,9 +35,6 @@ export const events_get = () => {
   return apis({
     method: "get",
     url: "/companies/getEventDetails",
-    headers: {
-      token: token,
-    },
     data: {},
   });
 };

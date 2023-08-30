@@ -27,6 +27,8 @@ export default {
     handleLogin() {
       login(this.account,this.password).then((res) => {
         console.log(res);
+        localStorage.setItem("account", this.account);
+        localStorage.setItem("name", res.data.data.name);
         if(res.data.success == true){
           localStorage.setItem("token",res.data.data.token)
           if(res.data.data.role == 0){

@@ -21,7 +21,7 @@
           <div class="inblue" id="ib4" v-if="type==='固定价格交易'">{{ reversePrice }}</div>
           <div class="inbl4" v-if="type==='IOT&nbsp;J'">{{ budget }}</div>
           <div class="item" id="i5">状态</div>
-          <div class="inblue" id="ib5">无人投标</div>
+          <div class="inblue" id="ib5">{{ state }}</div>
         </div>
       </div>
     </div>
@@ -36,7 +36,8 @@
           type: "",
           description: "",
           reversePrice: "",
-          budget: ""
+          budget: "",
+          state: ""
         };
       },
       components: {
@@ -54,6 +55,13 @@
           this.type = "VCG"
         }else{
           this.type = "固定价格交易"
+        }
+        if(this.$route.query.state == 0){
+          this.state = "未接取";
+        }else if(this.$route.query.state == 1){
+          this.state = "已竞标";
+        }else{
+          this.state = "被正式接取";
         }
       },
     };

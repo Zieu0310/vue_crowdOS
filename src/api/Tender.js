@@ -1,4 +1,4 @@
-import { apis } from "./LoginRequest";
+import { apis } from ".";
 
 export const tender = (event_id, bid) => {
     return apis({
