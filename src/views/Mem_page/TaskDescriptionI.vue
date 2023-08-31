@@ -18,15 +18,18 @@
           </div>
           <div class="item" id="i3">状态</div>
           <div class="inblue" id="ib3">{{ state }}</div>
-          <div class="item" id="i4" v-if="budget !== null">预算（万）</div>
-          <div class="it4" v-if="reversePrice !== null">固定价格（万）</div>
-          <div class="inblue" id="ib4">{{ budget }}</div>
-          <div class="inbl4">{{ reversePrice }}</div>
+          <div class="item" id="i4" v-if="type == 0">预算（万）</div>
+          <div class="it4" v-else>固定价格（万）</div>
+          <div class="inblue" id="ib4" v-if="type == 0">{{ budget }}</div>
+          <div class="inbl4" v-else>{{ reversePrice }}</div>
           <router-link to="./bid">
-            <div class="yes">
+            <div class="yes" v-if="type == 0 || type == 1">
               <div class="yestext">投标</div>
             </div>
-          </router-link>  
+          </router-link>
+          <div class="yes" v-if="type == 2">
+            <div class="yestext">参与</div>
+          </div>
         </div>
       </div>
     </div>
@@ -43,7 +46,8 @@
           description: "",
           state: "",
           budget: "",
-          reversePrice: ""
+          reversePrice: "",
+          type: ""
         };
       },
       methods: {
@@ -64,6 +68,7 @@
         this.description = this.$route.query.description;
         this.budget = this.$route.query.budget;
         this.reversePrice = this.$route.query.reversePrice;
+        this.type = this.$route.query.type;
         if(this.$route.query.state == 0){
           this.state = "未接取";
         }else if(this.$route.query.state == 1){

@@ -135,11 +135,8 @@
            </div>
         </div>
         <div class="right-entry">
-        <div class="profile">
-          <router-link to="../../m_home/m_information"><img src="../../assets/img/h-icon.png" alt="" /></router-link>
-        </div>
         <div class="PersonalData">
-          <router-link to="./default"><div class="name">{{ name }}</div></router-link>
+          <router-link to="../../m_home/m_information"><div class="name">{{ name }}</div></router-link>
           <div class="number">{{ account }}</div>
         </div>
       </div>
@@ -191,7 +188,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 30%;
+    width: 20%;
     height: 100%;
     display: flex;
     justify-content: center;

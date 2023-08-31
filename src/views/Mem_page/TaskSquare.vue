@@ -58,7 +58,8 @@
             description: "",
             state: "",
             budget: "",
-            reversePrice: ""
+            reversePrice: "",
+            type: ""
           },
           {
             event_name: "",
@@ -67,7 +68,8 @@
             description: "",
             state: "",
             budget: "",
-            reversePrice: ""
+            reversePrice: "",
+            type: ""
           },
           {
             event_name: "",
@@ -76,7 +78,8 @@
             description: "",
             state: "",
             budget: "",
-            reversePrice: ""
+            reversePrice: "",
+            type: ""
           },
           {
             event_name: "",
@@ -85,7 +88,8 @@
             description: "",
             state: "",
             budget: "",
-            reversePrice: ""
+            reversePrice: "",
+            type: ""
           },
         ],
       };
@@ -104,7 +108,8 @@
             description: this.events[0].description,
             reversePrice: this.events[0].reversePrice,
             budget: this.events[0].budget,
-            state: this.events[0].state
+            state: this.events[0].state,
+            type: this.events[0].type,
           }
         })
       }
@@ -120,6 +125,7 @@
           this.events[i].state = res.data.data[i].state;
           this.events[i].budget = res.data.data[i].budget;
           this.events[i].reversePrice = res.data.data[i].reversePrice;
+          this.events[i].type = res.data.data[i].type;
         }
       })
     }

@@ -4,11 +4,11 @@
           <img src="../../assets/img/blue.png" class="blue_">
           <div class="textblue_">个人信息</div>
           <div class="item" id="i1">账号:</div>
-          <input type="number" class="in" id="in1" v-model="account">
+          <el-input v-model="account" class="in1" />
           <div class="item" id="i2">ID:</div>
-          <input type="number" value="000000000" readonly="readonly" class="in" id="in2">
+          <el-input v-model="id" disabled class="in2" />
           <div class="item" id="i3">姓名:</div>
-          <input type="text" class="in" id="in3" v-model="name">
+          <el-input v-model="name" class="in3" />
         </div>
     </div>
 </template>
@@ -25,31 +25,19 @@
       };
     },
     methods: {
-      getResearchInformation(){
-        let data = {
-          "account": "string",
-          "team_id": 0,
-          "id": 0,
-          "name": "string",
-          "achievements": [
-            {
-              "id": 0,
-              "title": "string",
-              "type": 0,
-              "remark": 0,
-              "team_id": 0,
-              "file": "string"
-            }
-          ]
-        }
-        m_information().then((res)=>{
-          console.log(res);
-        }).catch(error => {})
-      }
+      
     },
     components: {
       
     },
+    mounted(){
+      m_information().then((res) => {
+        console.log(res);
+        this.account = res.data.data.account;
+        this.id = res.data.data.id;
+        this.name = res.data.data.name;
+      })
+    }
   };
 </script>
 
@@ -125,22 +113,25 @@
     position: absolute;
     top: 43%;
   }
-  .in{
+  .in1{
     position: absolute;
     left: 15%;
+    top: 12%;
     width: 40vw;
     height: 3vh;
   }
-  #in1{
+  .in2{
     position: absolute;
-    top: 12%;
-  }
-  #in2{
-    position: absolute;
+    left: 15%;
     top: 27%;
+    width: 40vw;
+    height: 3vh;
   }
-  #in3{
+  .in3{
     position: absolute;
+    left: 15%;
     top: 42%;
+    width: 40vw;
+    height: 3vh;
   }
 </style>
