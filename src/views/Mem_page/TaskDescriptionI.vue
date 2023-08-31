@@ -7,19 +7,21 @@
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">需求详情</div>
           <div class="item" id="i1">公司ID</div>
-          <div class="inblue" id="ib1">0</div>
+          <div class="inblue" id="ib1">{{ company_id }}</div>
           <div class="item" id="i10">需求ID</div>
-          <div class="inblue" id="ib10">0</div>
+          <div class="inblue" id="ib10">{{ event_id }}</div>
           <div class="item" id="i11">需求名</div>
-          <div class="inblue" id="ib11">疫苗研发</div>
+          <div class="inblue" id="ib11">{{ event_name }}</div>
           <div class="item" id="i12">具体描述</div>
           <div class="grey_rec">
-              <div class="innertext">完成针对…………疾病的疫苗技术的研发</div>
+              <div class="innertext">{{ description }}</div>
           </div>
           <div class="item" id="i3">状态</div>
-          <div class="inblue" id="ib3">未投标</div>
-          <div class="item" id="i4">预算（万）</div>
-          <div class="inblue" id="ib4">50</div>
+          <div class="inblue" id="ib3">{{ state }}</div>
+          <div class="item" id="i4" v-if="budget !== null">预算（万）</div>
+          <div class="it4" v-if="reversePrice !== null">固定价格（万）</div>
+          <div class="inblue" id="ib4">{{ budget }}</div>
+          <div class="inbl4">{{ reversePrice }}</div>
           <router-link to="./bid">
             <div class="yes">
               <div class="yestext">投标</div>
@@ -35,7 +37,13 @@
     export default {
       data() {
         return {
-          event_id: 0,
+          event_name: "",
+          event_id: "",
+          company_id: "",
+          description: "",
+          state: "",
+          budget: "",
+          reversePrice: ""
         };
       },
       methods: {
@@ -48,7 +56,22 @@
             console.error(error)      
           })      
         }   
-      }
+      },
+      mounted() {
+        this.event_id = this.$route.query.event_id;
+        this.event_name = this.$route.query.event_name;
+        this.company_id = this.$route.query.company_id;
+        this.description = this.$route.query.description;
+        this.budget = this.$route.query.budget;
+        this.reversePrice = this.$route.query.reversePrice;
+        if(this.$route.query.state == 0){
+          this.state = "未接取";
+        }else if(this.$route.query.state == 1){
+          this.state = "已竞标";
+        }else{
+          this.state = "被正式接取";
+        }
+      },
     };
   </script>
   
@@ -171,6 +194,21 @@
       position: absolute;
       top: 65.79%;
     }
+    .it4{
+      position: absolute;
+      left: 9.73%;
+      top: 65.79%;
+      width: 8vw;
+      height: 2.69vh;
+      opacity: 1;
+      font-size: 1.04vw;
+      font-weight: 400;
+      letter-spacing: 0px;
+      line-height: 2.68vh;
+      color: rgba(0, 0, 0, 1);
+      text-align: left;
+      vertical-align: top;
+    }
     .grey_rec{
       position: absolute;
       left: 9.73%;
@@ -262,5 +300,20 @@
   #ib4{
     position: absolute;
     top: 65.88%;
+  }
+  .inbl4{
+    position: absolute;
+    right: 12.29%;
+    top: 65.88%;
+    width: 13.54vw;
+    height: 2.5vh;
+    opacity: 1;
+    font-size: 1.04vw;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 2.44vh;
+    color: rgba(0, 43, 255, 1);
+    text-align: right;
+    vertical-align: top;
   }
   </style>

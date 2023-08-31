@@ -1,13 +1,11 @@
 <template>
     <div class="CenterBox">
         <div class="whitelarge">
-          <router-link to="./taskdescriptioni">
-            <div class="whs" id="whs1">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">PN公司</div>
-              <div class="message">发来一条任务</div>
-            </div>
-          </router-link>
+          <div class="whs" id="whs1" @click="ResearchLook">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">PN公司</div>
+            <div class="message">发来一条任务</div>
+          </div>
           <router-link to="./taskdescription">
             <div class="whs" id="whs2">
               <img src="../../assets/img/icon.png" class="icon">
@@ -49,50 +47,82 @@
 
 <script>
   import { allevents_get } from '../../api/research';
-  import axios from 'axios';
   export default {
     data() {
       return {
         events: [
           {
             event_name: "",
-          }
+            event_id: "",
+            company_id: "",
+            description: "",
+            state: "",
+            budget: "",
+            reversePrice: ""
+          },
+          {
+            event_name: "",
+            event_id: "",
+            company_id: "",
+            description: "",
+            state: "",
+            budget: "",
+            reversePrice: ""
+          },
+          {
+            event_name: "",
+            event_id: "",
+            company_id: "",
+            description: "",
+            state: "",
+            budget: "",
+            reversePrice: ""
+          },
+          {
+            event_name: "",
+            event_id: "",
+            company_id: "",
+            description: "",
+            state: "",
+            budget: "",
+            reversePrice: ""
+          },
         ],
       };
     },
     components: {
       
     },
-    created(){
-      axios.get("http://127.0.0.1:4523/m1/3023705-0-default/research/getEvent").then(res => {
-        console.log(res);
-      }).catch(error =>{
-        console.log(error);
-      })
-    },
     methods: {
-      handleGetAllEvents(){
-        let data = {
-          "events": [
-            {
-              "company_id": 0,
-              "event_id": 0,
-              "event_name": "string",
-              "description": "string",
-              "state": 0,
-              "type": 0,
-              "budget": 0,
-              "reservePrice": 0,
-              "start_time": 0,
-              "end_time": 0
-            }
-          ]
-        }
-        allevents_get().then(res => {
-
-        }).catch(error => {})
+      ResearchLook(){
+        this.$router.push({
+          path: '/m_home/taskdescriptioni',
+          query:{
+            event_id: this.events[0].event_id,
+            event_name: this.events[0].event_name,
+            company_id: this.events[0].company_id,
+            description: this.events[0].description,
+            reversePrice: this.events[0].reversePrice,
+            budget: this.events[0].budget,
+            state: this.events[0].state
+          }
+        })
       }
     },
+    mounted(){
+      allevents_get().then((res) => {
+        console.log(res);
+        for(let i = 0; i < res.data.data.length; i++){
+          this.events[i].event_name = res.data.data[i].name;
+          this.events[i].event_id = res.data.data[i].id;
+          this.events[i].company_id = res.data.data[i].companyId;
+          this.events[i].description = res.data.data[i].description;
+          this.events[i].state = res.data.data[i].state;
+          this.events[i].budget = res.data.data[i].budget;
+          this.events[i].reversePrice = res.data.data[i].reversePrice;
+        }
+      })
+    }
   };
 </script>
 

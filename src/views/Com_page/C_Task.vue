@@ -128,8 +128,7 @@
           this.events[i].reversePrice = res.data.data[i].reversePrice;
           this.events[i].budget = res.data.data[i].budget;
           this.events[i].state = res.data.data[i].state;
-        }
-        
+        }        
       })
     }
   };
