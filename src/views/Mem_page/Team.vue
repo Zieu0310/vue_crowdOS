@@ -16,14 +16,35 @@
   
   <script>
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
+    import { m_information } from '../../api/research';
   
     export default {
       data() {
-        return {};
+        return {
+          team_id: "",
+          account: "",
+          id: "",
+          name: "",
+          achievements: [{
+            title: "",
+            type: "",
+            description: "",
+            id: "",
+          }]
+        };
       },
       components: {
         M_HeadBar,
       },
+      mounted(){
+        m_information().then((res) => {
+          console.log(res);
+          this.account = res.data.data.account;
+          this.id = res.data.data.id;
+          this.name = res.data.data.name;
+          this.team_id = res.data.data.team_id;
+        })
+      }
     };
   </script>
   
