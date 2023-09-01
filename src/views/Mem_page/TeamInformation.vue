@@ -6,7 +6,7 @@
           <router-link to="./team"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/group.png" class="group">
           <div class="groupname">XX教授团队</div>
-          <div class="groupid">400826975</div>
+          <div class="groupid">{{ team_id }}</div>
           <img src="../../assets/img/blue.png" class="tblue">
           <div class="textBlue" id="tb1">团队成员</div>
           <div class="whs" id="whs1">
@@ -46,11 +46,26 @@
 <script>
   export default {
     data() {
-      return {};
+      return {
+        team_id: "",
+        achievements: {
+          title: "",
+          type: "",
+          description: "",
+          teamId: ""
+        }
+      };
     },
     components: {
     
     },
+    mounted(){
+      this.team_id = this.$route.query.team_id;
+      this.achievements.title = this.$route.query.achievements.title;
+      this.achievements.type = this.$route.query.achievements.type;
+      this.achievements.description = this.$route.query.achievements.description;
+      this.achievements.teamId = this.$route.query.achievements.teamId;
+    }
   };
 </script>
 
