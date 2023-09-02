@@ -60,6 +60,7 @@
           this.id = res.data.data.id;
           this.name = res.data.data.name;
           this.team_id = res.data.data.team_id;
+          localStorage.setItem("team_id",this.team_id);
           for(let i = 0; i < res.data.data.achievements.length; i++){
             this.achievements[i].title = res.data.data.achievements[i].title;
             this.achievements[i].type = res.data.data.achievements[i].type;

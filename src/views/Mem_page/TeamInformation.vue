@@ -60,7 +60,7 @@
     
     },
     mounted(){
-      this.team_id = this.$route.query.team_id;
+      this.team_id = localStorage.getItem("team_id");
       this.achievements.title = this.$route.query.achievements.title;
       this.achievements.type = this.$route.query.achievements.type;
       this.achievements.description = this.$route.query.achievements.description;

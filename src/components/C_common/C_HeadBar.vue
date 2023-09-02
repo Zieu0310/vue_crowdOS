@@ -43,11 +43,15 @@
         this.Show3 = true;
       },
     },
+    mounted(){
+      this.account = localStorage.getItem("account");
+    },
     data() {
       return {
         Show1: true,
         Show2: false,
         Show3: false,
+        account: "",
       };
     },
   };
@@ -110,7 +114,7 @@
         </div>
         <div class="PersonalData">
           <div class="name">Jack</div>
-          <div class="number">400820886</div>
+          <div class="number">{{ account }}</div>
         </div>
       </div>
     </div>

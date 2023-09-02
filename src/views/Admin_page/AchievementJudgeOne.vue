@@ -73,17 +73,6 @@
         })
       },
       methods: {
-        handleAuditAchievementGet() {
-          let data = {
-            "id": 0,
-            "title": "string",
-            "type": 0,
-            "remark": 0,
-            "team_id": 0,
-            "file": "string"
-          }
-          auachig(id)
-        },
         handleAuditAchievement(){
           auditAchievement(this.achievement_id,this.remark).then((res) => {
             if(this.remark != 0 ){
@@ -95,6 +84,9 @@
             }
           })
         }
+      },
+      mounted(){
+        auachig()
       }
     };
   </script>

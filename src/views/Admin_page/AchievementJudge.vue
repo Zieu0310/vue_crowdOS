@@ -44,16 +44,7 @@
       A_HeadBar,
     },
     methods: {
-      handleGetAchievement(){
-        let data = {
-          "id": 0,
-          "title": "string",
-          "type": 0,
-          "remark": 0,
-          "team_id": 0,
-          "file": "string"
-        }
-      }
+      
     }
   };
 </script>

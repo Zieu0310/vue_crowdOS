@@ -23,7 +23,7 @@
           <div class="InBlack">{{ events[4].event_name }}</div>
           <div class="InBlue" @click="EventDetailsAppear4">查看详情</div>
         </div>
-        <router-link to="addtask"><img src="../../assets/img/add.png" alt="添加任务" class="round"></router-link>
+        <router-link to="addtask"><img src="../../assets/img/add.png" alt="添加任务" class="round" @click="newEvent"></router-link>
       </div>
     </div>
 </template>
@@ -120,6 +120,8 @@
     mounted(){
       events_get().then((res) => {
         console.log(res);
+        this.company_id = res.data.data[0].company_id;
+        localStorage.setItem("company_id",this.company_id);
         for(let i = 0 ; i < res.data.data.length; i++){
           this.events[i].event_name = res.data.data[i].event_name;
           this.events[i].event_id = res.data.data[i].event_id;

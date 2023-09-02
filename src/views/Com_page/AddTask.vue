@@ -37,7 +37,7 @@
       name: 'postEvents',
       data() {
         return {
-          company_id: 400820886,
+          company_id: "",
           event_name: '',
           description: '',
           arithmetic: '',
@@ -49,10 +49,6 @@
         M_HeadBar,
       },
       methods:{
-        getRadioVal(event){
-          let radioVal = event.target.value;
-          this.arithmetic = radioVal;
-        },
         handlePostEvents(){
           postEvents(this.company_id,this.event_name,this.description,this.arithmetic,this.price,this.reversePrice).then((res)=>{
             if(this.event_name !== "" && this.description !== "" && this.arithmetic !== ""){
@@ -78,7 +74,10 @@
             }
           })
         }
-      }
+      },
+      mounted() {
+        this.company_id = localStorage.getItem("company_id");
+      },
     };
   </script>
   
