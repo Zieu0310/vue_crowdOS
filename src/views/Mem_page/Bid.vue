@@ -2,7 +2,7 @@
     <div class="CenterBox">
       <div class="over"></div>
       <div class="add">
-        <div class="the_bid">你的报价是<input type="number" style="width: 5vw;height: 5vh;font-size: 4vh;">万</div>
+        <div class="the_bid">你的报价是<input type="number" min="0" style="width: 5vw;height: 5vh;font-size: 4vh;" v-model="bid">万</div>
         <router-link to="./bidsuccess">
           <div class="yes" @click="tenderData">
             <div class="yestext">确认</div>
@@ -32,10 +32,13 @@
       components: {
         M_HeadBar,
       },
+      mounted(){
+        this.event_id = this.$route.params.event_id;
+      },
       methods: {
         tenderData() {      
           tender(this.event_id,this.bid).then((res)=>{
-            console.log(res.data.bid);
+            console.log(res);
           });
         }   
       }

@@ -4,7 +4,7 @@
           <img src="../../assets/img/blue.png" class="blue_">
           <div class="textblue_">个人信息</div>
           <div class="item" id="i1">账号:</div>
-          <el-input v-model="input" disabled placeholder="400820886" class="in1" />
+          <el-input v-model="account" disabled class="in1" />
           <div class="item" id="i2">ID:</div>
           <el-input v-model="input" disabled placeholder="000000000" class="in2" />
           <div class="item" id="i3">公司名:</div>
@@ -17,11 +17,16 @@
   
   export default {
     data() {
-      return {};
+      return {
+        account: "",
+      };
     },
     components: {
       
     },
+    mounted(){
+      this.account = localStorage.getItem("account");
+    }
   };
 </script>
 

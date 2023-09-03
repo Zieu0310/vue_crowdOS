@@ -5,12 +5,12 @@
         <img src="../../assets/img/blue.png" class="blue">
         <div class="textBlue" id="tb1">待审核</div>
         <div class="whs" id="whs11">
-          <div class="Intextblack">XXX公司的需求申请</div>
-          <router-link to="./taskjudgeone"><div class="Intextblue">审核</div></router-link>
+          <div class="Intextblack">{{ event[0].company_id }}公司的需求申请</div>
+          <div class="Intextblue" @click="EventDetailsAudi0">审核</div>
         </div>
         <div class="whs" id="whs12">
-          <div class="Intextblack">XXX公司的需求申请</div>
-          <router-link to="./taskjudgeone"><div class="Intextblue">审核</div></router-link>
+          <div class="Intextblack">{{ event[1].company_id }}公司的需求申请</div>
+          <div class="Intextblue" @click="EventDetailsAudi1">审核</div>
         </div>
       </div>
       <div class="whitesmall" id="ws2">
@@ -35,21 +35,75 @@
   <script>
   
     import A_HeadBar from '../../components/A_common/A_HeadBar.vue'; 
+    import { auevg } from '../../api/admin';
     export default {
       data() {
-        return {};
+        return {
+          event:[
+            {
+              company_id: "",
+              description: "",
+              event_id: "",
+              event_name: "",
+              price: "",
+              remark: "",
+            },
+            {
+              company_id: "",
+              description: "",
+              event_id: "",
+              event_name: "",
+              price: "",
+              remark: "",
+            },
+          ]
+        };
       },
       components: {
         A_HeadBar,
       },
       methods: {
-        taskAudi() {      
-          axios.get('/adminstrators/getEventInformation').then(response => {      
-            console.log(response)      
-          }).catch(error => {      
-            console.error(error)      
-          })      
-        } 
+        EventDetailsAudi0(){
+          this.$router.push({
+            path: '/a_home/taskjudgeone',
+            query:{
+              id: this.event[0].event_id,
+              name: this.event[0].event_name,
+              description: this.event[0].description,
+              company_id: this.event[0].company_id,
+              price: this.event[0].price,
+              remark: this.event[0].remark
+            }
+          })
+        },
+        EventDetailsAudi1(){
+          this.$router.push({
+            path: '/a_home/taskjudgeone',
+            query:{
+              id: this.event[1].event_id,
+              name: this.event[1].event_name,
+              description: this.event[1].description,
+              company_id: this.event[1].company_id,
+              price: this.event[1].price,
+              remark: this.event[1].remark
+            }
+          })
+        },
+      },
+      mounted(){
+        auevg().then((res) => {
+          console.log(res);
+          localStorage.setItem("auditEvent0",this.event[0].event_id);
+          localStorage.setItem("auditEvent1",this.event[1].event_id);
+          for(let i = 0; i < res.data.data.length; i++){
+            this.event[i].company_id = res.data.data[i].company_id;
+            this.event[i].description = res.data.data[i].description;
+            this.event[i].event_id = res.data.data[i].event_id;
+            this.event[i].event_name = res.data.data[i].event_name;
+            this.event[i].price = res.data.data[i].price;
+            this.event[i].remark = res.data.data[i].remark;
+          }
+        })
       }
     };
   </script>
@@ -146,14 +200,17 @@
       #whs21{
         position: absolute;
         top: 14.06%;
+        display: none;
       }
       #whs22{
         position: absolute;
         top: 26.51%;
+        display: none;
       }
       #whs23{
         position: absolute;
         top: 38.97%;
+        display: none;
       }
       .above{
       position: absolute;

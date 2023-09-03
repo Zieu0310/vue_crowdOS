@@ -1,6 +1,6 @@
 <template>
   <div class="CenterBox">
-        <div class="title">成员和成果</div>
+        <div class="title">团队信息</div>
         <div class="whitelarge">
             <img src="../../assets/img/blue.png" class="blue_" id="b1">
             <div class="textblue_" id="tb1">成员</div>

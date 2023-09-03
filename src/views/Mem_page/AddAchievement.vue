@@ -49,16 +49,18 @@
         handlePostAchievement(){
           post_achievement(this.achievements.title,this.achievements.description,this.achievements.type).then((res)=>{
             console.log(res);
-            if(this.achievements.title !== "" && this.achievements.description !== ""){
+            if(this.achievements.title !== "" && this.achievements.description !== "" && this.achievements.type !== ""){
               this.$router.push("/m_home/postachievementsuccess")
             }
             else if(this.achievements.title === ""){
               alert('成果名称不能为空！')
             }
+            else if(this.achievements.type === ""){
+              alert('类型不能为空！')
+            }
             else if(this.achievements.description === ""){
               alert('成果描述不能为空！')
             }
-            
           })
         }
       }

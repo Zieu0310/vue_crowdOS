@@ -17,15 +17,15 @@
       <img src="../../assets/img/blue.png" class="blue">
       <div class="textBlue" id="tb2">已审核</div>
       <div class="whs" id="whs21">
-        <div class="Intextblack">XXX教授的团队申请</div>
+        <div class="Intextblack">1团队申请</div>
         <div id="textred">审核不通过</div>
       </div>
       <div class="whs" id="whs22">
-        <div class="Intextblack">XXX教授的团队申请</div>
+        <div class="Intextblack">2团队申请</div>
         <div id="textgreen">审核通过</div>
       </div>
       <div class="whs" id="whs23">
-        <div class="Intextblack">XXX教授的团队申请</div>
+        <div class="Intextblack">3团队申请</div>
         <div id="textgreen">审核通过</div>
       </div>
     </div>
@@ -45,6 +45,11 @@
     },
     methods: {
       
+    },
+    mounted(){
+      auachig().then((res) => {
+        console.log(res);
+      })
     }
   };
 </script>
@@ -133,10 +138,12 @@
     #whs11{
       position: absolute;
       top: 14.06%;
+      display: none;
     }
     #whs12{
       position: absolute;
       top: 26.51%;
+      display: none;
     }
     #whs21{
       position: absolute;

@@ -42,9 +42,9 @@ export const auevg = () => {
 export const auditEvents = (id, remark) => {
   return apis({
     method: "post",
-    url: "/adminstrators/auditEvents",
+    url: `/adminstrators/auditEvents/${id}`,
+    params:{ id: id, },
     data: {
-      id: id,
       remark: remark,
     },
   });

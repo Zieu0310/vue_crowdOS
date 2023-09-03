@@ -47,7 +47,7 @@
   export default {
     data() {
       return {
-        team_id: "",
+        team_id: "null",
         achievements: {
           title: "",
           type: "",

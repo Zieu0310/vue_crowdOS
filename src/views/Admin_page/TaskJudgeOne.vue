@@ -1,7 +1,7 @@
 <template>
     <div class="CenterBox">
       <div>
-        <div class="above">XXX公司的需求申请</div>
+        <div class="above">{{ event_id }}公司的需求申请</div>
         <div class="whitecenter">
           <router-link to="./taskjudge"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
@@ -33,8 +33,6 @@
   <script>
 
     import { auditEvents } from '../../api/admin';
-    import { auevg } from '../../api/admin';
-    import axios from 'axios';
     export default {
       name: 'auditEvent',
       data() {
@@ -51,47 +49,11 @@
       components: {
         
       },
-      created(){
-        axios.get("http://127.0.0.1:4523/m1/3023705-0-default/adminstrators/getEventInformation").then(res => {
-          console.log(res);
-          this.company_id = res.data.data[0].company_id;
-          this.event_id = res.data.data[0].event_id;
-          this.event_name = res.data.data[0].event_name;
-          this.description = res.data.data[0].description;
-          this.reservePrice = res.data.data[0].reservePrice;
-          if(res.data.data.type == 0){
-            this.type = "IOT&nbsp;J";
-          }else if(res.data.data.type == 1){
-            this.type = "VCG";
-          }else{
-            this.type = "固定价格交易";
-          }
-        }).catch(error =>{
-          console.log(error);
-        })
-      },
       methods: {
-        handleAuditEventsGet(){
-          let data = {
-            "company_id": 0,
-            "event_id": 0,
-            "event_name": "string",
-            "description": "string",
-            "price": 0,
-            "remark": 0,
-            "state": 0,
-            "type": 0,
-            "budget": 0,
-            "reservePrice": 0,
-            "start_time": 0,
-            "end_time": 0
-          }
-          auevg();
-        },
         handleAuditEvents(){
-          auditEvents(this.id,this.remark).then((res) => {
+          auditEvents(this.event_id,this.remark).then((res) => {
             if(this.remark != 0){
-              console.log(this.remark);
+              console.log(res);
               this.$router.push("/a_home/taskjudge")
             }
             else{
@@ -99,7 +61,15 @@
             }
           })
         } 
-      }
+      },
+      mounted() {
+        this.company_id = this.$route.query.company_id;
+        this.description = this.$route.query.description;
+        this.event_id = this.$route.query.id;
+        this.event_name = this.$route.query.name;
+        this.reservePrice = this.$route.query.price;
+        this.remark = this.$route.query.remark;
+      },
     };
   </script>
   

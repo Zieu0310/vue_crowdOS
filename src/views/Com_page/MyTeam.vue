@@ -5,19 +5,19 @@
             <img src="../../assets/img/icon.png" class="icon">
             <div class="name">{{ teams[0].team_name }}</div>
           </div>
-          <div class="whs" id="whs2">
-            <img src="../../assets/img/icon.png" class="icon">
+          <div class="whs" id="whs2" v-if="teams[1].team_name !== null">
+            <img src="../../assets/img/icon.png" class="icon" >
             <div class="name">{{ teams[1].team_name }}</div>
           </div>
-          <div class="whs" id="whs3">
+          <div class="whs" id="whs3" v-if="teams[2].team_name !== null">
             <img src="../../assets/img/icon.png" class="icon">
             <div class="name">{{ teams[2].team_name }}</div>
           </div>
-          <div class="whs" id="whs4">
+          <div class="whs" id="whs4" v-if="teams[3].team_name !== null">
             <img src="../../assets/img/icon.png" class="icon">
             <div class="name">{{ teams[3].team_name }}</div>
           </div>
-          <div class="whs" id="whs5">
+          <div class="whs" id="whs5" v-if="teams[4].team_name !== null">
             <img src="../../assets/img/icon.png" class="icon">
             <div class="name">{{ teams[4].team_name }}</div>
           </div>                 
@@ -33,27 +33,27 @@
         teams: [
             {
               team_id: 0,
-              team_name: "string",
+              team_name: "XXXX",
               event_id: 0
             },
             {
               team_id: 0,
-              team_name: "string",
+              team_name: null,
               event_id: 0
             },
             {
               team_id: 0,
-              team_name: "string",
+              team_name: null,
               event_id: 0
             },
             {
               team_id: 0,
-              team_name: "string",
+              team_name: null,
               event_id: 0
             },
             {
               team_id: 0,
-              team_name: "string",
+              team_name: null,
               event_id: 0
             },
         ],

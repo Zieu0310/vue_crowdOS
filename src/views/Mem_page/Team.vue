@@ -47,7 +47,7 @@
                 title: this.achievements[0].title,
                 type: this.achievements[0].type,
                 description: this.achievements[0].achievements,
-                teamId: this.achievements[0].teamId
+                teamId: this.achievements[0].teamId,
               }
             }
           })
@@ -68,7 +68,8 @@
             this.achievements[i].id = res.data.data.achievements[i].id;
             this.achievements[i].teamId = res.data.data.achievements[i].teamId;
           }
-        })
+        });
+        
       }
     };
   </script>

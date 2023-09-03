@@ -1,18 +1,16 @@
 <template>
     <div class="CenterBox">
         <div class="whitelarge">
-          <div class="whs" id="whs1" @click="ResearchLook">
+          <div class="whs" id="whs1" @click="ResearchLook0">
             <img src="../../assets/img/icon.png" class="icon">
-            <div class="name">PN公司</div>
-            <div class="message">发来一条任务</div>
+            <div class="name">{{ events[0].company_id }}公司</div>
+            <div class="message">想要与您进行合作</div>
           </div>
-          <router-link to="./taskdescription">
-            <div class="whs" id="whs2">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">PN公司</div>
-              <div class="message">发来一条任务</div>
-            </div>
-          </router-link>
+          <div class="whs" id="whs2" @click="ResearchLook1">
+            <img src="../../assets/img/icon.png" class="icon">
+            <div class="name">{{ events[1].company_id }}公司</div>
+            <div class="message">想要与您进行合作</div>
+          </div>
           <router-link to="./taskdescriptionv">
             <div class="whs" id="whs3">
               <img src="../../assets/img/icon.png" class="icon">
@@ -98,7 +96,7 @@
       
     },
     methods: {
-      ResearchLook(){
+      ResearchLook0(){
         this.$router.push({
           path: '/m_home/taskdescriptioni',
           query:{
@@ -112,7 +110,22 @@
             type: this.events[0].type,
           }
         })
-      }
+      },
+      ResearchLook1(){
+        this.$router.push({
+          path: '/m_home/taskdescriptioni',
+          query:{
+            event_id: this.events[1].event_id,
+            event_name: this.events[1].event_name,
+            company_id: this.events[1].company_id,
+            description: this.events[1].description,
+            reversePrice: this.events[1].reversePrice,
+            budget: this.events[1].budget,
+            state: this.events[1].state,
+            type: this.events[1].type,
+          }
+        })
+      },
     },
     mounted(){
       allevents_get().then((res) => {
@@ -175,19 +188,23 @@
   }
   #whs3{
     position: absolute;
-    top: 19.995%
+    top: 19.995%;
+    display: none;
   }
   #whs4{
     position: absolute;
     top: 29.9926%;
+    display: none;
   }
   #whs5{
     position: absolute;
     top: 39.99%;
+    display: none;
   }
   #whs6{
     position: absolute;
     top: 49.98765%;
+    display: none;
   }
   .icon{
     position: absolute;

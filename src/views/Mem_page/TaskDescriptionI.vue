@@ -24,7 +24,7 @@
           <div class="inbl4" v-else>{{ reversePrice }}</div>
           <router-link to="./bid">
             <div class="yes" v-if="type == 0 || type == 1">
-              <div class="yestext">投标</div>
+              <div class="yestext" @click="toTender(event_id)">投标</div>
             </div>
           </router-link>
           <div class="yes" v-if="type == 2">
@@ -36,7 +36,6 @@
 </template>
   
   <script>
-    import axios from 'axios';
     export default {
       data() {
         return {
@@ -51,15 +50,12 @@
         };
       },
       methods: {
-        tenderData() {      
-          axios.post('/tender',{
-            event_id: 0
-          }).then(response => {      
-            console.log(response)      
-          }).catch(error => {      
-            console.error(error)      
-          })      
-        }   
+        toTender(event_id){
+          this.$router.push({
+            path: "/m_home/bid",
+            params: event_id,
+          })
+        }
       },
       mounted() {
         this.event_id = this.$route.query.event_id;
