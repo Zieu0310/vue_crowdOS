@@ -201,6 +201,11 @@ const routes =[
         path: "default",
         name: "default",
         component: () => import("../views/Mem_page/Default.vue")
+      },
+      {
+        path: "addmember",
+        name: "addmember",
+        component: () => import("../views/Mem_page/AddMember.vue")
       },      
     ],
   },

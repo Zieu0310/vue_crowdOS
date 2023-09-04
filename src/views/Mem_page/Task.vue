@@ -44,7 +44,6 @@
     mounted(){
       successfullyevents_get().then((res) => {
         console.log(res);
-        alert('你暂无合作！')
       });      
     }
   };
@@ -93,7 +92,6 @@
     border-radius: 0.73vw;
     background: rgba(255, 255, 255, 1);
     border: 0.03vw solid rgba(166, 166, 166, 1);
-    display: none;
   }
   #whs1{
     position: absolute;

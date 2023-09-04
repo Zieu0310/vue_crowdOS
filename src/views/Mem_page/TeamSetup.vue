@@ -2,49 +2,10 @@
   <div class="CenterBox">
     <div class="over"></div>
     <div class="add">
-      <div class="item" id="i2">成员</div>
-      <el-input v-model="member1.name" placeholder="请输入姓名" class="inm1" />
-      <div class="my-4 flex items-center text-sm">
-        <el-radio-group v-model="member1.role" class="op" style="position:absolute;top:16%">
-          <el-radio label="0" size="small">普通成员</el-radio>
-          <el-radio label="1" size="small" @click="dis">队长</el-radio>
-        </el-radio-group>
-      </div>
-      <el-input v-model="member2.name" placeholder="请输入姓名" class="inm2" />
-      <div class="my-4 flex items-center text-sm">
-        <el-radio-group v-model="member2.role" class="op" style="position:absolute;top:27%">
-          <el-radio label="0" size="small">普通成员</el-radio>
-          <el-radio label="1" size="small">队长</el-radio>
-        </el-radio-group>
-      </div>
-      <el-input v-model="member3.name" placeholder="请输入姓名" class="inm3" />
-      <div class="my-4 flex items-center text-sm">
-        <el-radio-group v-model="member3.role" class="op" style="position:absolute;top:38%">
-          <el-radio label="0" size="small">普通成员</el-radio>
-          <el-radio label="1" size="small">队长</el-radio>
-        </el-radio-group>
-      </div>
-      <el-input v-model="member4.name" placeholder="请输入姓名" class="inm4" />
-      <div class="my-4 flex items-center text-sm">
-        <el-radio-group v-model="member4.role" class="op" style="position:absolute;top:49%">
-          <el-radio label="0" size="small">普通成员</el-radio>
-          <el-radio label="1" size="small">队长</el-radio>
-        </el-radio-group>
-      </div>
-      <el-input v-model="member5.name" placeholder="请输入姓名" class="inm5" />
-      <div class="my-4 flex items-center text-sm">
-        <el-radio-group v-model="member5.role" class="op" style="position:absolute;top:60%">
-          <el-radio label="0" size="small">普通成员</el-radio>
-          <el-radio label="1" size="small">队长</el-radio>
-        </el-radio-group>
-      </div>
-      <el-input v-model="member6.name" placeholder="请输入姓名" class="inm6" />
-      <div class="my-4 flex items-center text-sm">
-        <el-radio-group v-model="member6.role" class="op" style="position:absolute;top:71%">
-          <el-radio label="0" size="small">普通成员</el-radio>
-          <el-radio label="1" size="small">队长</el-radio>
-        </el-radio-group>
-      </div>
+      <div class="item">团队名称</div>
+      <el-input v-model="input" placeholder="请输入团队名称" class="teamName" />
+      <div class="item1">成员</div>
+      <el-button class="addMember" @click="addMember">点此添加</el-button>
       <div class="yes" @click="handleSetup">
         <div class="yestext">创建</div>
       </div>
@@ -57,7 +18,6 @@
 </template>
 
 <script>
-  import { useDisabled } from 'element-plus';
   import { create_team } from '../../api/research';
   import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
 
@@ -94,14 +54,14 @@
       M_HeadBar,
     },
     methods:{
-      dis(){
-        document.getElementsByClassName('op').style = useDisabled;
-      },
       handleSetup(){
         create_team(this.member1.name,this.member1.role,this.member2.name,this.member2.role,this.member3.name,this.member3.role,this.member4.name,this.member4.role,this.member5.name,this.member5.role,this.member6.name,this.member6.role).then((res) => {
           console.log(res);
           this.$router.push("/m_home/team");
         })
+      },
+      addMember(){
+        this.$router.push("/m_home/addmember")
       }
     }
   };
@@ -204,7 +164,7 @@
   .item{
     position: absolute;
     left: 9.73%;
-    top: 5%;
+    top: 10%;
     width: 4.17vw;
     height: 2.69vh;
     opacity: 1;
@@ -215,6 +175,32 @@
     color: rgba(0, 0, 0, 1);
     text-align: left;
     vertical-align: top;
+  }
+  .item1{
+    position: absolute;
+    left: 9.73%;
+    top: 25%;
+    width: 4.17vw;
+    height: 2.69vh;
+    opacity: 1;
+    font-size: 1.04vw;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 2.68vh;
+    color: rgba(0, 0, 0, 1);
+    text-align: left;
+    vertical-align: top;
+  }
+  .teamName{
+    position: absolute;
+    left: 9.73%;
+    top: 15%;
+    width: 30vw;
+  }
+  .addMember{
+    position: absolute;
+    left: 9.73%;
+    top: 30%;
   }
   .yes{
   position: absolute;
