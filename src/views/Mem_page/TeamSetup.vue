@@ -3,9 +3,62 @@
     <div class="over"></div>
     <div class="add">
       <div class="item">团队名称</div>
-      <el-input v-model="input" placeholder="请输入团队名称" class="teamName" />
+      <el-input v-model="team_name" placeholder="请输入团队名称" class="teamName" />
       <div class="item1">成员</div>
-      <el-button class="addMember" @click="addMember">点此添加</el-button>
+      <el-button class="addMember" @click="dialogVisible = true">点此添加</el-button>
+      <el-dialog
+        v-model="dialogVisible"
+        title="添加成员"
+        width="30%"
+        :before-close="handleClose"
+      >
+        <div class="name">姓名</div>
+        <el-input v-model="name" placeholder="请输入姓名" class="inname" />
+        <div class="e_mail">邮箱</div>
+        <el-input v-model="e_mail" placeholder="请输入邮箱" class="ine_mail" />
+        <template #footer>
+          <span class="dialog-footer">
+            <el-button @click="dialogVisible = false">取消</el-button>
+            <el-button type="primary" @click="addMember">
+              添加
+            </el-button>
+          </span>
+        </template>
+      </el-dialog>
+      <table>
+      <thead>
+        <tr>
+          <th width="10vw" height="40vh" bgcolor="rgba(0,0,255,1)">姓名</th>
+          <th width="20vw" height="40vh" bgcolor="rgba(0,0,255,1)">邮箱</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ member[0].name }}</td>
+          <td>{{ member[0].e_mail }}</td>
+        </tr>
+        <tr>
+          <td>{{ member[1].name }}</td>
+          <td>{{ member[1].e_mail }}</td>
+        </tr>
+        <tr>
+          <td>{{ member[2].name }}</td>
+          <td>{{ member[2].e_mail }}</td>
+        </tr>
+        <tr>
+          <td>{{ member[3].name }}</td>
+          <td>{{ member[3].e_mail }}</td>
+        </tr>
+        <tr>
+          <td>{{ member[4].name }}</td>
+          <td>{{ member[4].e_mail }}</td>
+        </tr>
+        <tr>
+          <td>{{ member[5].name }}</td>
+          <td>{{ member[5].e_mail }}</td>
+        </tr>
+      </tbody>
+    </table>
       <div class="yes" @click="handleSetup">
         <div class="yestext">创建</div>
       </div>
@@ -21,47 +74,54 @@
   import { create_team } from '../../api/research';
   import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
 
+
+  
   export default {
     data() {
       return {
-        member1:{
-          name: "",
-          role: "",
-        },
-        member2:{
-          name: "",
-          role: "",
-        },
-        member3:{
-          name: "",
-          role: "",
-        },
-        member4:{
-          name: "",
-          role: "",
-        },
-        member5:{
-          name: "",
-          role: "",
-        },
-        member6:{
-          name: "",
-          role: "",
-        },
+        dialogVisible: false,
+        name: "",
+        e_mail: "",
+        team_name: "",
+        member: [
+          {name: null, e_mail: null},
+          {name: null, e_mail: null},
+          {name: null, e_mail: null},
+          {name: null, e_mail: null},
+          {name: null, e_mail: null},
+          {name: null, e_mail: null},
+        ]
       };
     },
     components: {
       M_HeadBar,
     },
     methods:{
-      handleSetup(){
-        create_team(this.member1.name,this.member1.role,this.member2.name,this.member2.role,this.member3.name,this.member3.role,this.member4.name,this.member4.role,this.member5.name,this.member5.role,this.member6.name,this.member6.role).then((res) => {
-          console.log(res);
-          this.$router.push("/m_home/team");
-        })
-      },
       addMember(){
-        this.$router.push("/m_home/addmember")
+        this.dialogVisible = false;
+        for(let i = 0; i < 6; i++){
+          if(this.member[i].name == null && this.member[i].e_mail == null){
+            this.member[i].name = this.name;
+            this.member[i].e_mail = this.e_mail;
+            break;
+          }else{
+            continue;
+          }
+        }
+      },
+      handleSetup(){
+        
+      }
+    },
+    mounted(){
+      for(let i = 0; i < 6; i ++){
+        if(this.member[i].name == null && this.member[i].e_mail == null){
+          this.member[i].name = this.$route.query.name;
+          this.member[i].e_mail = this.$route.query.e_mail;
+          break;
+        }else{
+          continue;
+        }
       }
     }
   };
@@ -255,5 +315,43 @@
 .op{
   position: absolute;
   left: 15%;
+}
+table{
+  position: absolute;
+  left: 10%;
+  top: 40%;
+  width: 30vw;
+  height: auto;
+  border-spacing: 0px;
+}
+th{
+  border: 0.5px solid grey;
+  color: beige;
+}
+td{
+  border: 0.5px solid grey;
+  background-color: rgba(135,206,250,1);
+}
+.name{
+  position: absolute;
+  left: 10%;
+  top: 30%;
+}
+.e_mail{
+  position: absolute;
+  left: 10%;
+  top: 50%;
+}
+.inname{
+  position: absolute;
+  left: 25%;
+  top: 28%;
+  width: auto;
+}
+.ine_mail{
+  position: absolute;
+  left: 25%;
+  top: 48%;
+  width: auto;
 }
 </style>

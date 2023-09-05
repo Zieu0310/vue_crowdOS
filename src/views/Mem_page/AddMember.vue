@@ -4,10 +4,10 @@
     <div class="add">
       <div class="title">添加成员</div>
       <div class="item1">姓名</div>
-      <el-input v-model="input" placeholder="请输入成员姓名" class="inname" />
+      <el-input v-model="name" placeholder="请输入成员姓名" class="inname" />
       <div class="item2">邮箱</div>
-      <el-input v-model="input" placeholder="请输入成员邮箱" class="inemail" />
-      <div class="yes">
+      <el-input v-model="e_mail" placeholder="请输入成员邮箱" class="inemail" />
+      <div class="yes" @click="addMember">
         <div class="yestext">添加</div>
       </div>
       <div class="no">
@@ -18,7 +18,26 @@
 </template>
 
 <script>
-  
+  export default {
+    data() {
+      return {
+        name: "",
+        e_mail: "",
+      };
+    },
+    methods: {
+      addMember(){
+        
+        this.$router.push({
+          path: "/m_home/teamsetup",
+          query: {
+            name: this.name,
+            e_mail: this.e_mail,
+          }
+        })
+      }
+    }
+  }
 </script>
 
 <style scoped>
