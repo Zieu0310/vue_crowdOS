@@ -110,7 +110,9 @@
         }
       },
       handleSetup(){
-        
+        create_team(this.team_name,this.member).then((res) => {
+          console.log(res);
+        })
       }
     },
     mounted(){

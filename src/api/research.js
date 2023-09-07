@@ -7,13 +7,13 @@ export const allevents_get = () => {
   });
 };
 
-export const create_team = () => {
+export const create_team = (teamName,member) => {
   return apis({
     method: "post",
     url: "/research/createTeam",
     data: {
-      account: account,
-      
+      teamName: teamName,
+      member,
     },
   });
 }
