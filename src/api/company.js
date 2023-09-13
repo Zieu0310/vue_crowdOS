@@ -1,6 +1,6 @@
 import { apis } from ".";
 
-export const postEvents = (company_id, event_name, description, arithmetic, price, reversePrice) => {
+export const postEvents = (company_id, event_name, description, arithmetic, price, reversePrice, time) => {
   return apis({
     method: "post",
     url: "/companies/postEvents",
@@ -11,6 +11,7 @@ export const postEvents = (company_id, event_name, description, arithmetic, pric
       arithmetic: arithmetic,
       price: price,
       reversePrice: reversePrice,
+      time: time,
     },
   });
 };

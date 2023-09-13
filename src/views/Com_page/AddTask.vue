@@ -9,7 +9,7 @@
         <div class="item" id="i3">任务描述</div>
         <el-input v-model="description" :rows="6" type="textarea" placeholder="请描述" class="grey_rec" />
         <div class="item" id="i4">算法</div>
-        <el-radio-group v-model="type" size="large" style="position: absolute;right: 25%;top: 58.86%;">
+        <el-radio-group v-model="type" size="large" style="position: absolute;right: 25%;top: 53.86%;">
           <el-radio-button label="VCG" />
           <el-radio-button label="IOT&nbsp;J" />
           <el-radio-button label="固定价格交易" />
@@ -18,6 +18,8 @@
         <div class="item" id="i6" v-if="type === '固定价格交易'">固定价格(万)</div>
         <el-input-number v-model="price" :min="0" :max="50000" @change="handleChange" class="im5" v-if="type === 'IOT&nbsp;J'" />
         <el-input-number v-model="reversePrice" :min="0" :max="50000" @change="handleChange" class="im6" v-if="type === '固定价格交易'" />
+        <div class="item" id="i7">间隔时间(日)</div>
+        <el-input-number v-model="time" :min="1" :max="60" @change="handleChange" class="im7" />
         <div class="yes">
           <div class="yestext" @click="handlePostEvents">上传</div>
         </div>
@@ -43,6 +45,7 @@
           type: '',
           price: null,
           reversePrice: null,
+          time: '',
         };
       },
       components: {
@@ -50,7 +53,7 @@
       },
       methods:{
         handlePostEvents(){
-          postEvents(this.company_id,this.event_name,this.description,this.type,this.price,this.reversePrice).then((res)=>{
+          postEvents(this.company_id,this.event_name,this.description,this.type,this.price,this.reversePrice,this.time).then((res)=>{
             if(this.event_name !== "" && this.description !== "" && this.type !== ""){
               if(this.type === "IOT&nbsp;J" && this.price == null){
                 alert('请正确输入预算！');
@@ -121,13 +124,13 @@
     .im1{
       position: absolute;
       right: 5%;
-      top: 15.7%; 
+      top: 10.7%; 
       width: 28vw;
     }
     .im2{
       position: absolute;
       right: 5%;
-      top: 22.61%;
+      top: 17.61%;
       width: 28vw;
     }
     .im3{
@@ -139,12 +142,17 @@
     .im5{
       position: absolute;
       right: 35%;
-      top: 65.77%;
+      top: 60.77%;
     }
     .im6{
       position: absolute;
       right: 35%;
-      top: 65.77%;
+      top: 60.77%;
+    }
+    .im7{
+      position: absolute;
+      right: 40%;
+      top: 69.5%;
     }
     #im3{
       position: absolute;
@@ -168,32 +176,36 @@
     }
     #i1{
     position: absolute;
-    top: 16.69%;
+    top: 11.69%;
     }
     #i2{
       position: absolute;
-      top: 23.6%;
+      top: 18.6%;
     }
     #i3{
       position: absolute;
-      top: 30.51%;
+      top: 25.51%;
     }
     #i4{
       position: absolute;
-      top: 60%;
+      top: 55%;
     }
     #i5{
       position: absolute;
-      top: 66.91%;
+      top: 61.91%;
     }
     #i6{
       position: absolute;
-      top: 66.91%;
+      top: 61.91%;
+    }
+    #i7{
+      position: absolute;
+      top: 70%;
     }
     .grey_rec{
       position: absolute;
       left: 9.73%;
-      top: 35.66%;
+      top: 30.66%;
       width: 34.0625vw;
       height: 15.93vh;
       opacity: 1;
