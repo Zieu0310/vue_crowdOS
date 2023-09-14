@@ -8,8 +8,8 @@
           <div class="title">已发布需求详情</div>
           <div class="item" id="i1">需求名</div>
           <div class="inblue" id="ib1">{{ name }}</div>
-          <div class="item" id="i11">需求ID</div>
-          <div class="inblue" id="ib11">{{ id }}</div>
+          <div class="item" id="i11">截止日期</div>
+          <div class="inblue" id="ib11"></div>
           <div class="item" id="i2">类型</div>
           <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i3">具体描述</div>

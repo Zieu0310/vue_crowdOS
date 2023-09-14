@@ -2,8 +2,6 @@
     <div class="CenterBox">
       <div class="over"></div>
       <div class="add">
-        <div class="item" id="i1">公司ID</div>
-        <el-input v-model="company_id" disabled type="number" class="im1" />
         <div class="item" id="i2">任务名称</div>
         <el-input v-model="event_name" placeholder="请输入" type="text" class="im2" />
         <div class="item" id="i3">任务描述</div>
@@ -18,7 +16,7 @@
         <div class="item" id="i6" v-if="type === '固定价格交易'">固定价格(万)</div>
         <el-input-number v-model="price" :min="0" :max="50000" @change="handleChange" class="im5" v-if="type === 'IOT&nbsp;J'" />
         <el-input-number v-model="reversePrice" :min="0" :max="50000" @change="handleChange" class="im6" v-if="type === '固定价格交易'" />
-        <div class="item" id="i7">间隔时间(日)</div>
+        <div class="item" id="i7">有效期限(日)</div>
         <el-input-number v-model="time" :min="1" :max="60" @change="handleChange" class="im7" />
         <div class="yes">
           <div class="yestext" @click="handlePostEvents">上传</div>

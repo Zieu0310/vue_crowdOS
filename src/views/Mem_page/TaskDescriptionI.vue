@@ -1,22 +1,20 @@
 <template>
     <div class="CenterBox">
       <div>
-        <div class="above">PN公司发布的需求</div>
         <div class="whitecenter">
           <router-link to="./tasksquare"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">需求详情</div>
-          <div class="item" id="i1">公司ID</div>
+          <div class="item" id="i1">公司名</div>
           <div class="inblue" id="ib1">{{ company_id }}</div>
-          <div class="item" id="i10">需求ID</div>
-          <div class="inblue" id="ib10">{{ event_id }}</div>
           <div class="item" id="i11">需求名</div>
           <div class="inblue" id="ib11">{{ event_name }}</div>
           <div class="item" id="i12">具体描述</div>
           <div class="grey_rec">
               <div class="innertext">{{ description }}</div>
           </div>
-          <div class="item" id="i3">状态</div>
+          <div class="item" id="i2_5">截止日期</div>
+          <div class="item" id="i3">投标状态</div>
           <div class="inblue" id="ib3">{{ state }}</div>
           <div class="item" id="i4" v-if="type == 0">预算（万）</div>
           <div class="it4" v-else>固定价格（万）</div>
@@ -186,6 +184,10 @@
     #i2{
       position: absolute;
       top: 30.51%;
+    }
+    #i2_5{
+      position: absolute;
+      top: 56%;
     }
     #i3{
       position: absolute;

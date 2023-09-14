@@ -5,10 +5,8 @@
           <div class="textblue_">个人信息</div>
           <div class="item" id="i1">账号:</div>
           <el-input v-model="account" class="in1" />
-          <div class="item" id="i2">ID:</div>
-          <el-input v-model="id" disabled class="in2" />
-          <div class="item" id="i3">姓名:</div>
-          <el-input v-model="name" class="in3" />
+          <div class="item" id="i2">姓名:</div>
+          <el-input v-model="name" class="in2" />
         </div>
     </div>
 </template>

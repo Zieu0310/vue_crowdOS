@@ -25,6 +25,23 @@
           <div class="InBlack">研发</div>
           <router-link to="./tasktaken"><div class="InBlue">查看详情</div></router-link>
         </div>
+        <el-table :data="tableData" style="width: 100%">
+          <el-table-column prop="event_name" label="公司名" width="300"></el-table-column>
+          <el-table-column prop="event_qname" label="需求名" width="180"></el-table-column>
+          <el-table-column prop="address" label="">
+            <template #default="scope">
+              <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
+                >详情</el-button
+              >
+              <el-button
+                size="small"
+                type="danger"
+                @click="handleDelete(scope.$index, scope.row)"
+                >Delete</el-button
+              >
+            </template>
+          </el-table-column>
+        </el-table>
       </div>
     </div>
 </template>
@@ -33,7 +50,9 @@
   import { successfullyevents_get } from '../../api/research';
   export default {
     data() {
-      return {};
+      return {
+        tableData: [],
+      };
     },
     components: {
       
@@ -44,6 +63,9 @@
     mounted(){
       successfullyevents_get().then((res) => {
         console.log(res);
+        if(res.request.status == 200){
+          this.tableData = res.data.data;
+        }
       });      
     }
   };
