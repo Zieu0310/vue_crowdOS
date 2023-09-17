@@ -27,10 +27,10 @@
         </div>
         <el-table :data="tableData" style="width: 100%">
           <el-table-column prop="event_name" label="公司名" width="300"></el-table-column>
-          <el-table-column prop="event_qname" label="需求名" width="180"></el-table-column>
+          <el-table-column prop="event_name" label="需求名" width="180"></el-table-column>
           <el-table-column prop="address" label="">
             <template #default="scope">
-              <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
+              <el-button size="small" @click="LookTaken"
                 >详情</el-button
               >
               <el-button
@@ -58,7 +58,16 @@
       
     },
     methods: {
-      
+      LookTaken(){
+        this.$router.push({
+          path: '/m_home/tasktaken',
+          query: {
+            name: this.tableData[0].event_name,
+            description: this.tableData[0].description,
+            bid: this.tableData[0].bid,
+          }
+        })
+      }
     },
     mounted(){
       successfullyevents_get().then((res) => {

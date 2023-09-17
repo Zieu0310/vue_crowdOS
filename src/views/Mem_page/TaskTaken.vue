@@ -7,17 +7,15 @@
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">需求详情</div>
           <div class="item" id="i1">需求名</div>
-          <div class="inblue" id="ib1">疫苗研发</div>
-          <div class="item" id="i11">需求ID</div>
-          <div class="inblue" id="ib11">000000000</div>
+          <div class="inblue" id="ib1">{{ name }}</div>
           <div class="item" id="i2">类型</div>
           <div class="inblue" id="ib2">VCG</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
-              <div class="innertext">完成针对…………疾病的疫苗技术的研发</div>
+              <div class="innertext">{{ description }}</div>
           </div>
           <div class="item" id="i4">报价（万）</div>
-          <div class="inblue" id="ib4">50</div> 
+          <div class="inblue" id="ib4">{{ bid }}</div> 
         </div>
       </div>
     </div>
@@ -26,11 +24,20 @@
   <script>
     export default {
       data() {
-        return {};
+        return {
+          name: "",
+          description: "",
+          bid: "",
+        };
       },
       components: {
         
       },
+      mounted(){
+        this.name = this.$route.query.name;
+        this.description = this.$route.query.description;
+        this.bid = this.$route.query.bid;
+      }
     };
   </script>
   
