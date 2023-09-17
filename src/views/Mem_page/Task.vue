@@ -1,43 +1,13 @@
 <template>
     <div class="CenterBox">
       <div class="whitelarge">
-        <div class="whs" id="whs1">
-          <div class="InBlack">研发</div>
-          <router-link to="./tasktaken"><div class="InBlue">查看详情</div></router-link>
-        </div>
-        <div class="whs" id="whs2">
-          <div class="InBlack">研发</div>
-          <router-link to="./tasktaken"><div class="InBlue">查看详情</div></router-link>
-        </div>
-        <div class="whs" id="whs3">
-          <div class="InBlack">研发</div>
-          <router-link to="./tasktaken"><div class="InBlue">查看详情</div></router-link>
-        </div>
-        <div class="whs" id="whs4">
-          <div class="InBlack">研发</div>
-          <router-link to="./tasktaken"><div class="InBlue">查看详情</div></router-link>
-        </div>
-        <div class="whs" id="whs5">
-          <div class="InBlack">研发</div>
-          <router-link to="./tasktaken"><div class="InBlue">查看详情</div></router-link>
-        </div>
-        <div class="whs" id="whs6">
-          <div class="InBlack">研发</div>
-          <router-link to="./tasktaken"><div class="InBlue">查看详情</div></router-link>
-        </div>
         <el-table :data="tableData" style="width: 100%">
-          <el-table-column prop="event_name" label="公司名" width="300"></el-table-column>
-          <el-table-column prop="event_name" label="需求名" width="180"></el-table-column>
-          <el-table-column prop="address" label="">
+          <el-table-column prop="company_name" label="公司名" width="400"></el-table-column>
+          <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
+          <el-table-column>
             <template #default="scope">
               <el-button size="small" @click="LookTaken"
                 >详情</el-button
-              >
-              <el-button
-                size="small"
-                type="danger"
-                @click="handleDelete(scope.$index, scope.row)"
-                >Delete</el-button
               >
             </template>
           </el-table-column>
@@ -62,9 +32,11 @@
         this.$router.push({
           path: '/m_home/tasktaken',
           query: {
-            name: this.tableData[0].event_name,
-            description: this.tableData[0].description,
-            bid: this.tableData[0].bid,
+            name: this.tableData[0].event.name,
+            description: this.tableData[0].event.description,
+            reversePrice: this.tableData[0].event.reversePrice,
+            type: this.tableData[0].event.type,
+            company_name: this.tableData[0].company_name,
           }
         })
       }

@@ -1,7 +1,7 @@
 <template>
     <div class="CenterBox">
       <div>
-        <div class="above">PN公司发布的需求</div>
+        <div class="above">{{ company_name }}公司发布的需求</div>
         <div class="whitecenter">
           <router-link to="./task"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
@@ -9,13 +9,13 @@
           <div class="item" id="i1">需求名</div>
           <div class="inblue" id="ib1">{{ name }}</div>
           <div class="item" id="i2">类型</div>
-          <div class="inblue" id="ib2">VCG</div>
+          <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
               <div class="innertext">{{ description }}</div>
           </div>
-          <div class="item" id="i4">报价（万）</div>
-          <div class="inblue" id="ib4">{{ bid }}</div> 
+          <div class="item" id="i4" v-if="type !== 'VCG'">报价（万）</div>
+          <div class="inblue" id="ib4">{{ reversePrice }}</div> 
         </div>
       </div>
     </div>
@@ -27,16 +27,26 @@
         return {
           name: "",
           description: "",
-          bid: "",
+          reversePrice: "",
+          type: '',
+          company_name: "",
         };
       },
       components: {
         
       },
       mounted(){
+        this.company_name = this.$route.query.company_name;
         this.name = this.$route.query.name;
         this.description = this.$route.query.description;
-        this.bid = this.$route.query.bid;
+        this.reversePrice = this.$route.query.reversePrice;
+        if(this.$route.query.type == 0){
+          this.type = 'IOT&nbsp;J';
+        }else if(this.$route.query.type == 1){
+          this.type = 'VCG';
+        }else{
+          this.type = '固定价格交易';
+        }
       }
     };
   </script>

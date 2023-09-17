@@ -1,45 +1,42 @@
 <template>
     <div class="CenterBox">
-        <div class="whitelarge">
-          <div class="whs" id="whs1" @click="ResearchLook0">
-            <img src="../../assets/img/icon.png" class="icon">
-            <div class="name">{{ events[0].company_id }}公司</div>
-            <div class="message">想要与您进行合作</div>
-          </div>
-          <div class="whs" id="whs2" @click="ResearchLook1">
-            <img src="../../assets/img/icon.png" class="icon">
-            <div class="name">{{ events[1].company_id }}公司</div>
-            <div class="message">想要与您进行合作</div>
-          </div>
-          <router-link to="./taskdescriptionv">
-            <div class="whs" id="whs3">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">PN公司</div>
-              <div class="message">发来一条任务</div>
-            </div>
-          </router-link>
-          <router-link to="./taskdescription">
-            <div class="whs" id="whs4">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">PN公司</div>
-              <div class="message">发来一条任务</div>
-          </div>
-          </router-link>
-          <router-link to="./taskdescription">
-            <div class="whs" id="whs5">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">PN公司</div>
-              <div class="message">发来一条任务</div>
-            </div>
-          </router-link>
-          <router-link to="./taskdescription">
-            <div class="whs" id="whs6">
-              <img src="../../assets/img/icon.png" class="icon">
-              <div class="name">PN公司</div>
-              <div class="message">发来一条任务</div>
-            </div>
-          </router-link>                    
+      <el-select v-model="state" class="m-2" placeholder="投标状态">
+        <el-option
+          v-for="item in State"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+      <div class="whitelarge">
+        <div class="whs" id="whs1" @click="ResearchLook0">
+          <img src="../../assets/img/icon.png" class="icon">
+          <div class="name">{{ events[0].company_id }}公司</div>
+          <div class="message">想要与您进行合作</div>
         </div>
+        <div class="whs" id="whs2" @click="ResearchLook1">
+          <img src="../../assets/img/icon.png" class="icon">
+          <div class="name">{{ events[1].company_id }}公司</div>
+          <div class="message">想要与您进行合作</div>
+        </div>
+        <el-table :data="tableData" style="width: 100%">
+          <el-table-column prop="event_name" label="公司名" width="300"></el-table-column>
+          <el-table-column prop="event_name" label="需求名" width="180"></el-table-column>
+          <el-table-column prop="address" label="">
+            <template #default="scope">
+              <el-button size="small" @click="LookTaken"
+                >详情</el-button
+              >
+              <el-button
+                size="small"
+                type="danger"
+                @click="handleDelete(scope.$index, scope.row)"
+                >Delete</el-button
+              >
+            </template>
+          </el-table-column>
+        </el-table>                
+      </div>
     </div>
 </template>
 
@@ -48,6 +45,21 @@
   export default {
     data() {
       return {
+        State: [
+          {
+            value: 0,
+            label: "未接取",
+          },
+          {
+            value: 1,
+            label: "已有人接取",
+          },
+          {
+            value: 2,
+            label: "已成功被接取",
+          },
+        ],
+        state: "",
         events: [
           {
             event_name: "",
