@@ -1,8 +1,24 @@
 <template>
     <div class="CenterBox">
-      <el-select v-model="state" class="m-2" placeholder="投标状态">
+      <el-select v-model="state" class="m-2" placeholder="投标状态" style="position:absolute;left:9%;top:12%">
         <el-option
           v-for="item in State"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+      <el-select v-model="time" class="m-2" placeholder="时间要求" style="position:absolute;left:39%;top:12%">
+        <el-option
+          v-for="item in Time"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+      <el-select v-model="type" class="m-2" placeholder="类型" style="position:absolute;left:69%;top:12%">
+        <el-option
+          v-for="item in Type"
           :key="item.value"
           :label="item.label"
           :value="item.value"
@@ -60,6 +76,32 @@
           },
         ],
         state: "",
+        Time: [
+          {
+            value: 0,
+            label: "全部",
+          },
+          {
+            value: 1,
+            label: "早于截止日期",
+          },
+        ],
+        time: "",
+        Type: [
+          {
+            value: 0,
+            label: "IOT&nbsp;J",
+          },
+          {
+            value: 1,
+            label: "VCG",
+          },
+          {
+            value: 2,
+            label: "固定价格交易",
+          },
+        ],
+        type: "",
         events: [
           {
             event_name: "",
