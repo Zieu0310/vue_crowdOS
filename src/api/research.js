@@ -1,9 +1,14 @@
 import { apis } from ".";
 
-export const allevents_get = () => {
+export const allevents_get = (state, time, type) => {
   return apis({
     method: "get",
     url: "/research/getEvent",
+    params: {
+      state: state,
+      time: time,
+      type: type,
+    }
   });
 };
 

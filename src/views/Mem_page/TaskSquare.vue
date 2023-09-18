@@ -8,7 +8,7 @@
           :value="item.value"
         />
       </el-select>
-      <el-select v-model="time" class="m-2" placeholder="时间要求" style="position:absolute;left:39%;top:12%">
+      <el-select v-model="time" class="m-2" placeholder="时间要求" style="position:absolute;left:34%;top:12%">
         <el-option
           v-for="item in Time"
           :key="item.value"
@@ -16,7 +16,7 @@
           :value="item.value"
         />
       </el-select>
-      <el-select v-model="type" class="m-2" placeholder="类型" style="position:absolute;left:69%;top:12%">
+      <el-select v-model="type" class="m-2" placeholder="类型" style="position:absolute;left:59%;top:12%">
         <el-option
           v-for="item in Type"
           :key="item.value"
@@ -24,6 +24,7 @@
           :value="item.value"
         />
       </el-select>
+      <el-button type="primary" style="position:absolute;left:79%;top:12%" @click="GetAllEvents">确认选择</el-button>
       <div class="whitelarge">
         <div class="whs" id="whs1" @click="ResearchLook0">
           <img src="../../assets/img/icon.png" class="icon">
@@ -35,9 +36,9 @@
           <div class="name">{{ events[1].company_id }}公司</div>
           <div class="message">想要与您进行合作</div>
         </div>
-        <el-table :data="tableData" style="width: 100%">
-          <el-table-column prop="event_name" label="公司名" width="300"></el-table-column>
-          <el-table-column prop="event_name" label="需求名" width="180"></el-table-column>
+        <el-table :data="Events" style="width: 100%">
+          <el-table-column prop="company_name" label="公司名" width="300"></el-table-column>
+          <el-table-column prop="event.name" label="需求名" width="180"></el-table-column>
           <el-table-column prop="address" label="">
             <template #default="scope">
               <el-button size="small" @click="LookTaken"
@@ -90,7 +91,7 @@
         Type: [
           {
             value: 0,
-            label: "IOT&nbsp;J",
+            label: "IOT J",
           },
           {
             value: 1,
@@ -102,6 +103,7 @@
           },
         ],
         type: "",
+        Events:[],
         events: [
           {
             event_name: "",
@@ -150,6 +152,24 @@
       
     },
     methods: {
+      GetAllEvents(){
+        allevents_get(this.state,this.time,this.type).then((res) => {
+          console.log(res);
+          if(res.request.status == 200){
+            this.Events = res.data.data;
+          }
+          for(let i = 0; i < res.data.data.length; i++){
+            this.events[i].event_name = res.data.data[i].name;
+            this.events[i].event_id = res.data.data[i].id;
+            this.events[i].company_id = res.data.data[i].companyId;
+            this.events[i].description = res.data.data[i].description;
+            this.events[i].state = res.data.data[i].state;
+            this.events[i].budget = res.data.data[i].budget;
+            this.events[i].reversePrice = res.data.data[i].reversePrice;
+            this.events[i].type = res.data.data[i].type;
+          }
+        })
+      },
       ResearchLook0(){
         this.$router.push({
           path: '/m_home/taskdescriptioni',
@@ -182,7 +202,7 @@
       },
     },
     mounted(){
-      allevents_get().then((res) => {
+      allevents_get(this.state,this.time,this.type).then((res) => {
         console.log(res);
         for(let i = 0; i < res.data.data.length; i++){
           this.events[i].event_name = res.data.data[i].name;
