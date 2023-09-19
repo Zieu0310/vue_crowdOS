@@ -1,12 +1,12 @@
 <template>
     <div class="CenterBox">
       <div class="whitelarge">
-        <el-table :data="tableData" style="width: 100%">
+        <el-table :data="tableData" border style="width: 100%">
           <el-table-column prop="company_name" label="公司名" width="400"></el-table-column>
           <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
           <el-table-column>
             <template #default="scope">
-              <el-button size="small" @click="LookTaken"
+              <el-button size="small" @click="LookTaken(scope.row)"
                 >详情</el-button
               >
             </template>
@@ -28,15 +28,15 @@
       
     },
     methods: {
-      LookTaken(){
+      LookTaken(row){
         this.$router.push({
           path: '/m_home/tasktaken',
           query: {
-            name: this.tableData[0].event.name,
-            description: this.tableData[0].event.description,
-            reversePrice: this.tableData[0].event.reversePrice,
-            type: this.tableData[0].event.type,
-            company_name: this.tableData[0].company_name,
+            name: row.event.name,
+            description: row.event.description,
+            reversePrice: row.event.reversePrice,
+            type: row.event.type,
+            company_name: row.company_name,
           }
         })
       }

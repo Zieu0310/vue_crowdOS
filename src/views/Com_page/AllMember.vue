@@ -27,6 +27,7 @@
   export default{
     data(){
       return{
+        team_id: "",
         title: ""
       }
     },
@@ -34,7 +35,8 @@
       
     },
     mounted(){
-      getTeamDetalis(this.$route.params.team_id).then((res) =>{
+      this.team_id = this.$route.query.team_id;
+      getTeamDetalis(this.team_id).then((res) =>{
         console.log(res);
       })
     }

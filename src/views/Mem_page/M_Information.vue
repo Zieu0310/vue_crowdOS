@@ -4,9 +4,9 @@
           <img src="../../assets/img/blue.png" class="blue_">
           <div class="textblue_">个人信息</div>
           <div class="item" id="i1">账号:</div>
-          <el-input v-model="account" class="in1" />
+          <el-input v-model="account" style="position: absolute;left: 15%;top: 12%;width: 40vw;" />
           <div class="item" id="i2">姓名:</div>
-          <el-input v-model="name" class="in2" />
+          <el-input v-model="name" style="position: absolute;left: 15%;top: 27%;width: 40vw;" />
         </div>
     </div>
 </template>
@@ -29,12 +29,8 @@
       
     },
     mounted(){
-      m_information().then((res) => {
-        console.log(res);
-        this.account = res.data.data.account;
-        this.id = res.data.data.id;
-        this.name = res.data.data.name;
-      })
+      this.account = localStorage.getItem("account");
+      this.name = localStorage.getItem("name")
     }
   };
 </script>
@@ -110,20 +106,6 @@
   #i3{
     position: absolute;
     top: 43%;
-  }
-  .in1{
-    position: absolute;
-    left: 15%;
-    top: 12%;
-    width: 40vw;
-    height: 3vh;
-  }
-  .in2{
-    position: absolute;
-    left: 15%;
-    top: 27%;
-    width: 40vw;
-    height: 3vh;
   }
   .in3{
     position: absolute;

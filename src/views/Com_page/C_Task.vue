@@ -1,5 +1,38 @@
 <template>
     <div class="CenterBox">
+      <el-select v-model="state" class="m-2" placeholder="投标状态" style="position:absolute;left:9%;top:12%">
+        <el-option
+          v-for="item in State"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+      <el-select v-model="time" class="m-2" placeholder="时间要求" style="position:absolute;left:26%;top:12%">
+        <el-option
+          v-for="item in Time"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+      <el-select v-model="type" class="m-2" placeholder="类型" style="position:absolute;left:43%;top:12%">
+        <el-option
+          v-for="item in Type"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+      <el-select v-model="remark" class="m-2" placeholder="审核状态" style="position:absolute;left:60%;top:12%">
+        <el-option
+          v-for="item in Remark"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+      <el-button type="primary" style="position:absolute;left:79%;top:12%" @click="GetAllEvents">确认选择</el-button>
       <div class="whitelarge">
         <img src="../../assets/img/blue.png" class="blue">
         <div class="textBlue" id="tb1">已发布</div>
@@ -33,6 +66,62 @@
   export default {
     data() {
       return {
+        State: [
+          {
+            value: 0,
+            label: "未接取",
+          },
+          {
+            value: 1,
+            label: "已有人接取",
+          },
+          {
+            value: 2,
+            label: "已成功被接取",
+          },
+        ],
+        state: 0,
+        Time: [
+          {
+            value: 0,
+            label: "全部",
+          },
+          {
+            value: 1,
+            label: "早于截止日期",
+          },
+        ],
+        time: 0,
+        Type: [
+          {
+            value: 0,
+            label: "IOT J",
+          },
+          {
+            value: 1,
+            label: "VCG",
+          },
+          {
+            value: 2,
+            label: "固定价格交易",
+          },
+        ],
+        type: 0,
+        Remark: [
+          {
+            value: 0,
+            label: "未审核",
+          },
+          {
+            value: 1,
+            label: "审核未通过",
+          },
+          {
+            value: 2,
+            label: "审核通过",
+          },
+        ],
+        remark: 0,
         events: [
           {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""},
           {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""},
@@ -46,6 +135,11 @@
       
     },
     methods:{
+      GetAllEvents(){
+        events_get(this.state,this.remark,this.type,this.time).then((res) => {
+          console.log(res);       
+        })
+      },
       EventDetailsAppear0(){
         this.$router.push({
           path: '/c_home/deliveredtask',
@@ -118,7 +212,7 @@
       },
     },
     mounted(){
-      events_get().then((res) => {
+      events_get(this.state,this.remark,this.type,this.time).then((res) => {
         console.log(res);
         this.company_id = res.data.data[0].company_id;
         localStorage.setItem("company_id",this.company_id);

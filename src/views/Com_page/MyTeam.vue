@@ -1,6 +1,17 @@
 <template>
     <div class="CenterBox">
         <div class="whitelarge">
+          <el-table :data="teamData" border style="width: 100%">
+            <el-table-column prop="team_name" label="团队名" width="400"></el-table-column>
+            <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
+            <el-table-column>
+              <template #default="scope">
+                <el-button size="small" @click="TeamDetailsAppear(scope.row)"
+                  >详情</el-button
+                >
+              </template>
+            </el-table-column>
+          </el-table>
           <div class="whs" id="whs1" @click="TeamDetailsAppear0">
             <img src="../../assets/img/icon.png" class="icon">
             <div class="name">{{ teams[0].team_name }}</div>
@@ -17,8 +28,8 @@
             <img src="../../assets/img/icon.png" class="icon">
             <div class="name">{{ teams[3].team_name }}</div>
           </div>
-          <div class="whs" id="whs5" v-if="teams[4].team_name !== null">
-            <img src="../../assets/img/icon.png" class="icon">
+          <div class="whs" id="whs5" >
+            <img src="../../assets/img/icon.png" class="icon" @click="TeamDetailsAppear0">
             <div class="name">{{ teams[4].team_name }}</div>
           </div>                 
         </div>
@@ -30,6 +41,7 @@
   export default {
     data() {
       return {
+        teamData: [],
         teams: [
             {
               team_id: 0,
@@ -63,6 +75,14 @@
       
     },
     methods: {
+      TeamDetailsAppear(row){
+        this.$router.push({
+          path: '/c_home/allmember',
+          query:{
+            team_id: row.team_id,
+          }
+        })
+      },
       TeamDetailsAppear0(){
         this.$router.push({
           path: '/c_home/allmember',
@@ -107,9 +127,8 @@
     mounted(){
       myteam_get().then((res) => {
         console.log(res);
-        for(let i = 0; i < res.data.data.teams.length; i++){
-          this.teams[i].team_name = res.data.data.teams[i].team_name;
-          this.teams[i].team_id = res.data.data.teams[i].team_id;
+        if(res.request.status == 200){
+          this.teamData = res.data.data;
         }
       })
     },

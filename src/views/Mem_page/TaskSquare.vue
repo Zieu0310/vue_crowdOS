@@ -26,29 +26,13 @@
       </el-select>
       <el-button type="primary" style="position:absolute;left:79%;top:12%" @click="GetAllEvents">确认选择</el-button>
       <div class="whitelarge">
-        <div class="whs" id="whs1" @click="ResearchLook0">
-          <img src="../../assets/img/icon.png" class="icon">
-          <div class="name">{{ events[0].company_id }}公司</div>
-          <div class="message">想要与您进行合作</div>
-        </div>
-        <div class="whs" id="whs2" @click="ResearchLook1">
-          <img src="../../assets/img/icon.png" class="icon">
-          <div class="name">{{ events[1].company_id }}公司</div>
-          <div class="message">想要与您进行合作</div>
-        </div>
-        <el-table :data="Events" style="width: 100%">
-          <el-table-column prop="company_name" label="公司名" width="300"></el-table-column>
-          <el-table-column prop="event.name" label="需求名" width="180"></el-table-column>
+        <el-table :data="Events" border style="width: 100%">
+          <el-table-column prop="company_name" label="公司名" width="400"></el-table-column>
+          <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
           <el-table-column prop="address" label="">
             <template #default="scope">
-              <el-button size="small" @click="LookTaken"
+              <el-button size="small" @click="LookTaken(scope.row)"
                 >详情</el-button
-              >
-              <el-button
-                size="small"
-                type="danger"
-                @click="handleDelete(scope.$index, scope.row)"
-                >Delete</el-button
               >
             </template>
           </el-table-column>
@@ -76,7 +60,7 @@
             label: "已成功被接取",
           },
         ],
-        state: "",
+        state: 0,
         Time: [
           {
             value: 0,
@@ -87,7 +71,7 @@
             label: "早于截止日期",
           },
         ],
-        time: "",
+        time: 0,
         Type: [
           {
             value: 0,
@@ -102,7 +86,7 @@
             label: "固定价格交易",
           },
         ],
-        type: "",
+        type: 0,
         Events:[],
         events: [
           {
@@ -152,54 +136,37 @@
       
     },
     methods: {
+      LookTaken(row){
+        this.$router.push({
+          path: '/m_home/taskdescriptioni',
+          query: {
+            name: row.event.name,
+            description: row.event.description,
+            type: row.event.type,
+            company_name: row.company_name,
+            budget: row.event.budget,
+            reservePrice: row.event.reservePrice,
+
+          }
+        })
+      },
       GetAllEvents(){
         allevents_get(this.state,this.time,this.type).then((res) => {
-          console.log(res);
-          if(res.request.status == 200){
-            this.Events = res.data.data;
-          }
-          for(let i = 0; i < res.data.data.length; i++){
-            this.events[i].event_name = res.data.data[i].name;
-            this.events[i].event_id = res.data.data[i].id;
-            this.events[i].company_id = res.data.data[i].companyId;
-            this.events[i].description = res.data.data[i].description;
-            this.events[i].state = res.data.data[i].state;
-            this.events[i].budget = res.data.data[i].budget;
-            this.events[i].reversePrice = res.data.data[i].reversePrice;
-            this.events[i].type = res.data.data[i].type;
+          if(this.state === ""){
+            alert('请选择投标状态！')
+          }else if(this.time === ""){
+            alert('请选择时间要求！')
+          }else if(this.type === ""){
+            alert('请选择投标类型！')
+          }else{
+            console.log(res);
+            if(res.request.status == 200){
+              this.Events = res.data.data;
+            }
           }
         })
       },
-      ResearchLook0(){
-        this.$router.push({
-          path: '/m_home/taskdescriptioni',
-          query:{
-            event_id: this.events[0].event_id,
-            event_name: this.events[0].event_name,
-            company_id: this.events[0].company_id,
-            description: this.events[0].description,
-            reversePrice: this.events[0].reversePrice,
-            budget: this.events[0].budget,
-            state: this.events[0].state,
-            type: this.events[0].type,
-          }
-        })
-      },
-      ResearchLook1(){
-        this.$router.push({
-          path: '/m_home/taskdescriptioni',
-          query:{
-            event_id: this.events[1].event_id,
-            event_name: this.events[1].event_name,
-            company_id: this.events[1].company_id,
-            description: this.events[1].description,
-            reversePrice: this.events[1].reversePrice,
-            budget: this.events[1].budget,
-            state: this.events[1].state,
-            type: this.events[1].type,
-          }
-        })
-      },
+      
     },
     mounted(){
       allevents_get(this.state,this.time,this.type).then((res) => {

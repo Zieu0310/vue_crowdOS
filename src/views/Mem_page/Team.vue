@@ -56,18 +56,6 @@
       mounted(){
         m_information().then((res) => {
           console.log(res);
-          this.account = res.data.data.account;
-          this.id = res.data.data.id;
-          this.name = res.data.data.name;
-          this.team_id = res.data.data.team_id;
-          localStorage.setItem("team_id",this.team_id);
-          for(let i = 0; i < res.data.data.achievements.length; i++){
-            this.achievements[i].title = res.data.data.achievements[i].title;
-            this.achievements[i].type = res.data.data.achievements[i].type;
-            this.achievements[i].description = res.data.data.achievements[i].description;
-            this.achievements[i].id = res.data.data.achievements[i].id;
-            this.achievements[i].teamId = res.data.data.achievements[i].teamId;
-          }
         });
         
       }

@@ -32,11 +32,16 @@ export const getTeamDetalis = (team_id) => {
   });
 };
 
-export const events_get = () => {
+export const events_get = (state,remark,type,time) => {
   return apis({
     method: "get",
     url: "/companies/getEventDetails",
-    data: {},
+    params: {
+      state: state,
+      remark: remark,
+      type: type,
+      time: time,
+    },
   });
 };
 

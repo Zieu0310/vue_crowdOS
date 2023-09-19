@@ -6,9 +6,9 @@
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">需求详情</div>
           <div class="item" id="i1">公司名</div>
-          <div class="inblue" id="ib1">{{ company_id }}</div>
+          <div class="inblue" id="ib1">{{ company_name }}</div>
           <div class="item" id="i11">需求名</div>
-          <div class="inblue" id="ib11">{{ event_name }}</div>
+          <div class="inblue" id="ib11">{{ name }}</div>
           <div class="item" id="i12">具体描述</div>
           <div class="grey_rec">
               <div class="innertext">{{ description }}</div>
@@ -37,14 +37,12 @@
     export default {
       data() {
         return {
-          event_name: "",
-          event_id: "",
-          company_id: "",
+          name: "",
           description: "",
-          state: "",
-          budget: "",
           reversePrice: "",
-          type: ""
+          type: '',
+          company_name: "",
+          budget: '',
         };
       },
       methods: {
@@ -56,19 +54,18 @@
         }
       },
       mounted() {
-        this.event_id = this.$route.query.event_id;
-        this.event_name = this.$route.query.event_name;
-        this.company_id = this.$route.query.company_id;
+        this.company_name = this.$route.query.company_name;
+        this.name = this.$route.query.name;
         this.description = this.$route.query.description;
-        this.budget = this.$route.query.budget;
         this.reversePrice = this.$route.query.reversePrice;
+        this.budget = this.$route.query.budget;
         this.type = this.$route.query.type;
-        if(this.$route.query.state == 0){
-          this.state = "未接取";
-        }else if(this.$route.query.state == 1){
-          this.state = "已竞标";
+        if(this.$route.query.type == 0){
+          this.type = 'IOT&nbsp;J';
+        }else if(this.$route.query.type == 1){
+          this.type = 'VCG';
         }else{
-          this.state = "被正式接取";
+          this.type = '固定价格交易';
         }
       },
     };
