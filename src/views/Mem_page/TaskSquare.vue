@@ -88,48 +88,6 @@
         ],
         type: 0,
         Events:[],
-        events: [
-          {
-            event_name: "",
-            event_id: "",
-            company_id: "",
-            description: "",
-            state: "",
-            budget: "",
-            reversePrice: "",
-            type: ""
-          },
-          {
-            event_name: "",
-            event_id: "",
-            company_id: "",
-            description: "",
-            state: "",
-            budget: "",
-            reversePrice: "",
-            type: ""
-          },
-          {
-            event_name: "",
-            event_id: "",
-            company_id: "",
-            description: "",
-            state: "",
-            budget: "",
-            reversePrice: "",
-            type: ""
-          },
-          {
-            event_name: "",
-            event_id: "",
-            company_id: "",
-            description: "",
-            state: "",
-            budget: "",
-            reversePrice: "",
-            type: ""
-          },
-        ],
       };
     },
     components: {
@@ -146,7 +104,9 @@
             company_name: row.company_name,
             budget: row.event.budget,
             reservePrice: row.event.reservePrice,
-
+            endTime: row.event.endTime,
+            state: row.event.state,
+            id: row.event.id,
           }
         })
       },
@@ -171,16 +131,6 @@
     mounted(){
       allevents_get(this.state,this.time,this.type).then((res) => {
         console.log(res);
-        for(let i = 0; i < res.data.data.length; i++){
-          this.events[i].event_name = res.data.data[i].name;
-          this.events[i].event_id = res.data.data[i].id;
-          this.events[i].company_id = res.data.data[i].companyId;
-          this.events[i].description = res.data.data[i].description;
-          this.events[i].state = res.data.data[i].state;
-          this.events[i].budget = res.data.data[i].budget;
-          this.events[i].reversePrice = res.data.data[i].reversePrice;
-          this.events[i].type = res.data.data[i].type;
-        }
       })
     }
   };

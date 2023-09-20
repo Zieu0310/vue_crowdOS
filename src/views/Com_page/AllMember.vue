@@ -4,20 +4,23 @@
         <div class="whitelarge">
             <img src="../../assets/img/blue.png" class="blue_" id="b1">
             <div class="textblue_" id="tb1">成员</div>
-            <el-scrollbar class="mem">
-              <div class="scrollbar-demo-item1">XX教授</div>
-              <div class="scrollbar-demo-item1">阿sir</div>
-              <div class="scrollbar-demo-item1">刘老六</div>
-              <div class="scrollbar-demo-item1">沙雕</div>
-            </el-scrollbar>
+            <el-table :data="Members" border height="200" style="position:absolute;top:10%;width: 100%">
+              <el-table-column prop="name" label="姓名" width="560" />
+              <el-table-column prop="role" label="角色" width="560" />
+            </el-table>
             <img src="../../assets/img/blue.png" class="blue_" id="b2">
             <div class="textblue_" id="tb2">成果</div>
-            <el-scrollbar class="achi">
-              <router-link to="./teamachievement"><div class="scrollbar-demo-item">{{ title }}</div></router-link>
-              <router-link to="./teamachievement"><div class="scrollbar-demo-item">平台开发</div></router-link>
-              <router-link to="./teamachievement"><div class="scrollbar-demo-item">平台开发</div></router-link>
-              <router-link to="./teamachievement"><div class="scrollbar-demo-item">平台开发</div></router-link>
-            </el-scrollbar>
+            <el-table :data="Achievements" border height="200" style="position:absolute;top:49.3%;width: 100%">
+              <el-table-column prop="title" label="标题" width="400" />
+              <el-table-column prop="type" label="类型" width="400" />
+              <el-table-column prop="address" label="">
+                <template #default="scope">
+                  <el-button size="small" @click="LookAchievement(scope.row)"
+                    >详情</el-button
+                  >
+                </template>
+              </el-table-column>
+            </el-table>
         </div>
     </div>    
 </template>
@@ -27,17 +30,41 @@
   export default{
     data(){
       return{
+        Members: [],
+        Achievements: [],
         team_id: "",
         title: ""
       }
     },
     methods: {
-      
+      LookAchievement(row){
+        this.$router.push({
+          path: '/c_home/teamachievement',
+          query: {
+            title: row.title,
+            description: row.description,
+            type: row.type,
+          }
+        })
+      }
     },
     mounted(){
       this.team_id = this.$route.query.team_id;
       getTeamDetalis(this.team_id).then((res) =>{
         console.log(res);
+        if(res.request.status == 200){
+          this.Members = res.data.data.members;
+          this.Achievements = res.data.data.achievements;
+          for(let i = 0; i < this.Achievements.length; i++){
+            if(this.Achievements[i].type == 0){
+              this.Achievements[i].type = "论文";
+            }else if(this.Achievements[i].type == 1){
+              this.Achievements[i].type = "专利";
+            }else{
+              this.Achievements[i].type = "项目";
+            }
+          }
+        }
       })
     }
   }

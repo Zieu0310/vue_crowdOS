@@ -16,7 +16,7 @@
           <div class="inblue" id="ib22">{{ team_id }}</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
-              <div class="innertext">{{ file }}</div>
+              <div class="innertext">{{ description }}</div>
           </div>
         </div>
       </div>
@@ -24,7 +24,6 @@
 </template>
   
   <script>
-    import axios from 'axios';
     export default {
       data() {
         return {
@@ -37,27 +36,12 @@
       components: {
         
       },
-      created(){
-        axios.get("http://127.0.0.1:4523/m1/3023705-0-default/companies/getTeamAchievements/1",{
-          params:{
-            team_id: 0,
-          }
-        }).then(res => {
-          console.log(res);
-          this.title = res.data.data.title;
-          this.team_id = res.data.data.team_id;
-          this.file = res.data.data.file;
-          if(res.data.data.type == 0){
-            this.type = "论文";
-          }else if(res.data.data.type == 1){
-            this.type = "专利";
-          }else{
-            this.type = "项目";
-          }
-        }).catch(error =>{
-          console.log(error);
-        })
-      },
+      mounted(){
+        this.title = this.$route.query.title;
+        this.type = this.$route.query.type;
+        this.description = this.$route.query.description;
+        this.reversePrice = this.$route.query.reversePrice;
+      }
     };
   </script>
   

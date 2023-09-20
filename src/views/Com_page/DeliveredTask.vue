@@ -9,7 +9,7 @@
           <div class="item" id="i1">需求名</div>
           <div class="inblue" id="ib1">{{ name }}</div>
           <div class="item" id="i11">截止日期</div>
-          <div class="inblue" id="ib11"></div>
+          <div class="inblue" id="ib11">{{ endTime }}</div>
           <div class="item" id="i2">类型</div>
           <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i3">具体描述</div>
@@ -17,7 +17,7 @@
               <div class="innertext">{{ description }}</div>
           </div>
           <div class="item" id="i4" v-if="type==='固定价格交易'">固定价格（万）</div>
-          <div class="it4" v-if="type==='IOT&nbsp;J'">预算（万）</div>
+          <div class="it4" v-if="type==='IOT J'">预算（万）</div>
           <div class="inblue" id="ib4" v-if="type==='固定价格交易'">{{ reversePrice }}</div>
           <div class="inbl4" v-if="type==='IOT&nbsp;J'">{{ budget }}</div>
           <div class="item" id="i5">状态</div>
@@ -31,8 +31,8 @@
     export default {
       data() {
         return {
-          id: "",
           name: "",
+          endTime: "",
           type: "",
           description: "",
           reversePrice: "",
@@ -44,25 +44,11 @@
         
       },
       mounted() {
-        this.id = this.$route.query.id;
         this.name = this.$route.query.name;
+        this.endTime = this.$route.query.endTime;
         this.description = this.$route.query.description;
-        this.reversePrice = this.$route.query.reversePrice;
-        this.budget = this.$route.query.budget;
-        if(this.$route.query.type == 0){
-          this.type = "IOT&nbsp;J"
-        }else if(this.$route.query.type == 1){
-          this.type = "VCG"
-        }else{
-          this.type = "固定价格交易"
-        }
-        if(this.$route.query.state == 0){
-          this.state = "未接取";
-        }else if(this.$route.query.state == 1){
-          this.state = "已竞标";
-        }else{
-          this.state = "被正式接取";
-        }
+        this.type = this.$route.query.type;
+        this.state = this.$route.query.state;
       },
     };
   </script>

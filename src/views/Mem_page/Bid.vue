@@ -33,7 +33,7 @@
         M_HeadBar,
       },
       mounted(){
-        this.event_id = this.$route.params.event_id;
+        this.event_id = this.$route.params.id;
       },
       methods: {
         tenderData() {      

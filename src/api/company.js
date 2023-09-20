@@ -1,14 +1,13 @@
 import { apis } from ".";
 
-export const postEvents = (company_id, event_name, description, arithmetic, price, reversePrice, time) => {
+export const postEvents = (event_name, description, type, price, reversePrice, time) => {
   return apis({
     method: "post",
     url: "/companies/postEvents",
     data: {
-      company_id: company_id,
       event_name: event_name,
       description: description,
-      arithmetic: arithmetic,
+      type: type,
       price: price,
       reversePrice: reversePrice,
       time: time,

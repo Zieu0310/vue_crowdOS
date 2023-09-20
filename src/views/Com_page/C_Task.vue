@@ -36,26 +36,19 @@
       <div class="whitelarge">
         <img src="../../assets/img/blue.png" class="blue">
         <div class="textBlue" id="tb1">已发布</div>
-        <div class="whs" id="whs1">
-          <div class="InBlack">{{ events[0].event_name }}</div>
-          <div class="InBlue" @click="EventDetailsAppear0">查看详情</div>
-        </div>
-        <div class="whs" id="whs2">
-          <div class="InBlack">{{ events[1].event_name }}</div>
-          <div class="InBlue" @click="EventDetailsAppear1">查看详情</div>
-        </div>
-        <div class="whs" id="whs3">
-          <div class="InBlack">{{ events[2].event_name }}</div>
-          <div class="InBlue" @click="EventDetailsAppear2">查看详情</div>
-        </div>
-        <div class="whs" id="whs4">
-          <div class="InBlack">{{ events[3].event_name }}</div>
-          <div class="InBlue" @click="EventDetailsAppear3">查看详情</div>
-        </div>
-        <div class="whs" id="whs5">
-          <div class="InBlack">{{ events[4].event_name }}</div>
-          <div class="InBlue" @click="EventDetailsAppear4">查看详情</div>
-        </div>
+        <el-table :data="Events" border height="460" style="position:absolute;top:10%;width: 100%">
+          <el-table-column prop="name" label="需求名" width="250" />
+          <el-table-column prop="state" label="接取状态" width="250" />
+          <el-table-column prop="type" label="类型" width="250" />
+          <el-table-column prop="endTime" label="截止时间" width="250" />
+          <el-table-column prop="address" label="">
+            <template #default="scope">
+              <el-button size="small" @click="LookDelivered(scope.row)"
+                >详情</el-button
+              >
+            </template>
+          </el-table-column>
+        </el-table>
         <router-link to="addtask"><img src="../../assets/img/add.png" alt="添加任务" class="round" @click="newEvent"></router-link>
       </div>
     </div>
@@ -121,14 +114,8 @@
             label: "审核通过",
           },
         ],
-        remark: 0,
-        events: [
-          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""},
-          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""},
-          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""},
-          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""},
-          {event_name: "",event_id: "",type: "",description: "",reversePrice: "",budget: "",state: ""}
-        ],
+        remark: 2,
+        Events: [],
       };
     },
     components: {
@@ -137,94 +124,49 @@
     methods:{
       GetAllEvents(){
         events_get(this.state,this.remark,this.type,this.time).then((res) => {
-          console.log(res);       
-        })
-      },
-      EventDetailsAppear0(){
-        this.$router.push({
-          path: '/c_home/deliveredtask',
-          query:{
-            id: this.events[0].event_id,
-            name: this.events[0].event_name,
-            type: this.events[0].type,
-            description: this.events[0].description,
-            reversePrice: this.events[0].reversePrice,
-            budget: this.events[0].budget,
-            state: this.events[0].state
+          console.log(res);
+          if(res.request.status == 200){
+            this.Events = res.data.data;
           }
         })
       },
-      EventDetailsAppear1(){
+      LookDelivered(row){
         this.$router.push({
           path: '/c_home/deliveredtask',
           query:{
-            id: this.events[1].event_id,
-            name: this.events[1].event_name,
-            type: this.events[1].type,
-            description: this.events[1].description,
-            reversePrice: this.events[1].reversePrice,
-            budget: this.events[1].budget,
-            state: this.events[1].state
+            name: row.name,
+            endTime: row.endTime,
+            type: row.type,
+            description: row.description,
+            state: row.state,
           }
         })
-      },
-      EventDetailsAppear2(){
-        this.$router.push({
-          path: '/c_home/deliveredtask',
-          query:{
-            id: this.events[2].event_id,
-            name: this.events[2].event_name,
-            type: this.events[2].type,
-            description: this.events[2].description,
-            reversePrice: this.events[2].reversePrice,
-            budget: this.events[2].budget,
-            state: this.events[2].state
-          }
-        })
-      },
-      EventDetailsAppear3(){
-        this.$router.push({
-          path: '/c_home/deliveredtask',
-          query:{
-            id: this.events[3].event_id,
-            name: this.events[3].event_name,
-            type: this.events[3].type,
-            description: this.events[3].description,
-            reversePrice: this.events[3].reversePrice,
-            budget: this.events[3].budget,
-            state: this.events[3].state
-          }
-        })
-      },
-      EventDetailsAppear4(){
-        this.$router.push({
-          path: '/c_home/deliveredtask',
-          query:{
-            id: this.events[4].event_id,
-            name: this.events[4].event_name,
-            type: this.events[4].type,
-            description: this.events[4].description,
-            reversePrice: this.events[4].reversePrice,
-            budget: this.events[4].budget,
-            state: this.events[4].state
-          }
-        })
-      },
+      }
     },
     mounted(){
       events_get(this.state,this.remark,this.type,this.time).then((res) => {
         console.log(res);
         this.company_id = res.data.data[0].company_id;
         localStorage.setItem("company_id",this.company_id);
-        for(let i = 0 ; i < res.data.data.length; i++){
-          this.events[i].event_name = res.data.data[i].event_name;
-          this.events[i].event_id = res.data.data[i].event_id;
-          this.events[i].description = res.data.data[i].description;
-          this.events[i].type = res.data.data[i].type;
-          this.events[i].reversePrice = res.data.data[i].reversePrice;
-          this.events[i].budget = res.data.data[i].price;
-          this.events[i].state = res.data.data[i].state;
-        }        
+        if(res.request.status == 200){
+          this.Events = res.data.data;
+          for(let i = 0; i < this.Events.length; i++){
+            if(this.Events[i].type == 0){
+              this.Events[i].type = "IOT J";
+            }else if(this.Events[i].type == 1){
+              this.Events[i].type = "VCG";
+            }else{
+              this.Events[i].type = "固定价格交易";
+            }
+            if(this.Events[i].state == 0){
+              this.Events[i].state = "未接取";
+            }else if(this.Events[i].state == 1){
+              this.Events[i].state = "已有人接取";
+            }else{
+              this.Events[i].state = "已成功被接取";
+            }
+          }
+        }
       })
     }
   };

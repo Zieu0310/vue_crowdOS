@@ -51,9 +51,9 @@
       },
       methods:{
         handlePostEvents(){
-          postEvents(this.company_id,this.event_name,this.description,this.type,this.price,this.reversePrice,this.time).then((res)=>{
+          postEvents(this.event_name,this.description,this.type,this.price,this.reversePrice,this.time).then((res)=>{
             if(this.event_name !== "" && this.description !== "" && this.type !== ""){
-              if(this.type === "IOT&nbsp;J" && this.price == null){
+              if(this.type === "IOT J" && this.price == null){
                 alert('请正确输入预算！');
               } 
               else if(this.type === "固定价格交易" && this.reversePrice == null){

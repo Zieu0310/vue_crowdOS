@@ -13,15 +13,16 @@
           <div class="grey_rec">
               <div class="innertext">{{ description }}</div>
           </div>
-          <div class="item" id="i2_5">截止日期</div>
+          <div class="item" id="i2_5" v-if="endTime != null">截止日期</div>
+          <div class="inblue" id="ib2_5">{{ endTime }}</div>
           <div class="item" id="i3">投标状态</div>
           <div class="inblue" id="ib3">{{ state }}</div>
-          <div class="item" id="i4" v-if="type == 0">预算（万）</div>
+          <div class="item" id="i4" v-if="type === 'IOT J'&& budget != null">预算（万）</div>
           <div class="it4" v-else>固定价格（万）</div>
-          <div class="inblue" id="ib4" v-if="type == 0">{{ budget }}</div>
+          <div class="inblue" id="ib4" v-if="type === 'IOT J'">{{ budget }}</div>
           <div class="inbl4" v-else>{{ reversePrice }}</div>
           <router-link to="./bid">
-            <div class="yes" v-if="type == 0 || type == 1">
+            <div class="yes" v-if="type === 'IOT J' || type == 'VCG'">
               <div class="yestext" @click="toTender(event_id)">投标</div>
             </div>
           </router-link>
@@ -37,19 +38,22 @@
     export default {
       data() {
         return {
+          id: "",
           name: "",
           description: "",
           reversePrice: "",
           type: '',
           company_name: "",
           budget: '',
+          endTime: '',
+          state: '',
         };
       },
       methods: {
-        toTender(event_id){
+        toTender(id){
           this.$router.push({
             path: "/m_home/bid",
-            params: event_id,
+            params: id,
           })
         }
       },
@@ -59,13 +63,21 @@
         this.description = this.$route.query.description;
         this.reversePrice = this.$route.query.reversePrice;
         this.budget = this.$route.query.budget;
-        this.type = this.$route.query.type;
+        this.endTime = this.$route.query.endTime;
+        this.id = this.$route.query.id;
         if(this.$route.query.type == 0){
-          this.type = 'IOT&nbsp;J';
+          this.type = 'IOT J';
         }else if(this.$route.query.type == 1){
           this.type = 'VCG';
         }else{
           this.type = '固定价格交易';
+        }
+        if(this.$route.query.type == 0){
+          this.state = '未接取';
+        }else if(this.$route.query.type == 1){
+          this.state = '已有人接取';
+        }else{
+          this.state = '已成功被接取';
         }
       },
     };
@@ -172,7 +184,7 @@
     }
     #i11{
       position: absolute;
-      top: 26.69%;
+      top: 24.69%;
     }
     #i12{
       position: absolute;
@@ -283,7 +295,7 @@
   }
   #ib11{
     position: absolute;
-    top: 26.8%;
+    top: 24.8%;
   }
   #ib12{
     position: absolute;
@@ -292,6 +304,10 @@
   #ib2{
     position: absolute;
     top: 30.62%;
+  }
+  #ib2_5{
+    position: absolute;
+    top: 56%;
   }
   #ib3{
     position: absolute;

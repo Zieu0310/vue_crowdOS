@@ -3,7 +3,7 @@
         <div class="whitelarge">
           <el-table :data="teamData" border style="width: 100%">
             <el-table-column prop="team_name" label="团队名" width="400"></el-table-column>
-            <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
+            <el-table-column prop="event_name" label="需求名" width="400"></el-table-column>
             <el-table-column>
               <template #default="scope">
                 <el-button size="small" @click="TeamDetailsAppear(scope.row)"
@@ -11,27 +11,7 @@
                 >
               </template>
             </el-table-column>
-          </el-table>
-          <div class="whs" id="whs1" @click="TeamDetailsAppear0">
-            <img src="../../assets/img/icon.png" class="icon">
-            <div class="name">{{ teams[0].team_name }}</div>
-          </div>
-          <div class="whs" id="whs2" v-if="teams[1].team_name !== null">
-            <img src="../../assets/img/icon.png" class="icon" >
-            <div class="name">{{ teams[1].team_name }}</div>
-          </div>
-          <div class="whs" id="whs3" v-if="teams[2].team_name !== null">
-            <img src="../../assets/img/icon.png" class="icon">
-            <div class="name">{{ teams[2].team_name }}</div>
-          </div>
-          <div class="whs" id="whs4" v-if="teams[3].team_name !== null">
-            <img src="../../assets/img/icon.png" class="icon">
-            <div class="name">{{ teams[3].team_name }}</div>
-          </div>
-          <div class="whs" id="whs5" >
-            <img src="../../assets/img/icon.png" class="icon" @click="TeamDetailsAppear0">
-            <div class="name">{{ teams[4].team_name }}</div>
-          </div>                 
+          </el-table>    
         </div>
     </div>
 </template>
