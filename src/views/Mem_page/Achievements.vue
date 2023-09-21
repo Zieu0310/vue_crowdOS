@@ -3,6 +3,11 @@
     <div class="whitelarge">
       <img src="../../assets/img/blue.png" class="blue_">
       <div class="textblue_">科研成果</div>
+      <el-table :data="achievements" height="250" style="position:absolute;top:10%;width: 100%">
+        <el-table-column prop="title" label="标题" width="180" />
+        <el-table-column prop="type" label="类型" width="180" />
+        <el-table-column prop="address" label="Address" />
+      </el-table>
       <router-link to="./teaminformation"><div class="gr">返回</div></router-link>
       <div class="whs" id="whs1">
         <div class="InBlack">疫苗</div>
@@ -38,11 +43,16 @@
 
   export default {
     data() {
-      return {};
+      return {
+        achievements: [],
+      };
     },
     components: {
       M_HeadBar,
     },
+    mounted(){
+      this.achievements = this.$route.query.achievements;
+    }
   };
 </script>
 
@@ -113,22 +123,27 @@
   #whs1{
     position: absolute;
     top: 8.83%;
+    display: none;
   }
   #whs2{
     position: absolute;
     top: 21.29%;
+    display: none;
   }
   #whs3{
     position: absolute;
     top: 33.74%;
+    display: none;
   }
   #whs4{
     position: absolute;
     top: 46.20%;
+    display: none;
   }
   #whs5{
     position: absolute;
     top: 58.66%;
+    display: none;
   }
   #whs6{
     position: absolute;

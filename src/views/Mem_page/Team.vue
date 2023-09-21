@@ -3,12 +3,10 @@
       <div class="whitelarge">
         <img src="../../assets/img/blue.png" class="blue_">
         <div class="textblue_">我的团队</div>
-        <router-link to="./teaminformation">
-          <div class="whs" id="whs1">
-            <img src="../../assets/img/group.png" class="group">
-            <div class="textblack">XX教授团队</div>
-          </div>
-        </router-link> 
+        <div class="whs" id="whs1" @click="LookTeam">
+          <img src="../../assets/img/group.png" class="group">
+          <div class="textblack">{{ team_name }}</div>
+        </div>
         <router-link to="teamsetup"><img src="../../assets/img/add.png" alt="添加成果" class="round"></router-link>
       </div>
     </div>
@@ -22,16 +20,11 @@
       data() {
         return {
           team_id: "",
+          team_name: "",
           account: "",
           id: "",
           name: "",
-          achievements: [{
-            title: "",
-            type: "",
-            description: "",
-            id: "",
-            teamId: ""
-          }]
+          Achievements: [],
         };
       },
       components: {
@@ -43,12 +36,8 @@
             path: "/m_home/teaminformation",
             query: {
               team_id: this.team_id,
-              achievements: {
-                title: this.achievements[0].title,
-                type: this.achievements[0].type,
-                description: this.achievements[0].achievements,
-                teamId: this.achievements[0].teamId,
-              }
+              team_name: this.team_name,
+              achievements: this.Achievements,
             }
           })
         }
@@ -56,6 +45,12 @@
       mounted(){
         m_information().then((res) => {
           console.log(res);
+          if(res.request.status == 200){
+            this.Achievements = res.data.data.achievements;
+            localStorage.setItem("achievements",this.Achievements);
+            this.team_name = res.data.data.team_name;
+            this.team_id = res.data.data.team_id;
+          }
         });
         
       }

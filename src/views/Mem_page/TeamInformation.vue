@@ -5,66 +5,55 @@
         <div class="whitecenter">
           <router-link to="./team"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/group.png" class="group">
-          <div class="groupname">XX教授团队</div>
+          <div class="groupname">{{ team_name }}</div>
           <div class="groupid">{{ team_id }}</div>
           <img src="../../assets/img/blue.png" class="tblue">
           <div class="textBlue" id="tb1">团队成员</div>
-          <div class="whs" id="whs1">
-            <img src="../../assets/img/icon.png" class="icon">
-            <div class="mem_name">XX教授</div>
-          </div>
-          <div class="whs" id="whs2">
-            <img src="../../assets/img/icon.png" class="icon">
-            <div class="mem_name">阿sir</div>
-          </div>
-          <div class="whs" id="whs3">
-            <img src="../../assets/img/icon.png" class="icon">
-            <div class="mem_name">刘老六</div>
-          </div>
-          <div class="whs" id="whs4">
-            <img src="../../assets/img/icon.png" class="icon">
-            <div class="mem_name">哥哥</div>
-          </div>
-          <div class="whs" id="whs5">
-            <img src="../../assets/img/icon.png" class="icon">
-            <div class="mem_name">胖熊</div>
-          </div>
-          <div class="whs" id="whs6">
-            <img src="../../assets/img/icon.png" class="icon">
-            <div class="mem_name">沙雕</div>
-          </div>          
-          <router-link to="./achievements">
-            <div class="look" id="achi">
-              <div class="tw">查看成果</div>
-            </div>
-          </router-link>           
+          <el-table :data="member" border height="370" style="position:absolute;top:30%;width: 100%">
+            <el-table-column prop="name" label="姓名" width="225" />
+            <el-table-column prop="teamRole" label="角色" width="220" />
+          </el-table>
+          <div class="look" id="achi" @click="LookAchievements">
+            <div class="tw">查看成果</div>
+          </div>           
         </div>
       </div>
     </div>
 </template>
 
 <script>
+import { members_get } from '../../api/research';
   export default {
     data() {
       return {
-        team_id: "null",
-        achievements: {
-          title: "",
-          type: "",
-          description: "",
-          teamId: ""
-        }
+        team_id: "",
+        team_name: "",
+        member: [],
+        achievements: []
       };
     },
     components: {
     
     },
+    methods: {
+      LookAchievements(){
+        this.$router.push({
+          path: "/m_home/achievements",
+          query: {
+            achievements: this.Achievements,
+          }
+        })
+      }
+    },
     mounted(){
-      this.team_id = localStorage.getItem("team_id");
-      this.achievements.title = this.$route.query.achievements.title;
-      this.achievements.type = this.$route.query.achievements.type;
-      this.achievements.description = this.$route.query.achievements.description;
-      this.achievements.teamId = this.$route.query.achievements.teamId;
+      this.team_name = this.$route.query.team_name;
+      this.team_id = this.$route.query.team_id;
+      members_get().then((res) => {
+        console.log(res);
+        if(res.request.status == 200){
+          this.member = res.data.data;
+        }
+      })
     }
   };
 </script>

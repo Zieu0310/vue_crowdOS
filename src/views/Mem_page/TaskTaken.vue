@@ -10,12 +10,14 @@
           <div class="inblue" id="ib1">{{ name }}</div>
           <div class="item" id="i2">类型</div>
           <div class="inblue" id="ib2">{{ type }}</div>
+          <div class="item" id="i2_5">截止日期</div>
+          <div class="inblue" id="ib2_5">{{ endTime }}</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
               <div class="innertext">{{ description }}</div>
           </div>
           <div class="item" id="i4" v-if="type !== 'VCG'">报价（万）</div>
-          <div class="inblue" id="ib4">{{ reversePrice }}</div> 
+          <div class="inblue" id="ib4">{{ reversePrice }}{{ budget }}</div> 
         </div>
       </div>
     </div>
@@ -30,6 +32,8 @@
           reversePrice: "",
           type: '',
           company_name: "",
+          budget: "",
+          endTime: "",
         };
       },
       components: {
@@ -40,8 +44,10 @@
         this.name = this.$route.query.name;
         this.description = this.$route.query.description;
         this.reversePrice = this.$route.query.reversePrice;
+        this.budget = this.$route.query.budget;
+        this.endTime = this.$route.query.endTime;
         if(this.$route.query.type == 0){
-          this.type = 'IOT&nbsp;J';
+          this.type = 'IOT J';
         }else if(this.$route.query.type == 1){
           this.type = 'VCG';
         }else{
@@ -146,13 +152,13 @@
       position: absolute;
       top: 16.69%;
     }
-    #i11{
-      position: absolute;
-      top: 23.6%;
-    }
     #i2{
       position: absolute;
-      top: 30.51%;
+      top: 23.01%;
+    }
+    #i2_5{
+      position: absolute;
+      top: 30.01%;
     }
     #i3{
       position: absolute;
@@ -205,13 +211,13 @@
     position: absolute;
     top: 16.8%;
   }
-  #ib11{
-    position: absolute;
-    top: 23.71%;
-  }
   #ib2{
     position: absolute;
-    top: 30.62%;
+    top: 23.12%;
+  }
+  #ib2_5{
+    position: absolute;
+    top: 30.12%;
   }
   #ib4{
     position: absolute;

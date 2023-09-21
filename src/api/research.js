@@ -43,7 +43,12 @@ export const post_achievement = (title, description, type, file) => {
     },
   });
 }
-
+export const members_get = () => {
+  return apis({
+    method: "get",
+    url: "/research/getTeamMembers",
+  });
+};
 export const successfullyevents_get = () => {
   return apis({
     method: "get",

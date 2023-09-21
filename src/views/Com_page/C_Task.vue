@@ -116,6 +116,7 @@
         ],
         remark: 2,
         Events: [],
+        company_id: "",
       };
     },
     components: {
@@ -139,6 +140,7 @@
             type: row.type,
             description: row.description,
             state: row.state,
+            budget: row.budget,
           }
         })
       }
@@ -146,7 +148,7 @@
     mounted(){
       events_get(this.state,this.remark,this.type,this.time).then((res) => {
         console.log(res);
-        this.company_id = res.data.data[0].company_id;
+        this.company_id = res.data.data[0].companyId;
         localStorage.setItem("company_id",this.company_id);
         if(res.request.status == 200){
           this.Events = res.data.data;

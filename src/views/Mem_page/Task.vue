@@ -37,6 +37,8 @@
             reversePrice: row.event.reversePrice,
             type: row.event.type,
             company_name: row.company_name,
+            endTime: row.event.endTime,
+            budget: row.event.budget,
           }
         })
       }

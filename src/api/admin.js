@@ -22,20 +22,23 @@ export const auditAchievement = (achievement_id, remark) => {
   });
 };
 
-export const auachig = (team_id) => {
+export const auachig = (remark) => {
   return apis({
     method: "get",
-    url: "/adminstrators/getAchievementInformation",
+    url: `/adminstrators/getAchievementInformation/${remark}`,
     params: {
-      team_id: team_id,
+      remark: remark,
     },
   });
 };
 
-export const auevg = () => {
+export const auevg = (remark) => {
   return apis({
     method: "get",
-    url: "/adminstrators/getEventInformation",
+    url: `/adminstrators/getEventInformation/${remark}`,
+    params: {
+      remark: remark,
+    }
   });
 };
 

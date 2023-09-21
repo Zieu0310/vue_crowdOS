@@ -3,31 +3,34 @@
       <div class="above">需求审核列表</div>
       <div class="whitesmall" id="ws1">
         <img src="../../assets/img/blue.png" class="blue">
-        <div class="textBlue" id="tb1">待审核</div>
-        <div class="whs" id="whs11">
-          <div class="Intextblack">{{ event[0].company_id }}公司的需求申请</div>
-          <div class="Intextblue" @click="EventDetailsAudi0">审核</div>
-        </div>
-        <div class="whs" id="whs12">
-          <div class="Intextblack">{{ event[1].company_id }}公司的需求申请</div>
-          <div class="Intextblue" @click="EventDetailsAudi1">审核</div>
-        </div>
+        <div class="textBlue">待审核</div>
+        <el-table :data="EventNone" border height="560" style="position:absolute;top:10%;width: 100%">
+          <el-table-column prop="company_name" label="公司" width="250" />
+          <el-table-column prop="event_name" label="需求名称" width="250" />
+          <el-table-column>
+            <template #default="scope">
+              <el-button size="small" @click="LookEvent(scope.row)"
+                >详情</el-button
+              >
+            </template>
+          </el-table-column>
+        </el-table>        
       </div>
       <div class="whitesmall" id="ws2">
         <img src="../../assets/img/blue.png" class="blue">
-        <div class="textBlue" id="tb2">已审核</div>
-        <div class="whs" id="whs21">
-          <div class="Intextblack">XXX公司的需求申请</div>
-          <div id="textred">审核不通过</div>
-        </div>
-        <div class="whs" id="whs22">
-          <div class="Intextblack">XXX公司的需求申请</div>
-          <div id="textgreen">审核通过</div>
-        </div>
-        <div class="whs" id="whs23">
-          <div class="Intextblack">XXX公司的需求申请</div>
-          <div id="textgreen">审核通过</div>
-        </div>
+        <div class="textBlue">审核通过</div>
+        <el-table :data="EventYes" border height="250" style="position:absolute;top:10%;width: 100%">
+          <el-table-column prop="company_name" label="公司" width="225" />
+          <el-table-column prop="event_name" label="需求名称" width="225" />
+          <el-table-column prop="remark" label="审核状态" />
+        </el-table>
+        <img src="../../assets/img/blue.png" class="bluebelow">
+        <div class="textBlueBelow">审核不通过</div>
+        <el-table :data="EventNo" border height="270" style="position:absolute;top:55%;width: 100%">
+          <el-table-column prop="company_name" label="公司" width="225" />
+          <el-table-column prop="event_name" label="需求名称" width="225" />
+          <el-table-column prop="remark" label="审核状态" />
+        </el-table>
       </div>
     </div>
 </template>
@@ -39,6 +42,12 @@
     export default {
       data() {
         return {
+          remarknone: 0,
+          remarkno: 1,
+          remarkyes: 2,
+          EventNone: [],
+          EventNo: [],
+          EventYes: [],
           event:[
             {
               company_id: "",
@@ -63,45 +72,48 @@
         A_HeadBar,
       },
       methods: {
-        EventDetailsAudi0(){
+        LookEvent(row){
           this.$router.push({
             path: '/a_home/taskjudgeone',
             query:{
-              id: this.event[0].event_id,
-              name: this.event[0].event_name,
-              description: this.event[0].description,
-              company_id: this.event[0].company_id,
-              price: this.event[0].price,
-              remark: this.event[0].remark
+              id: row.event_id,
+              name: row.event_name,
+              description: row.description,
+              company_id: row.company_id,
+              company_name: row.company_name,
+              price: row.price,
+              remark: row.remark,
             }
           })
-        },
-        EventDetailsAudi1(){
-          this.$router.push({
-            path: '/a_home/taskjudgeone',
-            query:{
-              id: this.event[1].event_id,
-              name: this.event[1].event_name,
-              description: this.event[1].description,
-              company_id: this.event[1].company_id,
-              price: this.event[1].price,
-              remark: this.event[1].remark
-            }
-          })
-        },
+        }
       },
       mounted(){
-        auevg().then((res) => {
+        auevg(this.remarknone).then((res) => {
           console.log(res);
-          localStorage.setItem("auditEvent0",this.event[0].event_id);
-          localStorage.setItem("auditEvent1",this.event[1].event_id);
-          for(let i = 0; i < res.data.data.length; i++){
-            this.event[i].company_id = res.data.data[i].company_id;
-            this.event[i].description = res.data.data[i].description;
-            this.event[i].event_id = res.data.data[i].event_id;
-            this.event[i].event_name = res.data.data[i].event_name;
-            this.event[i].price = res.data.data[i].price;
-            this.event[i].remark = res.data.data[i].remark;
+          if(res.request.status == 200 && this.remarknone == 0){
+            this.EventNone = res.data.data;
+          }
+        })
+        auevg(this.remarkno).then((res) => {
+          console.log(res);
+          if(res.request.status == 200 && this.remarkno == 1){
+            this.EventNo = res.data.data;
+            for(let i = 0; i < this.EventNo.length; i++){
+              if(this.EventNo[i].remark == 1){
+                this.EventNo[i].remark = "不通过";
+              }
+            }
+          }
+        })
+        auevg(this.remarkyes).then((res) => {
+          console.log(res);
+          if(res.request.status == 200 && this.remarkyes == 2){
+            this.EventYes = res.data.data;
+            for(let i = 0; i < this.EventYes.length; i++){
+              if(this.EventYes[i].remark == 2){
+                this.EventYes[i].remark = "通过";
+              }
+            }
           }
         })
       }
@@ -159,10 +171,18 @@
         width: 0.21vw;
         height: 1.76vh;
       }
+      .bluebelow{
+        position: absolute;
+        left: 4.87%;
+        top: 51.69%;
+        width: 0.21vw;
+        height: 1.76vh;
+      }
       .textBlue{
         position: absolute;
         left: 6.45%;
         top: 4.23%;
+        width: 5.21vw;
         height: 2.50vh;
         opacity: 1;
         font-size: 1.04vw;
@@ -173,44 +193,20 @@
         text-align: left;
         vertical-align: top;
       }
-      #tb1{
+      .textBlueBelow{
+        position: absolute;
+        left: 6.45%;
+        top: 51.23%;
         width: 5.21vw;
-      }
-      .tb2{
-        width: 3.125vw;
-      }
-      .whs{
-        position: absolute;
-        left: 8.52%;
-        width: 35.57vw;
-        height: 8.24vh;
+        height: 2.50vh;
         opacity: 1;
-        border-radius: 0.73vw;
-        background: rgba(255, 255, 255, 1);
-        border: 0.03vw solid rgba(166, 166, 166, 1);
-      }
-      #whs11{
-        position: absolute;
-        top: 14.06%;
-      }
-      #whs12{
-        position: absolute;
-        top: 26.51%;
-      }
-      #whs21{
-        position: absolute;
-        top: 14.06%;
-        display: none;
-      }
-      #whs22{
-        position: absolute;
-        top: 26.51%;
-        display: none;
-      }
-      #whs23{
-        position: absolute;
-        top: 38.97%;
-        display: none;
+        font-size: 1.04vw;
+        font-weight: 500;
+        letter-spacing: 0px;
+        line-height: 2.44vh;
+        color: rgba(0, 43, 255, 1);
+        text-align: left;
+        vertical-align: top;
       }
       .above{
       position: absolute;
@@ -227,64 +223,4 @@
       text-align: left;
       vertical-align: top;
     }
-    .Intextblue{
-    position: absolute;
-    left: 89.17%;
-    top: 35.71%;
-    width: 2vw;
-    height: 2.22vh;
-    opacity: 1;
-    font-size: 0.83vw;
-    font-weight: 400;
-    letter-spacing: 0px;
-    line-height: 2.15vh;
-    color: rgba(0, 43, 255, 1);
-    text-align: right;
-    vertical-align: top;
-    }
-    #textred{
-    position: absolute;
-    left: 75.11%;
-    top: 35.71%;
-    width: 4.5vw;
-    height: 2.22vh;
-    opacity: 1;
-    font-size: 0.83vw;
-    font-weight: 400;
-    letter-spacing: 0px;
-    line-height: 2.15vh;
-    color: rgba(255, 87, 51, 1);
-    text-align: right;
-    vertical-align: top;
-  }
-  #textgreen{
-    position: absolute;
-    left: 77.45%;
-    top: 35.71%;
-    width: 3.5vw;
-    height: 2.22vh;
-    opacity: 1;
-    font-size: 0.83vw;
-    font-weight: 400;
-    letter-spacing: 0px;
-    line-height: 2.15vh;
-    color: rgba(67, 207, 124, 1);
-    text-align: right;
-    vertical-align: top;
-  }
-  .Intextblack{
-    position: absolute;
-    left: 15.67%;
-    top: 35.71%;
-    width: 10.35vw;
-    height: 2.22vh;
-    opacity: 1;
-    font-size: 0.83vw;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 2.15vh;
-    color: rgba(0, 0, 0, 1);
-    text-align: left;
-    vertical-align: top;
-  }
   </style>

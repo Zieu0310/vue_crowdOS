@@ -19,7 +19,7 @@
           <div class="item" id="i4" v-if="type==='固定价格交易'">固定价格（万）</div>
           <div class="it4" v-if="type==='IOT J'">预算（万）</div>
           <div class="inblue" id="ib4" v-if="type==='固定价格交易'">{{ reversePrice }}</div>
-          <div class="inbl4" v-if="type==='IOT&nbsp;J'">{{ budget }}</div>
+          <div class="inbl4" v-if="type==='IOT J'">{{ budget }}</div>
           <div class="item" id="i5">状态</div>
           <div class="inblue" id="ib5">{{ state }}</div>
         </div>
@@ -49,6 +49,7 @@
         this.description = this.$route.query.description;
         this.type = this.$route.query.type;
         this.state = this.$route.query.state;
+        this.budget = this.$route.query.budget;
       },
     };
   </script>

@@ -18,7 +18,7 @@
           <div class="inblue" id="ib22">{{ team_id }}</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
-              <div class="innertext">{{ file }}</div>
+              <div class="innertext">{{ description }}</div>
           </div>
           <el-radio-group v-model="remark" class="yon">
             <el-radio :label="2">通过</el-radio>
@@ -33,9 +33,7 @@
 </template>
   
   <script>
-    import { auachig } from '../../api/admin';
     import { auditAchievement } from '../../api/admin';
-    import axios from 'axios';
     export default {
       data() {
         return {
@@ -44,33 +42,11 @@
           type: 0,
           remark: 0,
           team_id: 0,
-          file: "",
+          description: "",
         };
       },
       components: {
         
-      },
-      created(){
-        axios.get("http://127.0.0.1:4523/m1/3023705-0-default/adminstrators/getAchievementInformation",{
-          params:{
-            team_id: 0,
-          }
-        }).then(res => {
-          console.log(res);
-          this.achievement_id = res.data.data.id;
-          this.team_id = res.data.data.team_id;
-          this.title = res.data.data.title;
-          this.file = res.data.data.file;
-          if(res.data.data.type == 0){
-            this.type = "论文";
-          }else if(res.data.data.type == 1){
-            this.type = "专利";
-          }else{
-            this.type = "项目";
-          }
-        }).catch(error =>{
-          console.log(error);
-        })
       },
       methods: {
         handleAuditAchievement(){
@@ -86,7 +62,11 @@
         }
       },
       mounted(){
-        auachig()
+        this.achievement_id = this.$route.query.id;
+        this.title = this.$route.query.title;
+        this.type = this.$route.query.type;
+        this.description = this.$route.query.description;
+        this.team_id = this.$route.query.team_id;
       }
     };
   </script>

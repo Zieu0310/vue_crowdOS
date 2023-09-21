@@ -3,31 +3,34 @@
     <div class="above">成果审核列表</div>
     <div class="whitesmall" id="ws1">
       <img src="../../assets/img/blue.png" class="blue">
-      <div class="textBlue" id="tb1">待审核</div>
-      <div class="whs" id="whs11">
-        <div class="Intextblack">XXX教授的团队申请</div>
-        <router-link to="./achievementjudgeone"><div class="Intextblue">审核</div></router-link>
-      </div>
-      <div class="whs" id="whs12">
-        <div class="Intextblack">XXX教授的团队申请</div>
-        <router-link to="./achievementjudgeone"><div class="Intextblue">审核</div></router-link>
-      </div>
+      <div class="textBlue">待审核</div>
+      <el-table :data="AchievementNone" border height="560" style="position:absolute;top:10%;width: 100%;">
+        <el-table-column prop="title" label="标题" width="250" />
+        <el-table-column prop="teamId" label="团队ID" width="250" />
+        <el-table-column>
+          <template #default="scope">
+            <el-button size="small" @click="LookAchievement(scope.row)"
+              >详情</el-button
+            >
+          </template>
+        </el-table-column>
+      </el-table>
     </div>
     <div class="whitesmall" id="ws2">
       <img src="../../assets/img/blue.png" class="blue">
-      <div class="textBlue" id="tb2">已审核</div>
-      <div class="whs" id="whs21">
-        <div class="Intextblack">1团队申请</div>
-        <div id="textred">审核不通过</div>
-      </div>
-      <div class="whs" id="whs22">
-        <div class="Intextblack">2团队申请</div>
-        <div id="textgreen">审核通过</div>
-      </div>
-      <div class="whs" id="whs23">
-        <div class="Intextblack">3团队申请</div>
-        <div id="textgreen">审核通过</div>
-      </div>
+      <div class="textBlue">审核通过</div>
+      <el-table :data="AchievementYes" border height="250" style="position:absolute;top:10%;width: 100%">
+        <el-table-column prop="title" label="标题" width="225" />
+        <el-table-column prop="teamId" label="团队ID" width="225" />
+        <el-table-column prop="remark" label="审核状态" />
+      </el-table>
+      <img src="../../assets/img/blue.png" class="bluebelow">
+      <div class="textBlueBelow">审核不通过</div>
+      <el-table :data="AchievementNo" border height="270" style="position:absolute;top:55%;width: 100%">
+        <el-table-column prop="title" label="标题" width="225" />
+        <el-table-column prop="teamId" label="团队ID" width="225" />
+        <el-table-column prop="remark" label="审核状态" />
+      </el-table>
     </div>
   </div>
 </template>
@@ -38,17 +41,61 @@
   import { auachig } from '../../api/admin';
   export default {
     data() {
-      return {};
+      return {
+        remarknone: 0,
+        remarkno: 1,
+        remarkyes: 2,
+        AchievementNone: [],
+        AchievementNo: [],
+        AchievementYes: [],
+
+      };
     },
     components: {
       A_HeadBar,
     },
     methods: {
-      
+      LookAchievement(row){
+        this.$router.push({
+            path: '/a_home/achievementjudgeone',
+            query:{
+              title: row.title,
+              type: row.type,
+              id: row.id,
+              description: row.description,
+              team_id: row.teamId,
+            }
+          })
+      }
     },
     mounted(){
-      auachig().then((res) => {
+      auachig(this.remarknone).then((res) => {
         console.log(res);
+        if(res.request.status == 200 && this.remarknone == 0){
+          this.AchievementNone = res.data.data;
+        }
+      })
+      auachig(this.remarkno).then((res) => {
+        console.log(res);
+        if(res.request.status == 200 && this.remarkno == 1){
+          this.AchievementNo = res.data.data;
+          for(let i = 0; i < this.AchievementNo.length; i++){
+            if(this.AchievementNo[i].remark == 2){
+              this.AchievementNo[i].remark = "不通过";
+            }
+          }
+        }
+      })
+      auachig(this.remarkyes).then((res) => {
+        console.log(res);
+        if(res.request.status == 200 && this.remarkyes == 2){
+          this.AchievementYes = res.data.data;
+          for(let i = 0; i < this.AchievementYes.length; i++){
+            if(this.AchievementYes[i].remark == 2){
+              this.AchievementYes[i].remark = "通过";
+            }
+          }
+        }
       })
     }
   };
@@ -105,10 +152,18 @@
       width: 0.21vw;
       height: 1.76vh;
     }
+    .bluebelow{
+      position: absolute;
+      left: 4.87%;
+      top: 51.69%;
+      width: 0.21vw;
+      height: 1.76vh;
+    }
     .textBlue{
       position: absolute;
       left: 6.45%;
       top: 4.23%;
+      width: 5.21vw;
       height: 2.50vh;
       opacity: 1;
       font-size: 1.04vw;
@@ -119,43 +174,20 @@
       text-align: left;
       vertical-align: top;
     }
-    #tb1{
+    .textBlueBelow{
+      position: absolute;
+      left: 6.45%;
+      top: 51.23%;
       width: 5.21vw;
-    }
-    .tb2{
-      width: 3.125vw;
-    }
-    .whs{
-      position: absolute;
-      left: 8.52%;
-      width: 35.57vw;
-      height: 8.24vh;
+      height: 2.50vh;
       opacity: 1;
-      border-radius: 0.73vw;
-      background: rgba(255, 255, 255, 1);
-      border: 0.03vw solid rgba(166, 166, 166, 1);
-    }
-    #whs11{
-      position: absolute;
-      top: 14.06%;
-      display: none;
-    }
-    #whs12{
-      position: absolute;
-      top: 26.51%;
-      display: none;
-    }
-    #whs21{
-      position: absolute;
-      top: 14.06%;
-    }
-    #whs22{
-      position: absolute;
-      top: 26.51%;
-    }
-    #whs23{
-      position: absolute;
-      top: 38.97%;
+      font-size: 1.04vw;
+      font-weight: 500;
+      letter-spacing: 0px;
+      line-height: 2.44vh;
+      color: rgba(0, 43, 255, 1);
+      text-align: left;
+      vertical-align: top;
     }
     .above{
     position: absolute;
@@ -168,66 +200,6 @@
     font-weight: 500;
     letter-spacing: 0px;
     line-height: 2.93vh;
-    color: rgba(0, 0, 0, 1);
-    text-align: left;
-    vertical-align: top;
-  }
-  .Intextblue{
-    position: absolute;
-    left: 89.17%;
-    top: 35.71%;
-    width: 2vw;
-    height: 2.22vh;
-    opacity: 1;
-    font-size: 0.83vw;
-    font-weight: 400;
-    letter-spacing: 0px;
-    line-height: 2.15vh;
-    color: rgba(0, 43, 255, 1);
-    text-align: right;
-    vertical-align: top;
-  }
-  #textred{
-    position: absolute;
-    left: 75.11%;
-    top: 35.71%;
-    width: 4.5vw;
-    height: 2.22vh;
-    opacity: 1;
-    font-size: 0.83vw;
-    font-weight: 400;
-    letter-spacing: 0px;
-    line-height: 2.15vh;
-    color: rgba(255, 87, 51, 1);
-    text-align: right;
-    vertical-align: top;
-  }
-  #textgreen{
-    position: absolute;
-    left: 77.45%;
-    top: 35.71%;
-    width: 3.5vw;
-    height: 2.22vh;
-    opacity: 1;
-    font-size: 0.83vw;
-    font-weight: 400;
-    letter-spacing: 0px;
-    line-height: 2.15vh;
-    color: rgba(67, 207, 124, 1);
-    text-align: right;
-    vertical-align: top;
-  }
-  .Intextblack{
-    position: absolute;
-    left: 15.67%;
-    top: 35.71%;
-    width: 10.35vw;
-    height: 2.22vh;
-    opacity: 1;
-    font-size: 0.83vw;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 2.15vh;
     color: rgba(0, 0, 0, 1);
     text-align: left;
     vertical-align: top;
