@@ -1,7 +1,7 @@
 <template>
     <div class="CenterBox">
       <div>
-        <div class="above">{{ event_id }}公司的需求申请</div>
+        <div class="above">{{ company_name }}的需求申请</div>
         <div class="whitecenter">
           <router-link to="./taskjudge"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
@@ -13,9 +13,8 @@
           <div class="item" id="i2">拍卖类型</div>
           <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i3">具体描述</div>
-          <div class="grey_rec">
-              <div class="innertext">{{ description }}</div>
-          </div>
+          <el-input v-model="description" :rows="6" type="textarea" disabled style="position: absolute;
+      left: 9.73%;top: 42%;width: 34.0625vw;height: 14.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
           <div class="item" id="i4">报价（万）</div>
           <div class="inblue" id="ib4">{{ reservePrice }}</div>
           <el-radio-group v-model="remark" class="yon">
@@ -44,6 +43,7 @@
           type: 0,
           reservePrice: 0,
           remark: 0,
+          company_name: "",
         };
       },
       components: {
@@ -69,6 +69,7 @@
         this.event_name = this.$route.query.name;
         this.reservePrice = this.$route.query.price;
         this.remark = this.$route.query.remark;
+        this.company_name = this.$route.query.company_name;
       },
     };
   </script>

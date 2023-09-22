@@ -13,9 +13,8 @@
           <div class="item" id="i2">类型</div>
           <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i3">具体描述</div>
-          <div class="grey_rec">
-              <div class="innertext">{{ description }}</div>
-          </div>
+          <el-input v-model="description" :rows="6" type="textarea" disabled style="position: absolute;
+      left: 9.73%;top: 42%;width: 34.0625vw;height: 14.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
           <div class="item" id="i4" v-if="type==='固定价格交易'">固定价格（万）</div>
           <div class="it4" v-if="type==='IOT J'">预算（万）</div>
           <div class="inblue" id="ib4" v-if="type==='固定价格交易'">{{ reversePrice }}</div>

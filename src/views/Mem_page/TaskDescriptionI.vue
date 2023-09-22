@@ -10,9 +10,8 @@
           <div class="item" id="i11">需求名</div>
           <div class="inblue" id="ib11">{{ name }}</div>
           <div class="item" id="i12">具体描述</div>
-          <div class="grey_rec">
-              <div class="innertext">{{ description }}</div>
-          </div>
+          <el-input v-model="description" :rows="5" type="textarea" disabled style="position: absolute;
+      left: 9.73%;top: 35%;width: 34.0625vw;height: 14.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
           <div class="item" id="i2_5" v-if="endTime != null">截止日期</div>
           <div class="inblue" id="ib2_5">{{ endTime }}</div>
           <div class="item" id="i3">投标状态</div>

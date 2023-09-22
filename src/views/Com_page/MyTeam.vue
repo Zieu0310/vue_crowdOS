@@ -63,46 +63,6 @@
           }
         })
       },
-      TeamDetailsAppear0(){
-        this.$router.push({
-          path: '/c_home/allmember',
-          query:{
-            team_id: this.teams[0].team_id,
-          }
-        })
-      },
-      TeamDetailsAppear1(){
-        this.$router.push({
-          path: '/c_home/allmember',
-          query:{
-            team_id: this.teams[1].team_id,
-          }
-        })
-      },
-      TeamDetailsAppear2(){
-        this.$router.push({
-          path: '/c_home/allmember',
-          query:{
-            team_id: this.teams[2].team_id,
-          }
-        })
-      },
-      TeamDetailsAppear3(){
-        this.$router.push({
-          path: '/c_home/allmember',
-          query:{
-            team_id: this.teams[3].team_id,
-          }
-        })
-      },
-      TeamDetailsAppear4(){
-        this.$router.push({
-          path: '/c_home/allmember',
-          query:{
-            team_id: this.teams[4].team_id,
-          }
-        })
-      },
     },
     mounted(){
       myteam_get().then((res) => {

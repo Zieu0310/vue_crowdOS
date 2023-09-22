@@ -10,8 +10,8 @@
           <img src="../../assets/img/blue.png" class="tblue">
           <div class="textBlue" id="tb1">团队成员</div>
           <el-table :data="member" border height="370" style="position:absolute;top:30%;width: 100%">
-            <el-table-column prop="name" label="姓名" width="225" />
-            <el-table-column prop="teamRole" label="角色" width="220" />
+            <el-table-column prop="name" label="姓名" width="297" />
+            <el-table-column prop="teamRole" label="角色" width="297" />
           </el-table>
           <div class="look" id="achi" @click="LookAchievements">
             <div class="tw">查看成果</div>
@@ -53,6 +53,13 @@ import { members_get } from '../../api/research';
         console.log(res);
         if(res.request.status == 200){
           this.member = res.data.data;
+          for(let i = 0; i < this.member.length; i++){
+            if(this.member[i].teamRole == 1){
+              this.member[i].teamRole = "负责人";
+            }else{
+              this.member[i].teamRole = "队员";
+            }
+          }
         }
       })
     }

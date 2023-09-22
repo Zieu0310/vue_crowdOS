@@ -5,8 +5,8 @@
       <img src="../../assets/img/blue.png" class="blue">
       <div class="textBlue">待审核</div>
       <el-table :data="AchievementNone" border height="560" style="position:absolute;top:10%;width: 100%;">
-        <el-table-column prop="title" label="标题" width="250" />
-        <el-table-column prop="teamId" label="团队ID" width="250" />
+        <el-table-column prop="achievement.title" label="标题" width="250" />
+        <el-table-column prop="team_name" label="团队" width="250" />
         <el-table-column>
           <template #default="scope">
             <el-button size="small" @click="LookAchievement(scope.row)"
@@ -20,16 +20,16 @@
       <img src="../../assets/img/blue.png" class="blue">
       <div class="textBlue">审核通过</div>
       <el-table :data="AchievementYes" border height="250" style="position:absolute;top:10%;width: 100%">
-        <el-table-column prop="title" label="标题" width="225" />
-        <el-table-column prop="teamId" label="团队ID" width="225" />
-        <el-table-column prop="remark" label="审核状态" />
+        <el-table-column prop="achievement.title" label="标题" width="225" />
+        <el-table-column prop="team_name" label="团队" width="225" />
+        <el-table-column prop="achievement.remark" label="审核状态" />
       </el-table>
       <img src="../../assets/img/blue.png" class="bluebelow">
       <div class="textBlueBelow">审核不通过</div>
       <el-table :data="AchievementNo" border height="270" style="position:absolute;top:55%;width: 100%">
-        <el-table-column prop="title" label="标题" width="225" />
-        <el-table-column prop="teamId" label="团队ID" width="225" />
-        <el-table-column prop="remark" label="审核状态" />
+        <el-table-column prop="achievement.title" label="标题" width="225" />
+        <el-table-column prop="team_name" label="团队" width="225" />
+        <el-table-column prop="achievement.remark" label="审核状态" />
       </el-table>
     </div>
   </div>
@@ -59,11 +59,12 @@
         this.$router.push({
             path: '/a_home/achievementjudgeone',
             query:{
-              title: row.title,
-              type: row.type,
-              id: row.id,
-              description: row.description,
-              team_id: row.teamId,
+              title: row.achievement.title,
+              type: row.achievement.type,
+              id: row.achievement.id,
+              description: row.achievement.description,
+              team_id: row.achievement.teamId,
+              team_name: row.team_name,
             }
           })
       }
@@ -80,7 +81,7 @@
         if(res.request.status == 200 && this.remarkno == 1){
           this.AchievementNo = res.data.data;
           for(let i = 0; i < this.AchievementNo.length; i++){
-            if(this.AchievementNo[i].remark == 2){
+            if(this.AchievementNo[i].remark == 1){
               this.AchievementNo[i].remark = "不通过";
             }
           }

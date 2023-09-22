@@ -11,9 +11,8 @@
           <div class="item" id="i2">类型</div>
           <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i3">具体描述</div>
-          <div class="grey_rec">
-              <div class="innertext">{{ description }}</div>
-          </div>
+          <el-input v-model="description" :rows="17" type="textarea" disabled style="position: absolute;
+      left: 9.73%;top: 35%;width: 34.0625vw;height: 45.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
         </div>
       </div>
     </div>
@@ -138,24 +137,16 @@
       position: absolute;
       top: 23.6%;
     }
-    #i21{
-      position: absolute;
-      top: 30.51%;
-    }
-    #i22{
-      position: absolute;
-      top: 37.42%;
-    }
     #i3{
       position: absolute;
-      top: 44.33%;
+      top: 30.51%;
     }
     .grey_rec{
       position: absolute;
       left: 9.73%;
-      top: 49.48%;
+      top: 34%;
       width: 34.0625vw;
-      height: 15.93vh;
+      height: 30.93vh;
       opacity: 1;
       border-radius: 0.3125vw;
       background: rgba(245, 245, 245, 1);

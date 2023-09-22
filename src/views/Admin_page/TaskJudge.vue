@@ -83,6 +83,7 @@
               company_name: row.company_name,
               price: row.price,
               remark: row.remark,
+              company_name: row.company_name,
             }
           })
         }
