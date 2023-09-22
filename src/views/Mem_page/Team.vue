@@ -37,7 +37,7 @@
             query: {
               team_id: this.team_id,
               team_name: this.team_name,
-              achievements: this.Achievements,
+              Achievements: this.Achievements,
             }
           })
         }
@@ -47,7 +47,6 @@
           console.log(res);
           if(res.request.status == 200){
             this.Achievements = res.data.data.achievements;
-            localStorage.setItem("achievements",this.Achievements);
             this.team_name = res.data.data.team_name;
             this.team_id = res.data.data.team_id;
           }

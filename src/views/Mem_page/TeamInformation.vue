@@ -29,7 +29,7 @@ import { members_get } from '../../api/research';
         team_id: "",
         team_name: "",
         member: [],
-        achievements: []
+        Achievements: []
       };
     },
     components: {
@@ -40,7 +40,7 @@ import { members_get } from '../../api/research';
         this.$router.push({
           path: "/m_home/achievements",
           query: {
-            achievements: this.Achievements,
+            Achievements: this.Achievements,
           }
         })
       }
@@ -48,6 +48,7 @@ import { members_get } from '../../api/research';
     mounted(){
       this.team_name = this.$route.query.team_name;
       this.team_id = this.$route.query.team_id;
+      this.Achievements = this.$route.query.Achievements;
       members_get().then((res) => {
         console.log(res);
         if(res.request.status == 200){

@@ -3,36 +3,17 @@
     <div class="whitelarge">
       <img src="../../assets/img/blue.png" class="blue_">
       <div class="textblue_">科研成果</div>
-      <el-table :data="achievements" height="250" style="position:absolute;top:10%;width: 100%">
-        <el-table-column prop="title" label="标题" width="180" />
-        <el-table-column prop="type" label="类型" width="180" />
-        <el-table-column prop="address" label="Address" />
+      <el-table :data="Achievements" border height="450" style="position:absolute;top:10%;width: 100%">
+        <el-table-column prop="title" label="标题" width="400" />
+        <el-table-column prop="type" label="类型" width="400" />
+        <el-table-column prop="address" label="">
+          <template #default="scope">
+            <el-button size="small" @click="LookAchievementDetail(scope.row)"
+            >详情</el-button
+            >
+          </template>
+        </el-table-column>
       </el-table>
-      <router-link to="./teaminformation"><div class="gr">返回</div></router-link>
-      <div class="whs" id="whs1">
-        <div class="InBlack">疫苗</div>
-        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
-      </div>
-      <div class="whs" id="whs2">
-        <div class="InBlack">疫苗</div>
-        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
-      </div>
-      <div class="whs" id="whs3">
-        <div class="InBlack">疫苗</div>
-        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
-      </div>
-      <div class="whs" id="whs4">
-        <div class="InBlack">疫苗</div>
-        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
-      </div>
-      <div class="whs" id="whs5">
-        <div class="InBlack">疫苗</div>
-        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
-      </div>
-      <div class="whs" id="whs6">
-        <div class="InBlack">疫苗</div>
-        <router-link to="./achievementsmaken"><div class="InBlue">查看详情</div></router-link>
-      </div>
       <router-link to="addachievement"><img src="../../assets/img/add.png" alt="添加成果" class="round"></router-link>
     </div>
   </div>
@@ -40,18 +21,46 @@
 
 <script>
   import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
-
+  import { m_information } from '../../api/research';
   export default {
     data() {
       return {
-        achievements: [],
+        Achievements: [],
       };
     },
     components: {
       M_HeadBar,
     },
+    methods:{
+      LookAchievementDetail(row){
+        this.$router.push({
+          path: '/m_home/achievementsmaken',
+          query: {
+            title: row.title,
+            type: row.type,
+            description: row.description,
+          }
+        })
+      }
+    },
     mounted(){
-      this.achievements = this.$route.query.achievements;
+      m_information().then((res) => {
+        console.log(res);
+        if(res.request.status == 200){
+          this.Achievements = res.data.data.achievements;
+          this.team_name = res.data.data.team_name;
+          this.team_id = res.data.data.team_id;
+          for(let i = 0; i < this.Achievements.length; i++){
+            if(this.Achievements[i].type == 0){
+              this.Achievements[i].type = "论文";
+            }else if(this.Achievements[i].type == 1){
+              this.Achievements[i].type = "专利";
+            }else{
+              this.Achievements[i].type = "项目";
+            }
+          }
+        }
+      });
     }
   };
 </script>

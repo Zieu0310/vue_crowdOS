@@ -1,22 +1,18 @@
 <template>
     <div class="CenterBox">
       <div>
-        <div class="above">XXX团队的成果申报</div>
+        <div class="above">成果详细</div>
         <div class="whitecenter">
           <router-link to="./achievements"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">已申报成果详情</div>
           <div class="item" id="i1">成果</div>
-          <div class="inblue" id="ib1">XX疫苗</div>
+          <div class="inblue" id="ib1">{{ title }}</div>
           <div class="item" id="i2">类型</div>
-          <div class="inblue" id="ib2">专利</div>
-          <div class="item" id="i21">科研队</div>
-          <div class="inblue" id="ib21">XX教授团队</div>
-          <div class="item" id="i22">科研队ID</div>
-          <div class="inblue" id="ib22">000000000</div>
+          <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i3">具体描述</div>
           <div class="grey_rec">
-              <div class="innertext">具有…………效果</div>
+              <div class="innertext">{{ description }}</div>
           </div>
         </div>
       </div>
@@ -26,11 +22,20 @@
   <script>
     export default {
       data() {
-        return {};
+        return {
+          title: "",
+          type: "",
+          description: "",
+        };
       },
       components: {
         
       },
+      mounted(){
+        this.title = this.$route.query.title;
+        this.type = this.$route.query.type;
+        this.description = this.$route.query.description;
+      }
     };
   </script>
   
