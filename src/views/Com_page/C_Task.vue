@@ -129,6 +129,22 @@
           if(res.request.status == 200){
             this.Events = res.data.data;
           }
+          for(let i = 0; i < this.Events.length; i++){
+            if(this.Events[i].type == 0){
+              this.Events[i].type = "IOT J";
+            }else if(this.Events[i].type == 1){
+              this.Events[i].type = "VCG";
+            }else{
+              this.Events[i].type = "固定价格交易";
+            }
+            if(this.Events[i].state == 0){
+              this.Events[i].state = "未接取";
+            }else if(this.Events[i].state == 1){
+              this.Events[i].state = "已有人接取";
+            }else{
+              this.Events[i].state = "已成功被接取";
+            }
+          }
         })
       },
       LookDelivered(row){

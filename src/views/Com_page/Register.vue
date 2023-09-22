@@ -8,7 +8,7 @@
       <input type="password" name="" id="" placeholder="输入密码" v-model="password" />
       <input type="number" placeholder="输入角色(参考上方说明)" v-model="role" />
       <input type="text" placeholder="输入名称" v-model="name" />
-      <input type="text" placeholder="输入邮箱" v-model="e_mail" />
+      <input type="text" placeholder="输入邮箱" v-model="email" />
       <input type="submit" value="确认" @click="handleRegister" class="btn" />
       <div class="reference">角色说明:0管理员,1公司,2科研成员</div>
       <router-link to="./login"><div class="tologin">已有账号，前往登录</div></router-link>
@@ -26,12 +26,12 @@
         password: '',
         role: '',
         name: '',
-        e_mail: ''
+        email: ''
       };
     },
     methods: {
       handleRegister() {      
-        register(this.account,this.password,this.role,this.name,this.e_mail).then((res)=>{
+        register(this.account,this.password,this.role,this.name,this.email).then((res)=>{
           console.log(res);
           if(this.role == 2 ){
             this.$router.push("/m_home/team");

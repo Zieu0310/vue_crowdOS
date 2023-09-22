@@ -20,11 +20,9 @@
           <div class="it4" v-else>固定价格（万）</div>
           <div class="inblue" id="ib4" v-if="type === 'IOT J'">{{ budget }}</div>
           <div class="inbl4" v-else>{{ reversePrice }}</div>
-          <router-link to="./bid">
-            <div class="yes" v-if="type === 'IOT J' || type == 'VCG'">
-              <div class="yestext" @click="toTender(event_id)">投标</div>
-            </div>
-          </router-link>
+          <div class="yes" v-if="type === 'IOT J'">
+            <div class="yestext" @click="toTender(id)">投标</div>
+          </div>
           <div class="yes" v-if="type == 2">
             <div class="yestext">参与</div>
           </div>
@@ -37,7 +35,7 @@
     export default {
       data() {
         return {
-          id: "",
+          event_id: "",
           name: "",
           description: "",
           reversePrice: "",
@@ -49,10 +47,12 @@
         };
       },
       methods: {
-        toTender(id){
+        toTender(){
           this.$router.push({
             path: "/m_home/bid",
-            params: id,
+            query: {
+              event_id: this.event_id,
+            },
           })
         }
       },
@@ -63,7 +63,7 @@
         this.reversePrice = this.$route.query.reversePrice;
         this.budget = this.$route.query.budget;
         this.endTime = this.$route.query.endTime;
-        this.id = this.$route.query.id;
+        this.event_id = this.$route.query.id;
         if(this.$route.query.type == 0){
           this.type = 'IOT J';
         }else if(this.$route.query.type == 1){

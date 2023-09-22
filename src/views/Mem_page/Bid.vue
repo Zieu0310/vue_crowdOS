@@ -2,13 +2,11 @@
     <div class="CenterBox">
       <div class="over"></div>
       <div class="add">
-        <div class="the_bid">你的报价是<input type="number" min="0" style="width: 5vw;height: 5vh;font-size: 4vh;" v-model="bid">万</div>
-        <router-link to="./bidsuccess">
-          <div class="yes" @click="tenderData">
-            <div class="yestext">确认</div>
-          </div>
-        </router-link>
-        <router-link to="./taskdescription">
+        <div class="the_bid">你的报价是<input type="number" min="0" style="width: 5vw;height: 5vh;font-size: 4vh;" v-model="bid">万</div>>
+        <div class="yes" @click="tenderData">
+          <div class="yestext">确认</div>
+        </div>
+        <router-link to="./tasksquare">
           <div class="no">
             <div class="notext">取消</div>
           </div>
@@ -25,20 +23,22 @@
       name: 'bid',
       data() {
         return {
-          event_id: '',  
-          bid: '',
+          event_id: 0,  
+          bid: 0,
         };
       },
       components: {
         M_HeadBar,
       },
       mounted(){
-        this.event_id = this.$route.params.id;
+        this.event_id = this.$route.query.event_id;
+        console.log(this.event_id);
       },
       methods: {
         tenderData() {      
           tender(this.event_id,this.bid).then((res)=>{
             console.log(res);
+            this.$router.push('/m_home/bidsuccess')
           });
         }   
       }

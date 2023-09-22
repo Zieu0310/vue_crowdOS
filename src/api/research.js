@@ -35,11 +35,10 @@ export const post_achievement = (title, description, type, file) => {
     method: "post",
     url: "/research/postAchievement",
     data: {
-      achievements:{
       title: title,
       description: description,
       type: type,
-      }
+      file: file,
     },
   });
 }

@@ -7,17 +7,17 @@
         <div class="item" id="i3">任务描述</div>
         <el-input v-model="description" :rows="6" type="textarea" placeholder="请描述" class="grey_rec" />
         <div class="item" id="i4">算法</div>
-        <el-radio-group v-model="type" size="large" style="position: absolute;right: 25%;top: 53.86%;">
-          <el-radio-button label="VCG" />
-          <el-radio-button label="IOT&nbsp;J" />
-          <el-radio-button label="固定价格交易" />
+        <el-radio-group v-model="type" style="position: absolute;right: 25%;top: 53.86%;">
+          <el-radio :label="0">IOT&nbsp;J</el-radio>
+          <el-radio :label="1">VCG</el-radio>
+          <el-radio :label="2">固定价格交易</el-radio>
         </el-radio-group>
-        <div class="item" id="i5" v-if="type === 'IOT&nbsp;J'">预算(万)</div>
-        <div class="item" id="i6" v-if="type === '固定价格交易'">固定价格(万)</div>
-        <el-input-number v-model="price" :min="0" :max="50000" @change="handleChange" class="im5" v-if="type === 'IOT&nbsp;J'" />
-        <el-input-number v-model="reversePrice" :min="0" :max="50000" @change="handleChange" class="im6" v-if="type === '固定价格交易'" />
+        <div class="item" id="i5" v-if="type == 0">预算(万)</div>
+        <div class="item" id="i6" v-if="type == 2">固定价格(万)</div>
+        <el-input-number v-model="price" :min="0" :max="50000" @change="handleChange" class="im5" v-if="type == 0" />
+        <el-input-number v-model="reversePrice" :min="0" :max="50000" @change="handleChange" class="im6" v-if="type == 2" />
         <div class="item" id="i7">有效期限(日)</div>
-        <el-input-number v-model="time" :min="1" :max="60" @change="handleChange" class="im7" />
+        <el-input-number v-model="time" :min="1" :max="300" @change="handleChange" class="im7" />
         <div class="yes">
           <div class="yestext" @click="handlePostEvents">上传</div>
         </div>
@@ -40,10 +40,10 @@
           company_id: "",
           event_name: '',
           description: '',
-          type: '',
-          price: null,
-          reversePrice: null,
-          time: '',
+          type: 1,
+          price: 0,
+          reversePrice: 0,
+          time: 100,
         };
       },
       components: {

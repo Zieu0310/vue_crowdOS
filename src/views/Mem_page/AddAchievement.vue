@@ -3,17 +3,17 @@
       <div class="over"></div>
       <div class="add">
         <div class="item" id="i1">成果名称</div>
-        <el-input v-model="achievements.title" placeholder="请输入" class="im1" />
+        <el-input v-model="title" placeholder="请输入" class="im1" />
         <div class="item" id="i2">类型</div>
-        <el-radio-group v-model="achievements.type" class="im2">
+        <el-radio-group v-model="type" class="im2">
           <el-radio :label="0">论文</el-radio>
           <el-radio :label="1">专利</el-radio>
           <el-radio :label="2">项目</el-radio>
         </el-radio-group>
         <div class="item" id="i3">成果描述</div>
-        <el-input v-model="achievements.description" :rows="6" type="textarea" placeholder="请描述" class="grey_rec" />
+        <el-input v-model="description" :rows="6" type="textarea" placeholder="请描述" class="grey_rec" />
         <div class="item" id="i4">附件</div>
-        <el-input v-model="achievements.file" placeholder="请添加附件" type="file" class="im3" />
+        <el-input v-model="file" placeholder="请添加附件" type="file" class="im3" />
         <div class="yes">
           <div class="yestext" @click="handlePostAchievement">上传</div>
         </div>
@@ -34,12 +34,10 @@
     export default {
       data() {
         return {
-          achievements:{
-            title: '',
-            description: '',
-            type: '',
-            file: '',
-          }
+          title: '',
+          description: '',
+          type: '',
+          file: '',        
         };
       },
       components: {
@@ -47,18 +45,18 @@
       },
       methods:{
         handlePostAchievement(){
-          post_achievement(this.achievements.title,this.achievements.description,this.achievements.type).then((res)=>{
+          post_achievement(this.title,this.description,this.type,this.file).then((res)=>{
             console.log(res);
-            if(this.achievements.title !== "" && this.achievements.description !== "" && this.achievements.type !== ""){
+            if(this.title !== "" && this.description !== "" && this.type !== ""){
               this.$router.push("/m_home/postachievementsuccess")
             }
-            else if(this.achievements.title === ""){
+            else if(this.title === ""){
               alert('成果名称不能为空！')
             }
-            else if(this.achievements.type === ""){
+            else if(this.type === ""){
               alert('类型不能为空！')
             }
-            else if(this.achievements.description === ""){
+            else if(this.description === ""){
               alert('成果描述不能为空！')
             }
           })

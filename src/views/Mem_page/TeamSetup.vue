@@ -26,39 +26,39 @@
         </template>
       </el-dialog>
       <table>
-      <thead>
-        <tr>
-          <th width="10vw" height="40vh" bgcolor="rgba(0,0,255,1)">姓名</th>
-          <th width="20vw" height="40vh" bgcolor="rgba(0,0,255,1)">邮箱</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{ member[0].name }}</td>
-          <td>{{ member[0].e_mail }}</td>
-        </tr>
-        <tr>
-          <td>{{ member[1].name }}</td>
-          <td>{{ member[1].e_mail }}</td>
-        </tr>
-        <tr>
-          <td>{{ member[2].name }}</td>
-          <td>{{ member[2].e_mail }}</td>
-        </tr>
-        <tr>
-          <td>{{ member[3].name }}</td>
-          <td>{{ member[3].e_mail }}</td>
-        </tr>
-        <tr>
-          <td>{{ member[4].name }}</td>
-          <td>{{ member[4].e_mail }}</td>
-        </tr>
-        <tr>
-          <td>{{ member[5].name }}</td>
-          <td>{{ member[5].e_mail }}</td>
-        </tr>
-      </tbody>
-    </table>
+        <thead>
+          <tr>
+            <th width="10vw" height="40vh" bgcolor="rgba(0,0,255,1)">姓名</th>
+            <th width="20vw" height="40vh" bgcolor="rgba(0,0,255,1)">邮箱</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ member[0].name }}</td>
+            <td>{{ member[0].e_mail }}</td>
+          </tr>
+          <tr>
+            <td>{{ member[1].name }}</td>
+            <td>{{ member[1].e_mail }}</td>
+          </tr>
+          <tr>
+            <td>{{ member[2].name }}</td>
+            <td>{{ member[2].e_mail }}</td>
+          </tr>
+          <tr>
+            <td>{{ member[3].name }}</td>
+            <td>{{ member[3].e_mail }}</td>
+          </tr>
+          <tr>
+            <td>{{ member[4].name }}</td>
+            <td>{{ member[4].e_mail }}</td>
+          </tr>
+          <tr>
+            <td>{{ member[5].name }}</td>
+            <td>{{ member[5].e_mail }}</td>
+          </tr>
+        </tbody>
+      </table>
       <div class="yes" @click="handleSetup">
         <div class="yestext">创建</div>
       </div>
@@ -84,12 +84,12 @@
         e_mail: "",
         team_name: "",
         member: [
-          {name: null, e_mail: null},
-          {name: null, e_mail: null},
-          {name: null, e_mail: null},
-          {name: null, e_mail: null},
-          {name: null, e_mail: null},
-          {name: null, e_mail: null},
+          {name: null, e_mail: null,team_role: null},
+          {name: null, e_mail: null,team_role: null},
+          {name: null, e_mail: null,team_role: null},
+          {name: null, e_mail: null,team_role: null},
+          {name: null, e_mail: null,team_role: null},
+          {name: null, e_mail: null,team_role: null},
         ]
       };
     },
@@ -99,10 +99,11 @@
     methods:{
       addMember(){
         this.dialogVisible = false;
-        for(let i = 0; i < 6; i++){
+        for(let i = 1; i < 6; i++){
           if(this.member[i].name == null && this.member[i].e_mail == null){
             this.member[i].name = this.name;
             this.member[i].e_mail = this.e_mail;
+            this.member[i].team_role = 0;
             break;
           }else{
             continue;
@@ -113,13 +114,16 @@
         create_team(this.team_name,this.member).then((res) => {
           console.log(res);
         })
-      }
+      },
     },
     mounted(){
-      for(let i = 0; i < 6; i ++){
+      this.member[0].name = localStorage.getItem("name");
+      
+      for(let i = 1; i < 6; i ++){
         if(this.member[i].name == null && this.member[i].e_mail == null){
           this.member[i].name = this.$route.query.name;
           this.member[i].e_mail = this.$route.query.e_mail;
+          this.member[i].team_role = 0;
           break;
         }else{
           continue;

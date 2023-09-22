@@ -1,22 +1,14 @@
 import { apis } from ".";
 
-export const auditAchievementNo = (achievement_id, remark) => {
-  return apis({
-    method: "post",
-    url: "/adminstrators/auditEvents",
-    data: {
-      achievement_id: achievement_id,
-      remark: remark,
-    },
-  });
-};
 
-export const auditAchievement = (achievement_id, remark) => {
+export const auditAchievement = (id, remark) => {
   return apis({
     method: "post",
-    url: "/adminstrators/auditEvents",
+    url: `/adminstrators/auditAchievement/${id}`,
+    params: {
+      id: id,
+    },
     data: {
-      achievement_id: achievement_id,
       remark: remark,
     },
   });

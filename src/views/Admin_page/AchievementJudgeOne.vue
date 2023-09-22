@@ -52,7 +52,7 @@
         handleAuditAchievement(){
           auditAchievement(this.achievement_id,this.remark).then((res) => {
             if(this.remark != 0 ){
-              console.log(this.achievement_id);
+              console.log(res);
               this.$router.push("/a_home/achievementjudge")
             }
             else{
