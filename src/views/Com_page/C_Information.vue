@@ -5,10 +5,8 @@
           <div class="textblue_">个人信息</div>
           <div class="item" id="i1">账号:</div>
           <el-input v-model="account" disabled class="in1" />
-          <div class="item" id="i2">ID:</div>
-          <el-input v-model="company_id" disabled class="in2" />
-          <div class="item" id="i3">公司名:</div>
-          <el-input v-model="input" placeholder="Please input" class="in3" />
+          <div class="item" id="i2">公司名:</div>
+          <el-input v-model="name" class="in2" />
         </div>
     </div>
 </template>
@@ -20,6 +18,7 @@
       return {
         account: "",
         company_id: "",
+        name: "",
       };
     },
     components: {
@@ -27,7 +26,8 @@
     },
     mounted(){
       this.account = localStorage.getItem("account");
-      this.company_id = localStorage.getItem("company_id")
+      this.company_id = localStorage.getItem("company_id");
+      this.name = localStorage.getItem("name");
     }
   };
 </script>

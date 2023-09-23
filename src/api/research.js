@@ -12,13 +12,13 @@ export const allevents_get = (state, time, type) => {
   });
 };
 
-export const create_team = (teamName,member) => {
+export const create_team = (teamName,members) => {
   return apis({
     method: "post",
     url: "/research/createTeam",
     data: {
       teamName: teamName,
-      member,
+      members,
     },
   });
 }
@@ -48,9 +48,10 @@ export const members_get = () => {
     url: "/research/getTeamMembers",
   });
 };
-export const successfullyevents_get = () => {
+export const successfullyevents_get = (state) => {
   return apis({
     method: "get",
-    url: "/research/getSuccessfullyEventInformation",
+    url: `/research/getSuccessfullyEventInformation/${state}`,
+    params: { state: state }
   });
 };

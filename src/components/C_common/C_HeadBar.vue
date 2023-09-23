@@ -45,6 +45,8 @@
     },
     mounted(){
       this.account = localStorage.getItem("account");
+      this.name = localStorage.getItem("name")
+      
     },
     data() {
       return {
@@ -52,6 +54,7 @@
         Show2: false,
         Show3: false,
         account: "",
+        name: "",
       };
     },
   };
@@ -113,7 +116,7 @@
           <router-link to="./c_information"><img src="../../assets/img/h-icon-c.png" alt="" /></router-link>
         </div>
         <div class="PersonalData">
-          <div class="name">Jack</div>
+          <div class="name">{{ name }}</div>
           <div class="number">{{ account }}</div>
         </div>
       </div>
@@ -165,7 +168,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 20%;
+    width: 30%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -189,7 +192,7 @@
     width: 65%;
   }
   .name {
-    font-size: 1.2vw;
+    font-size: 0.5vw;
     font-weight: 400;
     letter-spacing: 2px;
     line-height: 100%;

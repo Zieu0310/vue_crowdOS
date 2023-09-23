@@ -16,8 +16,9 @@
 </template>
   
   <script>
-    import { tender } from '../../api/Tender.js'
+    import { tender } from '../../api/Tender.js';
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
+    import { ElMessage } from 'element-plus';
 
     export default {
       name: 'bid',
@@ -38,8 +39,20 @@
         tenderData() {      
           tender(this.event_id,this.bid).then((res)=>{
             console.log(res);
-            this.$router.push('/m_home/bidsuccess')
-          });
+            ElMessage({
+              message: '已投标！等待竞标！',
+              type: 'success',
+            })
+            this.$router.push('/m_home/tasksquare')
+          })
+          .catch((err) => {
+            if(err.response.request.status != 200){
+              ElMessage({
+                message: '投标失败！',
+                type: 'error',
+              })
+            }
+          })
         }   
       }
     };

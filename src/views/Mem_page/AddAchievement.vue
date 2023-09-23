@@ -11,9 +11,7 @@
           <el-radio :label="2">项目</el-radio>
         </el-radio-group>
         <div class="item" id="i3">成果描述</div>
-        <el-input v-model="description" :rows="6" type="textarea" placeholder="请描述" class="grey_rec" />
-        <div class="item" id="i4">附件</div>
-        <el-input v-model="file" placeholder="请添加附件" type="file" class="im3" />
+        <el-input v-model="description" :rows="10" type="textarea" placeholder="请描述" class="grey_rec" />
         <div class="yes">
           <div class="yestext" @click="handlePostAchievement">上传</div>
         </div>
@@ -28,6 +26,8 @@
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
     import { post_achievement } from '../../api/research';
     import { ref } from 'vue';
+    import { ElMessage } from 'element-plus';
+
 
     const radio = ref(0)
   
@@ -48,7 +48,11 @@
           post_achievement(this.title,this.description,this.type,this.file).then((res)=>{
             console.log(res);
             if(this.title !== "" && this.description !== "" && this.type !== ""){
-              this.$router.push("/m_home/postachievementsuccess")
+              ElMessage({
+                message: '已上传！等待审核！',
+                type: 'success',
+              })
+              this.$router.push("/m_home/achievements")
             }
             else if(this.title === ""){
               alert('成果名称不能为空！')
@@ -58,6 +62,14 @@
             }
             else if(this.description === ""){
               alert('成果描述不能为空！')
+            }
+          })
+          .catch((err) => {
+            if(err.response.request.status != 200){
+              ElMessage({
+                message: '上传失败！',
+                type: 'error',
+              })
             }
           })
         }

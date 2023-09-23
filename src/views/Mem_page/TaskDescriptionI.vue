@@ -20,10 +20,10 @@
           <div class="it4" v-else>固定价格（万）</div>
           <div class="inblue" id="ib4" v-if="type === 'IOT J'">{{ budget }}</div>
           <div class="inbl4" v-else>{{ reversePrice }}</div>
-          <div class="yes" v-if="type === 'IOT J'">
+          <div class="yes" v-if="type === 'IOT J' || type === 'VCG'">
             <div class="yestext" @click="toTender(id)">投标</div>
           </div>
-          <div class="yes" v-if="type == 2">
+          <div class="yes" v-if="type == '固定价格交易'">
             <div class="yestext">参与</div>
           </div>
         </div>
@@ -62,21 +62,15 @@
         this.description = this.$route.query.description;
         this.reversePrice = this.$route.query.reversePrice;
         this.budget = this.$route.query.budget;
-        this.endTime = this.$route.query.endTime;
         this.event_id = this.$route.query.id;
-        if(this.$route.query.type == 0){
-          this.type = 'IOT J';
-        }else if(this.$route.query.type == 1){
-          this.type = 'VCG';
-        }else{
-          this.type = '固定价格交易';
-        }
-        if(this.$route.query.type == 0){
-          this.state = '未接取';
-        }else if(this.$route.query.type == 1){
-          this.state = '已有人接取';
-        }else{
-          this.state = '已成功被接取';
+        this.state = this.$route.query.state;
+        this.type = this.$route.query.type;
+        let date = this.$route.query.endTime.substring(0,10);
+        let moment = this.$route.query.endTime.substring(11,19);
+        date = date.split("-");
+        this.endTime = date[0] + "年" + date[1] + "月" + date[2] + "日" + " " + moment;
+        if(this.reversePrice == null){
+          this.reversePrice = "无";
         }
       },
     };

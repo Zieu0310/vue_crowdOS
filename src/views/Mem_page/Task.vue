@@ -1,7 +1,22 @@
 <template>
     <div class="CenterBox">
       <div class="whitelarge">
-        <el-table :data="tableData" border style="width: 100%">
+        <img src="../../assets/img/blue.png" class="blue">
+        <div class="textBlue">中标成功</div>
+        <el-table :data="tableData" border style="position:absolute;top:6%;width: 100%" height="270">
+          <el-table-column prop="company_name" label="公司名" width="400"></el-table-column>
+          <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
+          <el-table-column>
+            <template #default="scope">
+              <el-button size="small" @click="LookTaken(scope.row)"
+                >详情</el-button
+              >
+            </template>
+          </el-table-column>
+        </el-table>
+        <img src="../../assets/img/blue.png" class="bluebelow">
+        <div class="textBlueBelow">中标失败</div>
+        <el-table :data="tableDataFailed" border style="position:absolute;top:54%;width: 100%" height="270">
           <el-table-column prop="company_name" label="公司名" width="400"></el-table-column>
           <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
           <el-table-column>
@@ -22,6 +37,9 @@
     data() {
       return {
         tableData: [],
+        tableDataFailed: [],
+        statesuccess: 1,
+        statefailed: 2,
       };
     },
     components: {
@@ -39,15 +57,22 @@
             company_name: row.company_name,
             endTime: row.event.endTime,
             budget: row.event.budget,
+            salary: row.salary,
           }
         })
       }
     },
     mounted(){
-      successfullyevents_get().then((res) => {
+      successfullyevents_get(this.statesuccess).then((res) => {
         console.log(res);
         if(res.request.status == 200){
           this.tableData = res.data.data;
+        }
+      });
+      successfullyevents_get(this.statefailed).then((res) => {
+        console.log(res);
+        if(res.request.status == 200){
+          this.tableDataFailed = res.data.data;
         }
       });      
     }
@@ -150,6 +175,50 @@
     line-height: 2.15vh;
     color: rgba(0, 43, 255, 1);
     text-align: right;
+    vertical-align: top;
+  }
+  .blue{
+    position: absolute;
+    left: 4.87%;
+    top: 2.69%;
+    width: 0.21vw;
+    height: 1.76vh;
+  }
+  .bluebelow{
+    position: absolute;
+    left: 4.87%;
+    top: 50.69%;
+    width: 0.21vw;
+    height: 1.76vh;
+  }
+  .textBlue{
+    position: absolute;
+    left: 6.45%;
+    top: 2.23%;
+    width: 10.21vw;
+    height: 2.50vh;
+    opacity: 1;
+    font-size: 1.04vw;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 2.44vh;
+    color: rgba(0, 43, 255, 1);
+    text-align: left;
+    vertical-align: top;
+  }
+  .textBlueBelow{
+    position: absolute;
+    left: 6.45%;
+    top: 50.23%;
+    width: 10.21vw;
+    height: 2.50vh;
+    opacity: 1;
+    font-size: 1.04vw;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 2.44vh;
+    color: rgba(0, 43, 255, 1);
+    text-align: left;
     vertical-align: top;
   }
 </style>

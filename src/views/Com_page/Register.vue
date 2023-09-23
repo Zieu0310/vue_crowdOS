@@ -4,20 +4,28 @@
       <img src="../../assets/img/register.png" class="register" />
     </div>
     <div class="mainBox">
+      <el-select v-model="role" class="m-2" placeholder="选择角色"  size="large" style="margin-top: 4vh;">
+        <el-option
+          v-for="item in Role"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
       <input type="text" placeholder="输入账号" v-model="account" />
       <input type="password" name="" id="" placeholder="输入密码" v-model="password" />
-      <input type="number" placeholder="输入角色(参考上方说明)" v-model="role" />
       <input type="text" placeholder="输入名称" v-model="name" />
       <input type="text" placeholder="输入邮箱" v-model="email" />
       <input type="submit" value="确认" @click="handleRegister" class="btn" />
-      <div class="reference">角色说明:0管理员,1公司,2科研成员</div>
       <router-link to="./login"><div class="tologin">已有账号，前往登录</div></router-link>
     </div>
   </div>
 </template>
 
 <script>
+  import { ElMessage } from 'element-plus';
   import { register } from '../../api/index';
+
   export default {
     name: 'register',
     data() {
@@ -26,22 +34,28 @@
         password: '',
         role: '',
         name: '',
-        email: ''
+        email: '',
+        Role: [
+          {
+            value: 1,
+            label: "公司",
+          },
+          {
+            value: 2,
+            label: "科研成员",
+          },
+        ],
       };
     },
     methods: {
       handleRegister() {      
         register(this.account,this.password,this.role,this.name,this.email).then((res)=>{
           console.log(res);
-          if(this.role == 2 ){
-            this.$router.push("/m_home/team");
-          }
-          else if(this.role == 1){
-            this.$router.push("/c_home/c_task");
-          }
-          else if(this.role == 0){
-            this.$router.push("/a_home/achievementjudge");
-          }
+          ElMessage({
+            message: '注册成功！',
+            type: 'success',
+          })
+          this.$router.push('/login')
         });
       },   
     }
@@ -152,15 +166,6 @@
   .register{
     width: 2vw;
     height: 20vh;
-  }
-  .reference{
-    position: absolute;
-    left: 42%;
-    top: 25%;
-    width: 30vw;
-    height: 5vh;
-    font-size: 1vw;
-    color: red;
   }
   .tologin{
     position: absolute;

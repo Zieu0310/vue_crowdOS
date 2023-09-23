@@ -8,13 +8,9 @@
           <div class="title">已申报需求详情</div>
           <div class="item" id="i1">需求名</div>
           <div class="inblue" id="ib1">{{ event_name }}</div>
-          <div class="item" id="i11">需求ID</div>
-          <div class="inblue" id="ib11">{{ event_id }}</div>
-          <div class="item" id="i2">拍卖类型</div>
-          <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i3">具体描述</div>
-          <el-input v-model="description" :rows="6" type="textarea" disabled style="position: absolute;
-      left: 9.73%;top: 42%;width: 34.0625vw;height: 14.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
+          <el-input v-model="description" :rows="10" type="textarea" disabled style="position: absolute;
+      left: 9.73%;top: 28%;width: 34.0625vw;height: 14.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
           <div class="item" id="i4">报价（万）</div>
           <div class="inblue" id="ib4">{{ reservePrice }}</div>
           <el-radio-group v-model="remark" class="yon">
@@ -30,7 +26,7 @@
 </template>
   
   <script>
-
+    import { ElMessage } from 'element-plus';
     import { auditEvents } from '../../api/admin';
     export default {
       name: 'auditEvent',
@@ -40,7 +36,6 @@
           event_id: 0,
           event_name: "",
           description: "",
-          type: 0,
           reservePrice: 0,
           remark: 0,
           company_name: "",
@@ -54,10 +49,22 @@
           auditEvents(this.event_id,this.remark).then((res) => {
             if(this.remark != 0){
               console.log(res);
+              ElMessage({
+                message: '审核成功！',
+                type: 'success',
+              })
               this.$router.push("/a_home/taskjudge")
             }
             else{
               alert('请审核！');
+            }
+          })
+          .catch((err) => {
+            if(err.response.request.status != 200){
+              ElMessage({
+                message: '审核失败！',
+                type: 'error',
+              })
             }
           })
         } 
@@ -169,17 +176,9 @@
       position: absolute;
       top: 16.69%;
     }
-    #i11{
-      position: absolute;
-      top: 23.6%;
-    }
-    #i2{
-      position: absolute;
-      top: 30.51%;
-    }
     #i3{
       position: absolute;
-      top: 37.42%;
+      top: 23.42%;
     }
     #i4{
       position: absolute;
@@ -277,14 +276,6 @@
   #ib1{
     position: absolute;
     top: 16.8%;
-  }
-  #ib11{
-    position: absolute;
-    top: 23.71%;
-  }
-  #ib2{
-    position: absolute;
-    top: 30.62%;
   }
   #ib4{
     position: absolute;

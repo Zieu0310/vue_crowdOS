@@ -10,14 +10,13 @@
           <div class="inblue" id="ib1">{{ name }}</div>
           <div class="item" id="i2">类型</div>
           <div class="inblue" id="ib2">{{ type }}</div>
-          <div class="item" id="i2_5">截止日期</div>
-          <div class="inblue" id="ib2_5">{{ endTime }}</div>
-          <div class="item" id="i3">具体描述</div>
-          <div class="grey_rec">
-              <div class="innertext">{{ description }}</div>
-          </div>
+          <div class="item" id="i2_5">具体描述</div>
+          <el-input v-model="description" :rows="8" type="textarea" disabled style="position: absolute;
+      left: 9.73%;top: 35%;width: 34.0625vw;height: 14.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
           <div class="item" id="i4" v-if="type !== 'VCG'">报价（万）</div>
-          <div class="inblue" id="ib4">{{ reversePrice }}{{ budget }}</div> 
+          <div class="inblue" id="ib4">{{ reversePrice }}{{ budget }}</div>
+          <div class="item" id="i5">报酬（万）</div>
+          <div class="inblue" id="ib5">{{ salary }}</div>
         </div>
       </div>
     </div>
@@ -33,7 +32,8 @@
           type: '',
           company_name: "",
           budget: "",
-          endTime: "",
+          endTime: '',
+          salary: "",
         };
       },
       components: {
@@ -45,7 +45,7 @@
         this.description = this.$route.query.description;
         this.reversePrice = this.$route.query.reversePrice;
         this.budget = this.$route.query.budget;
-        this.endTime = this.$route.query.endTime;
+        this.salary = this.$route.query.salary;
         if(this.$route.query.type == 0){
           this.type = 'IOT J';
         }else if(this.$route.query.type == 1){
@@ -168,6 +168,10 @@
       position: absolute;
       top: 65.79%;
     }
+    #i5{
+      position: absolute;
+      top: 73.1%;
+    }
     .grey_rec{
       position: absolute;
       left: 9.73%;
@@ -222,5 +226,9 @@
   #ib4{
     position: absolute;
     top: 65.88%;
+  }
+  #ib5{
+    position: absolute;
+    top: 72.88%;
   }
   </style>

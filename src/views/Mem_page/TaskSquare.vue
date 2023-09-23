@@ -27,8 +27,10 @@
       <el-button type="primary" style="position:absolute;left:79%;top:12%" @click="GetAllEvents">确认选择</el-button>
       <div class="whitelarge">
         <el-table :data="Events" border style="width: 100%">
-          <el-table-column prop="company_name" label="公司名" width="400"></el-table-column>
-          <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
+          <el-table-column prop="company_name" label="公司名" width="250"></el-table-column>
+          <el-table-column prop="event.name" label="需求名" width="250"></el-table-column>
+          <el-table-column prop="event.type" label="类型" width="250"></el-table-column>
+          <el-table-column prop="event.state" label="状态" width="250"></el-table-column>
           <el-table-column prop="address" label="">
             <template #default="scope">
               <el-button size="small" @click="LookTaken(scope.row)"
@@ -49,11 +51,11 @@
         State: [
           {
             value: 0,
-            label: "未接取",
+            label: "无人投标",
           },
           {
             value: 1,
-            label: "已有人接取",
+            label: "有人投标",
           },
           {
             value: 2,
@@ -104,7 +106,7 @@
             company_name: row.company_name,
             budget: row.event.budget,
             reservePrice: row.event.reservePrice,
-            endTime: row.event.endTime,
+            endTime: row.end,
             state: row.event.state,
             id: row.event.id,
           }
@@ -122,6 +124,24 @@
             console.log(res);
             if(res.request.status == 200){
               this.Events = res.data.data;
+              for(let i = 0; i < this.Events.length; i++){
+                if(this.Events[i].event.type == 0){
+                  this.Events[i].event.type = "IOT J";
+                }else if(this.Events[i].event.type == 1){
+                  this.Events[i].event.type = "VCG";
+                }else{
+                  this.Events[i].event.type = "固定价格交易";
+                }
+              }
+              for(let i = 0; i < this.Events.length; i++){
+                if(this.Events[i].event.state == 0){
+                  this.Events[i].event.state = "无人投标";
+                }else if(this.Events[i].event.state == 1){
+                  this.Events[i].event.state = "有人投标";
+                }else{
+                  this.Events[i].event.state = "已被成功接取";
+                }
+              }
             }
           }
         })
@@ -131,6 +151,27 @@
     mounted(){
       allevents_get(this.state,this.time,this.type).then((res) => {
         console.log(res);
+        if(res.request.status == 200){
+              this.Events = res.data.data;
+              for(let i = 0; i < this.Events.length; i++){
+                if(this.Events[i].event.type == 0){
+                  this.Events[i].event.type = "IOT J";
+                }else if(this.Events[i].event.type == 1){
+                  this.Events[i].event.type = "VCG";
+                }else{
+                  this.Events[i].event.type = "固定价格交易";
+                }
+              }
+              for(let i = 0; i < this.Events.length; i++){
+                if(this.Events[i].event.state == 0){
+                  this.Events[i].event.state = "无人投标";
+                }else if(this.Events[i].event.state == 1){
+                  this.Events[i].event.state = "有人投标";
+                }else{
+                  this.Events[i].event.state = "已被成功接取";
+                }
+              }
+            }
       })
     }
   };

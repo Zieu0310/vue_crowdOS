@@ -32,6 +32,7 @@
   <script>
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
     import { postEvents } from '../../api/company';
+    import { ElMessage } from 'element-plus';
   
     export default {
       name: 'postEvents',
@@ -53,15 +54,19 @@
         handlePostEvents(){
           postEvents(this.event_name,this.description,this.type,this.price,this.reversePrice,this.time).then((res)=>{
             if(this.event_name !== "" && this.description !== "" && this.type !== ""){
-              if(this.type === "IOT J" && this.price == null){
+              if(this.type == 0 && this.price == 0){
                 alert('请正确输入预算！');
               } 
-              else if(this.type === "固定价格交易" && this.reversePrice == null){
+              else if(this.type == 2 && this.reversePrice == 0){
                 alert('请正确输入固定价格！')
               }
               else{
                 console.log(res);
-                this.$router.push("/c_home/deliversuccess")
+                ElMessage({
+                  message: '已发布！等待审核！',
+                  type: 'success',
+                })
+                this.$router.push("/c_home/c_task");
               }          
             }
             else if(this.event_name === ""){

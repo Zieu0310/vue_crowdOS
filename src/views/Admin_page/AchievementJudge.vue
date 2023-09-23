@@ -81,8 +81,8 @@
         if(res.request.status == 200 && this.remarkno == 1){
           this.AchievementNo = res.data.data;
           for(let i = 0; i < this.AchievementNo.length; i++){
-            if(this.AchievementNo[i].remark == 1){
-              this.AchievementNo[i].remark = "不通过";
+            if(this.AchievementNo[i].achievement.remark == 1){
+              this.AchievementNo[i].achievement.remark = "不通过";
             }
           }
         }
@@ -92,8 +92,8 @@
         if(res.request.status == 200 && this.remarkyes == 2){
           this.AchievementYes = res.data.data;
           for(let i = 0; i < this.AchievementYes.length; i++){
-            if(this.AchievementYes[i].remark == 2){
-              this.AchievementYes[i].remark = "通过";
+            if(this.AchievementYes[i].achievement.remark == 2){
+              this.AchievementYes[i].achievement.remark = "通过";
             }
           }
         }

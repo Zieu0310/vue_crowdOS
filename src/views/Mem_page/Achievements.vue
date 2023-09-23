@@ -4,8 +4,9 @@
       <img src="../../assets/img/blue.png" class="blue_">
       <div class="textblue_">科研成果</div>
       <el-table :data="Achievements" border height="450" style="position:absolute;top:10%;width: 100%">
-        <el-table-column prop="title" label="标题" width="400" />
-        <el-table-column prop="type" label="类型" width="400" />
+        <el-table-column prop="title" label="标题" width="300" />
+        <el-table-column prop="type" label="类型" width="300" />
+        <el-table-column prop="remark" label="审核状态" width="300" />
         <el-table-column prop="address" label="">
           <template #default="scope">
             <el-button size="small" @click="LookAchievementDetail(scope.row)"
@@ -57,6 +58,15 @@
               this.Achievements[i].type = "专利";
             }else{
               this.Achievements[i].type = "项目";
+            }
+          }
+          for(let i = 0; i < this.Achievements.length; i++){
+            if(this.Achievements[i].remark == 0){
+              this.Achievements[i].remark = "未审核";
+            }else if(this.Achievements[i].remark == 1){
+              this.Achievements[i].remark = "审核不通过";
+            }else{
+              this.Achievements[i].remark = "审核通过";
             }
           }
         }

@@ -5,60 +5,78 @@
       <div class="item">团队名称</div>
       <el-input v-model="team_name" placeholder="请输入团队名称" class="teamName" />
       <div class="item1">成员</div>
-      <el-button class="addMember" @click="dialogVisible = true">点此添加</el-button>
-      <el-dialog
-        v-model="dialogVisible"
-        title="添加成员"
-        width="30%"
-        :before-close="handleClose"
+      <el-button class="addMember" @click="handleAdd">点此添加</el-button>
+      <el-table
+        :data="Members"
+        border
+        fit
+        highlight-current-row
+        style="position:absolute;top:37%;width: 1000"
+        height="250"
       >
-        <div class="name">姓名</div>
-        <el-input v-model="name" placeholder="请输入姓名" class="inname" />
-        <div class="e_mail">邮箱</div>
-        <el-input v-model="e_mail" placeholder="请输入邮箱" class="ine_mail" />
-        <template #footer>
-          <span class="dialog-footer">
-            <el-button @click="dialogVisible = false">取消</el-button>
-            <el-button type="primary" @click="addMember">
-              添加
+        <el-table-column prop="name" label="姓名" align="center">
+          <template #default="scope">
+            <el-input
+              v-model="scope.row.name"
+              v-show="scope.row.show"
+              type="text"
+              style="width: 90%"
+              size="mini"
+            />
+            <span v-show="!scope.row.show">{{
+              scope.row.name
+            }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column prop="team_role" label="身份" align="center">
+          <template #default="scope">
+            <el-select
+              v-model="scope.row.team_role"
+              size="mini"
+              filterable
+              placeholder="请选择"
+            >
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </template>
+        </el-table-column>
+
+        <el-table-column prop="" label="操作" min-width="175" align="center">
+          <template #default="scope">
+            <el-button
+              @click="handleDelete(scope.$index)"
+              class="btn-text-red"
+              type="danger"
+              size="mini"
+              icon="el-icon-delete"
+              >删除
             </el-button>
-          </span>
-        </template>
-      </el-dialog>
-      <table>
-        <thead>
-          <tr>
-            <th width="10vw" height="40vh" bgcolor="rgba(0,0,255,1)">姓名</th>
-            <th width="20vw" height="40vh" bgcolor="rgba(0,0,255,1)">邮箱</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ member[0].name }}</td>
-            <td>{{ member[0].e_mail }}</td>
-          </tr>
-          <tr>
-            <td>{{ member[1].name }}</td>
-            <td>{{ member[1].e_mail }}</td>
-          </tr>
-          <tr>
-            <td>{{ member[2].name }}</td>
-            <td>{{ member[2].e_mail }}</td>
-          </tr>
-          <tr>
-            <td>{{ member[3].name }}</td>
-            <td>{{ member[3].e_mail }}</td>
-          </tr>
-          <tr>
-            <td>{{ member[4].name }}</td>
-            <td>{{ member[4].e_mail }}</td>
-          </tr>
-          <tr>
-            <td>{{ member[5].name }}</td>
-            <td>{{ member[5].e_mail }}</td>
-          </tr>
-        </tbody>
-      </table>
+
+            <el-button
+              @click="scope.row.show = true"
+              type="primary"
+              size="mini"
+              icon="el-icon-edit"
+              >编辑</el-button
+            >
+
+            <el-button
+              @click="save1(scope.row)"
+              type="success"
+              size="mini"
+              icon="el-icon-success"
+              >保存</el-button
+            >
+          </template>
+        </el-table-column>
+      </el-table>
       <div class="yes" @click="handleSetup">
         <div class="yestext">创建</div>
       </div>
@@ -71,6 +89,7 @@
 </template>
 
 <script>
+  import { ElMessage } from 'element-plus';
   import { create_team } from '../../api/research';
   import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
 
@@ -81,15 +100,20 @@
       return {
         dialogVisible: false,
         name: "",
-        e_mail: "",
+        email: "",
         team_name: "",
-        member: [
-          {name: null, e_mail: null,team_role: null},
-          {name: null, e_mail: null,team_role: null},
-          {name: null, e_mail: null,team_role: null},
-          {name: null, e_mail: null,team_role: null},
-          {name: null, e_mail: null,team_role: null},
-          {name: null, e_mail: null,team_role: null},
+        Members: [
+          {},
+        ],
+        options: [
+          {
+            label: "队员",
+            value: 0,
+          },
+          {
+            label: "负责人",
+            value: 1,
+          }
         ]
       };
     },
@@ -97,38 +121,50 @@
       M_HeadBar,
     },
     methods:{
-      addMember(){
-        this.dialogVisible = false;
-        for(let i = 1; i < 6; i++){
-          if(this.member[i].name == null && this.member[i].e_mail == null){
-            this.member[i].name = this.name;
-            this.member[i].e_mail = this.e_mail;
-            this.member[i].team_role = 0;
-            break;
-          }else{
-            continue;
-          }
-        }
-      },
       handleSetup(){
-        create_team(this.team_name,this.member).then((res) => {
+        create_team(this.team_name,this.Members).then((res) => {
           console.log(res);
+          ElMessage({
+            message: '团队创建成功！',
+            type: 'success',
+          })
+          this.$router.push('/m_home/team');
         })
       },
+      save1(row) {
+      row.show = false;
+    },
+    // 添加点击按钮
+    handleAdd() {
+      this.Members.push({
+        name: "",
+        show: true,
+      });
+    },
+    handleDelete(index) {
+      this.$confirm("此操作将永久删除, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.Members.splice(index, 1)
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          })
+        })
+    },
     },
     mounted(){
-      this.member[0].name = localStorage.getItem("name");
-      
-      for(let i = 1; i < 6; i ++){
-        if(this.member[i].name == null && this.member[i].e_mail == null){
-          this.member[i].name = this.$route.query.name;
-          this.member[i].e_mail = this.$route.query.e_mail;
-          this.member[i].team_role = 0;
-          break;
-        }else{
-          continue;
-        }
-      }
+      this.Members[0].name = localStorage.getItem("name");
+      this.Members[0].team_role = 1;      
     }
   };
 </script>

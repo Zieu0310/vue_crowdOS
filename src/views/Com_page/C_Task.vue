@@ -37,11 +37,11 @@
         <img src="../../assets/img/blue.png" class="blue">
         <div class="textBlue" id="tb1">已发布</div>
         <el-table :data="Events" border height="460" style="position:absolute;top:10%;width: 100%">
-          <el-table-column prop="name" label="需求名" width="250" />
-          <el-table-column prop="state" label="接取状态" width="250" />
-          <el-table-column prop="type" label="类型" width="250" />
-          <el-table-column prop="endTime" label="截止时间" width="250" />
-          <el-table-column prop="address" label="">
+          <el-table-column prop="event.name" label="需求名" width="250" />
+          <el-table-column prop="event.state" label="接取状态" width="250" />
+          <el-table-column prop="event.type" label="类型" width="250" />
+          <el-table-column prop="end" label="截止时间" width="250" />
+          <el-table-column prop="" label="">
             <template #default="scope">
               <el-button size="small" @click="LookDelivered(scope.row)"
                 >详情</el-button
@@ -62,11 +62,11 @@
         State: [
           {
             value: 0,
-            label: "未接取",
+            label: "无人投标",
           },
           {
             value: 1,
-            label: "已有人接取",
+            label: "有人投标",
           },
           {
             value: 2,
@@ -128,21 +128,27 @@
           console.log(res);
           if(res.request.status == 200){
             this.Events = res.data.data;
+            for(let i = 0; i < this.Events.length; i++){
+              let date = this.Events[i].end.substring(0,10);
+              let moment = this.Events[i].end.substring(11,19);
+              date = date.split("-");
+              this.Events[i].end = date[0] + "年" + date[1] + "月" + date[2] + "日" + " " + moment;
+            }
           }
           for(let i = 0; i < this.Events.length; i++){
-            if(this.Events[i].type == 0){
-              this.Events[i].type = "IOT J";
-            }else if(this.Events[i].type == 1){
-              this.Events[i].type = "VCG";
+            if(this.Events[i].event.type == 0){
+              this.Events[i].event.type = "IOT J";
+            }else if(this.Events[i].event.type == 1){
+              this.Events[i].event.type = "VCG";
             }else{
-              this.Events[i].type = "固定价格交易";
+              this.Events[i].event.type = "固定价格交易";
             }
-            if(this.Events[i].state == 0){
-              this.Events[i].state = "未接取";
-            }else if(this.Events[i].state == 1){
-              this.Events[i].state = "已有人接取";
+            if(this.Events[i].event.state == 0){
+              this.Events[i].event.state = "无人投标";
+            }else if(this.Events[i].event.state == 1){
+              this.Events[i].event.state = "有人投标";
             }else{
-              this.Events[i].state = "已成功被接取";
+              this.Events[i].event.state = "已成功被接取";
             }
           }
         })
@@ -151,12 +157,12 @@
         this.$router.push({
           path: '/c_home/deliveredtask',
           query:{
-            name: row.name,
-            endTime: row.endTime,
-            type: row.type,
-            description: row.description,
-            state: row.state,
-            budget: row.budget,
+            name: row.event.name,
+            endTime: row.end,
+            type: row.event.type,
+            description: row.event.description,
+            state: row.event.state,
+            budget: row.event.budget,
           }
         })
       }

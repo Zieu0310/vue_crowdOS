@@ -8,17 +8,13 @@
           <div class="title">已申报成果详情</div>
           <div class="item" id="i1">成果</div>
           <div class="inblue" id="ib1">{{ title }}</div>
-          <div class="item" id="i11">成果ID</div>
-          <div class="inblue" id="ib11">{{ achievement_id }}</div>
-          <div class="item" id="i2">类型</div>
-          <div class="inblue" id="ib2">{{ type }}</div>
-          <div class="item" id="i21">科研队</div>
-          <div class="inblue" id="ib21">{{ team_name }}</div>
-          <div class="item" id="i22">科研队ID</div>
-          <div class="inblue" id="ib22">{{ team_id }}</div>
-          <div class="item" id="i3">具体描述</div>
-          <el-input v-model="description" :rows="6" type="textarea" disabled style="position: absolute;left: 9.73%;
-          top: 55%;width: 34.0625vw;height: 14.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
+          <div class="item" id="i11">类型</div>
+          <div class="inblue" id="ib11">{{ type }}</div>
+          <div class="item" id="i2">科研队</div>
+          <div class="inblue" id="ib2">{{ team_name }}</div>
+          <div class="item" id="i21">具体描述</div>
+          <el-input v-model="description" :rows="10" type="textarea" disabled style="position: absolute;left: 9.73%;
+          top: 42%;width: 34.0625vw;height: 14.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
           <el-radio-group v-model="remark" class="yon">
             <el-radio :label="2">通过</el-radio>
             <el-radio :label="1">不通过</el-radio>
@@ -32,6 +28,7 @@
 </template>
   
   <script>
+    import { ElMessage } from 'element-plus';
     import { auditAchievement } from '../../api/admin';
     export default {
       data() {
@@ -53,10 +50,22 @@
           auditAchievement(this.achievement_id,this.remark).then((res) => {
             if(this.remark != 0 ){
               console.log(res);
+              ElMessage({
+                message: '审核成功！',
+                type: 'success',
+              })
               this.$router.push("/a_home/achievementjudge")
             }
             else{
               alert('请审核！')
+            }
+          })
+          .catch((err) => {
+            if(err.response.request.status != 200){
+              ElMessage({
+                message: '审核失败！',
+                type: 'error',
+              })
             }
           })
         }
@@ -68,6 +77,13 @@
         this.description = this.$route.query.description;
         this.team_id = this.$route.query.team_id;
         this.team_name = this.$route.query.team_name;
+        if(this.type == 0){
+          this.type = '论文';
+        }else if(this.type == 1){
+          this.type = '专利';
+        }else{
+          this.type = '项目';
+        }
       }
     };
   </script>
