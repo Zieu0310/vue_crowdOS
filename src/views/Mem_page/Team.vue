@@ -2,11 +2,25 @@
     <div class="CenterBox">
       <div class="whitelarge">
         <img src="../../assets/img/blue.png" class="blue_">
-        <div class="textblue_">我的团队</div>
+        <div class="textblue_">成员</div>
         <div class="whs" id="whs1" @click="LookTeam">
           <img src="../../assets/img/group.png" class="group">
           <div class="textblack">{{ team_name }}</div>
         </div>
+        <img src="../../assets/img/blue.png" class="bluebelow">
+        <div class="textBlueBelow">我们的成果</div>
+        <el-table :data="Achievements" border style="position:absolute;top:54%;width: 100%" height="270">
+          <el-table-column prop="title" label="成果名" width="300"></el-table-column>
+          <el-table-column prop="type" label="类型" width="300"></el-table-column>
+          <el-table-column prop="remark" label="审核状态" width="300"></el-table-column>
+          <el-table-column>
+            <template #default="scope">
+              <el-button size="small" @click="LookAchievementDetail(scope.row)"
+                >详情</el-button
+              >
+            </template>
+          </el-table-column>
+        </el-table>
         <router-link to="teamsetup"><img src="../../assets/img/add.png" alt="添加成果" class="round"></router-link>
       </div>
     </div>
@@ -40,7 +54,17 @@
               Achievements: this.Achievements,
             }
           })
-        }
+        },
+        LookAchievementDetail(row){
+        this.$router.push({
+          path: '/m_home/achievementsmaken',
+          query: {
+            title: row.title,
+            type: row.type,
+            description: row.description,
+          }
+        })
+      }
       },
       mounted(){
         m_information().then((res) => {
@@ -49,6 +73,24 @@
             this.Achievements = res.data.data.achievements;
             this.team_name = res.data.data.team_name;
             this.team_id = res.data.data.team_id;
+            for(let i = 0; i < this.Achievements.length; i++){
+              if(this.Achievements[i].type == 0){
+                this.Achievements[i].type = "论文";
+              }else if(this.Achievements[i].type == 1){
+                this.Achievements[i].type = "专利";
+              }else{
+                this.Achievements[i].type = "项目";
+              }
+            }
+            for(let i = 0; i < this.Achievements.length; i++){
+              if(this.Achievements[i].remark == 0){
+                this.Achievements[i].remark = "未审核";
+              }else if(this.Achievements[i].remark == 1){
+                this.Achievements[i].remark = "审核不通过";
+              }else{
+                this.Achievements[i].remark = "审核通过";
+              }
+            }
           }
         });
         
@@ -101,27 +143,49 @@
       text-align: left;
       vertical-align: top;
     }
+    .bluebelow{
+      position: absolute;
+      left: 4.87%;
+      top: 50.69%;
+      width: 0.21vw;
+      height: 1.76vh;
+    }
+    .textBlueBelow{
+      position: absolute;
+      left: 6.45%;
+      top: 50.23%;
+      width: 10.21vw;
+      height: 2.50vh;
+      opacity: 1;
+      font-size: 1.04vw;
+      font-weight: 500;
+      letter-spacing: 0px;
+      line-height: 2.44vh;
+      color: rgba(0, 43, 255, 1);
+      text-align: left;
+      vertical-align: top;
+    }
     .group{
-    position: absolute;
-    left: 2.52%;
-    top: 30.95%;
-    width: 1.67vw;
-    height: 2.96vh;
+      position: absolute;
+      left: 2.52%;
+      top: 30.95%;
+      width: 1.67vw;
+      height: 2.96vh;
     }
     .textblack{
-    position: absolute;
-    left: 6.45%;
-    top: 34.52%;
-    width: 8vw;
-    height: 2.22vh;
-    opacity: 1;
-    font-size: 0.83vw;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 2.15vh;
-    color: rgba(0, 0, 0, 1);
-    text-align: left;
-    vertical-align: top;
+      position: absolute;
+      left: 6.45%;
+      top: 34.52%;
+      width: 8vw;
+      height: 2.22vh;
+      opacity: 1;
+      font-size: 0.83vw;
+      font-weight: 700;
+      letter-spacing: 0px;
+      line-height: 2.15vh;
+      color: rgba(0, 0, 0, 1);
+      text-align: left;
+      vertical-align: top;
     }
     .whs{
       position: absolute;

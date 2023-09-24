@@ -136,7 +136,7 @@
         </div>
         <div class="right-entry">
         <div class="PersonalData">
-          <router-link to="../../m_home/m_information"><div class="name">{{ name }}</div></router-link>
+          <div class="name">{{ name }}</div>
           <router-link to="../../m_home/default"><div class="number">{{ account }}</div></router-link>
         </div>
       </div>
