@@ -44,7 +44,7 @@ export const login = (account, password) => {
   });
 };
 
-export const register = (account, password, role, name, email) => {
+export const register = (account, password, role, name, email, teamName) => {
   return apis({
     method: "post",
     url: "/register",
@@ -54,6 +54,7 @@ export const register = (account, password, role, name, email) => {
       role: role,
       name: name,
       email: email,
+      teamName: teamName,
     },
   });
 };

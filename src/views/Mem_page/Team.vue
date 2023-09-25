@@ -7,6 +7,73 @@
           <img src="../../assets/img/group.png" class="group">
           <div class="textblack">{{ team_name }}</div>
         </div>
+        <el-table
+        :data="Members"
+        border
+        fit
+        highlight-current-row
+        style="position:absolute;top:17%;width: 1000"
+        height="250"
+      >
+        <el-table-column prop="name" label="姓名" align="center">
+          <template #default="scope">
+            <el-input
+              v-model="scope.row.name"
+              v-show="scope.row.show"
+              type="text"
+              style="width: 90%"
+              size="mini"
+            />
+            <span v-show="!scope.row.show">{{
+              scope.row.name
+            }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column prop="team_role" label="邮箱" align="center">
+          <template #default="scope">
+            <el-input
+              v-model="scope.row.email"
+              v-show="scope.row.show"
+              type="text"
+              style="width: 90%"
+              size="mini"
+            />
+            <span v-show="!scope.row.show">{{
+              scope.row.email
+            }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column prop="" label="操作" min-width="175" align="center">
+          <template #default="scope">
+            <el-button
+              @click="handleDelete(scope.$index)"
+              class="btn-text-red"
+              type="danger"
+              size="mini"
+              icon="el-icon-delete"
+              >删除
+            </el-button>
+
+            <el-button
+              @click="scope.row.show = true"
+              type="primary"
+              size="mini"
+              icon="el-icon-edit"
+              >编辑</el-button
+            >
+
+            <el-button
+              @click="save1(scope.row)"
+              type="success"
+              size="mini"
+              icon="el-icon-success"
+              >保存</el-button
+            >
+          </template>
+        </el-table-column>
+      </el-table>
         <img src="../../assets/img/blue.png" class="bluebelow">
         <div class="textBlueBelow">我们的成果</div>
         <el-table :data="Achievements" border style="position:absolute;top:54%;width: 100%" height="270">
@@ -28,7 +95,7 @@
   
   <script>
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
-    import { m_information } from '../../api/research';
+    import { m_information, members_get } from '../../api/research';
   
     export default {
       data() {
@@ -39,6 +106,9 @@
           id: "",
           name: "",
           Achievements: [],
+          Members: [
+            {},
+          ],
         };
       },
       components: {
@@ -56,15 +126,38 @@
           })
         },
         LookAchievementDetail(row){
-        this.$router.push({
-          path: '/m_home/achievementsmaken',
-          query: {
-            title: row.title,
-            type: row.type,
-            description: row.description,
-          }
-        })
-      }
+          this.$router.push({
+            path: '/m_home/achievementsmaken',
+            query: {
+              title: row.title,
+              type: row.type,
+              description: row.description,
+            }
+          })
+        },
+        handleDelete(index) {
+          this.$confirm("此操作将永久删除, 是否继续?", "提示", {
+            confirmButtonText: "确定",
+            cancelButtonText: "取消",
+            type: "warning",
+          })
+          .then(() => {
+            this.Members.splice(index, 1)
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已取消删除",
+            })
+          })
+        },
+        save1(row) {
+          row.show = false;
+        },
       },
       mounted(){
         m_information().then((res) => {
@@ -93,7 +186,12 @@
             }
           }
         });
-        
+        members_get().then((res) => {
+          console.log(res);
+          if(res.request.status == 200){
+            this.Members = res.data.data.teamMember;
+          }
+        })
       }
     };
   </script>
