@@ -66,7 +66,7 @@
         Time: [
           {
             value: 0,
-            label: "全部",
+            label: "不考虑截止日期",
           },
           {
             value: 1,

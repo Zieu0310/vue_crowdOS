@@ -3,19 +3,16 @@
       <div class="whitelarge">
         <img src="../../assets/img/blue.png" class="blue_">
         <div class="textblue_">成员</div>
-        <div class="whs" id="whs1" @click="LookTeam">
-          <img src="../../assets/img/group.png" class="group">
-          <div class="textblack">{{ team_name }}</div>
-        </div>
+        <el-button class="addMember" style="position:absolute;left:45%;top:90%" @click="handleAdd" type="info" round v-if="Members == null">点此添加</el-button>
         <el-table
         :data="Members"
         border
         fit
         highlight-current-row
-        style="position:absolute;top:17%;width: 1000"
+        style="position:absolute;top:10%;width: 1000"
         height="250"
       >
-        <el-table-column prop="name" label="姓名" align="center">
+        <el-table-column prop="name" label="姓名" width="560" align="center">
           <template #default="scope">
             <el-input
               v-model="scope.row.name"
@@ -30,7 +27,7 @@
           </template>
         </el-table-column>
 
-        <el-table-column prop="team_role" label="邮箱" align="center">
+        <el-table-column prop="team_role" label="邮箱" width="551" align="center">
           <template #default="scope">
             <el-input
               v-model="scope.row.email"
@@ -45,38 +42,10 @@
           </template>
         </el-table-column>
 
-        <el-table-column prop="" label="操作" min-width="175" align="center">
-          <template #default="scope">
-            <el-button
-              @click="handleDelete(scope.$index)"
-              class="btn-text-red"
-              type="danger"
-              size="mini"
-              icon="el-icon-delete"
-              >删除
-            </el-button>
-
-            <el-button
-              @click="scope.row.show = true"
-              type="primary"
-              size="mini"
-              icon="el-icon-edit"
-              >编辑</el-button
-            >
-
-            <el-button
-              @click="save1(scope.row)"
-              type="success"
-              size="mini"
-              icon="el-icon-success"
-              >保存</el-button
-            >
-          </template>
-        </el-table-column>
       </el-table>
         <img src="../../assets/img/blue.png" class="bluebelow">
         <div class="textBlueBelow">我们的成果</div>
-        <el-table :data="Achievements" border style="position:absolute;top:54%;width: 100%" height="270">
+        <el-table :data="Achievements" border style="position:absolute;top:54%;width: 100%" height="190">
           <el-table-column prop="title" label="成果名" width="300"></el-table-column>
           <el-table-column prop="type" label="类型" width="300"></el-table-column>
           <el-table-column prop="remark" label="审核状态" width="300"></el-table-column>
@@ -88,14 +57,14 @@
             </template>
           </el-table-column>
         </el-table>
-        <router-link to="teamsetup"><img src="../../assets/img/add.png" alt="添加成果" class="round"></router-link>
       </div>
     </div>
 </template>
   
   <script>
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
-    import { m_information, members_get } from '../../api/research';
+    import { m_information, members_get ,create_team} from '../../api/research';
+    import { ElMessage } from 'element-plus';
   
     export default {
       data() {
@@ -154,10 +123,26 @@
               message: "已取消删除",
             })
           })
+          console.log(this.Members);
         },
         save1(row) {
           row.show = false;
         },
+        handleAdd() {
+          this.$router.push('/m_home/teamsetup')
+        },
+        AllAdd(){
+          create_team(this.Members).then((res) => {
+            console.log(res);
+            ElMessage({
+              message: '保存成功！',
+              type: 'success',
+            })
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        }
       },
       mounted(){
         m_information().then((res) => {
@@ -189,7 +174,7 @@
         members_get().then((res) => {
           console.log(res);
           if(res.request.status == 200){
-            this.Members = res.data.data.teamMember;
+            this.Members = res.data.data;
           }
         })
       }

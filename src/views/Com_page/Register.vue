@@ -47,11 +47,12 @@
           },
         ],
         team_id: '',
+        teamName: null,
       };
     },
     methods: {
       handleRegister() {      
-        register(this.account,this.password,this.role,this.name,this.email).then((res)=>{
+        register(this.account,this.password,this.role,this.name,this.email,this.teamName).then((res)=>{
           console.log(res);
           if(res.data.data == true){
             ElMessage({

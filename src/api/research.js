@@ -12,12 +12,11 @@ export const allevents_get = (state, time, type) => {
   });
 };
 
-export const create_team = (teamName,members) => {
+export const create_team = (members) => {
   return apis({
-    method: "post",
+    method: "put",
     url: "/research/createTeam",
     data: {
-      teamName: teamName,
       members,
     },
   });

@@ -2,17 +2,15 @@
   <div class="CenterBox">
     <div class="over"></div>
     <div class="add">
-      <div class="item">团队名称</div>
-      <el-input v-model="team_name" placeholder="请输入团队名称" class="teamName" />
-      <div class="item1">成员</div>
+      <div class="item">成员</div>
       <el-button class="addMember" @click="handleAdd">点此添加</el-button>
       <el-table
         :data="Members"
         border
         fit
         highlight-current-row
-        style="position:absolute;top:37%;width: 1000"
-        height="250"
+        style="position:absolute;top:22%;width: 1000"
+        height="340"
       >
         <el-table-column prop="name" label="姓名" align="center">
           <template #default="scope">
@@ -29,22 +27,18 @@
           </template>
         </el-table-column>
 
-        <el-table-column prop="team_role" label="身份" align="center">
+        <el-table-column prop="email" label="邮箱" align="center">
           <template #default="scope">
-            <el-select
-              v-model="scope.row.team_role"
+            <el-input
+              v-model="scope.row.email"
+              v-show="scope.row.show"
+              type="text"
+              style="width: 90%"
               size="mini"
-              filterable
-              placeholder="请选择"
-            >
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
+            />
+            <span v-show="!scope.row.show">{{
+              scope.row.email
+            }}</span>
           </template>
         </el-table-column>
 
@@ -101,20 +95,9 @@
         dialogVisible: false,
         name: "",
         email: "",
-        team_name: "",
         Members: [
           {},
         ],
-        options: [
-          {
-            label: "队员",
-            value: 0,
-          },
-          {
-            label: "负责人",
-            value: 1,
-          }
-        ]
       };
     },
     components: {
@@ -122,10 +105,10 @@
     },
     methods:{
       handleSetup(){
-        create_team(this.team_name,this.Members).then((res) => {
+        create_team(this.Members).then((res) => {
           console.log(res);
           ElMessage({
-            message: '团队创建成功！',
+            message: '成员添加成功！',
             type: 'success',
           })
           this.$router.push('/m_home/team');
@@ -160,12 +143,8 @@
             message: "已取消删除",
           })
         })
+      },
     },
-    },
-    mounted(){
-      this.Members[0].name = localStorage.getItem("name");
-      this.Members[0].team_role = 1;      
-    }
   };
 </script>
 
@@ -278,21 +257,6 @@
     text-align: left;
     vertical-align: top;
   }
-  .item1{
-    position: absolute;
-    left: 9.73%;
-    top: 25%;
-    width: 4.17vw;
-    height: 2.69vh;
-    opacity: 1;
-    font-size: 1.04vw;
-    font-weight: 400;
-    letter-spacing: 0px;
-    line-height: 2.68vh;
-    color: rgba(0, 0, 0, 1);
-    text-align: left;
-    vertical-align: top;
-  }
   .teamName{
     position: absolute;
     left: 9.73%;
@@ -302,7 +266,7 @@
   .addMember{
     position: absolute;
     left: 9.73%;
-    top: 30%;
+    top: 15%;
   }
   .yes{
   position: absolute;
