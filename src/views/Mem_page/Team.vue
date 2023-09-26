@@ -3,7 +3,8 @@
       <div class="whitelarge">
         <img src="../../assets/img/blue.png" class="blue_">
         <div class="textblue_">成员</div>
-        <el-button class="addMember" style="position:absolute;left:45%;top:90%" @click="handleAdd" type="info" round v-if="Members == null">点此添加</el-button>
+        <el-button class="addMember" style="position:absolute;left:35%;top:90%" @click="handleAdd" type="info" round>添加成员</el-button>
+        <el-button class="addMember" style="position:absolute;left:55%;top:90%" @click="handleAddAchievements" type="info" round plain>添加成果</el-button>
         <el-table
         :data="Members"
         border
@@ -12,7 +13,7 @@
         style="position:absolute;top:10%;width: 1000"
         height="250"
       >
-        <el-table-column prop="name" label="姓名" width="560" align="center">
+        <el-table-column prop="name" label="姓名" width="420" align="center">
           <template #default="scope">
             <el-input
               v-model="scope.row.name"
@@ -27,7 +28,7 @@
           </template>
         </el-table-column>
 
-        <el-table-column prop="team_role" label="邮箱" width="551" align="center">
+        <el-table-column prop="team_role" label="邮箱" width="420" align="center">
           <template #default="scope">
             <el-input
               v-model="scope.row.email"
@@ -39,6 +40,19 @@
             <span v-show="!scope.row.show">{{
               scope.row.email
             }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column prop="" label="操作" min-width="175" align="center">
+          <template #default="scope">
+            <el-button
+              @click="handleDelete(scope.row)"
+              class="btn-text-red"
+              type="danger"
+              size="mini"
+              icon="el-icon-delete"
+              >删除
+            </el-button>
           </template>
         </el-table-column>
 
@@ -63,7 +77,7 @@
   
   <script>
     import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
-    import { m_information, members_get ,create_team} from '../../api/research';
+    import { m_information, members_get ,create_team, deleteMember} from '../../api/research';
     import { ElMessage } from 'element-plus';
   
     export default {
@@ -76,7 +90,12 @@
           name: "",
           Achievements: [],
           Members: [
-            {},
+            {
+              id: 0,
+              name: "",
+              email: "",
+              teamId: 0,
+            },
           ],
         };
       },
@@ -104,32 +123,26 @@
             }
           })
         },
-        handleDelete(index) {
-          this.$confirm("此操作将永久删除, 是否继续?", "提示", {
-            confirmButtonText: "确定",
-            cancelButtonText: "取消",
-            type: "warning",
-          })
-          .then(() => {
-            this.Members.splice(index, 1)
+        handleDelete(row) {
+          deleteMember(row.id).then((res) => {
+            console.log(res);
             this.$message({
               type: "success",
               message: "删除成功!",
             });
           })
-          .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消删除",
-            })
+          members_get().then((res) => {
+            console.log(res);
+            if(res.request.status == 200){
+              this.Members = res.data.data;
+            }
           })
-          console.log(this.Members);
-        },
-        save1(row) {
-          row.show = false;
         },
         handleAdd() {
           this.$router.push('/m_home/teamsetup')
+        },
+        handleAddAchievements() {
+          this.$router.push('/m_home/addachievement')
         },
         AllAdd(){
           create_team(this.Members).then((res) => {

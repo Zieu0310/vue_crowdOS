@@ -16,7 +16,7 @@
           <div class="yestext" @click="handlePostAchievement">上传</div>
         </div>
         <div class="no">
-          <router-link to="./achievements"><div class="notext">取消</div></router-link>
+          <router-link to="./team"><div class="notext">取消</div></router-link>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
                 message: '已上传！等待审核！',
                 type: 'success',
               })
-              this.$router.push("/m_home/achievements")
+              this.$router.push("/m_home/team")
             }
             else if(this.title === ""){
               alert('成果名称不能为空！')

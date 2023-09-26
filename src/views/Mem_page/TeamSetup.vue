@@ -42,7 +42,7 @@
           </template>
         </el-table-column>
 
-        <el-table-column prop="" label="操作" min-width="175" align="center">
+        <el-table-column prop="" label="操作" min-width="180" align="center">
           <template #default="scope">
             <el-button
               @click="handleDelete(scope.$index)"
@@ -71,12 +71,8 @@
           </template>
         </el-table-column>
       </el-table>
-      <div class="yes" @click="handleSetup">
-        <div class="yestext">创建</div>
-      </div>
-      <div class="no">
-        <router-link to="./team"><div class="notext">取消</div></router-link>
-      </div>
+      <el-button type="success" round @click="handleSetup" style="position: absolute;left: 27.70%;top: 79.77%;">添加</el-button>
+      <el-button type="danger" round @click="Cancel" style="position: absolute;left: 57.30%;top: 79.77%;">取消</el-button>
     </div>
     
   </div>
@@ -84,7 +80,7 @@
 
 <script>
   import { ElMessage } from 'element-plus';
-  import { create_team } from '../../api/research';
+  import { create_team} from '../../api/research';
   import M_HeadBar from '../../components/M_common/M_HeadBar.vue';
 
 
@@ -95,17 +91,23 @@
         dialogVisible: false,
         name: "",
         email: "",
-        Members: [
-          {},
-        ],
+        Members: [],
+        MembersToAdd: [],
       };
     },
     components: {
       M_HeadBar,
     },
     methods:{
+      Cancel(){
+        this.$router.push('/m_home/team')
+      },
       handleSetup(){
-        create_team(this.Members).then((res) => {
+        for(let item of this.Members){
+          console.log(item);
+          this.MembersToAdd.push({ name: item.name, email: item.email });
+        }
+        create_team(this.MembersToAdd).then((res) => {
           console.log(res);
           ElMessage({
             message: '成员添加成功！',
@@ -114,15 +116,15 @@
           this.$router.push('/m_home/team');
         })
       },
-      save1(row) {
-      row.show = false;
-    },
     // 添加点击按钮
     handleAdd() {
       this.Members.push({
         name: "",
         show: true,
       });
+    },
+    save1(row) {
+      row.show = false;
     },
     handleDelete(index) {
       this.$confirm("此操作将永久删除, 是否继续?", "提示", {
@@ -131,7 +133,7 @@
         type: "warning",
       })
         .then(() => {
-          this.Members.splice(index, 1)
+          this.tableData.splice(index, 1)
           this.$message({
             type: "success",
             message: "删除成功!",
@@ -143,8 +145,11 @@
             message: "已取消删除",
           })
         })
-      },
     },
+    },
+    mounted(){
+      console.log(this.MembersToAdd);
+    }
   };
 </script>
 
@@ -278,16 +283,6 @@
   border-radius: 1.20vw;
   background: rgba(67, 207, 124, 1);
 }
-.no{
-  position: absolute;
-  left: 57.30%;
-  top: 79.77%;
-  width: 7.29vw;
-  height: 4.26vh;
-  opacity: 1;
-  border-radius: 1.20vw;
-  background: rgba(255, 87, 51, 1);
-}
 .yestext{
   position: absolute;
   left: 35.71%;
@@ -317,26 +312,6 @@
   color: rgba(255, 255, 255, 1);
   text-align: center;
   vertical-align: top;
-}
-.op{
-  position: absolute;
-  left: 15%;
-}
-table{
-  position: absolute;
-  left: 10%;
-  top: 40%;
-  width: 30vw;
-  height: auto;
-  border-spacing: 0px;
-}
-th{
-  border: 0.5px solid grey;
-  color: beige;
-}
-td{
-  border: 0.5px solid grey;
-  background-color: rgba(135,206,250,1);
 }
 .name{
   position: absolute;

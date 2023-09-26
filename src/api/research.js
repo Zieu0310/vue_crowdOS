@@ -14,8 +14,8 @@ export const allevents_get = (state, time, type) => {
 
 export const create_team = (members) => {
   return apis({
-    method: "put",
-    url: "/research/createTeam",
+    method: "post",
+    url: "/research/addMembers",
     data: {
       members,
     },
@@ -52,5 +52,13 @@ export const successfullyevents_get = (state) => {
     method: "get",
     url: `/research/getSuccessfullyEventInformation/${state}`,
     params: { state: state }
+  });
+};
+
+export const deleteMember = (id) => {
+  return apis({
+    method: "post",
+    url: `/research/deleteMembers/${id}`,
+    params: { id: id }
   });
 };
