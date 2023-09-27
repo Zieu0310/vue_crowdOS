@@ -113,7 +113,7 @@
       </div>
       <div class="right-entry">
         <div class="profile">
-          <router-link to="./c_information"><img src="../../assets/img/h-icon-c.png" alt="" /></router-link>
+          <img src="../../assets/img/h-icon-c.png" alt="" />
         </div>
         <div class="PersonalData">
           <div class="name">{{ name }}</div>

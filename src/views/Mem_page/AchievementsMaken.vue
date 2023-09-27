@@ -3,7 +3,7 @@
       <div>
         <div class="above">成果详细</div>
         <div class="whitecenter">
-          <router-link to="./achievements"><div class="grey">返回</div></router-link>
+          <router-link to="./team"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">已申报成果详情</div>
           <div class="item" id="i1">成果</div>
@@ -12,7 +12,7 @@
           <div class="inblue" id="ib2">{{ type }}</div>
           <div class="item" id="i3">具体描述</div>
           <el-input v-model="description" :rows="17" type="textarea" disabled style="position: absolute;
-      left: 9.73%;top: 35%;width: 34.0625vw;height: 45.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
+      left: 4.73%;top: 35%;width: 35.0625vw;height: 45.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
         </div>
       </div>
     </div>
@@ -117,7 +117,7 @@
     }
     .item{
       position: absolute;
-      left: 9.73%;
+      left: 4.73%;
       width: 5vw;
       height: 2.69vh;
       opacity: 1;
@@ -169,7 +169,7 @@
     .inblue{
     position: absolute;
     right: 12.29%;
-    width: 13.54vw;
+    width: 35vw;
     height: 2.5vh;
     opacity: 1;
     font-size: 1.04vw;

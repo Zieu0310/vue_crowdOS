@@ -144,18 +144,6 @@
         handleAddAchievements() {
           this.$router.push('/m_home/addachievement')
         },
-        AllAdd(){
-          create_team(this.Members).then((res) => {
-            console.log(res);
-            ElMessage({
-              message: '保存成功！',
-              type: 'success',
-            })
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-        }
       },
       mounted(){
         m_information().then((res) => {

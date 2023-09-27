@@ -16,11 +16,11 @@
           <div class="inblue" id="ib2_5">{{ endTime }}</div>
           <div class="item" id="i3">投标状态</div>
           <div class="inblue" id="ib3">{{ state }}</div>
-          <div class="item" id="i4" v-if="type === 'IOT J'&& budget != null">预算（万）</div>
+          <div class="item" id="i4" v-if="type === '有成本预算交易'&& budget != null">预算（万）</div>
           <div class="it4" v-else>固定价格（万）</div>
-          <div class="inblue" id="ib4" v-if="type === 'IOT J'">{{ budget }}</div>
+          <div class="inblue" id="ib4" v-if="type === '有成本预算交易'">{{ budget }}</div>
           <div class="inbl4" v-else>{{ reversePrice }}</div>
-          <div class="yes" v-if="type === 'IOT J' || type === 'VCG'">
+          <div class="yes" v-if="type === '有成本预算交易' || type === '一般交易'">
             <div class="yestext" @click="toTender(id)">投标</div>
           </div>
           <div class="yes" v-if="type == '固定价格交易'">
@@ -267,7 +267,7 @@
     .inblue{
     position: absolute;
     right: 12.29%;
-    width: 13.54vw;
+    width: 35vw;
     height: 2.5vh;
     opacity: 1;
     font-size: 1.04vw;

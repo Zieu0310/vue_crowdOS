@@ -6,10 +6,10 @@
         <el-input v-model="event_name" placeholder="请输入" type="text" class="im2" />
         <div class="item" id="i3">任务描述</div>
         <el-input v-model="description" :rows="6" type="textarea" placeholder="请描述" class="grey_rec" />
-        <div class="item" id="i4">算法</div>
-        <el-radio-group v-model="type" style="position: absolute;right: 25%;top: 53.86%;">
-          <el-radio :label="0">IOT&nbsp;J</el-radio>
-          <el-radio :label="1">VCG</el-radio>
+        <div class="item" id="i4">类型</div>
+        <el-radio-group v-model="type" style="position: absolute;right: 15%;top: 53.86%;">
+          <el-radio :label="0">有成本预算交易</el-radio>
+          <el-radio :label="1">一般交易</el-radio>
           <el-radio :label="2">固定价格交易</el-radio>
         </el-radio-group>
         <div class="item" id="i5" v-if="type == 0">预算(万)</div>

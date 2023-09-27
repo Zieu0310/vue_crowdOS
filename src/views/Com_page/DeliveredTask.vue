@@ -246,7 +246,7 @@
     .inblue{
     position: absolute;
     right: 12.29%;
-    width: 13.54vw;
+    width: 25vw;
     height: 2.5vh;
     opacity: 1;
     font-size: 1.04vw;

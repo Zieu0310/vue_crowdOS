@@ -29,15 +29,12 @@ export const m_information = () => {
   });
 };
 
-export const post_achievement = (title, description, type, file) => {
+export const post_achievement = (achievements) => {
   return apis({
     method: "post",
     url: "/research/postAchievement",
     data: {
-      title: title,
-      description: description,
-      type: type,
-      file: file,
+      achievements,
     },
   });
 }

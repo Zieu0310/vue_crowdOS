@@ -16,7 +16,7 @@
       <input type="password" name="" id="" placeholder="输入密码" v-model="password" />
       <input type="text" placeholder="输入名称" v-model="name" />
       <input type="text" placeholder="输入邮箱" v-model="email" />
-      <input type="text" placeholder="输入团队名" v-model="team_id" v-if="role == 2" />
+      <input type="text" placeholder="输入团队名" v-model="teamName" v-if="role == 2" />
       <input type="submit" value="确认" @click="handleRegister" class="btn" />
       <router-link to="./login"><div class="tologin">已有账号，前往登录</div></router-link>
     </div>

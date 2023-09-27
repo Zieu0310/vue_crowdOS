@@ -88,11 +88,11 @@
         Type: [
           {
             value: 0,
-            label: "IOT J",
+            label: "有成本预算交易",
           },
           {
             value: 1,
-            label: "VCG",
+            label: "一般交易",
           },
           {
             value: 2,
@@ -137,9 +137,9 @@
           }
           for(let i = 0; i < this.Events.length; i++){
             if(this.Events[i].event.type == 0){
-              this.Events[i].event.type = "IOT J";
+              this.Events[i].event.type = "有成本预算交易";
             }else if(this.Events[i].event.type == 1){
-              this.Events[i].event.type = "VCG";
+              this.Events[i].event.type = "一般交易";
             }else{
               this.Events[i].event.type = "固定价格交易";
             }
@@ -175,10 +175,16 @@
         if(res.request.status == 200){
           this.Events = res.data.data;
           for(let i = 0; i < this.Events.length; i++){
+            let date = this.Events[i].end.substring(0,10);
+            let moment = this.Events[i].end.substring(11,19);
+            date = date.split("-");
+            this.Events[i].end = date[0] + "年" + date[1] + "月" + date[2] + "日" + " " + moment;
+          }
+          for(let i = 0; i < this.Events.length; i++){
             if(this.Events[i].type == 0){
-              this.Events[i].type = "IOT J";
+              this.Events[i].type = "有成本预算交易";
             }else if(this.Events[i].type == 1){
-              this.Events[i].type = "VCG";
+              this.Events[i].type = "一般交易";
             }else{
               this.Events[i].type = "固定价格交易";
             }

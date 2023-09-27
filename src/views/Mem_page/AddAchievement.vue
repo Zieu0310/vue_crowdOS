@@ -3,15 +3,15 @@
       <div class="over"></div>
       <div class="add">
         <div class="item" id="i1">成果名称</div>
-        <el-input v-model="title" placeholder="请输入" class="im1" />
+        <el-input v-model="achievements.title" placeholder="请输入" class="im1" />
         <div class="item" id="i2">类型</div>
-        <el-radio-group v-model="type" class="im2">
+        <el-radio-group v-model="achievements.type" class="im2">
           <el-radio :label="0">论文</el-radio>
           <el-radio :label="1">专利</el-radio>
           <el-radio :label="2">项目</el-radio>
         </el-radio-group>
         <div class="item" id="i3">成果描述</div>
-        <el-input v-model="description" :rows="10" type="textarea" placeholder="请描述" class="grey_rec" />
+        <el-input v-model="achievements.description" :rows="10" type="textarea" placeholder="请描述" class="grey_rec" />
         <div class="yes">
           <div class="yestext" @click="handlePostAchievement">上传</div>
         </div>
@@ -37,7 +37,14 @@
           title: '',
           description: '',
           type: '',
-          file: '',        
+          file: '',
+          achievements: 
+          {
+            title: '',
+            description: '',
+            type: '',
+            file: null,
+          }       
         };
       },
       components: {
@@ -45,22 +52,22 @@
       },
       methods:{
         handlePostAchievement(){
-          post_achievement(this.title,this.description,this.type,this.file).then((res)=>{
+          post_achievement(this.achievements).then((res)=>{
             console.log(res);
-            if(this.title !== "" && this.description !== "" && this.type !== ""){
+            if(this.achievements.title !== "" && this.achievements.description !== "" && this.achievements.type !== ""){
               ElMessage({
                 message: '已上传！等待审核！',
                 type: 'success',
               })
               this.$router.push("/m_home/team")
             }
-            else if(this.title === ""){
+            else if(this.achievements.title === ""){
               alert('成果名称不能为空！')
             }
-            else if(this.type === ""){
+            else if(this.achievements.type === ""){
               alert('类型不能为空！')
             }
-            else if(this.description === ""){
+            else if(this.achievements.description === ""){
               alert('成果描述不能为空！')
             }
           })
