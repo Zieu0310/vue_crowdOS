@@ -5,8 +5,7 @@
             <img src="../../assets/img/blue.png" class="blue_" id="b1">
             <div class="textblue_" id="tb1">成员</div>
             <el-table :data="Members" border height="200" style="position:absolute;top:10%;width: 100%">
-              <el-table-column prop="name" label="姓名" width="560" />
-              <el-table-column prop="role" label="角色" width="560" />
+              <el-table-column prop="name" label="姓名" width="1120" />
             </el-table>
             <img src="../../assets/img/blue.png" class="blue_" id="b2">
             <div class="textblue_" id="tb2">成果</div>

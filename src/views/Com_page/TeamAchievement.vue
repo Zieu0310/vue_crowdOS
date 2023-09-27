@@ -15,9 +15,8 @@
           <div class="item" id="i22">科研队ID</div>
           <div class="inblue" id="ib22">{{ team_id }}</div>
           <div class="item" id="i3">具体描述</div>
-          <div class="grey_rec">
-              <div class="innertext">{{ description }}</div>
-          </div>
+          <el-input v-model="description" :rows="17" type="textarea" disabled style="position: absolute;
+      left: 4.73%;top: 35%;width: 35.0625vw;height: 45.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
         </div>
       </div>
     </div>
@@ -124,7 +123,7 @@
     }
     .item{
       position: absolute;
-      left: 9.73%;
+      left: 4.73%;
       width: 5vw;
       height: 2.69vh;
       opacity: 1;
@@ -184,7 +183,7 @@
     .inblue{
     position: absolute;
     right: 12.29%;
-    width: 13.54vw;
+    width: 35.54vw;
     height: 2.5vh;
     opacity: 1;
     font-size: 1.04vw;

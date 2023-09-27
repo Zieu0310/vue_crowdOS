@@ -3,7 +3,7 @@
       <div class="whitelarge">
         <img src="../../assets/img/blue.png" class="blue">
         <div class="textBlue">中标成功</div>
-        <el-table :data="tableData" border style="position:absolute;top:6%;width: 100%" height="270">
+        <el-table :data="tableData" border style="position:absolute;top:6%;width: 100%" height="180">
           <el-table-column prop="company_name" label="公司名" width="400"></el-table-column>
           <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
           <el-table-column>
@@ -16,7 +16,20 @@
         </el-table>
         <img src="../../assets/img/blue.png" class="bluebelow">
         <div class="textBlueBelow">中标失败</div>
-        <el-table :data="tableDataFailed" border style="position:absolute;top:54%;width: 100%" height="270">
+        <el-table :data="tableDataNone" border style="position:absolute;top:72%;width: 100%" height="180">
+          <el-table-column prop="company_name" label="公司名" width="400"></el-table-column>
+          <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
+          <el-table-column>
+            <template #default="scope">
+              <el-button size="small" @click="LookTaken(scope.row)"
+                >详情</el-button
+              >
+            </template>
+          </el-table-column>
+        </el-table>
+        <img src="../../assets/img/blue.png" class="bluebt">
+        <div class="textBlueBt">暂无结果</div>
+        <el-table :data="tableDataFailed" border style="position:absolute;top:39%;width: 100%" height="180">
           <el-table-column prop="company_name" label="公司名" width="400"></el-table-column>
           <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
           <el-table-column>
@@ -38,8 +51,10 @@
       return {
         tableData: [],
         tableDataFailed: [],
+        tableDataNone: [],
         statesuccess: 1,
         statefailed: 2,
+        statenone: 0,
       };
     },
     components: {
@@ -73,6 +88,12 @@
         console.log(res);
         if(res.request.status == 200){
           this.tableDataFailed = res.data.data;
+        }
+      });   
+      successfullyevents_get(this.statenone).then((res) => {
+        console.log(res);
+        if(res.request.status == 200){
+          this.tableDataNone = res.data.data;
         }
       });      
     }
@@ -187,7 +208,14 @@
   .bluebelow{
     position: absolute;
     left: 4.87%;
-    top: 50.69%;
+    top: 35.69%;
+    width: 0.21vw;
+    height: 1.76vh;
+  }
+  .bluebt{
+    position: absolute;
+    left: 4.87%;
+    top: 68.69%;
     width: 0.21vw;
     height: 1.76vh;
   }
@@ -209,7 +237,22 @@
   .textBlueBelow{
     position: absolute;
     left: 6.45%;
-    top: 50.23%;
+    top: 35.23%;
+    width: 10.21vw;
+    height: 2.50vh;
+    opacity: 1;
+    font-size: 1.04vw;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 2.44vh;
+    color: rgba(0, 43, 255, 1);
+    text-align: left;
+    vertical-align: top;
+  }
+  .textBlueBt{
+    position: absolute;
+    left: 6.45%;
+    top: 68.23%;
     width: 10.21vw;
     height: 2.50vh;
     opacity: 1;

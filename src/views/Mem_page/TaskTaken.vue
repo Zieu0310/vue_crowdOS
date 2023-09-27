@@ -47,9 +47,9 @@
         this.budget = this.$route.query.budget;
         this.salary = this.$route.query.salary;
         if(this.$route.query.type == 0){
-          this.type = 'IOT J';
+          this.type = '有成本预算交易';
         }else if(this.$route.query.type == 1){
-          this.type = 'VCG';
+          this.type = '一般交易';
         }else{
           this.type = '固定价格交易';
         }
