@@ -32,7 +32,8 @@
         Members: [],
         Achievements: [],
         team_id: "",
-        title: ""
+        title: "",
+        team_name: "",
       }
     },
     methods: {
@@ -43,12 +44,14 @@
             title: row.title,
             description: row.description,
             type: row.type,
+            team_name: this.team_name,
           }
         })
       }
     },
     mounted(){
       this.team_id = this.$route.query.team_id;
+      this.team_name = this.$route.query.team_name;
       getTeamDetalis(this.team_id).then((res) =>{
         console.log(res);
         if(res.request.status == 200){

@@ -60,6 +60,7 @@
           path: '/c_home/allmember',
           query:{
             team_id: row.team_id,
+            team_name: row.team_name,
           }
         })
       },
