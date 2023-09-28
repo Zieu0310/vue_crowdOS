@@ -52,7 +52,7 @@
       },
       methods:{
         handlePostAchievement(){
-          post_achievement(this.achievements).then((res)=>{
+          post_achievement(this.achievements.title,this.achievements.type,this.achievements.description,this.achievements.file).then((res)=>{
             console.log(res);
             if(this.achievements.title !== "" && this.achievements.description !== "" && this.achievements.type !== ""){
               ElMessage({
