@@ -6,6 +6,27 @@
 
   export default {
     methods: {
+      showLogoutConfirmation() {
+        // 使用 Element UI 的 MessageBox 组件来显示确认提示
+        this.$confirm("确定要退出登录吗？", "退出登录", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+          customClass: "logout-message-box", // 添加自定义样式类名
+          customTop: "20vh", // 自定义距离顶部的高度
+        })
+          .then(() => {
+            // 用户点击了"确定"按钮，执行退出登录操作
+            this.exit();
+          })
+          .catch(() => {
+            // 用户点击了"取消"按钮，不执行任何操作
+          });
+      },
+      exit() {
+        // 在这里处理退出登录逻辑
+        this.$router.push("/");
+      },
       active1() {
         this.Show1 = true;
         this.Show2 = false;
@@ -22,11 +43,18 @@
         this.Show3 = true;
       },
     },
+    mounted(){
+      this.account = localStorage.getItem("account");
+      this.name = localStorage.getItem("name")
+      
+    },
     data() {
       return {
         Show1: true,
         Show2: false,
         Show3: false,
+        account: "",
+        name: "",
       };
     },
   };
@@ -35,75 +63,63 @@
 <template>
   <div>
     <div class="Header">
-        <div class="LeftEntry">
-            <div class="box">
-             <div
-               class="ShowBorder"
-               :class="{ active_: Show1 }"
-               @click="active1()"
+      <div class="to_quit">
+        <div class="quit" @click="showLogoutConfirmation">退出</div>
+      </div>
+      <div class="LeftEntry">
+        <div class="box">
+          <div
+            class="ShowBorder"
+            :class="{ active_: Show1 }"
+            @click="active1()"
+          >
+             <router-link
+               :to="{ name: 'c_task' }"
+               custom
+               v-slot="{ navigate, isActive }"
              >
-               <router-link
-                 :to="{ name: 'c_information' }"
-                 custom
-                 v-slot="{ navigate, isActive }"
-               >
-                 <li
-                   @click="navigate"
-                   @keypress.enter="navigate"
-                   :class="{ active: isActive }"
-                   role="link"
-                 >
-                   <p :class="{ active_: Show1 }" @click="active1()">信息管理</p>
-                 </li>
-               </router-link>
-             </div>
-            </div>
-            <div class="box">
-             <div
-               class="ShowBorder"
-               :class="{ active_: Show2 }"
-               @click="active2()"
+             <li
+              @click="navigate"
+              @keypress.enter="navigate"
+              :class="{ active: isActive }"
+              role="link"
              >
-               <router-link
-                 :to="{ name: 'taskdelivery' }"
-                 custom
-                 v-slot="{ navigate, isActive }"
-               >
-                 <li
-                   @click="navigate"
-                   @keypress.enter="navigate"
-                   :class="{ active: isActive }"
-                   role="link"
-                 >
-                   <p :class="{ active_: Show2 }" @click="active2()">任务发布</p>
-                 </li></router-link
-               >
-             </div>
-           </div>
-           <div class="box">
-             <div
-               class="ShowBorder"
-               :class="{ active_: Show3 }"
-               @click="active3()"
-             >
-               <router-link
-                 :to="{ name: 'remark' }"
-                 custom
-                 v-slot="{ navigate, isActive }"
-               >
-                 <li
-                   @click="navigate"
-                   @keypress.enter="navigate"
-                   :class="{ active: isActive }"
-                   role="link"
-                 >
-                   <p :class="{ active_: Show3 }" @click="active3()">评价</p>
-                 </li></router-link
-               >
-             </div>
-           </div>
+              <p :class="{ active_: Show1 }" @click="active1()">需求管理</p>
+            </li>
+            </router-link>
+          </div>
         </div>
-        <router-view></router-view>
+        <div class="box">
+          <div
+           class="ShowBorder"
+           :class="{ active_: Show2 }"
+           @click="active2()"
+          >
+             <router-link
+               :to="{ name: 'myteam' }"
+               custom
+               v-slot="{ navigate, isActive }"
+             >
+             <li
+               @click="navigate"
+               @keypress.enter="navigate"
+               :class="{ active: isActive }"
+               role="link"
+              >
+               <p :class="{ active_: Show2 }" @click="active2()">合作团队</p>
+              </li></router-link>
+          </div>
+        </div>
+      </div>
+      <div class="right-entry">
+        <div class="profile">
+          <img src="../../assets/img/h-icon-c.png" alt="" />
+        </div>
+        <div class="PersonalData">
+          <div class="name">{{ name }}</div>
+          <div class="number">{{ account }}</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -152,7 +168,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 20%;
+    width: 30%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -176,7 +192,7 @@
     width: 65%;
   }
   .name {
-    font-size: 1.2vw;
+    font-size: 0.5vw;
     font-weight: 400;
     letter-spacing: 2px;
     line-height: 100%;
@@ -259,5 +275,18 @@
   .active_ {
     color: black;
     background-color: #f5f5f5;
+  }
+  .to_quit{
+    position: absolute;
+    left: 0;
+    width: 20%;
+    height: 100%;
+  }
+  .quit{
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    width: 100%;
+    height: 100%;
   }
 </style>

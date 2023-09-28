@@ -1,7 +1,8 @@
 <template>
-    <div class="CenterBox">
-      <M_HeadBar></M_HeadBar>
-    </div>
+  <div class="container">
+    <M_HeadBar></M_HeadBar>     
+  </div>
+  <router-view></router-view>
 </template>
 
 <script>
@@ -18,11 +19,9 @@
 </script>
 
 <style scoped>
-  .CenterBox {
-    margin: 0 auto;
+  .container {
     width: 100vw;
-    height: 100vh;
-    background-image: url(../../assets/img/Web.jpg);
+    background-image: url(../../assets/img/Web.png);
     background-size: 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -30,8 +29,6 @@
     background-position: center;
     zoom: 1;
     z-index: -10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
+
 </style>

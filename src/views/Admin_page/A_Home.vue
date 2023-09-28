@@ -1,11 +1,13 @@
 <template>
-    <div class="CenterBox">
-      <A_HeadBar></A_HeadBar>
-    </div>
+  <div class="container">
+    <A_HeadBar></A_HeadBar>
+  </div>
+  <router-view></router-view>
 </template>
 
 <script>
   import A_HeadBar from '../../components/A_common/A_HeadBar.vue';
+  
   export default {
     data() {
       return {};
@@ -17,11 +19,10 @@
 </script>
 
 <style scoped>
-  .CenterBox {
-    margin: 0 auto;
-    width: 100vw;
+  .container {
     height: 100vh;
-    background-image: url(../../assets/img/Web.jpg);
+    width: 100vw;
+    background-image: url(../../assets/img/Web.png);
     background-size: 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -29,8 +30,5 @@
     background-position: center;
     zoom: 1;
     z-index: -10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 </style>

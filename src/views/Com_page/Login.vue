@@ -1,28 +1,59 @@
 <template>
     <div class="Container">
+      <div class="title">
+        <img src="../../assets/img/Login_text.png" alt="" />
+      </div>
       <div class="mainBox">
-        <input type="text" placeholder="输入账号" />
-        <input type="password" name="" id="" placeholder="输入密码" />
-        <input type="submit" value="登录[科研成员]" @click="go_c" class="btn" />
-        <input type="submit" value="登录[公司]" @click="go_m" class="btn" />
+        <input type="text" placeholder="输入账号" v-model="account" />
+        <input type="password" name="" id="" placeholder="输入密码" v-model="password" />
+        <input type="submit" value="登录" @click="handleLogin" class="btn" />
+        <input type="submit" value="注册" @click="go_r" class="btn" />
       </div>
     </div>
+    <div id="result"></div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {};
+import { login } from '../../api/index'
+export default {
+  name: 'login',
+  data() {
+    return {
+      account: "",
+      password: "",
+    };
+  },
+  methods: {
+    handleLogin() {
+      login(this.account,this.password).then((res) => {
+        console.log(res);
+        localStorage.setItem("account", this.account);
+        localStorage.setItem("name", res.data.data.name);
+        if(res.data.success == true){
+          localStorage.setItem("token",res.data.data.token)
+          if(res.data.data.role == 0){
+            console.log(res);
+            this.$router.push("/a_home/achievementjudge");
+          }else if(res.data.data.role == 2){
+            console.log(res);
+            this.$router.push("/m_home/team");
+          }else{
+            console.log(res);
+            this.$router.push("/c_home/c_task");
+          }
+        }else{
+          alert("登陆失败！！请检查账号或密码");
+        }
+        // 这里已经调好接口了
+      }).catch((err) => {
+          console.log(err);
+      });
+     },
+    go_r() {
+      this.$router.push("/register");
     },
-    methods: {
-      go_c() {
-        this.$router.push("/c_home");
-      },
-      go_m() {
-        this.$router.push("/m_home");
-      },
-    },
-  };
+    }
+  }
 </script>
 
 <style scoped>

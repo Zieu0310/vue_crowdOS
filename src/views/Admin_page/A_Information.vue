@@ -4,9 +4,9 @@
           <img src="../../assets/img/blue.png" class="blue_">
           <div class="textblue_">个人信息</div>
           <div class="item" id="i1">账号:</div>
-          <el-input v-model="account" disabled class="in1" />
-          <div class="item" id="i2">公司名:</div>
-          <el-input v-model="name" class="in2" />
+          <el-input v-model="account" style="position: absolute;left: 15%;top: 12%;width: 40vw;" />
+          <div class="item" id="i2">姓名:</div>
+          <el-input v-model="name" style="position: absolute;left: 15%;top: 27%;width: 40vw;" />
         </div>
     </div>
 </template>
@@ -17,7 +17,6 @@
     data() {
       return {
         account: "",
-        company_id: "",
         name: "",
       };
     },
@@ -26,8 +25,7 @@
     },
     mounted(){
       this.account = localStorage.getItem("account");
-      this.company_id = localStorage.getItem("company_id");
-      this.name = localStorage.getItem("name");
+      this.name = localStorage.getItem("name")
     }
   };
 </script>
@@ -95,8 +93,6 @@
   #i1{
     position: absolute;
     top: 13%;
-    left: 8%;
-    width: 8vw;
   }
   #i2{
     position: absolute;
@@ -106,22 +102,22 @@
     position: absolute;
     top: 43%;
   }
-  .in1{
+  .in{
     position: absolute;
-    left: 16%;
+    left: 15%;
+    width: 40vw;
+    height: 3vh;
+  }
+  #in1{
+    position: absolute;
     top: 12%;
-    width: 40vw;
   }
-  .in2{
+  #in2{
     position: absolute;
-    left: 16%;
     top: 27%;
-    width: 40vw;
   }
-  .in3{
+  #in3{
     position: absolute;
-    left: 16%;
     top: 42%;
-    width: 40vw;
   }
 </style>

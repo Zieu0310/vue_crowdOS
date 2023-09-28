@@ -2,17 +2,27 @@
   "name": "vue-crowdos",
   "version": "0.0.0",
   "private": true,
+  "main": "index.html",
+  "chromium-args": "--args --explicitly-allowed-ports=101,102,103",
   "scripts": {
+    "serve": "vue-cli-service serve --open",
+    "lint": "vue-cli-service lint",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.4.0",
+    "element-plus": "^2.3.9",
     "vue": "^3.3.4",
-    "vue-router": "^3.5.2"
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.4.6"
+    "vite": "^4.4.6",
+    "esbuild-wasm": "latest"
+  },
+  "overrides": {
+    "esbuild":"npm:esbuild-wasm@latest"
   }
 }
