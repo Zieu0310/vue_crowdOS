@@ -27,3 +27,25 @@ npm run dev
 ```sh
 npm run build
 ```
+
+# backend
+## 产学研合作系统
+├─src
+  ├─main
+    ├─java
+    └─com
+        └─inrsystem
+            ├─annotation
+            ├─config
+            ├─controller
+            ├─dao
+            ├─enums
+            ├─exception
+            ├─interceptor
+            ├─mapper
+            ├─quart
+            ├─response
+            ├─service 
+            └─impl 
+            └─util
+   
