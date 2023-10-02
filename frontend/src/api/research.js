@@ -1,4 +1,4 @@
-import { apis } from ".";
+import { apis } from "./index";
 
 export const allevents_get = (state, time, type) => {
   return apis({

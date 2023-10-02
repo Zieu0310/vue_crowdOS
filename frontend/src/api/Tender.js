@@ -1,4 +1,4 @@
-import { apis } from ".";
+import { apis } from "./index";
 
 export const tender = (event_id, bid) => {
     return apis({
