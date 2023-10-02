@@ -1,4 +1,4 @@
-import { apis } from ".";
+import { apis } from "./index";
 
 export const postEvents = (event_name, description, type, price, reversePrice, time) => {
   return apis({

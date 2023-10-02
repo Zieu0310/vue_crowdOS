@@ -1,4 +1,4 @@
-import { apis } from ".";
+import { apis } from "./index";
 
 export function exit() {
     return apis({
