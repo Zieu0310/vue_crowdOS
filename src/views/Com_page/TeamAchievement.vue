@@ -1,7 +1,7 @@
 <template>
     <div class="CenterBox">
       <div>
-        <div class="above">XXX团队的成果</div>
+        <div class="above">{{ team_name }}的成果</div>
         <div class="whitecenter">
           <router-link to="./allmember"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
@@ -10,10 +10,6 @@
           <div class="inblue" id="ib1">{{ title }}</div>
           <div class="item" id="i2">类型</div>
           <div class="inblue" id="ib2">{{ type }}</div>
-          <div class="item" id="i21">科研队</div>
-          <div class="inblue" id="ib21">XX教授团队</div>
-          <div class="item" id="i22">科研队ID</div>
-          <div class="inblue" id="ib22">{{ team_id }}</div>
           <div class="item" id="i3">具体描述</div>
           <el-input v-model="description" :rows="17" type="textarea" disabled style="position: absolute;
       left: 4.73%;top: 35%;width: 35.0625vw;height: 45.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
@@ -29,7 +25,8 @@
           title: "",
           type: 0,
           team_id: 0,
-          file: ""
+          file: "",
+          team_name: ""
         };
       },
       components: {
@@ -40,6 +37,7 @@
         this.type = this.$route.query.type;
         this.description = this.$route.query.description;
         this.reversePrice = this.$route.query.reversePrice;
+        this.team_name = this.$route.query.team_name;
       }
     };
   </script>
@@ -153,7 +151,7 @@
     }
     #i3{
       position: absolute;
-      top: 44.33%;
+      top: 30.33%;
     }
     .grey_rec{
       position: absolute;
