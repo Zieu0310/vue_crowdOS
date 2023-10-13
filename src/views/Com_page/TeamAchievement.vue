@@ -3,7 +3,7 @@
       <div>
         <div class="above">{{ team_name }}的成果</div>
         <div class="whitecenter">
-          <router-link to="./allmember"><div class="grey">返回</div></router-link>
+          <router-link to="./myteam"><div class="grey">返回</div></router-link>
           <img src="../../assets/img/blue.png" class="blue">
           <div class="title">成果详情</div>
           <div class="item" id="i1">成果</div>

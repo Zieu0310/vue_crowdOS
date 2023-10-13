@@ -181,19 +181,19 @@
             this.Events[i].end = date[0] + "年" + date[1] + "月" + date[2] + "日" + " " + moment;
           }
           for(let i = 0; i < this.Events.length; i++){
-            if(this.Events[i].type == 0){
-              this.Events[i].type = "有成本预算交易";
-            }else if(this.Events[i].type == 1){
-              this.Events[i].type = "一般交易";
+            if(this.Events[i].event.type == 0){
+              this.Events[i].event.type = "有成本预算交易";
+            }else if(this.Events[i].event.type == 1){
+              this.Events[i].event.type = "一般交易";
             }else{
-              this.Events[i].type = "固定价格交易";
+              this.Events[i].event.type = "固定价格交易";
             }
-            if(this.Events[i].state == 0){
-              this.Events[i].state = "未接取";
-            }else if(this.Events[i].state == 1){
-              this.Events[i].state = "已有人接取";
+            if(this.Events[i].event.state == 0){
+              this.Events[i].event.state = "无人投标";
+            }else if(this.Events[i].event.state == 1){
+              this.Events[i].event.state = "有人投标";
             }else{
-              this.Events[i].state = "已成功被接取";
+              this.Events[i].event.state = "已成功被接取";
             }
           }
         }
