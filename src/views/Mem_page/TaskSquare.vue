@@ -57,10 +57,7 @@
             value: 1,
             label: "有人投标",
           },
-          {
-            value: 2,
-            label: "已成功被接取",
-          },
+          
         ],
         state: 0,
         Time: [
