@@ -2,7 +2,7 @@
     <div class="CenterBox">
       <div class="whitelarge">
         <img src="../../assets/img/blue.png" class="blue">
-        <div class="textBlue">中标成功</div>
+        <div class="textBlue">竞标成功</div>
         <el-table :data="tableData" border style="position:absolute;top:6%;width: 100%" height="180">
           <el-table-column prop="company_name" label="公司名" width="400"></el-table-column>
           <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
@@ -15,7 +15,7 @@
           </el-table-column>
         </el-table>
         <img src="../../assets/img/blue.png" class="bluebelow">
-        <div class="textBlueBelow">中标失败</div>
+        <div class="textBlueBelow">竞标失败</div>
         <el-table :data="tableDataNone" border style="position:absolute;top:72%;width: 100%" height="180">
           <el-table-column prop="company_name" label="公司名" width="400"></el-table-column>
           <el-table-column prop="event.name" label="需求名" width="400"></el-table-column>
