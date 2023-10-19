@@ -70,7 +70,7 @@
             label: "早于截止日期",
           },
         ],
-        time: 0,
+        time: 1,
         Type: [
           {
             value: 0,

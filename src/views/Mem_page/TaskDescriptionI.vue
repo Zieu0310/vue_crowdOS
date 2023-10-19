@@ -81,18 +81,35 @@
         const hour = nowDate.getHours();
         const minute = nowDate.getMinutes();
         const second = nowDate.getSeconds();
+        console.log(year);
+        console.log(date[0]);
+        console.log(month);
+        console.log(date[1]);
+        console.log(nowdate);
+        console.log(date[2]);
         if(year > Number(date[0])){
           this.flag = 0;
-        }else if (month > Number(date[1])){
-          this.flag = 0;
-        }else if(nowdate > Number(date[2])){
-          this.flag = 0;
-        }else if(hour > Number(moment[0])){
-          this.flag = 0;
-        }else if(minute > Number(moment[1])){
-          this.flag = 0;
-        }else if(second > Number(moment[2])){
-          this.flag = 0;
+        }else if(year == Number(date[0])){
+          if(month > Number(date[1])){
+            this.flag = 0;
+          }else if(month + 1 == Number(date[1])){
+            if(nowdate > Number(date[2])){
+              this.flag = 0;
+              console.log(this.flag);
+            }else if(nowdate == Number(date[2])){
+              if(hour > Number(moment[0])){
+                this.flag = 0;
+              }else if(hour == Number(moment[0])){
+                if(minute > Number(moment[1])){
+                  this.flag = 0;
+                }else if(minute == Number(moment[1])){
+                  if(second > Number(moment[2])){
+                    this.flag = 0;
+                  }
+                }
+              }
+            }
+          } 
         }
       },
     };
