@@ -20,10 +20,10 @@
           <div class="it4" v-else>固定价格（万）</div>
           <div class="inblue" id="ib4" v-if="type === '有成本预算交易'">{{ budget }}</div>
           <div class="inbl4" v-else>{{ reversePrice }}</div>
-          <div class="yes" v-if="type === '有成本预算交易' || type === '一般交易'">
+          <div class="yes" v-if="(type === '有成本预算交易' || type === '一般交易')&&flag == 1">
             <div class="yestext" @click="toTender(id)">投标</div>
           </div>
-          <div class="yes" v-if="type == '固定价格交易'">
+          <div class="yes" v-if="type == '固定价格交易'&&flag == 1">
             <div class="yestext">参与</div>
           </div>
         </div>
@@ -44,6 +44,7 @@
           budget: '',
           endTime: '',
           state: '',
+          flag: 1,
         };
       },
       methods: {
@@ -71,6 +72,27 @@
         this.endTime = date[0] + "年" + date[1] + "月" + date[2] + "日" + " " + moment;
         if(this.reversePrice == null){
           this.reversePrice = "无";
+        }
+        moment = moment.split(":")
+        const nowDate = new Date();
+        const year = nowDate.getFullYear();
+        const month = nowDate.getMonth();
+        const nowdate = nowDate.getDate();
+        const hour = nowDate.getHours();
+        const minute = nowDate.getMinutes();
+        const second = nowDate.getSeconds();
+        if(year > Number(date[0])){
+          this.flag = 0;
+        }else if (month > Number(date[1])){
+          this.flag = 0;
+        }else if(nowdate > Number(date[2])){
+          this.flag = 0;
+        }else if(hour > Number(moment[0])){
+          this.flag = 0;
+        }else if(minute > Number(moment[1])){
+          this.flag = 0;
+        }else if(second > Number(moment[2])){
+          this.flag = 0;
         }
       },
     };
