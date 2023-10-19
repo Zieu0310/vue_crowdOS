@@ -14,7 +14,7 @@
           <el-input v-model="description" :rows="8" type="textarea" disabled style="position: absolute;
       left: 9.73%;top: 35%;width: 34.0625vw;height: 14.93vh;opacity: 1;border-radius: 0.3125vw;background: rgba(245, 245, 245, 1);" />
           <div class="item" id="i4" v-if="type !== 'VCG'">报价（万）</div>
-          <div class="inblue" id="ib4">{{ reversePrice }}{{ budget }}</div>
+          <div class="inblue" id="ib4">{{ reversePrice }}{{ bid }}</div>
           <div class="item" id="i5">报酬（万）</div>
           <div class="inblue" id="ib5">{{ salary }}</div>
         </div>
@@ -34,6 +34,7 @@
           budget: "",
           endTime: '',
           salary: "",
+          bid: "",
         };
       },
       components: {
@@ -46,6 +47,7 @@
         this.reversePrice = this.$route.query.reversePrice;
         this.budget = this.$route.query.budget;
         this.salary = this.$route.query.salary;
+        this.bid = this.$route.query.bid;
         if(this.$route.query.type == 0){
           this.type = '有成本预算交易';
         }else if(this.$route.query.type == 1){

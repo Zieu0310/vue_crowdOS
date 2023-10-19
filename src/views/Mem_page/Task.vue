@@ -73,6 +73,7 @@
             endTime: row.event.endTime,
             budget: row.event.budget,
             salary: row.salary,
+            bid: row.bid,
           }
         })
       }
