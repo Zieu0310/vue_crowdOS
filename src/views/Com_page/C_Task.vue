@@ -49,13 +49,14 @@
             </template>
           </el-table-column>
         </el-table>
-        <router-link to="addtask"><img src="../../assets/img/add.png" alt="添加任务" class="round" @click="newEvent"></router-link>
+        <router-link to="addtask"><el-button type="info" round style="position:absolute;left:46%;top:88%">发布需求</el-button></router-link>
       </div>
     </div>
 </template>
 
 <script>
   import { events_get } from '../../api/company';
+  import { Search, Upload } from '@element-plus/icons-vue';
   export default {
     data() {
       return {

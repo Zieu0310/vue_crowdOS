@@ -13,6 +13,11 @@ app.use(router);
 app.mount("#app");
 
 app.use(ElementPlus);
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
 
 // new Vue({
 //     render: h => h(App), 
