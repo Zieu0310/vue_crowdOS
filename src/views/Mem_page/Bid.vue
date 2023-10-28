@@ -2,15 +2,13 @@
     <div class="CenterBox">
       <div class="over"></div>
       <div class="add">
-        <div class="the_bid">你的报价是<input type="number" min="0" style="width: 5vw;height: 5vh;font-size: 4vh;" v-model="bid">万</div>>
-        <div class="yes" @click="tenderData">
-          <div class="yestext">确认</div>
-        </div>
-        <router-link to="./tasksquare">
-          <div class="no">
-            <div class="notext">取消</div>
-          </div>
-        </router-link>
+        <div class="titleText">投标</div>
+        <div class="the_bid0" v-if="budget != 0 && budget != null && budget != ''">该需求的预算为{{ budget }}万元</div>
+        <div class="the_bid0" v-if="budget == 0 || budget == null || budget == ''">该需求暂无确定预算</div>
+        <div class="the_bid">请输入您的报价（单位：万）</div>
+        <el-input-number v-model="bid" :precision="2" :step="0.01" :max="10000" style="position:absolute;top:53%;left:8%;" />
+        <el-button type="success" @click="tenderData" style="position:absolute;top:70%;left:30%">确认</el-button>
+        <router-link to="./tasksquare"><el-button type="warning" style="position:absolute;top:70%;left:60%">取消</el-button></router-link>
       </div>     
     </div>
 </template>
@@ -24,7 +22,8 @@
       name: 'bid',
       data() {
         return {
-          event_id: 0,  
+          event_id: 0,
+          budget: 0,  
           bid: 0,
         };
       },
@@ -33,6 +32,7 @@
       },
       mounted(){
         this.event_id = this.$route.query.event_id;
+        this.budget = this.$route.query.budget;
         console.log(this.event_id);
       },
       methods: {
@@ -97,62 +97,32 @@
     }
     .the_bid{
       position: absolute;
-      left: 22%;
-      top: 35%;
+      left: 8%;
+      top: 38%;
       width: 30vw;
       height: 7vh;
-      font-size: 3vw;
+      font-size: 1.5vw;
+      color: black;
+      font-family: '宋体';
+    }
+    .the_bid0{
+      position: absolute;
+      left: 8%;
+      top: 25%;
+      width: 30vw;
+      height: 7vh;
+      font-size: 1.5vw;
+      color: black;
+      font-family: '宋体';
+    }
+    .titleText{
+      position: absolute;
+      left: 8%;
+      top: 10%;
+      width: 8vw;
+      height: 4vh;
+      font-size: 2vw;
       color: black;
       font-family: '黑体';
     }
-    .yes{
-    position: absolute;
-    left: 27.70%;
-    top: 65%;
-    width: 7.29vw;
-    height: 4.26vh;
-    opacity: 1;
-    border-radius: 1.20vw;
-    background: rgba(67, 207, 124, 1);
-  }
-  .no{
-    position: absolute;
-    left: 57.30%;
-    top: 65%;
-    width: 7.29vw;
-    height: 4.26vh;
-    opacity: 1;
-    border-radius: 1.20vw;
-    background: rgba(255, 87, 51, 1);
-  }
-  .yestext{
-    position: absolute;
-    left: 35.71%;
-    top: 21.74%;
-    width: 2.08vw;
-    height: 2.5vh;
-    opacity: 1;
-    font-size: 1.04vw;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 2.44vh;
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
-    vertical-align: top;
-  }
-  .notext{
-    position: absolute;
-    left: 28.57%;
-    top: 21.74%;
-    width: 3.125vw;
-    height: 2.5vh;
-    opacity: 1;
-    font-size: 1.04vw;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 2.44vh;
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
-    vertical-align: top;
-  }
   </style>

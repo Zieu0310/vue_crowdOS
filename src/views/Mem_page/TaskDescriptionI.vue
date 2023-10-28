@@ -53,6 +53,7 @@
             path: "/m_home/bid",
             query: {
               event_id: this.event_id,
+              budget: this.budget,
             },
           })
         }
